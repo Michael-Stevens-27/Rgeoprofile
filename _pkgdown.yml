@@ -1,0 +1,17 @@
+
+title: Rgeoprofile workshop
+template:
+  params:
+    bootswatch: flatly
+
+navbar:
+  title: "Rgeoprofile workshop"
+  left:
+    - text: "Vignettes"
+      menu:
+        - text: "Installation"
+    - text: "Functions"
+      href: reference/index.html
+  right:
+   - icon: fa-github
+     href: https://github.com/Michael-Stevens-27/Rgeoprofile
