@@ -85,7 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Installation</li>
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -145,44 +147,9 @@
     <pre class="examples"><div class='input'><span class='co'># John Snow cholera data</span>
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='no'>Cholera</span>$<span class='no'>longitude</span>, <span class='no'>Cholera</span>$<span class='no'>latitude</span>)
 <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoDataSource.html'>geoDataSource</a></span>(<span class='no'>WaterPumps</span>$<span class='no'>longitude</span>, <span class='no'>WaterPumps</span>$<span class='no'>latitude</span>)
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>lambda</span><span class='kw'>=</span><span class='fl'>0.05</span>)</div><div class='output co'>#&gt; data file passed all checks
-#&gt; params file passed all checks
-#&gt; 
-#&gt; Initiating burn-in phase (10 chains)
-#&gt;   iteration: 100
-#&gt;     convergence at the GR=1.1 level reached within 103 iterations
-#&gt;   iteration: 200
-#&gt;   iteration: 300
-#&gt;   iteration: 400
-#&gt;   iteration: 500
-#&gt;   iteration: 600
-#&gt;   iteration: 700
-#&gt;   iteration: 800
-#&gt;   iteration: 900
-#&gt;   iteration: 1000
-#&gt;     final GR statistic: GR=1.00095
-#&gt; 
-#&gt; Initiating sampling phase
-#&gt;   iteration: 1000
-#&gt;   iteration: 2000
-#&gt;   iteration: 3000
-#&gt;   iteration: 4000
-#&gt;   iteration: 5000
-#&gt;   iteration: 6000
-#&gt;   iteration: 7000
-#&gt;   iteration: 8000
-#&gt;   iteration: 9000
-#&gt;   iteration: 10000
-#&gt; 
-#&gt; MCMC completed in 9.6 seconds
-#&gt; Smoothing posterior surface</div><div class='input'><span class='fu'>geoReportHitscores</span>(<span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='no'>s</span>, <span class='kw'>surface</span> <span class='kw'>=</span> <span class='no'>m</span>$<span class='no'>geoProfile</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: some sources outside range of surface</span></div><div class='output co'>#&gt;    latitude longitude      hs
-#&gt; 1  51.51486 -0.139678 72.2324
-#&gt; 2  51.51382 -0.139583 47.2668
-#&gt; 3  51.51327 -0.136670  0.6864
-#&gt; 5  51.51119 -0.138266 59.6784
-#&gt; 6  51.51142 -0.135990 34.5916
-#&gt; 7  51.51202 -0.133641 42.7424
-#&gt; 11 51.51605 -0.135909 79.0700</div><div class='input'>
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'>#m &lt;- geoMCMC(data = d, params = p, lambda=0.05)
+#geoReportHitscores(params = p, source = s, surface = m$geoProfile)
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -5,10 +5,11 @@
 \title{Plot posterior allocation}
 \usage{
 geoPlotAllocation(mcmc, colours = NULL, barBorderCol = NA,
-  barBorderWidth = 0.25, mainBorderCol = "black", mainBorderWidth = 2,
-  yTicks_on = TRUE, yTicks = seq(0, 1, 0.2), xTicks_on = FALSE,
-  xTicks_size = 1, xlab = "", ylab = "posterior allocation",
-  mainTitle = "", names = NA, names_size = 1, orderBy = "group")
+  barBorderWidth = 0.25, mainBorderCol = "black",
+  mainBorderWidth = 2, yTicks_on = TRUE, yTicks = seq(0, 1, 0.2),
+  xTicks_on = FALSE, xTicks_size = 1, xlab = "",
+  ylab = "posterior allocation", mainTitle = "", names = NA,
+  names_size = 1, orderBy = "group")
 }
 \arguments{
 \item{mcmc}{stored output obtained by running geoMCMC().}
@@ -50,20 +51,20 @@ Produces plot of posterior allocation from output of MCMC.
 # London example data
 d <- LondonExample_crimes
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-m <- geoMCMC(data = d, params = p)
-geoPlotAllocation(m)
+#m <- geoMCMC(data = d, params = p)
+#geoPlotAllocation(m)
 
 # John Snow cholera data
 d <- Cholera
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-m <- geoMCMC(data = d, params = p, lambda=0.05)
-geoPlotAllocation(m, barBorderCol=NA)	# (should allocate all to a single source!)
+#m <- geoMCMC(data = d, params = p, lambda=0.05)
+#geoPlotAllocation(m, barBorderCol=NA)	# (should allocate all to a single source!)
 
 # simulated data
 sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
                51.5235505, alpha=1, sigma=1, tau=3)
 d <- geoData(sim$longitude, sim $latitude)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-m <- geoMCMC(data = d, params = p)
-geoPlotAllocation(m)
+#m <- geoMCMC(data = d, params = p)
+#geoPlotAllocation(m)
 }

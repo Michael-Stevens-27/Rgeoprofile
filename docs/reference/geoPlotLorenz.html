@@ -89,7 +89,9 @@ based on the number of crimes; otherwise, this is calculated based on the number
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Installation</li>
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -158,47 +160,16 @@ based on the number of crimes; otherwise, this is calculated based on the number
     <pre class="examples"><div class='input'><span class='co'># London example data</span>
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='no'>LondonExample_crimes</span>
 <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='no'>LondonExample_sources</span>
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>)</div><div class='output co'>#&gt; data file passed all checks
-#&gt; params file passed all checks
-#&gt; 
-#&gt; Initiating burn-in phase (10 chains)
-#&gt;   iteration: 100
-#&gt;     convergence at the GR=1.1 level reached within 100 iterations
-#&gt;   iteration: 200
-#&gt;   iteration: 300
-#&gt;   iteration: 400
-#&gt;   iteration: 500
-#&gt;   iteration: 600
-#&gt;   iteration: 700
-#&gt;   iteration: 800
-#&gt;   iteration: 900
-#&gt;   iteration: 1000
-#&gt;     final GR statistic: GR=1.0075
-#&gt; 
-#&gt; Initiating sampling phase
-#&gt;   iteration: 1000
-#&gt;   iteration: 2000
-#&gt;   iteration: 3000
-#&gt;   iteration: 4000
-#&gt;   iteration: 5000
-#&gt;   iteration: 6000
-#&gt;   iteration: 7000
-#&gt;   iteration: 8000
-#&gt;   iteration: 9000
-#&gt;   iteration: 10000
-#&gt; 
-#&gt; MCMC completed in 1.4 seconds
-#&gt; Smoothing posterior surface.............................
-#&gt; maximum likelihood lambda = 0.069</div><div class='input'><span class='no'>hs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoReportHitscores.html'>geoReportHitscores</a></span>(<span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='no'>s</span>, <span class='kw'>surface</span> <span class='kw'>=</span> <span class='no'>m</span>$<span class='no'>geoProfile</span>)
-<span class='no'>hs</span></div><div class='output co'>#&gt;   latitude longitude     hs
-#&gt; 1  51.5252   -0.0418 0.0940
-#&gt; 2  51.5012   -0.1421 0.9712
-#&gt; 3  51.5175   -0.1731 4.3744
-#&gt; 4  51.5321   -0.1238 2.8136</div><div class='input'><span class='co'># Lorenz plot on sources</span>
-<span class='fu'>geoPlotLorenz</span>(<span class='no'>hs</span>)</div><div class='img'><img src='geoPlotLorenz-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Lorenz plot on sources and crimes</span>
-<span class='co'># extract numbers of crimes allocated per source as a proxy</span>
-<span class='no'>cn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>as.vector</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>m</span>$<span class='no'>bestGrouping</span>))
-<span class='fu'>geoPlotLorenz</span>(<span class='no'>hs</span>, <span class='kw'>crimeNumbers</span> <span class='kw'>=</span> <span class='no'>cn</span>)</div><div class='img'><img src='geoPlotLorenz-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'>#m &lt;- geoMCMC(data = d, params = p)
+#hs &lt;- geoReportHitscores(params = p, source = s, surface = m$geoProfile)
+#hs 
+# Lorenz plot on sources
+#geoPlotLorenz(hs)
+# Lorenz plot on sources and crimes
+# extract numbers of crimes allocated per source as a proxy
+#cn &lt;- as.vector(table(m$bestGrouping))
+#geoPlotLorenz(hs, crimeNumbers = cn)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -24,11 +24,11 @@ Produces a surface based on an alternative ring-search strategy (ie searching in
 d <- geoData(Cholera$longitude, Cholera$latitude)
 s <- geoDataSource(WaterPumps$longitude, WaterPumps$latitude)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-m <- geoMCMC(data = d, params = p)
-surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
-gp_ring <- geoProfile(surface = surface_ring)
-map <- geoPlotMap(params = p, data = d, source = s, surface = gp_ring, 
-opacity = 1, breakPercent = seq(0,50,l=21))
-map
+#m <- geoMCMC(data = d, params = p)
+#surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
+#gp_ring <- geoProfile(surface = surface_ring)
+#map <- geoPlotMap(params = p, data = d, source = s, surface = gp_ring, 
+#opacity = 1, breakPercent = seq(0,50,l=21))
+#map
 }
 }

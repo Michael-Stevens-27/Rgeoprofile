@@ -85,7 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Installation</li>
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -121,13 +123,14 @@
     <p>This function can be used to generate parameters in the format required by other Rgeoprofile functions. Parameter values can be specified as input arguments to this function, or alternatively if data is input as an argument then some parameters can take default values directly from the data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoParams</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sources</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>sigma_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sigma_squared_rate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>priorMean_longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>priorMean_latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>alpha_shape</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>alpha_rate</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>chains</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
-  <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>10000</span>, <span class='kw'>burnin_printConsole</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>samples_printConsole</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
-  <span class='kw'>longitude_minMax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude_minMax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>longitude_cells</span> <span class='kw'>=</span> <span class='fl'>500</span>,
-  <span class='kw'>latitude_cells</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>guardRail</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)</pre>
+    <pre class="usage"><span class='fu'>geoParams</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sources</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>sigma_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>sigma_squared_rate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>priorMean_longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>priorMean_latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>alpha_shape</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+  <span class='kw'>alpha_rate</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>chains</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>10000</span>,
+  <span class='kw'>burnin_printConsole</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>samples_printConsole</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+  <span class='kw'>longitude_minMax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude_minMax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>longitude_cells</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>latitude_cells</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>guardRail</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

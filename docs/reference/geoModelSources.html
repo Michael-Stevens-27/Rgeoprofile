@@ -85,7 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Installation</li>
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -144,48 +146,14 @@
 <span class='fl'>51.5235505</span>, <span class='kw'>alpha</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>tau</span><span class='kw'>=</span><span class='fl'>3</span>)
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='no'>sim</span>$<span class='no'>longitude</span>, <span class='no'>sim</span> $<span class='no'>latitude</span>)
 <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoDataSource.html'>geoDataSource</a></span>(<span class='no'>sim</span>$<span class='no'>source_lon</span>, <span class='no'>sim</span>$<span class='no'>source_lat</span>)
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>)</div><div class='output co'>#&gt; data file passed all checks
-#&gt; params file passed all checks
-#&gt; 
-#&gt; Initiating burn-in phase (10 chains)
-#&gt;   iteration: 100
-#&gt;   iteration: 200
-#&gt;     convergence at the GR=1.1 level reached within 213 iterations
-#&gt;   iteration: 300
-#&gt;   iteration: 400
-#&gt;   iteration: 500
-#&gt;   iteration: 600
-#&gt;   iteration: 700
-#&gt;   iteration: 800
-#&gt;   iteration: 900
-#&gt;   iteration: 1000
-#&gt;     final GR statistic: GR=1.00717
-#&gt; 
-#&gt; Initiating sampling phase
-#&gt;   iteration: 1000
-#&gt;   iteration: 2000
-#&gt;   iteration: 3000
-#&gt;   iteration: 4000
-#&gt;   iteration: 5000
-#&gt;   iteration: 6000
-#&gt;   iteration: 7000
-#&gt;   iteration: 8000
-#&gt;   iteration: 9000
-#&gt;   iteration: 10000
-#&gt; 
-#&gt; MCMC completed in 1.9 seconds
-#&gt; Smoothing posterior surface......................
-#&gt; maximum likelihood lambda = 0.106</div><div class='input'><span class='co'># extract sources identified by the model</span>
-<span class='no'>ms</span> <span class='kw'>&lt;-</span> <span class='fu'>geoModelSources</span>(<span class='kw'>mcmc</span> <span class='kw'>=</span> <span class='no'>m</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>)
-<span class='co'># plot data showing the sources identified by the model (note: NOT the actual suspect sites)</span>
-<span class='fu'><a href='geoPlotMap.html'>geoPlotMap</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='no'>ms</span>, <span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>breakPercent</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>10</span>, <span class='fl'>1</span>),
-                  <span class='kw'>mapType</span> <span class='kw'>=</span> <span class='st'>"roadmap"</span>, <span class='kw'>surfaceCols</span> <span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"orange"</span>,<span class='st'>"yellow"</span>,<span class='st'>"white"</span>),
-                  <span class='kw'>crimeCol</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>crimeCex</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>sourceCol</span> <span class='kw'>=</span> <span class='st'>"red"</span>, <span class='kw'>sourceCex</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-                  <span class='kw'>surface</span> <span class='kw'>=</span> <span class='no'>m</span>$<span class='no'>geoProfile</span>, <span class='kw'>gpLegend</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='fl'>0.4</span>)</div><div class='output co'>#&gt; params file passed all checks
-#&gt; data file passed all checks
-#&gt; using zoom=11
-#&gt; downloading map</div><div class='output co'>#&gt; <span class='error'>Error: Google now requires an API key.</span>
-#&gt; <span class='error'>       See ?register_google for details.</span></div><div class='input'># }
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p)</span>
+<span class='co'>## extract sources identified by the model</span>
+<span class='no'>ms</span> <span class='kw'>&lt;-</span> <span class='fu'>geoModelSources</span>(<span class='kw'>mcmc</span> <span class='kw'>=</span> <span class='no'>m</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>)</div><div class='output co'>#&gt; <span class='error'>Error in split.default(data$longitude, mcmc$bestGrouping): object 'm' not found</span></div><div class='input'># plot data showing the sources identified by the model (note: NOT the actual suspect sites)
+# geoPlotMap(data = d, source = ms, params = p, breakPercent = seq(0, 10, 1), 
+#                  mapType = "roadmap", surfaceCols =c("red", "orange","yellow","white"),
+#                  crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2,
+#                  surface = m$geoProfile, gpLegend=TRUE, opacity = 0.4)
+# }
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

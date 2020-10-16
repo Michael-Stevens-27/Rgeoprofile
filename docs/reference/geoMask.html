@@ -85,7 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Installation</li>
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -121,8 +123,8 @@
     <p>This function allows information from a shapefile or raster to be incorporated within the geoprofile. For example, we might wish to exclude areas not on land, or weight the probabilities within a specific postcode differently. The spatial object used should be a SpatialPolygonsDataFrame as produced by the package sp or a raster.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoMask</span>(<span class='no'>probSurface</span>, <span class='no'>params</span>, <span class='no'>mask</span>, <span class='kw'>scaleValue</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>operation</span> <span class='kw'>=</span> <span class='st'>"inside"</span>,
-  <span class='kw'>maths</span> <span class='kw'>=</span> <span class='st'>"multiply"</span>)</pre>
+    <pre class="usage"><span class='fu'>geoMask</span>(<span class='no'>probSurface</span>, <span class='no'>params</span>, <span class='no'>mask</span>, <span class='kw'>scaleValue</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>operation</span> <span class='kw'>=</span> <span class='st'>"inside"</span>, <span class='kw'>maths</span> <span class='kw'>=</span> <span class='st'>"multiply"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,67 +162,30 @@
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='no'>LondonExample_crimes</span>
 <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='no'>LondonExample_sources</span>
 <span class='no'>p</span> <span class='kw'>=</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'># run model</span>
-<span class='no'>m</span> <span class='kw'>=</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>)</div><div class='output co'>#&gt; data file passed all checks
-#&gt; params file passed all checks
-#&gt; 
-#&gt; Initiating burn-in phase (10 chains)
-#&gt;   iteration: 100
-#&gt;     convergence at the GR=1.1 level reached within 102 iterations
-#&gt;   iteration: 200
-#&gt;   iteration: 300
-#&gt;   iteration: 400
-#&gt;   iteration: 500
-#&gt;   iteration: 600
-#&gt;   iteration: 700
-#&gt;   iteration: 800
-#&gt;   iteration: 900
-#&gt;   iteration: 1000
-#&gt;     final GR statistic: GR=1.00295
-#&gt; 
-#&gt; Initiating sampling phase
-#&gt;   iteration: 1000
-#&gt;   iteration: 2000
-#&gt;   iteration: 3000
-#&gt;   iteration: 4000
-#&gt;   iteration: 5000
-#&gt;   iteration: 6000
-#&gt;   iteration: 7000
-#&gt;   iteration: 8000
-#&gt;   iteration: 9000
-#&gt;   iteration: 10000
-#&gt; 
-#&gt; MCMC completed in 1.2 seconds
-#&gt; Smoothing posterior surface.............................
-#&gt; maximum likelihood lambda = 0.069</div><div class='input'>
+<span class='co'>#m = geoMCMC(data = d, params = p)</span>
+
 <span class='co'># plot original map</span>
-<span class='no'>map1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoPlotMap.html'>geoPlotMap</a></span>(<span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='no'>s</span>, <span class='kw'>surface</span> <span class='kw'>=</span> <span class='no'>m</span>$<span class='no'>geoProfile</span>)</div><div class='output co'>#&gt; params file passed all checks
-#&gt; data file passed all checks
-#&gt; using zoom=12
-#&gt; downloading map</div><div class='output co'>#&gt; <span class='error'>Error: Google now requires an API key.</span>
-#&gt; <span class='error'>       See ?register_google for details.</span></div><div class='input'><span class='no'>map1</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'map1' not found</span></div><div class='input'>
+<span class='co'>#map1 &lt;- geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile)</span>
+<span class='co'>#map1</span>
+
 <span class='co'># mask out North London and replot</span>
 <span class='no'>north_london_mask</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoShapefile.html'>geoShapefile</a></span>()
-<span class='no'>prob_masked</span> <span class='kw'>&lt;-</span> <span class='fu'>geoMask</span>(<span class='kw'>probSurface</span> <span class='kw'>=</span> <span class='no'>m</span>$<span class='no'>posteriorSurface</span>, <span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='no'>north_london_mask</span>,
-                <span class='kw'>operation</span> <span class='kw'>=</span> <span class='st'>"inside"</span>, <span class='kw'>scaleValue</span> <span class='kw'>=</span> <span class='fl'>0</span>)
-<span class='no'>gp_masked</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoProfile.html'>geoProfile</a></span>(<span class='no'>prob_masked</span>$<span class='no'>prob</span>)
+<span class='co'>#prob_masked &lt;- geoMask(probSurface = m$posteriorSurface, params = p, mask = north_london_mask,</span>
+<span class='co'>#                operation = "inside", scaleValue = 0)</span>
+<span class='co'>#gp_masked &lt;- geoProfile(prob_masked$prob)</span>
 <span class='co'># plot new surface</span>
-<span class='no'>map2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoPlotMap.html'>geoPlotMap</a></span>(<span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='no'>s</span>, <span class='kw'>surface</span> <span class='kw'>=</span> <span class='no'>gp_masked</span>)</div><div class='output co'>#&gt; params file passed all checks
-#&gt; data file passed all checks
-#&gt; using zoom=12
-#&gt; downloading map</div><div class='output co'>#&gt; <span class='error'>Error: Google now requires an API key.</span>
-#&gt; <span class='error'>       See ?register_google for details.</span></div><div class='input'><span class='no'>map2</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'map2' not found</span></div><div class='input'>
+<span class='co'>#map2 &lt;- geoPlotMap(params = p, data = d, source = s, surface = gp_masked)</span>
+<span class='co'>#map2</span>
+
 <span class='co'># repeat, restricting mask to Tower Hamlets and using 'near' instead of 'inside'</span>
 <span class='no'>TH_mask</span> <span class='kw'>&lt;-</span> <span class='no'>north_london_mask</span>[<span class='fu'><a href='https://rdrr.io/r/base/which.html'>which</a></span>(<span class='no'>north_london_mask</span>$<span class='no'>NAME</span> <span class='kw'>==</span> <span class='st'>"Tower Hamlets"</span>),]
-<span class='no'>prob_masked2</span> <span class='kw'>&lt;-</span> <span class='fu'>geoMask</span>(<span class='kw'>probSurface</span> <span class='kw'>=</span> <span class='no'>m</span>$<span class='no'>posteriorSurface</span>, <span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='no'>TH_mask</span>,
-                 <span class='kw'>operation</span> <span class='kw'>=</span> <span class='st'>"far"</span>, <span class='kw'>scaleValue</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>gp_masked2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoProfile.html'>geoProfile</a></span>(<span class='no'>prob_masked2</span>$<span class='no'>prob</span>)
+<span class='co'>#prob_masked2 &lt;- geoMask(probSurface = m$posteriorSurface, params = p, mask = TH_mask, </span>
+<span class='co'>#                 operation = "far", scaleValue = 1)</span>
+<span class='co'>#gp_masked2 &lt;- geoProfile(prob_masked2$prob)</span>
 <span class='co'># plot new surface</span>
-<span class='no'>map3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoPlotMap.html'>geoPlotMap</a></span>(<span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='no'>s</span>, <span class='kw'>surface</span> <span class='kw'>=</span> <span class='no'>gp_masked2</span>)</div><div class='output co'>#&gt; params file passed all checks
-#&gt; data file passed all checks
-#&gt; using zoom=12
-#&gt; downloading map</div><div class='output co'>#&gt; <span class='error'>Error: Google now requires an API key.</span>
-#&gt; <span class='error'>       See ?register_google for details.</span></div><div class='input'><span class='no'>map3</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'map3' not found</span></div><div class='input'># }
-</div></pre>
+<span class='co'>#map3 &lt;- geoPlotMap(params = p, data = d, source = s, surface = gp_masked2)</span>
+<span class='co'>#map3</span>
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

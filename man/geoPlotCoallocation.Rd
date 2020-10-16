@@ -20,12 +20,12 @@ For all pairs of crimes, calculates the probability that both originate from the
 d <- LondonExample_crimes
 s <- LondonExample_sources
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-m <- geoMCMC(data = d, params = p)
+#m <- geoMCMC(data = d, params = p)
 # produce simple map
-geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-                breakPercent = seq(0, 50, 5), mapType = "hybrid",
-                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+#                breakPercent = seq(0, 50, 5), mapType = "hybrid",
+#                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
 # calculate coallocation matrix and plot
-geoPlotCoallocation(m)
+#geoPlotCoallocation(m)
 }
 }

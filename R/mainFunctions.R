@@ -510,14 +510,14 @@ geoParamsCheck <- function(params, silent=FALSE) {
 #' # John Snow cholera data
 #' d <- geoData(Cholera$longitude, Cholera$latitude)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' m <- geoMCMC(data = d, params = p, lambda=0.05)
+#' #m <- geoMCMC(data = d, params = p, lambda=0.05)
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
 #' 51.5235505, alpha=1, sigma=1, tau=3)
 #' d <- geoData(sim$longitude, sim $latitude)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' m <- geoMCMC(data = d, params = p)
+#' #m <- geoMCMC(data = d, params = p)
 
 geoMCMC <- function(data, params, lambda=NULL) {
   
@@ -617,16 +617,16 @@ geoMCMC <- function(data, params, lambda=NULL) {
 #' # John Snow cholera data
 #' d <- geoData(Cholera$longitude, Cholera$latitude)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' m <- geoMCMC(data = d, params = p, lambda=0.05)
-#' gp <- geoProfile(m$posteriorSurface)
+#' #m <- geoMCMC(data = d, params = p, lambda=0.05)
+#' #gp <- geoProfile(m$posteriorSurface)
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
 #' 51.5235505, alpha=1, sigma=1, tau=3)
 #' d <- geoData(sim$longitude, sim $latitude)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' m <- geoMCMC(data = d, params = p)
-#' gp <- geoProfile(m$posteriorSurface)
+#' #m <- geoMCMC(data = d, params = p)
+#' #gp <- geoProfile(m$posteriorSurface)
 
 geoProfile <- function(surface) {
   
@@ -656,8 +656,8 @@ geoProfile <- function(surface) {
 #' d <- geoData(Cholera$longitude, Cholera$latitude)
 #' s <- geoDataSource(WaterPumps$longitude, WaterPumps$latitude)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' m <- geoMCMC(data = d, params = p, lambda=0.05)
-#' geoReportHitscores(params = p, source = s, surface = m$geoProfile)
+#' #m <- geoMCMC(data = d, params = p, lambda=0.05)
+#' #geoReportHitscores(params = p, source = s, surface = m$geoProfile)
 #' 
 geoReportHitscores <- function(params, source, surface) {
   
@@ -706,8 +706,8 @@ geoReportHitscores <- function(params, source, surface) {
 #' d <- geoData(sim$longitude, sim $latitude)
 #' s <- geoDataSource(sim$source_lon, sim$source_lat)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' m <- geoMCMC(data = d, params = p)
-#' # extract sources identified by the model
+#' #m <- geoMCMC(data = d, params = p)
+#' ## extract sources identified by the model
 #' ms <- geoModelSources(mcmc = m, data = d)
 #' # plot data showing the sources identified by the model (note: NOT the actual suspect sites)
 #' # geoPlotMap(data = d, source = ms, params = p, breakPercent = seq(0, 10, 1), 
@@ -742,9 +742,9 @@ geoModelSources <- function (mcmc, data) {
 #' d <- geoData(Cholera$longitude, Cholera$latitude)
 #' s <- geoDataSource(WaterPumps$longitude, WaterPumps$latitude)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' m <- geoMCMC(data = d, params = p)
-#' surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
-#' gp_ring <- geoProfile(surface = surface_ring)
+#' #m <- geoMCMC(data = d, params = p)
+#' #surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
+#' #gp_ring <- geoProfile(surface = surface_ring)
 #' #map <- geoPlotMap(params = p, data = d, source = s, surface = gp_ring, 
 #' #opacity = 1, breakPercent = seq(0,50,l=21))
 #' #map
@@ -797,7 +797,7 @@ geoRing <- function(params, data, source, mcmc) {
 #' s <- LondonExample_sources
 #' p = geoParams(data = d, sigma_mean = 1, sigma_squared_shape = 2)
 #' # run model
-#' m = geoMCMC(data = d, params = p)
+#' #m = geoMCMC(data = d, params = p)
 #' 
 #' # plot original map
 #' #map1 <- geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile)
@@ -805,18 +805,18 @@ geoRing <- function(params, data, source, mcmc) {
 #' 
 #' # mask out North London and replot
 #' north_london_mask <- geoShapefile()
-#' prob_masked <- geoMask(probSurface = m$posteriorSurface, params = p, mask = north_london_mask,
-#'                 operation = "inside", scaleValue = 0)
-#' gp_masked <- geoProfile(prob_masked$prob)
+#' #prob_masked <- geoMask(probSurface = m$posteriorSurface, params = p, mask = north_london_mask,
+#' #                operation = "inside", scaleValue = 0)
+#' #gp_masked <- geoProfile(prob_masked$prob)
 #' # plot new surface
 #' #map2 <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked)
 #' #map2
 #' 
 #' # repeat, restricting mask to Tower Hamlets and using 'near' instead of 'inside'
 #' TH_mask <- north_london_mask[which(north_london_mask$NAME == "Tower Hamlets"),]
-#' prob_masked2 <- geoMask(probSurface = m$posteriorSurface, params = p, mask = TH_mask, 
-#'                  operation = "far", scaleValue = 1)
-#' gp_masked2 <- geoProfile(prob_masked2$prob)
+#' #prob_masked2 <- geoMask(probSurface = m$posteriorSurface, params = p, mask = TH_mask, 
+#' #                 operation = "far", scaleValue = 1)
+#' #gp_masked2 <- geoProfile(prob_masked2$prob)
 #' # plot new surface
 #' #map3 <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked2)
 #' #map3

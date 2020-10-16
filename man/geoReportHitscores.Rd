@@ -21,7 +21,7 @@ Calculate hitscores of the potential sources for a given surface (usually the ge
 d <- geoData(Cholera$longitude, Cholera$latitude)
 s <- geoDataSource(WaterPumps$longitude, WaterPumps$latitude)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-m <- geoMCMC(data = d, params = p, lambda=0.05)
-geoReportHitscores(params = p, source = s, surface = m$geoProfile)
+#m <- geoMCMC(data = d, params = p, lambda=0.05)
+#geoReportHitscores(params = p, source = s, surface = m$geoProfile)
 
 }

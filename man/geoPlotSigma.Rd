@@ -20,14 +20,14 @@ Plot prior distribution of sigma as defined by current parameter values. Can opt
 # John Snow cholera data
 d <- geoData(Cholera$longitude, Cholera$latitude)
 p <- geoParams(data = d, sigma_mean = 0.2, sigma_squared_shape = 2)
-m <- geoMCMC(data = d, params = p)
-geoPlotSigma(params = p, mcmc = m)
+#m <- geoMCMC(data = d, params = p)
+#geoPlotSigma(params = p, mcmc = m)
 
 # simulated data
 sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
 51.5235505, alpha=1, sigma=1, tau=3)
 d <- geoData(sim$longitude, sim$latitude)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-m <- geoMCMC(data = d, params = p)
-geoPlotSigma(params = p, mcmc = m)
+#m <- geoMCMC(data = d, params = p)
+#geoPlotSigma(params = p, mcmc = m)
 }
