@@ -1,8 +1,10 @@
 
 # RgeoProfile
-### Version2.1.0
+### Workshop branch
 [![Build Status](https://travis-ci.org/michael-stevens-27/Rgeoprofile.svg?branch=workshop)](https://travis-ci.org/michael-stevens-27/Rgeoprofile)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/michael-stevens-27/RgeoProfile?branch=workshopr&svg=true)](https://ci.appveyor.com/project/michael-stevens-27/RgeoProfile)
+
+Access documentation [here](https://michael-stevens-27.github.io/Rgeoprofile/) 
 
 ## Background
 RgeoProfile is an R package for carrying out geographic profiling - a technique derived from criminology that uses the spatial locations of linked crimes to infer the home location (or locations) from which the criminal is operating<sup>1</sup>. More recently, this method has been applied to problems in ecology<sup>2-5</sup> and infectious disease<sup>6,7</sup>, where "crimes" are now equivalent to animal observations or sites of infection, and "home locations" may be roosts or persistent sources of disease. Finding these sources is often a key priority - for example in malaria this may provide a more efficient method of carrying out targeted larval source management<sup>7</sup>.
