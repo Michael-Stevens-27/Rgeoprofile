@@ -230,38 +230,8 @@
 <span class='co'># London example data</span>
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='no'>LondonExample_crimes</span>
 <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='no'>LondonExample_sources</span>
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>params</span> <span class='kw'>=</span> <span class='no'>p</span>)</div><div class='output co'>#&gt; data file passed all checks
-#&gt; params file passed all checks
-#&gt; 
-#&gt; Initiating burn-in phase (10 chains)
-#&gt;   iteration: 100
-#&gt;     convergence at the GR=1.1 level reached within 100 iterations
-#&gt;   iteration: 200
-#&gt;   iteration: 300
-#&gt;   iteration: 400
-#&gt;   iteration: 500
-#&gt;   iteration: 600
-#&gt;   iteration: 700
-#&gt;   iteration: 800
-#&gt;   iteration: 900
-#&gt;   iteration: 1000
-#&gt;     final GR statistic: GR=1.00593
-#&gt; 
-#&gt; Initiating sampling phase
-#&gt;   iteration: 1000
-#&gt;   iteration: 2000
-#&gt;   iteration: 3000
-#&gt;   iteration: 4000
-#&gt;   iteration: 5000
-#&gt;   iteration: 6000
-#&gt;   iteration: 7000
-#&gt;   iteration: 8000
-#&gt;   iteration: 9000
-#&gt;   iteration: 10000
-#&gt; 
-#&gt; MCMC completed in 1.2 seconds
-#&gt; Smoothing posterior surface............................
-#&gt; maximum likelihood lambda = 0.067</div><div class='input'><span class='co'># produce simple map</span>
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p)</span>
+<span class='co'># produce simple map</span>
 <span class='co'>#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,</span>
 <span class='co'>#                breakPercent = seq(0, 50, 5), mapType = "hybrid",</span>
 <span class='co'>#                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)</span>

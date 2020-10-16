@@ -708,7 +708,7 @@ geoReportHitscores <- function(params, source, surface) {
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
 #' #m <- geoMCMC(data = d, params = p)
 #' ## extract sources identified by the model
-#' ms <- geoModelSources(mcmc = m, data = d)
+#' #ms <- geoModelSources(mcmc = m, data = d)
 #' # plot data showing the sources identified by the model (note: NOT the actual suspect sites)
 #' # geoPlotMap(data = d, source = ms, params = p, breakPercent = seq(0, 10, 1), 
 #' #                  mapType = "roadmap", surfaceCols =c("red", "orange","yellow","white"),
