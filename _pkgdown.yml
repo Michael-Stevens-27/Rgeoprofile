@@ -5,12 +5,25 @@ template:
     bootswatch: flatly
 
 navbar:
-  title: "Rgeoprofile workshop"
+  title: "Rgeoprofile workshop "
   left:
     - text: "Vignettes"
       menu:
+        - text: "R basics"
+        - text: "Installing R and Rstudio"
+        - text: "Intro to R part 1"
+        - text: "Intro to R part 2"
+        - text: -------------------
+        - text: "RgeoProfile"
         - text: "Installation"
           href: articles/installation.html  
+        - text: "Basic Rgeoprofile"
+        - text: "Advanced Rgeoprofile"
+        - text: -------------------
+        - text: "Other Resources"
+        - text: "General R"
+        - text: "Spatial Analysis in R"
+        - text: "Ecology in R"  
     - text: "Functions"
       href: reference/index.html
   right:
