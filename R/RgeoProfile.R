@@ -48,8 +48,8 @@
 #' geoPlotSigma(params = p, mcmc = m)
 #' 
 #' # plot profile on map
-#' mapGP <- geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile)
-#' mapGP
+#' #mapGP <- geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile)
+#' #mapGP
 #' 
 #' # get hitscores
 #' hs <- geoReportHitscores(params = p, source = s, surface =m$geoProfile)
@@ -62,9 +62,9 @@
 #' # zoom
 #' zoomLon = c(-0.1, -0.01)
 #' zoomLat = c(51.51, 51.54)
-#' mapZoom <- geoPlotMap(lonLimits = zoomLon, latLimits = zoomLat, params = p, 
+#' #mapZoom <- geoPlotMap(lonLimits = zoomLon, latLimits = zoomLat, params = p, 
 #'                 data = d, source = s, surface = m$geoProfile)
-#' mapZoom
+#' #mapZoom
 #' 
 #' # plot allocation
 #' geoPlotAllocation(mcmc = m)
@@ -97,9 +97,9 @@
 #' surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
 #' gp_ring <- geoProfile(surface = surface_ring)
 #' # map of ring search geoprofile
-#' mapRing <- geoPlotMap(params = p, data = d, source = s, surface = gp_ring, 
-#'                 surfaceCols <- c("red", "white"))
-#' mapRing
+#' #mapRing <- geoPlotMap(params = p, data = d, source = s, surface = gp_ring, 
+#' #                surfaceCols <- c("red", "white"))
+#' #mapRing
 #' 
 #' # hitscores of ring search geoprofile
 #' hs_ring <- geoReportHitscores(params = p, source = s, surface = gp_ring)
@@ -118,9 +118,9 @@
 #' gp_masked <- geoProfile(prob_masked$prob)
 #' 
 #' # plot new surface
-#' mapMask <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked, 
+#' #mapMask <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked, 
 #'                 breakPercent = seq(0,25,l = 11))
-#' mapMask
+#' #mapMask
 #' 
 #' # hs of masked surface
 #' hs_mask <- geoReportHitscores(params = p, source = s, surface = gp_masked)

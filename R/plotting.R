@@ -334,9 +334,9 @@ getZoom <- function(x,y) {
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
 #' m <- geoMCMC(data = d, params = p)
 #' # produce simple map
-#' geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#'                 breakPercent = seq(0, 50, 5), mapType = "hybrid",
-#'                 crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+#' #geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+#' #                breakPercent = seq(0, 50, 5), mapType = "hybrid",
+#' #                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
 #'
 #' # John Snow cholera data
 #' d <- Cholera
@@ -344,9 +344,9 @@ getZoom <- function(x,y) {
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
 #' m <- geoMCMC(data = d, params = p, lambda=0.05)
 #' # produce simple map
-#' geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#'                 breakPercent = seq(0, 50, 5), mapType = "hybrid",
-#'                 crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+#' #geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+#' #                breakPercent = seq(0, 50, 5), mapType = "hybrid",
+#' #                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
@@ -356,11 +356,11 @@ getZoom <- function(x,y) {
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
 #' m <- geoMCMC(data = d, params = p)
 #' # change colour palette, map type, opacity and range of geoprofile and omit legend
-#' geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#'                 breakPercent = seq(0, 30, 5), mapType = "terrain", 
-#'                 surfaceCols = c("blue","white"), crimeCol = "black", 
-#'                 crimeBorderCol = "white",crimeCex = 2, sourceCol = "red", sourceCex = 2,
-#'                 opacity = 0.7, gpLegend = FALSE)
+#' #geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+#' #                breakPercent = seq(0, 30, 5), mapType = "terrain", 
+#' #                surfaceCols = c("blue","white"), crimeCol = "black", 
+#' #                crimeBorderCol = "white",crimeCex = 2, sourceCol = "red", sourceCex = 2,
+#' #                opacity = 0.7, gpLegend = FALSE)
 #' }
 
 geoPlotMap <- function(params, data=NULL, source=NULL, surface=NULL, surfaceCols=NULL, zoom=NULL, latLimits=NULL, lonLimits=NULL, mapSource="google", mapType="hybrid", opacity=0.6, plotContours=TRUE, breakPercent=seq(0,100,l=11), contourCol= "grey50", smoothScale=TRUE, crimeCex=1.5, crimeCol='red', crimeBorderCol='white', crimeBorderWidth=0.5, sourceCex=1.5, sourceCol='blue', gpLegend=TRUE) {
@@ -669,9 +669,9 @@ geoPlotLorenz <- function(hit_scores, crimeNumbers=NULL, suspects_col="red", cri
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
 #' m <- geoMCMC(data = d, params = p)
 #' # produce simple map
-#' geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#'                 breakPercent = seq(0, 50, 5), mapType = "hybrid",
-#'                 crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+#' #geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+#' #                breakPercent = seq(0, 50, 5), mapType = "hybrid",
+#' #                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
 #' # calculate coallocation matrix and plot
 #' geoPlotCoallocation(m)
 #' }

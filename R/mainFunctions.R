@@ -710,10 +710,10 @@ geoReportHitscores <- function(params, source, surface) {
 #' # extract sources identified by the model
 #' ms <- geoModelSources(mcmc = m, data = d)
 #' # plot data showing the sources identified by the model (note: NOT the actual suspect sites)
-#' geoPlotMap(data = d, source = ms, params = p, breakPercent = seq(0, 10, 1), 
-#'                   mapType = "roadmap", surfaceCols =c("red", "orange","yellow","white"),
-#'                   crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2,
-#'                   surface = m$geoProfile, gpLegend=TRUE, opacity = 0.4)
+#' # geoPlotMap(data = d, source = ms, params = p, breakPercent = seq(0, 10, 1), 
+#' #                  mapType = "roadmap", surfaceCols =c("red", "orange","yellow","white"),
+#' #                  crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2,
+#' #                  surface = m$geoProfile, gpLegend=TRUE, opacity = 0.4)
 #' }
 
 geoModelSources <- function (mcmc, data) {
@@ -745,9 +745,9 @@ geoModelSources <- function (mcmc, data) {
 #' m <- geoMCMC(data = d, params = p)
 #' surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
 #' gp_ring <- geoProfile(surface = surface_ring)
-#' map <- geoPlotMap(params = p, data = d, source = s, surface = gp_ring, 
-#' opacity = 1, breakPercent = seq(0,50,l=21))
-#' map
+#' #map <- geoPlotMap(params = p, data = d, source = s, surface = gp_ring, 
+#' #opacity = 1, breakPercent = seq(0,50,l=21))
+#' #map
 #' }
 
 
@@ -800,8 +800,8 @@ geoRing <- function(params, data, source, mcmc) {
 #' m = geoMCMC(data = d, params = p)
 #' 
 #' # plot original map
-#' map1 <- geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile)
-#' map1
+#' #map1 <- geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile)
+#' #map1
 #' 
 #' # mask out North London and replot
 #' north_london_mask <- geoShapefile()
@@ -809,8 +809,8 @@ geoRing <- function(params, data, source, mcmc) {
 #'                 operation = "inside", scaleValue = 0)
 #' gp_masked <- geoProfile(prob_masked$prob)
 #' # plot new surface
-#' map2 <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked)
-#' map2
+#' #map2 <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked)
+#' #map2
 #' 
 #' # repeat, restricting mask to Tower Hamlets and using 'near' instead of 'inside'
 #' TH_mask <- north_london_mask[which(north_london_mask$NAME == "Tower Hamlets"),]
@@ -818,8 +818,8 @@ geoRing <- function(params, data, source, mcmc) {
 #'                  operation = "far", scaleValue = 1)
 #' gp_masked2 <- geoProfile(prob_masked2$prob)
 #' # plot new surface
-#' map3 <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked2)
-#' map3
+#' #map3 <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked2)
+#' #map3
 #' }
 
 geoMask <- function (probSurface, params, mask, scaleValue = 1, operation = "inside", maths = "multiply") {
