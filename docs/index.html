@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Geographic profiling in R • Rgeoprofile workshop</title>
+<title>Geographic profiling in R • Rgeoprofile</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -31,8 +31,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">Rgeoprofile workshop</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <a class="navbar-link" href="index.html">Rgeoprofile</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.0.0</span>
       </span>
     </div>
 
@@ -54,7 +54,9 @@
     <li>
       <a href="articles/installation.html">Installation</a>
     </li>
-    <li class="dropdown-header">Basic Rgeoprofile</li>
+    <li>
+      <a href="articles/Basic%20Rgeoprofile.html">Basic Rgeoprofile</a>
+    </li>
     <li class="dropdown-header">Advanced Rgeoprofile</li>
     <li class="divider">
     <li class="dropdown-header">Other Resources</li>
@@ -86,21 +88,19 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rgeoprofile" class="section level1">
+<div id="rgeoprofile-workshop" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#rgeoprofile" class="anchor"></a>RgeoProfile</h1></div>
-<div id="workshop-branch" class="section level3">
-<h3 class="hasAnchor">
-<a href="#workshop-branch" class="anchor"></a>Workshop branch</h3>
+<a href="#rgeoprofile-workshop" class="anchor"></a>RgeoProfile workshop</h1></div>
 
+<p>This is the landing page for the training workshop in geographic profiling and the role of legitimacy in achieving compliance. This workshop was made in collaboration with Bangor University, Tanzania wildlife research institute and Queen Mary, University of London. This workshop was funded by the <a href="https://www.ukri.org/research/global-challenges-research-fund/">Global Challenges Research Fund</a>.</p>
 <p>Access documentation <a href="https://michael-stevens-27.github.io/Rgeoprofile/">here</a></p>
-</div>
 <div id="background" class="section level2">
 <h2 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h2>
 <p>RgeoProfile is an R package for carrying out geographic profiling - a technique derived from criminology that uses the spatial locations of linked crimes to infer the home location (or locations) from which the criminal is operating<sup>1</sup>. More recently, this method has been applied to problems in ecology<sup>2-5</sup> and infectious disease<sup>6,7</sup>, where “crimes” are now equivalent to animal observations or sites of infection, and “home locations” may be roosts or persistent sources of disease. Finding these sources is often a key priority - for example in malaria this may provide a more efficient method of carrying out targeted larval source management<sup>7</sup>.</p>
 <p>The RgeoProfile package uses the Dirichlet Process Mixture (DPM) modelling framework of <em>Verity et al.</em><sup>7</sup>, which was designed to place geographic profiling in a Bayesian framework and to deal with the issue of multiple sources. In simple terms, the DPM model assumes a large (strictly infinite) number of <em>potential</em> source locations, although some of these sources are assumed to be more “active” than others. The RgeoProfile algorithm then attempts to infer the number of active sources (i.e. the number of sources that gave rise to the observed data), along with the spatial locations of these sources. It does this using Markov chain Monte Carlo (MCMC) - a statistical technique that provides estimates of unknown parameters by iteratively updating our guess.</p>
 <p align="center">
+
 <img src="R_ignore/LondonExample_figure1.png" width="700" align="middle"></p>
 <p align="center"> Example geoprofile produced by analysing the tutorial data set, included with the package. </p>
 
@@ -129,7 +129,10 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Robert Verity <br><small class="roles"> Maintainer </small>  </li>
+<li>Bob Verity <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Michael Stevens <br><small class="roles"> Author </small>  </li>
+<li>Sally Faulkner <br><small class="roles"> Author </small>  </li>
+<li>Steven Le Comber <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
@@ -145,7 +148,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Robert Verity.</p>
+  <p>Developed by Bob Verity, Michael Stevens, Sally Faulkner, Steven Le Comber.</p>
 </div>
 
 <div class="pkgdown">

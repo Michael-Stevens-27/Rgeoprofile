@@ -1,5 +1,5 @@
 
-title: Rgeoprofile workshop
+title: Rgeoprofile
 template:
   params:
     bootswatch: flatly
@@ -18,6 +18,7 @@ navbar:
         - text: "Installation"
           href: articles/installation.html  
         - text: "Basic Rgeoprofile"
+          href: articles/Basic Rgeoprofile.html
         - text: "Advanced Rgeoprofile"
         - text: -------------------
         - text: "Other Resources"
