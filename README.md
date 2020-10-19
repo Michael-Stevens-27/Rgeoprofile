@@ -2,7 +2,7 @@
 # RgeoProfile workshop
 
 [![Build Status](https://travis-ci.org/michael-stevens-27/Rgeoprofile.svg?branch=workshop)](https://travis-ci.org/michael-stevens-27/Rgeoprofile)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/michael-stevens-27/RgeoProfile?branch=workshopr&svg=true)](https://ci.appveyor.com/project/michael-stevens-27/RgeoProfile)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/michael-stevens-27/RgeoProfile?branch=workshop&svg=true)](https://ci.appveyor.com/project/michael-stevens-27/RgeoProfile)
 
 This is the landing page for the training workshop in geographic profiling and the role of legitimacy in achieving compliance. This workshop was made in collaboration with Bangor University, Tanzania wildlife research institute and Queen Mary, University of London. This workshop was funded by the [Global Challenges Research Fund](https://www.ukri.org/research/global-challenges-research-fund/). 
 
