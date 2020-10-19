@@ -12,3 +12,5 @@ addons:
       - libgdal-dev
       - libproj-dev
       - libfftw3-dev
+      - libharfbuzz-dev 
+      - libfribidi-dev
