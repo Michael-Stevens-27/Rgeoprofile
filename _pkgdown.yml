@@ -7,25 +7,26 @@ template:
 navbar:
   title: "Rgeoprofile workshop "
   left:
-    - text: "Vignettes"
+    - text: "R basics"
       menu:
-        - text: "R basics"
         - text: "Installing R and Rstudio"
         - text: "Intro to R part 1"
         - text: "Intro to R part 2"
-        - text: -------------------
-        - text: "RgeoProfile"
+    - text: "GP tutorials"
+      menu:
         - text: "Installation"
           href: articles/installation.html  
         - text: "Basic Rgeoprofile"
           href: articles/Basic_Rgeoprofile.html
         - text: "Advanced Rgeoprofile"
-        - text: -------------------
-        - text: "Other Resources"
+        - text: "Function list"
+          href: reference/index.html
+    - text: "Other resources"
+      menu:
         - text: "General R"
         - text: "Spatial Analysis in R"
-        - text: "Ecology in R"  
-    - text: "Functions"
+        - text: "Ecology in R"
+    - text: "Acknowledgements"
       href: reference/index.html
   right:
    - icon: fa-github
