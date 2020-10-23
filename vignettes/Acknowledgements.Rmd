@@ -1,0 +1,29 @@
+---
+title: "Acknowledgements"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Acknowledgements}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Organisers and contributors
+
+* [Dr. Freya St John](https://www.bangor.ac.uk/natural-sciences/staff/freya-st-john/en)
+* [Dr. Leejah Dorward](https://www.bangor.ac.uk/natural-sciences/staff/leejiah-dorward/en)
+* [Michael Stevens](https://www.qmul.ac.uk/sbcs/staff/michaelstevens.html)
+
+## Institutions
+
+* [Bangor University - The School of Natural Sciences](https://www.bangor.ac.uk/natural-sciences/index.php.en)
+* [Tanzania Wildlife Research Institute](http://tawiri.or.tz/)
+* [Queen Mary University of London - School of Biological and Chemical Sciences](https://www.qmul.ac.uk/sbcs/)
+
+## Funders
+
+* [Global Challenges Research Fund](https://www.ukri.org/research/global-challenges-research-fund/)
+
+## Special Thanks
+
+Extra people to thank ....

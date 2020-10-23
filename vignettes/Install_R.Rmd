@@ -1,0 +1,40 @@
+---
+title: "Installing R and Rstudio"
+author: "Michael Stevens"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Install R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE}
+# library(imager)
+# embed_png <- function(path, dpi = NULL) {
+#   meta <- attr(png::readPNG(path, native = TRUE, info = TRUE), "info")
+#   if (!is.null(dpi)) meta$dpi <- rep(dpi, 2)
+#   knitr::asis_output(paste0(
+#     "<img src='", path, "'",
+#     " width=", round(meta$dim[1] / (meta$dpi[1] / 96)),
+#     " height=", round(meta$dim[2] / (meta$dpi[2] / 96)),
+#     " />"
+#   ))
+# }
+# knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
+```
+
+
+This really is the very first step to getting to grips with R. Before we can do anything, we will need to install it on your computer.  
+
+# Installing R 
+
+We are going to install R from the [R project website](https://www.r-project.org/). This is the main website for finding different versions of R, hearing news, reporting bugs and help with using R in general. We will be installing:
+
+Here's the image 
+
+ ```{r, echo = FALSE}
+# embed_png("images/test.png", dpi = 10)
+```
+
+# Installing Rstudio
