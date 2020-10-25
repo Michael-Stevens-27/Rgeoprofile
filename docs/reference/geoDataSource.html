@@ -156,7 +156,7 @@
     <p>Simple function that ensures that sources are in the correct format required by Rgeoprofile. Takes longitude and latitude as input vectors and returns these same values in list format. If no values are input then default values are used.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoDataSource</span>(<span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>geoDataSource</span>(longitude = <span class='kw'>NULL</span>, latitude = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,7 +174,8 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># John Snow cholera data</span>
-<span class='fu'>geoDataSource</span>(<span class='no'>WaterPumps</span>$<span class='no'>longitude</span>, <span class='no'>WaterPumps</span>$<span class='no'>latitude</span>)</div><div class='output co'>#&gt; $longitude
+<span class='fu'>geoDataSource</span>(<span class='kw'>WaterPumps</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>WaterPumps</span><span class='op'>$</span><span class='kw'>latitude</span>)
+</div><div class='output co'>#&gt; $longitude
 #&gt;  [1] -0.139678 -0.139583 -0.136670 -0.139656 -0.138266 -0.135990 -0.133641
 #&gt;  [8] -0.131694 -0.139649 -0.137783 -0.135909 -0.134724 -0.134102
 #&gt; 
@@ -183,9 +184,10 @@
 #&gt;  [9] 51.51634 51.51662 51.51605 51.51624 51.50995
 #&gt; </div><div class='input'>
 <span class='co'># simulated data</span>
-<span class='no'>sim</span> <span class='kw'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span>(<span class='fl'>50</span>, <span class='kw'>priorMean_longitude</span> <span class='kw'>=</span> -<span class='fl'>0.04217491</span>, <span class='kw'>priorMean_latitude</span> <span class='kw'>=</span>
-<span class='fl'>51.5235505</span>, <span class='kw'>alpha</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>tau</span><span class='kw'>=</span><span class='fl'>3</span>)
-<span class='fu'>geoDataSource</span>(<span class='no'>sim</span>$<span class='no'>longitude</span>, <span class='no'>sim</span>$<span class='no'>latitude</span>)</div><div class='output co'>#&gt; $longitude
+<span class='kw'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span>(<span class='fl'>50</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude = 
+<span class='fl'>51.5235505</span>, alpha=<span class='fl'>1</span>, sigma=<span class='fl'>1</span>, tau=<span class='fl'>3</span>)
+<span class='fu'>geoDataSource</span>(<span class='kw'>sim</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>sim</span><span class='op'>$</span><span class='kw'>latitude</span>)
+</div><div class='output co'>#&gt; $longitude
 #&gt;  [1] -0.029846510 -0.022355893 -0.046943191 -0.018294959 -0.026393270
 #&gt;  [6] -0.021512941 -0.054118122 -0.031142845 -0.037608642 -0.112580396
 #&gt; [11] -0.111855147 -0.112512923 -0.110434773 -0.118377447 -0.110007153
@@ -221,7 +223,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

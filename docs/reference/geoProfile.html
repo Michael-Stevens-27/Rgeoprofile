@@ -156,7 +156,7 @@
     <p>Converts surface to hitscore percentage</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoProfile</span>(<span class='no'>surface</span>)</pre>
+    <pre class="usage"><span class='fu'>geoProfile</span>(<span class='kw'>surface</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,16 +170,18 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># John Snow cholera data</span>
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='no'>Cholera</span>$<span class='no'>longitude</span>, <span class='no'>Cholera</span>$<span class='no'>latitude</span>)
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p, lambda=0.05)</span>
+<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>latitude</span>)
+<span class='kw'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(data = <span class='kw'>d</span>, sigma_mean = <span class='fl'>1.0</span>, sigma_squared_shape = <span class='fl'>2</span>)
+</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p, lambda=0.05)</span>
 <span class='co'>#gp &lt;- geoProfile(m$posteriorSurface)</span>
 
 <span class='co'># simulated data</span>
-<span class='no'>sim</span> <span class='kw'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span>(<span class='fl'>50</span>, <span class='kw'>priorMean_longitude</span> <span class='kw'>=</span> -<span class='fl'>0.04217491</span>, <span class='kw'>priorMean_latitude</span> <span class='kw'>=</span>
-<span class='fl'>51.5235505</span>, <span class='kw'>alpha</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>tau</span><span class='kw'>=</span><span class='fl'>3</span>)
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='no'>sim</span>$<span class='no'>longitude</span>, <span class='no'>sim</span> $<span class='no'>latitude</span>)
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'>#m &lt;- geoMCMC(data = d, params = p)
-#gp &lt;- geoProfile(m$posteriorSurface)
+<span class='kw'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span>(<span class='fl'>50</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude = 
+<span class='fl'>51.5235505</span>, alpha=<span class='fl'>1</span>, sigma=<span class='fl'>1</span>, tau=<span class='fl'>3</span>)
+<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='kw'>sim</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>sim</span> <span class='op'>$</span><span class='kw'>latitude</span>)
+<span class='kw'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(data = <span class='kw'>d</span>, sigma_mean = <span class='fl'>1.0</span>, sigma_squared_shape = <span class='fl'>2</span>)
+</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p)</span>
+<span class='co'>#gp &lt;- geoProfile(m$posteriorSurface)</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -196,7 +198,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

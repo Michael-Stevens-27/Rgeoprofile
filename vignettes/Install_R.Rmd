@@ -4,7 +4,7 @@ author: "Michael Stevens"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Install R}
+  %\VignetteIndexEntry{Installing R and Rstudio}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -24,10 +24,10 @@ vignette: >
 # knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-
 This really is the very first step to getting to grips with R. Before we can do anything, we will need to install it on your computer.  
 
 # Installing R 
+![Image](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/test.png)
 
 We are going to install R from the [R project website](https://www.r-project.org/). This is the main website for finding different versions of R, hearing news, reporting bugs and help with using R in general. We will be installing:
 

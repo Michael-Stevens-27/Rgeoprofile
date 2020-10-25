@@ -164,8 +164,8 @@ should equal the number of suspect sites. If this is present, the function calcu
 based on the number of crimes; otherwise, this is calculated based on the number of suspect sites.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoPlotLorenz</span>(<span class='no'>hit_scores</span>, <span class='kw'>crimeNumbers</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>suspects_col</span> <span class='kw'>=</span> <span class='st'>"red"</span>,
-  <span class='kw'>crimes_col</span> <span class='kw'>=</span> <span class='st'>"blue"</span>)</pre>
+    <pre class="usage"><span class='fu'>geoPlotLorenz</span>(<span class='kw'>hit_scores</span>, crimeNumbers = <span class='kw'>NULL</span>, suspects_col = <span class='st'>"red"</span>,
+  crimes_col = <span class='st'>"blue"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,17 +191,18 @@ based on the number of crimes; otherwise, this is calculated based on the number
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># London example data</span>
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='no'>LondonExample_crimes</span>
-<span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='no'>LondonExample_sources</span>
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>d</span>, <span class='kw'>sigma_mean</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>sigma_squared_shape</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'>#m &lt;- geoMCMC(data = d, params = p)
-#hs &lt;- geoReportHitscores(params = p, source = s, surface = m$geoProfile)
-#hs 
-# Lorenz plot on sources
-#geoPlotLorenz(hs)
-# Lorenz plot on sources and crimes
-# extract numbers of crimes allocated per source as a proxy
-#cn &lt;- as.vector(table(m$bestGrouping))
-#geoPlotLorenz(hs, crimeNumbers = cn)
+<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='kw'>LondonExample_crimes</span>
+<span class='kw'>s</span> <span class='op'>&lt;-</span> <span class='kw'>LondonExample_sources</span>
+<span class='kw'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(data = <span class='kw'>d</span>, sigma_mean = <span class='fl'>1.0</span>, sigma_squared_shape = <span class='fl'>2</span>)
+</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p)</span>
+<span class='co'>#hs &lt;- geoReportHitscores(params = p, source = s, surface = m$geoProfile)</span>
+<span class='co'>#hs </span>
+<span class='co'># Lorenz plot on sources</span>
+<span class='co'>#geoPlotLorenz(hs)</span>
+<span class='co'># Lorenz plot on sources and crimes</span>
+<span class='co'># extract numbers of crimes allocated per source as a proxy</span>
+<span class='co'>#cn &lt;- as.vector(table(m$bestGrouping))</span>
+<span class='co'>#geoPlotLorenz(hs, crimeNumbers = cn)</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -218,7 +219,7 @@ based on the number of crimes; otherwise, this is calculated based on the number
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

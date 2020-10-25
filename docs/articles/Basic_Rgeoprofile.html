@@ -103,13 +103,14 @@
 
       
 
-      </header><div class="row">
+      </header><link href="Basic_Rgeoprofile_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="Basic_Rgeoprofile_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Basic Rgeoprofile</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-10-23</h4>
+            <h4 class="date">2020-10-25</h4>
       
       
       <div class="hidden name"><code>Basic_Rgeoprofile.Rmd</code></div>
@@ -118,150 +119,150 @@
 
     
     
-<div class="sourceCode"><html><body><pre class="r"># RgeoProfile: Dirichlet Process Mixture (DPM) model of geographic profiling
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># RgeoProfile: Dirichlet Process Mixture (DPM) model of geographic profiling</span>
  
-#  Carries out a DPM mixture model of geographic profiling (and associated functions) as described in Verity et al. (2014) For links to papers see http:/www.sbcs.qmul.ac.uk/staff/stevenlecomber.html or contact Steven Le Comber (s.c.lecomber@qmul.ac.uk). Created and maintained by Bob Verity (r.verity@imperial.ac.uk).  
+<span class="co">#  Carries out a DPM mixture model of geographic profiling (and associated functions) as described in Verity et al. (2014) For links to papers see http:/www.sbcs.qmul.ac.uk/staff/stevenlecomber.html or contact Steven Le Comber (s.c.lecomber@qmul.ac.uk). Created and maintained by Bob Verity (r.verity@imperial.ac.uk).  </span>
  
-# RgeoProfile: Dirichlet Process Mixture (DPM) model of geographic profiling
+<span class="co"># RgeoProfile: Dirichlet Process Mixture (DPM) model of geographic profiling</span>
  
-#  Carries out a DPM mixture model of geographic profiling (and associated functions) as described in Verity et al. (2014) For links to papers see http:/www.sbcs.qmul.ac.uk/staff/stevenlecomber.html or contact Steven Le Comber (s.c.lecomber@qmul.ac.uk). Created and maintained by Bob Verity (r.verity@imperial.ac.uk).  
+<span class="co">#  Carries out a DPM mixture model of geographic profiling (and associated functions) as described in Verity et al. (2014) For links to papers see http:/www.sbcs.qmul.ac.uk/staff/stevenlecomber.html or contact Steven Le Comber (s.c.lecomber@qmul.ac.uk). Created and maintained by Bob Verity (r.verity@imperial.ac.uk).  </span>
  
-#------------------------------------------------------------------
-# data and settings
-#------------------------------------------------------------------
-# example data
-d &lt;- LondonExample_crimes
-s &lt;- LondonExample_sources
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># data and settings</span>
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># example data</span>
+d &lt;-<span class="st"> </span>LondonExample_crimes
+s &lt;-<span class="st"> </span>LondonExample_sources
 
-# convert d and s to correct format for geoParams()
-# (note that in this case the example data are already in the correct
-# format; these steps are only relevant if for example d and s are 
-# imported as two-column matrices. They are included here for
-# completeness)
-d &lt;- geoData(d$longitude, d$latitude)
-s &lt;- geoDataSource(s$longitude, s$latitude)
+<span class="co"># convert d and s to correct format for geoParams()</span>
+<span class="co"># (note that in this case the example data are already in the correct</span>
+<span class="co"># format; these steps are only relevant if for example d and s are </span>
+<span class="co"># imported as two-column matrices. They are included here for</span>
+<span class="co"># completeness)</span>
+d &lt;-<span class="st"> </span><span class="kw">geoData</span>(d<span class="op">$</span>longitude, d<span class="op">$</span>latitude)
+s &lt;-<span class="st"> </span><span class="kw">geoDataSource</span>(s<span class="op">$</span>longitude, s<span class="op">$</span>latitude)
 
-# set model and MCMC parameters
-p = geoParams(data = d, 
-              sigma_mean = 1, 
-              sigma_squared_shape = 2, 
-              chains = 5, 
-              burnin = 1e3, 
-              samples = 1e4)
+<span class="co"># set model and MCMC parameters</span>
+p =<span class="st"> </span><span class="kw">geoParams</span>(<span class="dt">data =</span> d, 
+              <span class="dt">sigma_mean =</span> <span class="dv">1</span>, 
+              <span class="dt">sigma_squared_shape =</span> <span class="dv">2</span>, 
+              <span class="dt">chains =</span> <span class="dv">5</span>, 
+              <span class="dt">burnin =</span> <span class="fl">1e3</span>, 
+              <span class="dt">samples =</span> <span class="fl">1e4</span>)
 
-#------------------------------------------------------------------
-# run model
-#------------------------------------------------------------------
-# run MCMC
-m = geoMCMC(data = d, params = p)
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># run model</span>
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># run MCMC</span>
+m =<span class="st"> </span><span class="kw">geoMCMC</span>(<span class="dt">data =</span> d, <span class="dt">params =</span> p)
 
-#------------------------------------------------------------------
-# output
-#------------------------------------------------------------------
-# plot prior and posterior of sigma
-geoPlotSigma(params = p, mcmc = m)
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># output</span>
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># plot prior and posterior of sigma</span>
+<span class="kw">geoPlotSigma</span>(<span class="dt">params =</span> p, <span class="dt">mcmc =</span> m)
 
-# plot profile on map
-mapGP &lt;- geoPlotMap(params = p, 
-                    data = d, 
-                    source = s, 
-                    surface = m$geoProfile)
+<span class="co"># plot profile on map</span>
+mapGP &lt;-<span class="st"> </span><span class="kw">geoPlotMap</span>(<span class="dt">params =</span> p, 
+                    <span class="dt">data =</span> d, 
+                    <span class="dt">source =</span> s, 
+                    <span class="dt">surface =</span> m<span class="op">$</span>geoProfile)
 mapGP
 
-# get hitscores
-hs &lt;- geoReportHitscores(params = p, 
-                         source = s, 
-                         surface = m$geoProfile)
+<span class="co"># get hitscores</span>
+hs &lt;-<span class="st"> </span><span class="kw">geoReportHitscores</span>(<span class="dt">params =</span> p, 
+                         <span class="dt">source =</span> s, 
+                         <span class="dt">surface =</span> m<span class="op">$</span>geoProfile)
 hs
 
-# produce Lorenz plot
-Gini &lt;- geoPlotLorenz(hit_scores = hs, crimeNumbers = NULL)
+<span class="co"># produce Lorenz plot</span>
+Gini &lt;-<span class="st"> </span><span class="kw">geoPlotLorenz</span>(<span class="dt">hit_scores =</span> hs, <span class="dt">crimeNumbers =</span> <span class="ot">NULL</span>)
 Gini
 
-# zoom
-zoomLon = c(-0.1, -0.01)
-zoomLat = c(51.51, 51.54)
-mapZoom &lt;- geoPlotMap(lonLimits = zoomLon, 
-                      latLimits = zoomLat, 
-                      params = p,
-                      data = d, 
-                      source = s, 
-                      surface = m$geoProfile)
+<span class="co"># zoom</span>
+zoomLon =<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">-0.01</span>)
+zoomLat =<span class="st"> </span><span class="kw">c</span>(<span class="fl">51.51</span>, <span class="fl">51.54</span>)
+mapZoom &lt;-<span class="st"> </span><span class="kw">geoPlotMap</span>(<span class="dt">lonLimits =</span> zoomLon, 
+                      <span class="dt">latLimits =</span> zoomLat, 
+                      <span class="dt">params =</span> p,
+                      <span class="dt">data =</span> d, 
+                      <span class="dt">source =</span> s, 
+                      <span class="dt">surface =</span> m<span class="op">$</span>geoProfile)
 mapZoom
 
-# plot allocation
-geoPlotAllocation(mcmc = m)
+<span class="co"># plot allocation</span>
+<span class="kw">geoPlotAllocation</span>(<span class="dt">mcmc =</span> m)
 
-# plot co-allocation
-geoPlotCoallocation(mcmc = m)
+<span class="co"># plot co-allocation</span>
+<span class="kw">geoPlotCoallocation</span>(<span class="dt">mcmc =</span> m)
 
-# produce perspective plots
-# probabilities
-geoPersp(surface = m$posteriorSurface, 
-         aggregate_size = 3, 
-         surface_type = "prob")
+<span class="co"># produce perspective plots</span>
+<span class="co"># probabilities</span>
+<span class="kw">geoPersp</span>(<span class="dt">surface =</span> m<span class="op">$</span>posteriorSurface, 
+         <span class="dt">aggregate_size =</span> <span class="dv">3</span>, 
+         <span class="dt">surface_type =</span> <span class="st">"prob"</span>)
          
-# ranked surface
-geoPersp(surface = m$geoProfile, aggregate_size = 3)
+<span class="co"># ranked surface</span>
+<span class="kw">geoPersp</span>(<span class="dt">surface =</span> m<span class="op">$</span>geoProfile, <span class="dt">aggregate_size =</span> <span class="dv">3</span>)
 
-# find centroids of data split by best grouping (placeholder for more thorough method)
-ms &lt;- geoModelSources(mcmc = m, data = d)
+<span class="co"># find centroids of data split by best grouping (placeholder for more thorough method)</span>
+ms &lt;-<span class="st"> </span><span class="kw">geoModelSources</span>(<span class="dt">mcmc =</span> m, <span class="dt">data =</span> d)
 ms
 
-# add peaks to map
-# NB requires ggplot2
-library(ggplot2)
-mapSource &lt;- mapGP + geom_point(aes(ms$longitude,ms$latitude), size = 6, pch = 3, col = "red")
+<span class="co"># add peaks to map</span>
+<span class="co"># NB requires ggplot2</span>
+<span class="kw">library</span>(ggplot2)
+mapSource &lt;-<span class="st"> </span>mapGP <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(ms<span class="op">$</span>longitude,ms<span class="op">$</span>latitude), <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">pch =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">"red"</span>)
 mapSource
 
-# plot surface in style of 'unknown pleasures', for fun
-unknownPleasures(m$geoProfile, paper_ref = "RgeoProfile 2.1.0")
+<span class="co"># plot surface in style of 'unknown pleasures', for fun</span>
+<span class="kw">unknownPleasures</span>(m<span class="op">$</span>geoProfile, <span class="dt">paper_ref =</span> <span class="st">"RgeoProfile 2.1.0"</span>)
 
-#------------------------------------------------------------------
-# compare to alternative ring search strategy
-#------------------------------------------------------------------
-# compare to geoprofile based on ring search strategy
-surface_ring &lt;- geoRing(params = p, data = d, source = s, mcmc = m)
-gp_ring &lt;- geoProfile(surface = surface_ring)
-# map of ring search geoprofile
-mapRing &lt;- geoPlotMap(params = p, 
-                      data = d, 
-                      source = s, 
-                      surface = gp_ring,
-                      surfaceCols = c("red", "white"))
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># compare to alternative ring search strategy</span>
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># compare to geoprofile based on ring search strategy</span>
+surface_ring &lt;-<span class="st"> </span><span class="kw">geoRing</span>(<span class="dt">params =</span> p, <span class="dt">data =</span> d, <span class="dt">source =</span> s, <span class="dt">mcmc =</span> m)
+gp_ring &lt;-<span class="st"> </span><span class="kw">geoProfile</span>(<span class="dt">surface =</span> surface_ring)
+<span class="co"># map of ring search geoprofile</span>
+mapRing &lt;-<span class="st"> </span><span class="kw">geoPlotMap</span>(<span class="dt">params =</span> p, 
+                      <span class="dt">data =</span> d, 
+                      <span class="dt">source =</span> s, 
+                      <span class="dt">surface =</span> gp_ring,
+                      <span class="dt">surfaceCols =</span> <span class="kw">c</span>(<span class="st">"red"</span>, <span class="st">"white"</span>))
 mapRing
 
-# hitscores of ring search geoprofile
-hs_ring &lt;- geoReportHitscores(params = p, source = s, surface = gp_ring)
+<span class="co"># hitscores of ring search geoprofile</span>
+hs_ring &lt;-<span class="st"> </span><span class="kw">geoReportHitscores</span>(<span class="dt">params =</span> p, <span class="dt">source =</span> s, <span class="dt">surface =</span> gp_ring)
 hs_ring
 
-#------------------------------------------------------------------
-# incorporate GIS data
-#------------------------------------------------------------------
-# read in north London shapefile as mask and adjust surface
-north_london_mask &lt;- geoShapefile()
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># incorporate GIS data</span>
+<span class="co">#------------------------------------------------------------------</span>
+<span class="co"># read in north London shapefile as mask and adjust surface</span>
+north_london_mask &lt;-<span class="st"> </span><span class="kw">geoShapefile</span>()
 
-# restrict mask to Tower Hamlets
-TH_mask &lt;- north_london_mask[which(north_london_mask$NAME == "Tower Hamlets"),]
-prob_masked &lt;- geoMask(probSurface = m$posteriorSurface, 
-                       params = p, mask = TH_mask,
-                       operation = "outside", scaleValue = 1e-9)
-gp_masked &lt;- geoProfile(prob_masked$prob)
+<span class="co"># restrict mask to Tower Hamlets</span>
+TH_mask &lt;-<span class="st"> </span>north_london_mask[<span class="kw">which</span>(north_london_mask<span class="op">$</span>NAME <span class="op">==</span><span class="st"> "Tower Hamlets"</span>),]
+prob_masked &lt;-<span class="st"> </span><span class="kw">geoMask</span>(<span class="dt">probSurface =</span> m<span class="op">$</span>posteriorSurface, 
+                       <span class="dt">params =</span> p, <span class="dt">mask =</span> TH_mask,
+                       <span class="dt">operation =</span> <span class="st">"outside"</span>, <span class="dt">scaleValue =</span> <span class="fl">1e-9</span>)
+gp_masked &lt;-<span class="st"> </span><span class="kw">geoProfile</span>(prob_masked<span class="op">$</span>prob)
 
-# plot new surface
-mapMask &lt;- geoPlotMap(params = p, 
-                      data = d, 
-                      source = s, 
-                      surface = gp_masked, 
-                      breakPercent = seq(0,25,l = 11))
-#mapMask
+<span class="co"># plot new surface</span>
+mapMask &lt;-<span class="st"> </span><span class="kw">geoPlotMap</span>(<span class="dt">params =</span> p, 
+                      <span class="dt">data =</span> d, 
+                      <span class="dt">source =</span> s, 
+                      <span class="dt">surface =</span> gp_masked, 
+                      <span class="dt">breakPercent =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dt">l =</span> <span class="dv">11</span>))
+<span class="co">#mapMask</span>
 
-# hs of masked surface
-hs_mask &lt;- geoReportHitscores(params = p, source = s, surface = gp_masked)
+<span class="co"># hs of masked surface</span>
+hs_mask &lt;-<span class="st"> </span><span class="kw">geoReportHitscores</span>(<span class="dt">params =</span> p, <span class="dt">source =</span> s, <span class="dt">surface =</span> gp_masked)
 hs_mask
 
-#------------------------------------------------------------------
-}</pre></body></html></div>
+<span class="co">#------------------------------------------------------------------</span>
+<span class="er">}</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -277,7 +278,7 @@ hs_mask
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

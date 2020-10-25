@@ -156,8 +156,8 @@
     <p>Provides random draws from a 2D spatial Dirichlet process mixture model. Both sigma and tau are defined in units of kilometres, representing the average distance that an observations lies from a source, and the average distance that a source lies from the centre point respectively. In contrast, the location of the centre point and the locations of the final output crime sites are defined in units of degrees lat/long to facilitate spatial analysis.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rDPM</span>(<span class='no'>n</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>priorMean_longitude</span> <span class='kw'>=</span> -<span class='fl'>0.1277</span>,
-  <span class='kw'>priorMean_latitude</span> <span class='kw'>=</span> <span class='fl'>51.5074</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>rDPM</span>(<span class='kw'>n</span>, sigma = <span class='fl'>1</span>, tau = <span class='fl'>10</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.1277</span>,
+  priorMean_latitude = <span class='fl'>51.5074</span>, alpha = <span class='fl'>1</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,8 +194,9 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># produces clusters of points from sources centred on QMUL</span>
-<span class='fu'>rDPM</span>(<span class='fl'>50</span>, <span class='kw'>priorMean_longitude</span> <span class='kw'>=</span> -<span class='fl'>0.04217491</span>, <span class='kw'>priorMean_latitude</span> <span class='kw'>=</span> <span class='fl'>51.5235505</span>,
-<span class='kw'>alpha</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>tau</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt; $longitude
+<span class='fu'>rDPM</span>(<span class='fl'>50</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude = <span class='fl'>51.5235505</span>, 
+alpha=<span class='fl'>1</span>, sigma=<span class='fl'>1</span>, tau=<span class='fl'>3</span>) 
+</div><div class='output co'>#&gt; $longitude
 #&gt;  [1] -0.0680037418 -0.0572632560 -0.0546916181 -0.0496948482 -0.0603683957
 #&gt;  [6] -0.0435778472 -0.0336578667 -0.0127705020 -0.0542437468 -0.0464171569
 #&gt; [11] -0.0571265549 -0.0448368650 -0.0282470727 -0.0405508114 -0.0417613380
@@ -226,8 +227,9 @@
 #&gt; $source_lat
 #&gt; [1] 51.50276 51.53017
 #&gt; </div><div class='input'><span class='co'># same, but increasing alpha to generate more clusters</span>
-<span class='fu'>rDPM</span>(<span class='fl'>50</span>, <span class='kw'>priorMean_longitude</span> <span class='kw'>=</span> -<span class='fl'>0.04217491</span>, <span class='kw'>priorMean_latitude</span> <span class='kw'>=</span> <span class='fl'>51.5235505</span>,
-<span class='kw'>alpha</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>tau</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt; $longitude
+<span class='fu'>rDPM</span>(<span class='fl'>50</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude = <span class='fl'>51.5235505</span>, 
+alpha=<span class='fl'>5</span>, sigma=<span class='fl'>1</span>, tau=<span class='fl'>3</span>)
+</div><div class='output co'>#&gt; $longitude
 #&gt;  [1] -0.076037063 -0.061775408 -0.052784030 -0.056049798 -0.062883841
 #&gt;  [6] -0.038101093 -0.051677759 -0.045833946 -0.055853840 -0.041116226
 #&gt; [11] -0.054417792 -0.067498798 -0.069492139 -0.079996778 -0.069581427
@@ -276,7 +278,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
