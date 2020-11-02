@@ -9,32 +9,56 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, echo = FALSE}
-# library(imager)
-# embed_png <- function(path, dpi = NULL) {
-#   meta <- attr(png::readPNG(path, native = TRUE, info = TRUE), "info")
-#   if (!is.null(dpi)) meta$dpi <- rep(dpi, 2)
-#   knitr::asis_output(paste0(
-#     "<img src='", path, "'",
-#     " width=", round(meta$dim[1] / (meta$dpi[1] / 96)),
-#     " height=", round(meta$dim[2] / (meta$dpi[2] / 96)),
-#     " />"
-#   ))
-# }
-# knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
-```
-
 This really is the very first step to getting to grips with R. Before we can do anything, we will need to install it on your computer.  
 
 # Installing R 
-![Image](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/test.png)
 
-We are going to install R from the [R project website](https://www.r-project.org/). This is the main website for finding different versions of R, hearing news, reporting bugs and help with using R in general. We will be installing:
+We are going to install R from the [R project website](https://www.r-project.org/). This is the main website for finding different versions of R, hearing news, reporting bugs and help with using R in general. 
 
-Here's the image 
+![The landing page for https://www.r-project.org/. We are interested in the "download R" button. ](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_landing.png)
 
- ```{r, echo = FALSE}
-# embed_png("images/test.png", dpi = 10)
-```
+We will be installing version XX for this workshop. Click on the "download R" button. Which will lead you to the following page:
+
+![Different mirrors for R dependent on your location](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_mirrors.png)
+
+Go ahead and click on the "South Africa" option, leading us to:
+
+![Different versions of R](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_for_windows.png)
+
+Since this will be the first time installing R, click on the "base" option. 
+
+![Different mirrors for R dependent on your location](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_version.png)
+
+Finally, click on the "Download R 4.0.3 for Windows" option. Once this has finished downloading run the .exe file and follow the installation process as prompted on your computer screen. 
+
+![R install prompt](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_install.png)
+
+Click "next" until you reach the install process:
+
+![R installing](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_installing.png)
+
+Once this is done, click "finish". 
+
+![R finished](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_installing.png)
 
 # Installing Rstudio
+
+Now that we have installed R, we now need to install the user interface for R, R studio. This can be installed from the [Rstudio](https://rstudio.com/) website. Click on "download" button on the top right hand corner of the screen.  
+
+![Rstudio landing page](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_landing.png)
+
+![Rstudio download page](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_download.png)
+
+![Rstudio download version](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_version.png)
+
+![Rstudio install](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_install.png)
+
+![Rstudio setup](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_setup.png)
+
+![Rstudio installing](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_installing.png)
+
+![Rstudio finish](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_finish.png)
+
+# Welcome to Rstudio
+
+![Rstudio welcome](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_welcome.png)
