@@ -480,6 +480,164 @@ geoPlotMap <- function(params, data=NULL, source=NULL, surface=NULL, surfaceCols
   myMap
 }
 
+
+#------------------------------------------------
+#' Plot a map and overlay data and/or geoprofile via leaflet
+#'
+#' Plots geoprofile on map, with various customisable options.
+#'
+#' @param params parameters list in the format defined by geoParams().
+#' @param data data object in the format defined by geoData().
+#' @param source potential sources object in the format defined by geoDataSource().
+#' @param surface a surface to overlay onto the map, typically a geoprofile obtained from the output of geoMCMC().
+#' @param surfaceCols vector of two or more colours to plot surface. Defaults to viridis palette.
+#' @param mapType the specific type of map to plot. Options available are "terrain", "satellite", "roadmap" and "hybrid" (google maps), "terrain-background", "terrain", "watercolor" and "toner" (stamen maps) or a positive integer for cloudmade maps (see ?get_cloudmademap from the package ggmap for details).
+#' @param opacity value between 0 and 1 givin the opacity of surface colours.
+#' @param crimeCex relative size of symbols showing crimes.
+#' @param crimeCol colour of crime symbols.
+#' @param sourceCex relative size of symbols showing suspect sites.
+#' @param sourceCol colour of suspect sites symbols.
+#' @param gpLegend whether or not to add legend to plot.
+#' @param smoothing smooth profile
+#' @param threshold what level of the geoprofile to display 
+#' 
+#' @export
+#' @examples
+#' \donttest{
+#' # London example data
+#' d <- LondonExample_crimes
+#' s <- LondonExample_sources
+#' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
+#' #m <- geoMCMC(data = d, params = p)
+#' # produce simple map
+#' #geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+#' #                breakPercent = seq(0, 50, 5), mapType = "hybrid",
+#' #                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+#'
+#' # John Snow cholera data
+#' d <- Cholera
+#' s <- WaterPumps
+#' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
+#' #m <- geoMCMC(data = d, params = p, lambda=0.05)
+#' # produce simple map
+#' #geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+#' #                breakPercent = seq(0, 50, 5), mapType = "hybrid",
+#' #                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+#' 
+#' # simulated data
+#' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
+#' 51.5235505, alpha=1, sigma=1, tau=3)
+#' d <- geoData(sim$longitude, sim $latitude)
+#' s <- geoDataSource(sim$source_lon, sim$source_lat)
+#' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
+#' #m <- geoMCMC(data = d, params = p)
+#' # change colour palette, map type, opacity and range of geoprofile and omit legend
+#' #geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+#' #                breakPercent = seq(0, 30, 5), mapType = "terrain", 
+#' #                surfaceCols = c("blue","white"), crimeCol = "black", 
+#' #                crimeBorderCol = "white",crimeCex = 2, sourceCol = "red", sourceCex = 2,
+#' #                opacity = 0.7, gpLegend = FALSE)
+#' }
+
+geoPlotMap2 <- function(params, 
+                        data = NULL, 
+                        surface = NULL, 
+                        source = NULL,
+                        surfaceCols = c("#F0F921FF", "#FDC926FF", "#FA9E3BFF", "#ED7953FF", 
+                        "#D8576BFF", "#BD3786FF", "#9C179EFF", "#7301A8FF", "#47039FFF", "#0D0887FF") ,
+                        crimeCex = 1.5, 
+                        crimeCol = 'red', 
+                        sourceCex = 1.5, 
+                        sourceCol = 'blue', 
+                        map_type = 110,
+                        threshold = 0.1,
+                        opacity = 0.8,
+                        smoothing = 1,
+                        gpLegend  = FALSE) {
+                        
+    # check inputs
+    # assert_bounded(threshold)
+    # assert_string(surfaceCols)
+    # assert_bounded(opacity)
+    # assert_single_pos(opacity, zero_allowed = TRUE)
+    # 
+    # assert_single_pos(smoothing)
+    # assert_greq(smoothing, 1.0)
+    # assert_single_logical(legend)
+    # assert_in(map_type, 1:137, message = "map_type must be in 1:137")
+    # 
+    # get output extent from params 
+    fullExt <- c(params$output$longitude_minMax, params$output$latitude_minMax)
+    
+    # produce plot
+    myplot <- leaflet()
+    myplot <- addProviderTiles(myplot, providers[[map_type]])
+
+    if(!is.null(data)){
+      # add crimes markers
+      myplot <- addCircleMarkers(myplot, 
+                                 lng = data$longitude, 
+                                 lat = data$latitude, 
+                                 radius = crimeCex,
+                                 fillColor = crimeCol, 
+                                 stroke = FALSE, 
+                                 fillOpacity = opacity)
+    }
+    if(!is.null(source)){
+       # add crimes markers
+       myplot <- addCircleMarkers(myplot, 
+                                  lng = source$longitude, 
+                                  lat = source$latitude, 
+                                  radius = sourceCex,
+                                  fillColor = sourceCol, 
+                                  stroke = FALSE, 
+                                  fillOpacity = opacity)
+    }
+
+    # make a raster from the surface
+    surface <- raster(apply(surface,2,rev),
+                           xmn = fullExt[1], 
+                           xmx = fullExt[2],
+                           ymn = fullExt[3],  
+                           ymx = fullExt[4],
+                           crs = CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"))
+                 
+    # apply smoothing
+    if (smoothing > 1.0) {
+      surface <- disaggregate(surface, smoothing, method = "bilinear")
+    }
+
+    # apply threshold
+    geoprofile_mat <- matrix(values(surface), nrow(surface), byrow = TRUE)
+    geoprofile_mat[geoprofile_mat > threshold*100] <- NA
+    surface <- setValues(surface, geoprofile_mat)
+
+    # overlay raster
+    myplot <- addRasterImage(myplot, x = surface, colors = surfaceCols, opacity = opacity, project = FALSE)
+
+    # add bounding rect
+    myplot <- addRectangles(myplot, 
+                            xmin(surface), 
+                            ymin(surface),
+                            xmax(surface), 
+                            ymax(surface),
+                            fill = FALSE, 
+                            weight = 2, 
+                            color = grey(0.2))
+
+    # add hitscore legend
+    if (gpLegend == TRUE) {
+      hitscore_sequence <- seq(0, threshold, threshold / (length(surfaceCols) - 1))
+      pal <- colorNumeric(palette = surfaceCols, domain = hitscore_sequence)
+      myplot <- addLegend(myplot, "bottomright", pal = pal, values = hitscore_sequence, title = "Hit score", opacity = 1)
+    }
+  
+  
+  # plot map
+  return(myplot)
+}
+
+
 #------------------------------------------------
 #' Perspective plot of geoprofile or raw probabilities
 #'

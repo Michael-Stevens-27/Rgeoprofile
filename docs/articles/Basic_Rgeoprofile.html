@@ -64,7 +64,9 @@
     <li>
       <a href="../articles/Basic_Rgeoprofile.html">Basic Rgeoprofile</a>
     </li>
-    <li class="dropdown-header">Advanced Rgeoprofile</li>
+    <li>
+      <a href="../articles/Advanced_Rgeoprofile.html">Advanced Rgeoprofile</a>
+    </li>
     <li>
       <a href="../reference/index.html">Function list</a>
     </li>
@@ -104,7 +106,10 @@
       
 
       </header><link href="Basic_Rgeoprofile_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="Basic_Rgeoprofile_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+<script src="Basic_Rgeoprofile_files/anchor-sections-1.0/anchor-sections.js"></script><script src="Basic_Rgeoprofile_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="Basic_Rgeoprofile_files/jquery-1.12.4/jquery.min.js"></script><link href="Basic_Rgeoprofile_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="Basic_Rgeoprofile_files/leaflet-1.3.1/leaflet.js"></script><link href="Basic_Rgeoprofile_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="Basic_Rgeoprofile_files/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="Basic_Rgeoprofile_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="Basic_Rgeoprofile_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="Basic_Rgeoprofile_files/leaflet-binding-2.0.3/leaflet.js"></script><script src="Basic_Rgeoprofile_files/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="Basic_Rgeoprofile_files/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Basic Rgeoprofile</h1>
@@ -119,155 +124,288 @@
 
     
     
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># RgeoProfile: Dirichlet Process Mixture (DPM) model of geographic profiling</span>
- 
-<span class="co">#  Carries out a DPM mixture model of geographic profiling (and associated functions) as described in Verity et al. (2014) For links to papers see http:/www.sbcs.qmul.ac.uk/staff/stevenlecomber.html or contact Steven Le Comber (s.c.lecomber@qmul.ac.uk). Created and maintained by Bob Verity (r.verity@imperial.ac.uk).  </span>
- 
-<span class="co"># RgeoProfile: Dirichlet Process Mixture (DPM) model of geographic profiling</span>
- 
-<span class="co">#  Carries out a DPM mixture model of geographic profiling (and associated functions) as described in Verity et al. (2014) For links to papers see http:/www.sbcs.qmul.ac.uk/staff/stevenlecomber.html or contact Steven Le Comber (s.c.lecomber@qmul.ac.uk). Created and maintained by Bob Verity (r.verity@imperial.ac.uk).  </span>
- 
-<span class="co">#------------------------------------------------------------------</span>
-<span class="co"># data and settings</span>
-<span class="co">#------------------------------------------------------------------</span>
+<div id="introduction" class="section level1">
+<h1 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h1>
+<p>In this tutorial, we will walk through the step-by-step process of running an analysis using the R package, RgeoProfile. The general structure to using this package is as follows:</p>
+<ul>
+<li>Loading and checking our data - we must ensure it's in the correct format for analysis.</li>
+<li>Setting up the parameters for the model and the MCMC algorithm.</li>
+<li>Running the MCMC algorithm.</li>
+<li>Visualising the output of the model, for example the geoprofile.</li>
+</ul>
+<p>First things first, we must load the package. Assuming the RgeoProfile package was <a href="https://michael-stevens-27.github.io/Rgeoprofile/articles/installation.html">installed correctly</a>, we can load in the package using <code>library(RgeoProfile)</code>. In addition to this we will be using the leaflet and raster packages for creating maps.</p>
+<div class="sourceCode"><pre class="downlit">
+<span class="co"># load prequired packages</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">RgeoProfile</span>)  <span class="co"># to run the analysis</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://rstudio.github.io/leaflet">leaflet</a></span>)      <span class="co"># to create interactive maps</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://CRAN.R-project.org/package=raster">raster</a></span>)       <span class="co"># for general spatial analysis</span>
+</pre></div>
+</div>
+<div id="load-and-check-data" class="section level1">
+<h1 class="hasAnchor">
+<a href="#load-and-check-data" class="anchor"></a>Load and check data</h1>
+<p>Next, we need to load in some data for the model to analyse. The package comes with some pre-made data that can be accessed via the <code>LondonExample_crimes</code> and <code>LondonExample_sources</code> objects. These consist of a set of longitudinal/latitudinal points and the source locations (also in long/lat format) that are responsible for said crimes. Normally we would read in our data using the <code>read.table</code> or <code>read.csv</code> functions but since the example data is provided to us, we will use this instead. We will also process the data using the <code><a href="../reference/geoData.html">geoData()</a></code> and <code><a href="../reference/geoDataSource.html">geoDataSource()</a></code> functions to ensure that the data are in the correct format for running the model.</p>
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># example data</span>
-d &lt;-<span class="st"> </span>LondonExample_crimes
-s &lt;-<span class="st"> </span>LondonExample_sources
+<span class="kw">d</span> <span class="op">&lt;-</span> <span class="kw">LondonExample_crimes</span>
+<span class="kw">s</span> <span class="op">&lt;-</span> <span class="kw">LondonExample_sources</span>
 
 <span class="co"># convert d and s to correct format for geoParams()</span>
 <span class="co"># (note that in this case the example data are already in the correct</span>
 <span class="co"># format; these steps are only relevant if for example d and s are </span>
 <span class="co"># imported as two-column matrices. They are included here for</span>
 <span class="co"># completeness)</span>
-d &lt;-<span class="st"> </span><span class="kw">geoData</span>(d<span class="op">$</span>longitude, d<span class="op">$</span>latitude)
-s &lt;-<span class="st"> </span><span class="kw">geoDataSource</span>(s<span class="op">$</span>longitude, s<span class="op">$</span>latitude)
 
+<span class="kw">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geoData.html">geoData</a></span>(<span class="kw">d</span><span class="op">$</span><span class="kw">longitude</span>, <span class="kw">d</span><span class="op">$</span><span class="kw">latitude</span>)
+<span class="kw">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geoDataSource.html">geoDataSource</a></span>(<span class="kw">s</span><span class="op">$</span><span class="kw">longitude</span>, <span class="kw">s</span><span class="op">$</span><span class="kw">latitude</span>)
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">d</span>)
+</pre></div>
+<pre><code>## $longitude
+##  [1] -0.04023208 -0.01073158 -0.06480595 -0.03741518 -0.01926934 -0.02903949
+##  [7] -0.03645079 -0.05357265 -0.05058422 -0.04031733 -0.02846623 -0.02109981
+## [13] -0.04161286 -0.05772961 -0.02121130 -0.06514560 -0.05955318 -0.15044971
+## [19] -0.14216724 -0.14485614 -0.16612526 -0.12535000 -0.15213182 -0.12464644
+## [25] -0.14671714 -0.13153637 -0.11556331 -0.16012131 -0.12879167 -0.15964431
+## [31] -0.14284261 -0.15025201 -0.19153839 -0.18114793 -0.15288913 -0.18160731
+## [37] -0.19677771 -0.17916720 -0.17817358 -0.16524612 -0.17671440 -0.17941657
+## [43] -0.10853758 -0.08402179 -0.13454884 -0.10536120 -0.12696529 -0.11100527
+## [49] -0.12214767 -0.13183619
+## 
+## $latitude
+##  [1] 51.51939 51.52673 51.53203 51.54007 51.52802 51.52587 51.52711 51.52098
+##  [9] 51.53317 51.52619 51.51638 51.52654 51.51263 51.52578 51.52237 51.53115
+## [17] 51.53311 51.50167 51.50587 51.50336 51.50671 51.49384 51.50120 51.49992
+## [25] 51.51074 51.49691 51.51257 51.50328 51.49752 51.50272 51.49930 51.51020
+## [33] 51.50954 51.50414 51.52011 51.52051 51.52041 51.52521 51.54033 51.50371
+## [41] 51.51347 51.51073 51.52946 51.53141 51.54112 51.54077 51.53769 51.52548
+## [49] 51.52820 51.53395</code></pre>
+<div class="sourceCode"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">s</span>)
+</pre></div>
+<pre><code>## $longitude
+## [1] -0.0418 -0.1421 -0.1731 -0.1238
+## 
+## $latitude
+## [1] 51.5252 51.5012 51.5175 51.5321</code></pre>
+<p>Here we can see that we've got a set of 50 long/lat points and four source locations.</p>
+</div>
+<div id="build-a-parameters-objects" class="section level1">
+<h1 class="hasAnchor">
+<a href="#build-a-parameters-objects" class="anchor"></a>Build a parameters objects</h1>
+<p>Next we need to set the parameters that will govern the model that we are running. We do this using the <code><a href="../reference/geoParams.html">geoParams()</a></code> function. Firstly we feed this function our data object <code>d</code> using the <code>data</code> argument. Next we define our prior on the dispersal parameter sigma. This can be deinfed in a few different ways but we will stick with expressing out prior knowledge on sigma by stating our mean (<code>sigma_mean</code>) and variance (<code>sigma_var</code>) on it. Next we specify the MCMC parameters for the model. We set the length of the burn in (<code>burnin</code>) period and the number of sampling iterations (<code>samples</code>) as well as the number of MCMC chains to run in parallel (<code>chains</code>). Finally we set some parameters for controlling spatial extent and the resolution of the geoprofile. This is done via the <code>longitude_cells</code>, <code>latitude_cells</code> and <code>guardRail</code> arguments. To customise the priors and MCMC algorithm further, see the <code><a href="../reference/geoParams.html">geoParams()</a></code> documentation for the full list of arguments and defaults.</p>
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># set model and MCMC parameters</span>
-p =<span class="st"> </span><span class="kw">geoParams</span>(<span class="dt">data =</span> d, 
-              <span class="dt">sigma_mean =</span> <span class="dv">1</span>, 
-              <span class="dt">sigma_squared_shape =</span> <span class="dv">2</span>, 
-              <span class="dt">chains =</span> <span class="dv">5</span>, 
-              <span class="dt">burnin =</span> <span class="fl">1e3</span>, 
-              <span class="dt">samples =</span> <span class="fl">1e4</span>)
-
-<span class="co">#------------------------------------------------------------------</span>
-<span class="co"># run model</span>
-<span class="co">#------------------------------------------------------------------</span>
+<span class="kw">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geoParams.html">geoParams</a></span>(data = <span class="kw">d</span>, 
+               sigma_mean = <span class="fl">1</span>, 
+               sigma_var = <span class="fl">5</span>, 
+               chains = <span class="fl">5</span>, 
+               burnin = <span class="fl">1e3</span>, 
+               samples = <span class="fl">1e4</span>,
+               longitude_cells = <span class="fl">200</span>, 
+               latitude_cells = <span class="fl">200</span>, 
+               guardRail = <span class="fl">0.1</span>)
+</pre></div>
+<pre><code>## Using sigma_mean and sigma_var to define prior on sigma</code></pre>
+<div class="sourceCode"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">p</span>)
+</pre></div>
+<pre><code>## $model
+## $model$sigma_mean
+## [1] 1
+## 
+## $model$sigma_var
+## [1] 5
+## 
+## $model$sigma_squared_shape
+## [1] 1.062324
+## 
+## $model$sigma_squared_rate
+## [1] 0.3739439
+## 
+## $model$priorMean_longitude
+## [1] -0.1037546
+## 
+## $model$priorMean_latitude
+## [1] 51.51748
+## 
+## $model$tau
+## [1] 6.517746
+## 
+## $model$alpha_shape
+## [1] 0.1
+## 
+## $model$alpha_rate
+## [1] 0.1
+## 
+## 
+## $MCMC
+## $MCMC$chains
+## [1] 5
+## 
+## $MCMC$burnin
+## [1] 1000
+## 
+## $MCMC$samples
+## [1] 10000
+## 
+## $MCMC$burnin_printConsole
+## [1] 100
+## 
+## $MCMC$samples_printConsole
+## [1] 1000
+## 
+## 
+## $output
+## $output$longitude_minMax
+## [1] -0.215382320  0.007873032
+## 
+## $output$latitude_minMax
+## [1] 51.48911 51.54584
+## 
+## $output$longitude_cells
+## [1] 200
+## 
+## $output$latitude_cells
+## [1] 200</code></pre>
+<p>Here we can see the full list of model and MCMC parameters that we will be using. Now that we have set up a parameters object we can now run the model.</p>
+</div>
+<div id="run-the-model" class="section level1">
+<h1 class="hasAnchor">
+<a href="#run-the-model" class="anchor"></a>Run the model</h1>
+<p>Running the MCMC algorithm itself is straightforward. We run the model using the <code><a href="../reference/geoMCMC.html">geoMCMC()</a></code> function. We provide this function with our <code>data</code> and our <code>params</code>.</p>
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># run MCMC</span>
-m =<span class="st"> </span><span class="kw">geoMCMC</span>(<span class="dt">data =</span> d, <span class="dt">params =</span> p)
-
-<span class="co">#------------------------------------------------------------------</span>
-<span class="co"># output</span>
-<span class="co">#------------------------------------------------------------------</span>
-<span class="co"># plot prior and posterior of sigma</span>
-<span class="kw">geoPlotSigma</span>(<span class="dt">params =</span> p, <span class="dt">mcmc =</span> m)
-
+<span class="kw">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geoMCMC.html">geoMCMC</a></span>(data = <span class="kw">d</span>, params = <span class="kw">p</span>)
+</pre></div>
+<pre><code>## data file passed all checks
+## params file passed all checks
+## 
+## Initiating burn-in phase (5 chains)
+##   iteration: 100
+##     convergence at the GR=1.1 level reached within 100 iterations
+##   iteration: 200
+##   iteration: 300
+##   iteration: 400
+##   iteration: 500
+##   iteration: 600
+##   iteration: 700
+##   iteration: 800
+##   iteration: 900
+##   iteration: 1000
+##     final GR statistic: GR=1.0012
+## 
+## Initiating sampling phase
+##   iteration: 1000
+##   iteration: 2000
+##   iteration: 3000
+##   iteration: 4000
+##   iteration: 5000
+##   iteration: 6000
+##   iteration: 7000
+##   iteration: 8000
+##   iteration: 9000
+##   iteration: 10000
+## 
+## MCMC completed in 0.979 seconds
+## Smoothing posterior surface................
+## maximum likelihood lambda = 0.107</code></pre>
+<p>Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (REF). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (REF).</p>
+</div>
+<div id="visualise-output" class="section level1">
+<h1 class="hasAnchor">
+<a href="#visualise-output" class="anchor"></a>Visualise output</h1>
+<p>The top parameter of interest that we are trying to estimate are the source locations responsible for generating the data. So first we want to have a look at our geographic profile. We generate the geographioc profile using the <code>geoplotmap2()</code> function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the <code>params</code> and <code>surface</code> arguments.</p>
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># plot profile on map</span>
-mapGP &lt;-<span class="st"> </span><span class="kw">geoPlotMap</span>(<span class="dt">params =</span> p, 
-                    <span class="dt">data =</span> d, 
-                    <span class="dt">source =</span> s, 
-                    <span class="dt">surface =</span> m<span class="op">$</span>geoProfile)
-mapGP
-
+<span class="fu"><a href="../reference/geoPlotMap2.html">geoPlotMap2</a></span>(params = <span class="kw">p</span>,
+            surface = <span class="kw">m</span><span class="op">$</span><span class="kw">geoProfile</span>)
+</pre></div>
+<div id="htmlwidget-8cdb298b281e04f8dc3a" style="width:700px;height:432.632880098888px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8cdb298b281e04f8dc3a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addRasterImage","args":["data:image/png;base64,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",[[51.5458424852884,-0.21538232016094],[51.4891127304734,0.00787303223651058]],0.8,null,null,null]},{"method":"addRectangles","args":[51.4891127304734,-0.215382320160948,51.5458424852884,0.00787303223650978,null,null,{"interactive":true,"className":"","stroke":true,"color":"#333333","weight":2,"opacity":0.5,"fill":false,"fillColor":"#333333","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.4891127304734,51.5458424852884],"lng":[-0.215382320160948,0.00787303223651058]}},"evals":[],"jsHooks":[]}</script><p>This does not tell us too much. The <code>geoplotmap2()</code> function can be customised to display more information on the map. Let's add the sources and the crimes onto the map, as well as a legend that describes the colours we are seeing.</p>
+<div class="sourceCode"><pre class="downlit">
+<span class="fu"><a href="../reference/geoPlotMap2.html">geoPlotMap2</a></span>(surface = <span class="kw">m</span><span class="op">$</span><span class="kw">geoProfile</span>,
+            params = <span class="kw">p</span>,
+            data = <span class="kw">d</span>, 
+            source = <span class="kw">s</span>, 
+            surfaceCols = <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span>(<span class="kw">viridis</span>::<span class="fu"><a href="https://rdrr.io/pkg/viridisLite/man/viridis.html">plasma</a></span>(<span class="fl">10</span>)),
+            threshold = <span class="fl">0.1</span>,
+            opacity = <span class="fl">0.7</span>,
+            crimeCex = <span class="fl">2</span>,
+            sourceCex = <span class="fl">3</span>,
+            gpLegend = <span class="fl">TRUE</span>)                       
+</pre></div>
+<div id="htmlwidget-b3fd4a000fe2a3c13c11" style="width:700px;height:432.632880098888px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b3fd4a000fe2a3c13c11">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[51.5193939160649,51.5267333364875,51.5320334538957,51.5400676936812,51.5280198190234,51.5258686606532,51.527105046123,51.5209831324007,51.533170094032,51.5261855219812,51.5163824251795,51.5265431887838,51.5126272150816,51.5257842146217,51.5223716091351,51.5311503061028,51.5331055797255,51.5016681062627,51.5058705807592,51.5033636609695,51.5067065702894,51.4938402100413,51.5012040757764,51.4999182055453,51.5107376453893,51.4969063300904,51.512574711928,51.5032791363029,51.4975179695294,51.5027233975315,51.4992956419475,51.5101971442115,51.5095402523278,51.5041428570537,51.5201080085881,51.5205093813863,51.520412351504,51.525205100317,51.5403333949222,51.5037061033016,51.5134700511248,51.5107269087576,51.529457736154,51.5314093629462,51.5411150057205,51.5407742546596,51.5376858537834,51.5254752940074,51.5282039722577,51.533954076349],[-0.0402320829175815,-0.0107315804632783,-0.0648059475342635,-0.0374151808377365,-0.0192693409338762,-0.0290394939505864,-0.0364507933478435,-0.0535726528941782,-0.0505842207786902,-0.0403173339358985,-0.028466225478261,-0.0210998057114679,-0.0416128550752093,-0.057729611069399,-0.021211297693751,-0.0651456020992933,-0.0595531842298928,-0.150449707559799,-0.142167240218407,-0.14485613652946,-0.166125263199988,-0.125350003906724,-0.152131823241618,-0.124646440920032,-0.146717143441931,-0.131536368846114,-0.115563313696972,-0.160121306136431,-0.128791666183947,-0.159644307188886,-0.142842613834595,-0.150252012423547,-0.191538387502253,-0.181147932280146,-0.152889134600776,-0.181607309198183,-0.19677770746116,-0.179167202703008,-0.178173575899244,-0.165246120761681,-0.176714401562021,-0.179416568660624,-0.108537580584333,-0.0840217948409039,-0.134548844111658,-0.10536119651988,-0.126965290026561,-0.111005271880249,-0.122147666401644,-0.131836189142391],2,null,null,{"interactive":true,"className":"","stroke":false,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.7},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[51.5252,51.5012,51.5175,51.5321],[-0.0418,-0.1421,-0.1731,-0.1238],3,null,null,{"interactive":true,"className":"","stroke":false,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":0.7},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addRasterImage","args":["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAgAElEQVR4nO29aZNlyXnf98vtrPfeWrtnAwYDEDBpS2I4vIQV+jp2WBZpQyQIgOQnwA4SkijQbyyLYX0Lh184QgrZpF7QFIOkQILEMktPL1V1l7Pl5hd5qrpnOADRPai+1V35izhxq6qrok/eOv96nsx88v9AJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJZDKZTCaTyWQyH43Y9w28jLxafT2ehpI6apyIDMLR4fjB+MX8fr9g5F/Yz5HT6mvx9VBz17ccRo1B4ICt8HTCcU/t+PPx1/J7/gKRf1k/Jz5Xfju+5hfcDSWn0dAiMTIyBugI7ETgoXB8T5/xl+MX8vv+gqD3fQMvA3err8U33QGfCCUnUXNaO5rComRkcpLtqNhaQxskwR3xl/u+4czPTBbIz4FP+QVvhJJPKslpO7JqLHVlESIyWc2iN+wmRTsowlTwD81347+3/yRHkReALJCPyVH11fiabXkFzavLgeODnrYdKAuLEDBZTV0VtKOh3hX4i5Jz3/Kj8hvx7fFLWSQ3nCyQj8kvhCWvBsPdxcTJYc/hwZam7SkKCwLspKnKknEyGFNhveTs3PBWWPH2vm8+83eSBfIxecW3nCrBcWs5WO1YHWyp2x5jkkCc1RTVRDkUaOWxVnO317wx1bxefT2+M3w5R5EbTBbIx+CXi38WX7Wa46VjtepYLDva5Y6q7TGVRRCxo8EUlqmwSBmYJsPpruTOw4I3/ZJ39j2IzE8lC+RjcNe3HKI5rDuWy55msaNedNTLHl1aEBEzGexg0f08aR8LDlcVdzaGV22z7yFk/g7kvm/gReXT5bfiSTSc1I7lqmex6GjanmrZUy57qlWXrmVHteypVz1V09OudiwXPSet5W7UfKb8Vtz3WDI/mRxBnpE7oeY4ag6biUXbU7cd1aKnbAeK5YCqLEIG1OSQxiFVIEaBnQoWbcfhsuXoouSV0PL9fQ8m8xPJAnlGTkLNsYJVO9K2PXXbU7YjxWJAtyO6nkAGgtUIFRAqEoKkbjvaZcVy0XNcN9zpq30PJfNTyCnWM/BW+c14EjVHjWOx6GkXHVU7UDQDup3QzYha9OjlgFn06MWIbifKZqBoR6pmoG0GjhrHadSsqq/kNOuGkiPIM3AnNCSBdCzaNLcomgkzRw7VDoiFQ+gAU0CLCBGilRRDkeYii45FO7C6X/FmaPiP+x5U5iPJAnkGjkPNSRlYrXraZYoeph5RtUU1I6LxiNaCDggTANBxIDhF0Y0UTYoiTTNyWAROfF7NuqlkgTwDR1FxWDvaq+gxJoFUFllZRO0QpQMViDIiggAvUOOEbieK7URRjTT1yKryHG+KfQ8p8xPIAnlKDqqvxINRsax7mnqkrEZMNaXoUY/QeKgtGA8qIGQkRhBBoMYR1ZWYaqKsR6p6ZFk6DrJAbix5kv6U3IklLYpmTpOKasKUFlU5RJUihzAeCgcmgPHp88ohao+qLLqeMJWlKEeaZmIZFZ/O+yE3khxBnpJlLFiYQFlaTGHRpUWVFllYRJWEgA5ETfrzIyIieESQUDtkNSFLjy4cRWkpS8tSwWHMUeQmkgXylDTRUBeewji0dijjkYVHlRZR+LRyZTxRxyQQCSIE8B6KgCg80jiUcSjtKApLrT2tzwK5ieQU6ykpo8KoiNIepdMOudRhTqvSvCNqQJNe1fyqPWiPKALSeKTyKO0xxlGZyCJkgdxEcgR5SnRUKBmRIiJlRKqAUAFUBB1ABZCRKCGqqx9COBAqEufvFyqiZECrQKEDTcx/q24i+bfyDAhAiIiQASGTIISeRSLDY3HIOL/On6uA0BEhI3L+WSkDRkWK7J9xI8kCeUoiH1xsEjI+FomIST3z5DxKPiASREwRRsQ0eZ8jkBJZIDeVLJCnJIhIiOlhFiLOkSQ+NlCSEC9FIkkiERBlnIVBijwiiUPO6ZrKArmRZIE8JZ5AjBCjIMYPPdRiFof44NeuPheAjI+jDSBEyO5kN5g8SX9KPBE/i+NKJJdCmYPE/GF68GP6ZyF4nFpdRhIREQJihLCf4Tw3/l7xnXgQSwRwIUb+4/RPX4g/C1kgT4kXgRAhBEEMcr4EhCQW8TiTIn54b/wymjzxTZfRyPFybqS/VX4rfs4d8YozrKJCIdgJzyfUv4p/+QK4TGaBPCWegA8CHyTeS4JPIsGLFDbCE9ecwIqPevYvg04UhMhLKZC/X3wnfs4e8qlY8ErjWFUTSka6SXFnW3FoT6mK78SbHE2yQJ4SKwLOC7xTBK8IThGdJDqB8BKChOAhpPAgIkk4kflrpJwrpo9DkLjw8kWQ/7r4vfhZt+QXpObNo4Gjg46mHlHaM44FJ+uG5cOacjwhFt+Jf3pDRZIF8pRM+PRAe4l3Cm8VwSqiU2AVeInwARFiiioAAYSfReEl0StiEMQgCD4JxH5kmHkx+S+Lfx4/65Z8Tmk+fdLzyt1zVgc76qZH6eQNtrpYUFUHmPdW+O6Yi/Ib8cc30GkyC+Qp6YWndxLndLqswo+KMBrkKBFOIjwIx9UkXThSyuUFuDkt8xLvFd5LrJdMuP0O7OfEf1F8J77lVryF4a3jntdfe8TJnTPa1ZaqHVDG4yad3CdLi5QR9+ND1uMdfrzvm/8IskCekrWwjDFircJZjRsNfjSEycCoiF4lkbhwNfkQXiDcHD0mSbQp8nibRDY5wShefIF8tvx2fMMteSMa3jweee3VM05fecjh6Tn1QUfZDEjjCE5TtgNKO4RI7+XZ3xzx35rfi39of/VGRZEskKfk/vCbYhD/Jo6jYZoMdjTYscAPmjgoxKCgUKn0RAAI8IBTxEkRB4UfDc4arNWMk2F0kuEFF8iny2/Fu6Hh1Wh4ow7cPdlyfHrG4ck5y9M11dEOvRiRxhGdwrRpPkKEcSj4zKbm3Ucr/nDfA/kQWSDPwFZ4Riuxk8ZZg5s0fjD4oUQMFmqH0B5xubvhRJqfDJrQF4RR40aNmwzjaNg6SW9eXIHcrb4Wj0LJnVBxGg13lx3HR2sOji5YnG6o72woDnfogx5KD1ai6gkhA8FLxqHk1XXLZy7u8I/U78d/Z/+nGxNFskCegZ0I9FYxTgXTVGD7AtcbwmCIvULUOtVcRZ9+wEuilcRe44f0vW40jEPJMBoGAhsx7XdQH4NlNByEiuOouVM7jg53HByvaY+31MdbypMN6rRDHIwI44leomuXfMO8ZOpKTs9XfOLBil942PLv9j2gJ8ilJs/AVji2o2IYCqahwA4FbizwgyH2hthr4qRg0jCl1IreEDuN75Kgpr5g6EuGUbMTngcviECOqq/+reW2RTSsQtoIPG4ty+Uu+RSvOoqjHeq0Q570iFVPXE1wMCBOevSrO8qTLe3xloPjC+6cbnhTKv6b4vduzJJeFsgzsBETm0nRzw/5OM4i6QyuK4k7DbuCOGjiqJM4dhrXVbjeYIeScUg/tx0VGwIXw2/fmLTip6EQHzC6e636emyiZoHk0ASW7chi1VGveopVjz7sEEcDcTniVxG/DIRlJK4mxFGPubOlOt6yONpweLjhtdXEp9xin0P8AFkgz8C5HNjEQNcbhqHAjikiuL7E9wV+VxK3mrg1xF1B3GnCzqTo0ZVMXcE0lPRDwW5UXEi77yH9zDgi8onqyjoqqmhYRElbhmRmUc9WSMsBeTQiFgNhGfGLiG/maxGJC4s4GSgOdzSHOw6O1pwcdrwWDW+W37wRUSTPQZ6B741fEP+V/IN4PmiO+xQNLtMm3RXIwqdydpua6EQvcbsatyuYupKxq+h2NV1fcjEpzsyw7yH9zJwPv3WljpPqq7GMiiIqCiRtYanKibKaKOoBvRgQ7USYRRFMTEeQQyRKgfARNYzoo57qoKNdbjk82PFKueJNv+SH+xzoTBbIM/JQWtZDQ9eX9F1Kl6ohRQhp0vKlnEw6MOUkblcybSumrmToK/quYrsr2OB5IPp9D+eZMEhUFGjSVahAUVhMOaFri2wmqJNAoonEYj48FlLq4muQjUccpmhTH/QsVzvuLC1vPKz3PTwgp1jPzD2548xHtr1hGEqmYU6duhK3K7HbErutsOsKu66Z1hXjrmbYVvS7mu2u5rzXPBSOH93AEoufFYFAAVqAMQFtHLp0qf1D64hVJJQQDATN1XHkaJJoQgWindDLnrLtaRYdB8uBV6LhPy9/d+9pVhbIM/In0+fFA+G46DVdn6LC0KcIMW4rpk3NdJHEMV7UDJuGfl3Tdw27bcN6XfOgMzyQ476H8sx4IpE4nzJO5+y1Tm4tsnBQO0IRiSpe2SDFy5OWs+tLqCJUFrUYZ+f7nuWi427l+YRb7XuIWSAfh/flwKNes91WdF3F2FeMu4phmwQxrFv6i5Z+3dJfNHTbhu1Fy3rTcNYZznHcU7t9D+OZuT/8pris7I+Qjg/LgNTJK0wYTzSzGC6PIotIFDEVM+uY/q2IiNahm4myGWmagePW8Uo0+x0gWSAfi3fUlofCcdYZttuablvT72r6TUN3nq7dWcvubMF2na71ZsHFRcOjTvO+dPzF+OsvbHoF4ETAk87pxygen7XXPjlMmnh1Lp8nTC2uUi2V5ibUFlVZTD1Rtz2rduQkan65+Gd7TbPyJP1j8L3xC+IX1L+Kr+0qjtcNVTUhZMQ5jdJpJStGcNYw9CW7bcP5ecuDreGBj7yvu1Sn9QIz4bFEHBHvnzCz0G72CLs0rODxmf35eyIiiUSDMCktM6WlrMbUGsIETsN+W0NkgXxM3lYbPmELjreGqmpT8d1YoGbnkhgFzin6oWSzqXmwrrjXGe7JgR/LFze9umQrPJ2cmEKFcyqd0RfJDgkZr0wsrs7oz0cAmD+PMqVaQgdkaVHGYebl4mXlOd7uN83KKdbH5E+mz4t3peXeruDBec2j8yXn50vOzpecna84O1/y6HzJo0dL3r+oeW9jeF9Y3pEdb7/Aq1eXPBh+U2yFpRMB69NR5MeHI5+wQ+KJL4snLi5N9SJCe5RxaOMwxtGYwALF69XX95Zm5Qjyc+BdteXEacqNYXCStijQMv1OIzA5yW6SPOguxTHyN2oDL84G+k/lXIxs8QxW4ecoEp84VvxTuRSKDKkjlw4o7dHGUehAHSXLPU7Ws0B+DnxPbjgWDTIUrLeaVmoKNQskgguCTYCHYuI9OfFDdcH94Tdf+OhxyQ/GL4pfVP9b7G2Bs3o+p68gyDQvvzwaEz+klyc/kREhuXKb1NqjjccgqOP+HtPn/j+vqq/EVdTcxPPHz8pm+G3xw/J3ovULlnNdUuXkVbrtiWxF4H3V847c8dfjb7w0Y79kLUc6W2GtTkeKXTqfjyeZVYT4gbTqShxPimR2qRQqLRcrFdAIqtskkNdiRR01y/J34zuif2GqWP8u/tP462JTfT0uouYgllRRI+clm0hkKyfelh3vv0SR40nO5cBmOmSc0gGyMGmik0grkoHFzJU3xZx+XW2khMdLXEIkY28lI0ZE9B6nys9VIJ8tvx0PQkkdDZFIIRU/qr4aHz1RAPci8+7w5Q+MY1l9JRoECvFSpVQfxX0xsiOk0v++wI8GBo2wJBOLAAiRlnx5vCUi/Oz44iVx9hYT4vKKaBnRe2wN8dwE8kb5jXgcKg5CRRsVGqijQSMpqq/H9z70cL0MbF6S6Piz8HD4LXEh/yDudqm62XfpgJgYxWxaweOOv/ABtxdhSemY+9t+x0KA2qNAntv/fBxLVqHkICqOUJxEzavR8Lpv+ZRffORJtcyLxZm0bHpzVZMWNwYxKOSYxCCecJ0Us1eY8AI5QbSKYFNaFoOYLVk/wr71OfNcIshnym/FQ19xEDUHUdMiaSVMQVBGgY4tVgTOnsfNZK6N+3LHo+6E3aZh3FW4bYPsN8jeIUvmRkJp81B4gbAk8YyCOGjCaAhOEWZL1xAkPgq82J+193OJIMex4iAWHEbFEsmRCRzWjjut5a4WvBoNr/iWT5bfyFHkBeaPp8+L+5Ngs2kZLhrsuiJelMidQA4gJpCTSJcFYQWyFzCmI8lhNHirk2eY0zgnmYLA7VEg1x5BPll+I658Sq2WKA6LwEHlaUuPIFLpgOwMvTM8DC0/uu4bylwr7wrL+UXLbtMynjdUZxXyaEBWA4h0LkSIlGLJXiAHQewMcWfww+wzNiXPsMkqLJFpjwVr1x5BjmLJYTBp7lEEjhrHQWNZLXtWq56jxcRRYzmKmtPQcJznIi80P9Rb3juvuDhb0Z23TI+WhPMKudGojUBtBWqXXuVOQFcQ1yV2W+N2BjcY7FQwTobBKgYC/R5N9a5dIAexTJFDwWHjOGwnVquO5aJjuehZLnsOasdx5TiNik/suXoz8/H4o+lXxY93mrNHK7aPVowPG8KDmnhRI9ZFEslGIDcSsTXEdUm4KHGbirGbT1x2FX1fspskW+HZif3V5FxrinVSfTUubcEiSlal56CZWC56mnagLCeEiCjlcU5xMGqOhoJX/M2xfMk8G38tR+49WHHn0QHLR2uKg4FKe+QkodWpG7AX0BnCWYk9b5nWFcOmpts17DYNXVeymxRbMXHx0gokliyjYikFq9qxWAy0i56mGSiqEQEoFXBOs+xKjneaU6v5xfJ34ot+kOg28xf6EX/v0Wu8ev+Ig6MLysWAUAEz9shmROiQlnIHk87rn9cM65buomV7sWC7a9h0BecO1srycI8bydcqkGU0SSCVZ9FYFm1P2/ZUTY8pHMznmKfR0LYDhzvD8WS46xv+4jpvLHOtfG/8gvgr+a/jp98/4OjomLIZQUSq3qAai9Q+ddYaNXZT0l+07M5aNhcLLi6W6cTlTnMuPOdyv5ZI1yqQNhQ0SBblRNuM1PVI3faU1Yg2Nh3PFJFm0TOMBaum4rTT3HUVd6uvxZe1buk28KfmjLcevMrx4TFVPUIE25WYekTNtkjOamxf0l00bM5XnJ8dcHa24MGm5P6ouC8H3pPdXsdxrQJZxIJWQVt66mqkagbKaqSoR3SRekMIlY6oNnXJYjFw1BlOLzSvh4b3r/PmMtfKn42/Jj6r/vd4970DysIRgqTtdpTVgJqN9bxVjENJt2k5f7Ti4cMV985r7m0N74mJd9SGe3v+I3m9ESRKmsLT1CNlNSVxVCNFPaGMuzrg762iGQsWY8nBtuJgXXDq2+u8tcxz4I/1A17Zvkb17hE+SFbLhrodMMYiZMQ7NZ/Vr3l0tuTdRw1v7zTvi4kfqR1/Mn1+7xnEtQnkk+U3YmMltQmUpaWqRkw5UdQTurCowl1ZxJROUo8Fi7Fguaw4vig56TWvVV+PH66Qzbw4/HD8ovhj8y9jcXaI9YecLGqaZqQoHFJGvJeMo2G9qbm/MbwzSN4VE++ojj9XFzfixOW1CWQZDVUUVDpQFI6inDBlEoYubUqxZEAZT/CKauyZJsNiUXPULDjuSl4JNe9e1w1mngt/aH9FFOZ/jdN6wd3dgmVZUZmAkhACdJPiUa85x/O2HHlbbfj/ps+LmyAOuEaB1GgMAqMjhbHowmJKm8RRWpTxV8t9hZd4q6hHQ9v2LNqRg0cVR+Fm+LNmPh7/1v5jMRS/F1/1LQe9ou00CkEgshOBczlwJgfekzu+f8NOW16bQIqokqmxCijlMcal6FGkV2kCQnuIqR1yYVNjx7rraZuBg6rlqN+/s17m58N/mFJzzl8sfyc20aCjwItIJxxnYtz7ZPwncW0C0UiMEGjtMcajjZ3FYZGFR5pkTUkQqAjGjpSjuTINO6g8h73mU+U34w/GL97INy/z9LxoG8DXVoulosTIiFYBXSRxaDOLo/DI0iELl8zCyuTLauqJohqpm55FM7GMitNYXdctZjJ/J9cWQSQCJSJKJXcKVTiUcbNAHNKk6xLlJaYaKZuRuhlo24HjouXE5eLFzP64NoEIBFJcWuI7lA5IE66MjWVp0xwEUHMXJlUZdGUpqpFF23PUOE4usnVXZn9cW4olZncKpZIohAwIlSbmwjiE8YgiIMqAMJfp1mxeXI80bc9BO3EcU/Hidd1nJvPTuDaBSARSpJ4RQgbkbGYsZERqjzAB5kuUAVVapHHowlI0E3U7sFj0nBi4k8+IZPbEtaZYak6xpIjJNU/EZImvAuiI0OnrEcAEpEmTd10kC/y03Os43eaJemY/XGMEmTsOzQ5h4slXdXmF5OptQrp0Wv7VpaUoR6p6ZFl5jlC8kQ0dMnvg+uYgc4olZOTKgFWQ0iyVIgcygr6MKCGtbGmPLhymtlT1SFOn5d47ebk3sweucZkXpIizV/GlHT6IuWfEZYMVROqdjYppEm9C6hFRWEwxUVUTKx05ClkgmefPNUaQtIoVuXTIuzQnFk98w+WVJu+XTVRk4VHGp05D1cSi9ByG4rpuNZP5iVybQC47n14KIwZBDBDDhyoNrhqozLb3Kk3WlXEYYykLy7L0HKA4rb6W5yGZ58q1CcQT505DSSRJIMl3Ff8RnYcuRaL93IrLo0uXarNKxyJKTmN5XbebyXwk1yqQEJI4QpBJHE4SZ5v7eNkP4omGjqg4l6B4pE6lKUU5UdcTCyk4CFkgmefLtQlkFA4f5sgRxZUhcfQqRRAv5jzsUiTzpF2mybo0AW08RZnmIY0JrLJAMs+ZaxPIIBzT3PXUu9TcMThFtHN7riDmiySSOYKgwtyGKyB1QBtHWVjawrOM6rpuN5P5SK5NIFsxMTiJczoJxCaBBJf6QGBTypVab6WfEQKEAua6LaUdWluMcVQm0CI5zN69mefItQnkkZzoIkyTYprM4ygyCyW6yzQrtd96PBeZ90PmfRGlPVp7ChVoo+JunqhnniPXJpD3hi+LnsA4Jit7Z02KIlYRrUrRwz8RReauQo+jybzkq1MkKQpPiWAV835I5vlxrYct1sIzWDkLRKfmKNPcR9saovUIIYkxIIT4QKdT5n7ZQkaUThP2WkIb8jn1zPPj2gXSWc00zU1R5g5CYUqRRFrJZTPxKGPaUPRJJGKu/pUyIGXAaE+lA43LAsk8P65VIBdypBsLxtEwjUkgbjSEMfXRDqNBYiGIVMAYgcs9ErgqQbk8lVjpQGP31/E0c/u41qftTA5cWMUwFAx9iR0L3KiTSCZNmAxhNMRJESeZloCDTJHkMtUSzALxlCZQI3mr/GZeyco8F65VIH8+/prY4Nn2hmFI/bOnvsCNBj9o/PhYJOFKNJro5Txpv2wsH9GXKVaUHOSJeuY5ce2OCI+E47zTnHQV/a6ibkuqoUD3BdKk7qUyiFTNK1JgiF4S3LzzHgWIZB9U6EiFpM0CyTwnrl0g76uBh8MBd7cVq1VFO1SMuyHZj2qPikkQQqWz65A+j5f7JV4g5jTLGEcpBItc+p55Tlz7jPd92XE2R5Hdrqbf1gxdxdQX2L7E96n9rx90eh3TUrCfNN5pQki3KGVKs2odqJC8mechmefAtQvkP42/Lu4Jy3mv2WxqdruaoasZNjVTX2L7EtcXV0IJoyYMGj+mjUVv1VWaJWVEyUgZJe31B79M5vk8Ze+pHQ9swUlnWGxrqmrCzHakEFFeoZRPdkAiEoJME/lJE3wSiCDtiygRMQjqmAWSuX6ey6bC38gt94TjUadZrxu225q+qxl2FeOuwvYF01BghwI7plc3mrQk7NRVyTyAFEnVZdS8Xn09p1mZa+W5/Bl+NPyWeNd8N77iVqw6Q7OrKcsJbVKXFG8VprSEMrVlCz5FkGks8E7jvSIEeTUf0QiqqDkKJar8RhQIDBJPZCcc92+olX7mxeO55Sk/llteFw1HXcFyXVGVqYwdwPskAuNT59tUHq9TeYo1OKfwXhKCwEcQUVBExTIW1FFjUBRREYgMwnFYfjt+b/xCFknmY/PcBPL2+CXxnvn9eOo07c5QFQ1aO0Dg6wFfKYJXjwXiFNbONVyTxnmVih69IIqIRtDGAh0lTZSYZChELwJV1BTFd+IjOZJ7HGY+Ds91pvu23HIiK6qhpNoUGNNCFDinqHyKElLEFDHcHEGcInjJNBomq3BB4InoKGhR1FGyiAoz2wmNBMoo0EhKFEfF78a1sPx4/FIWSuapea4C+eH4RXFS/ItYR0m5LSh0cj6xTuGcwo4mtYWeUyrr0iQ9BMkwFgxW0nmJEx4N6ChZRUWNpCBtKCZxCFQQlFHRC8dCWEz5rfjXN6z/Xebms5cH5h+a78bP+AWfEpq7C8uqsbTtSFVOaOXxQeJm0fi53GQYDPc3BT/sFI+EIwA1kmVULCSUKiAF+CjYWUlHYCM809wociMmNnKkE44ez1o4zoffyoLJ/FT2spnwF+oCjUT7Br8xWC+wTlKXBm08MQimSeO8xIW0BzJ5yW5SDAQ8YBCUUVAgKJSn0BEjk1O8lpHCSkzQOCKrGFkJhQ0VnogVkQHPWfEv4n+Y/ucsksxPZG8Px6vV1+MvuSPeDBWn0XBYetoynT0PUTA5gQ0S70FJcEHwcJTcExZLpLmMHkKwKAKlDlQmtVrwQTA4yWAlPghGL3BRJG86EQlRMBBYC897wvJ9fc5f5VWvzEew14fijfIb8XP+kDdCxVFUNEJQ6UCM6aGeYnIF0vMK1RrPA+EQwAGKZZSsFDQmUJtAXQSMDAgB1gtGJwlREJJfNkZFSp0KInsrWQ+aB6PkPWH5gdry/9hfySLJfIC9PxBvlt+Mn/EHnIaSJZIySiKRSUTG2cGhQiAiXAjPWgQMgpOoOIialYo0RaApPG0RqEqLUoEQJNbJq+O7WnvK0lGWFiEC1mq6ruRiW3J/a3jXwvfVwP/p/vu9vyeZm8ONeBjeKr8ZXw0tq1BRI/CAJeJE+mtfRoUGtsIxCkcbCk6j4SgqDhUsyiSQRelpmvFqAzJGkZr4yEBRJCPspu2RKmAnTd9V7Lqa9brh/YuSH24Nf6p2/F/uf7gR70tm/9yIir+/Gb8ozqqvxNdlTR01gYglEEU6p4iDn60AAAlBSURBVF5j0FEwCk8gghQsvSKgCFc1WkkISnmKwqGVT44o89fKOrWXLusBrRzOadqxZNFVtM1AXS8w9xf4i4bOfDf+e/tPskgyN0MgABfDb4uLn/Bvq+orsUXhiBQx1WMtRcEUIzbINMcQIFXqy26Moywm9GW3qsJSliNV21MtBqT2BC+xQ0HVlZT1SFGkMpfRHXDeLXi3/Gb8wfjFLJJbzo0RyE9jPfy2WD/xuSi/EZeyoIuKRZSEwNUKlZQRrTxVPWIKiyksRTlRLgaqRU/Z9qjSE5zEDQVlO1I2I1o7YoRx0pz/6ID3/CE/2NeAMzeGF9JD58fjl8S5GNmJgCXi5yVcMXfUVTp1pyqrkarpaQ52NAc76sMd5XFHcbylPN1Sn25oTy9YnK45uHPO0ek5p8dr3jgceStUfK78di6nv+W8EBHko3ggR+4EyyA0YU67kkgiSnm0cRTVSLUcKNuBatVhDnrMwQ5ReggkJ5WhQNVzFbFVDH3FnXXL6+sj3nKHfG+/w8zsmRcyggDcG74sLuTIlsDo017HZZtppdLE3FQWU02Uix69GjCHW+TxgDwZkKcD6rTDnG4pTzZUp1uaox3LgzVHRxteW018IhZ8pvxWjiK3mBc2ggA8EgMb0TIGg5/bvQmSp6/SLk3Qqwm9GDHLHnk4IQ5HhPEACJfcU2TtKKIgDJp2V3Gw3nByuOK1i0M+5Q/4/p7HmdkfL2wEAfjB+EVxIUdGYto195KIeMIZ3qOrCVVPqOWIWI2IyhKbdNGOiMWIPBxQxz3msKdedbSrLYcHW+4uLK+Hkldy89BbywsdQSDZm25Ey2gF1ipCeCwQZTyqdOhmQiwnRG2JtSeWqahRBBDepcahXmK2O8pVTbPqWB7sOF6O3LlY8qZfcG/fA83shRc6ggD82fhrYiM8nVNYn86tx8hVBJGFR1QWagelI1SRUEZCHQlNxNcQ6oioJ8RqQi/TcnDTdiyXPaeV505o9z3MzJ544QUCcCYmNh76KZ0jifGJNKtwiMojCk8oI7GIhAJiAaFM4gg1xNojlhN6MVC0A1XT0zY9B7XnJCpOcuu3W8lLIZCHsmctPLtJpSO6l26MKvVcF6UH7YkGgoGoI1HNl06iiUVElA7VTuh2omxH6nZgUVlWUfF6aPY8ysw+eCkE8qfTPxVnwrEeFeOQ+iFGxNwtN4IJSSAa0BAlRDVfEqKGUAClg8ah5uXhqh6verQfhmrfw8zsgZdCIAAPZM8mRkarcFangyTMhtgqEDUpYogIT4gDlbpbxSISTUTUjwVSFBNVNdGawCLmzla3kZdGIO/JjnPh6CaF88kJJe0cRpAxjVQBco4ack6x5m+LKqVeGI8qLbqwmHKiLCzl3Jckc/t4aX7rfz3+hjgTnt2YmoZ6nyxLr5qCkj6MgiQawXzNIpkFJHRAGJeWh41LLah1uLIVytwuXhqBQNoT2drLvuw6bRyGuc30JYKrqMGVYCCKSFSADEkket5H0R4jIwrBK9kL+NbxUgnkoezZhsg4prbTqQGPBC9gLonnw4+4+NDHEtBpci9VSAeuZHKUNzFHkdvGSyWQvxy/ILYi0PcldprbJ1gFViE84OfsKqTehzzu+vYE6YtCzK8yICXo2ZAuc7t4qQQCcC4cu1GlrrpTasgTRwVOIlyKJIRUZkIkpV+zIfbj6JIKH5Phw3wQC5BZILeOl04g9+XARZ8MGWxX4AdD7BVYjbApeghP6s1+KY5LscyiSClZcnSM8XHmlQVy+3jpBHJP7ngwKHZdavXmuoLQF8RRISeRROI/eBHmjx3gJdEJghdXXXaFABBZILeQl04gfzX+hngoHBfrhn5XM3UVvithZxCjQI4C4cWHRCIQk0BYQXSSaC+77KbixxABYpbHLeSlEwjAO3Li0aZgu24ZdyVuVxK2BgaDHECOINylUFJUkSOIScCoCWORGojOfUpCEARuiIlY5rnyUgrkh+qC97YFm21Lv62x2wK/qYhdgRgksp8jyZSEIQeBGAWMhthrgtX4yTxuwxAE7m+tD2duAy+lQL43fkG8h+X8oqHbNgzbBreriOsCuiIJpGd+FUkgvSYOhrjT+N7gJoOzBus0k5NMIqbyrsyt4oU/UfiT+JEceLCu2JwvOdrUtJsSf1EimuRgIr0FnZwbmVQSx7rAbytcV+BGjbWGaTIMVjIRsFkit46XViB/pc55Z/1JPn2x4OSipV036OWILBwyCvASoQNEiE4R1yVhXeC2FXZXMXYl01AwjobeSnrh2Am372FlnjMvrUB+NH5JvC3/ID58uOSV9YLVuqFsB6TxmCAQg4LSpzqsURE3BnvRYNepd/vQVfRdRd8XbJxgpxzv5/bSt46XViAA31dbfunigNcfrVgdrjH1hFCRMCn0MCKrCUEkWI3rKuy6ZtzUDOuKoavph5JuUgxEtmLa93Aye+ClFsj/a39F/APxf8S3HhxwdLymqCaIUI0aPxhU5RAyEpzEd4Zh3dCvG7pdy27TsNtVbAbFWni2MgvkNvJSCwTge6rj048ajh8coQtL8BI3GcphQJcTUoXZ6b1k2NTsLpI4ttuGzbZiPWjWYuQsR5BbyUsvkP/b/Y/iP/P/Jt69d4jWDmc101hS9x1FPSJVJAaBHQzdpmG3WbC5WLDZ1px3mosQuVAT7w5fzvOPW8hLLxCAP9NbTh+ukOKEaTSsuorlaCirCaVdEshU0O1q1hcLLtYLzjcV573mkXCcy2HfQ8jsiVshkH9r/7G4I/91DPdreis5HQumyVA3A8akPfJpKOZ2bC0Xm5IHW8MDH3kkHQ+zQG4tt0IgAH9k3mdyd+jOCrpJMQ4Fi0V/1c/QWs12W/NoW3DRK+5bwT1huad2vJPTq1vLrfrFH1dfjb/sTvicb/hEAcetvWoLPTrJRa95OCi2BO4Lx4/1lj+afvVWvUeZD3Irf/n/yPx+/KxvOY2GVgcisHOSLZ6HwnEhHQ9kxx9P/8utfH8yj7m1D8B/Z74bX/cNNZJAZCcCZ3LkTAycyTGnVRngFgsE4JfK342LaJjwXIiJ3NU2k8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJZDKZTCaTyWQymUwmk8lkMplMJpPJZDKZzG3n/weKDv3I2TPsswAAAABJRU5ErkJggg==",[[51.5458424852884,-0.21538232016094],[51.4891127304734,0.00787303223651058]],0.7,null,null,null]},{"method":"addRectangles","args":[51.4891127304734,-0.215382320160948,51.5458424852884,0.00787303223650978,null,null,{"interactive":true,"className":"","stroke":true,"color":"#333333","weight":2,"opacity":0.5,"fill":false,"fillColor":"#333333","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#F0F921 , #F0F921 0%, #FBA738 20%, #E16562 40%, #B12B90 60%, #6B01A6 80%, #0D0887 100%, #0D0887 "],"labels":["0.00","0.02","0.04","0.06","0.08","0.10"],"na_color":null,"na_label":"NA","opacity":1,"position":"bottomright","type":"numeric","title":"Hit score","extra":{"p_1":0,"p_n":1},"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[51.4891127304734,51.5458424852884],"lng":[-0.215382320160948,0.00787303223651058]}},"evals":[],"jsHooks":[]}</script><p>Hitscores and Gini</p>
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># get hitscores</span>
-hs &lt;-<span class="st"> </span><span class="kw">geoReportHitscores</span>(<span class="dt">params =</span> p, 
-                         <span class="dt">source =</span> s, 
-                         <span class="dt">surface =</span> m<span class="op">$</span>geoProfile)
-hs
-
+<span class="kw">hs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geoReportHitscores.html">geoReportHitscores</a></span>(params = <span class="kw">p</span>, 
+                         source = <span class="kw">s</span>, 
+                         surface = <span class="kw">m</span><span class="op">$</span><span class="kw">geoProfile</span>)
+<span class="kw">hs</span>
+</pre></div>
+<pre><code>##   latitude longitude     hs
+## 1  51.5252   -0.0418 0.0825
+## 2  51.5012   -0.1421 1.0075
+## 3  51.5175   -0.1731 3.4475
+## 4  51.5321   -0.1238 1.9975</code></pre>
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># produce Lorenz plot</span>
-Gini &lt;-<span class="st"> </span><span class="kw">geoPlotLorenz</span>(<span class="dt">hit_scores =</span> hs, <span class="dt">crimeNumbers =</span> <span class="ot">NULL</span>)
-Gini
-
-<span class="co"># zoom</span>
-zoomLon =<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">-0.01</span>)
-zoomLat =<span class="st"> </span><span class="kw">c</span>(<span class="fl">51.51</span>, <span class="fl">51.54</span>)
-mapZoom &lt;-<span class="st"> </span><span class="kw">geoPlotMap</span>(<span class="dt">lonLimits =</span> zoomLon, 
-                      <span class="dt">latLimits =</span> zoomLat, 
-                      <span class="dt">params =</span> p,
-                      <span class="dt">data =</span> d, 
-                      <span class="dt">source =</span> s, 
-                      <span class="dt">surface =</span> m<span class="op">$</span>geoProfile)
-mapZoom
-
+<span class="kw">Gini</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geoPlotLorenz.html">geoPlotLorenz</a></span>(hit_scores = <span class="kw">hs</span>, crimeNumbers = <span class="kw">NULL</span>)
+</pre></div>
+<p><img src="Basic_Rgeoprofile_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<div class="sourceCode"><pre class="downlit">
+<span class="kw">Gini</span>
+</pre></div>
+<pre><code>## G_sources 
+##     0.976</code></pre>
+<p>Sigma</p>
+<div class="sourceCode"><pre class="downlit">
+<span class="co"># plot prior and posterior of sigma</span>
+<span class="fu"><a href="../reference/geoPlotSigma.html">geoPlotSigma</a></span>(params = <span class="kw">p</span>, mcmc = <span class="kw">m</span>)
+</pre></div>
+<p><img src="Basic_Rgeoprofile_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<p>Allocations and profile peaks</p>
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># plot allocation</span>
-<span class="kw">geoPlotAllocation</span>(<span class="dt">mcmc =</span> m)
+<span class="fu"><a href="../reference/geoPlotAllocation.html">geoPlotAllocation</a></span>(mcmc = <span class="kw">m</span>)
 
 <span class="co"># plot co-allocation</span>
-<span class="kw">geoPlotCoallocation</span>(<span class="dt">mcmc =</span> m)
+<span class="fu"><a href="../reference/geoPlotCoallocation.html">geoPlotCoallocation</a></span>(mcmc = <span class="kw">m</span>)
 
 <span class="co"># produce perspective plots</span>
 <span class="co"># probabilities</span>
-<span class="kw">geoPersp</span>(<span class="dt">surface =</span> m<span class="op">$</span>posteriorSurface, 
-         <span class="dt">aggregate_size =</span> <span class="dv">3</span>, 
-         <span class="dt">surface_type =</span> <span class="st">"prob"</span>)
+<span class="fu"><a href="../reference/geoPersp.html">geoPersp</a></span>(surface = <span class="kw">m</span><span class="op">$</span><span class="kw">posteriorSurface</span>, 
+         aggregate_size = <span class="fl">3</span>, 
+         surface_type = <span class="st">"prob"</span>)
          
 <span class="co"># ranked surface</span>
-<span class="kw">geoPersp</span>(<span class="dt">surface =</span> m<span class="op">$</span>geoProfile, <span class="dt">aggregate_size =</span> <span class="dv">3</span>)
+<span class="fu"><a href="../reference/geoPersp.html">geoPersp</a></span>(surface = <span class="kw">m</span><span class="op">$</span><span class="kw">geoProfile</span>, aggregate_size = <span class="fl">3</span>)
 
 <span class="co"># find centroids of data split by best grouping (placeholder for more thorough method)</span>
-ms &lt;-<span class="st"> </span><span class="kw">geoModelSources</span>(<span class="dt">mcmc =</span> m, <span class="dt">data =</span> d)
-ms
+<span class="kw">ms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geoModelSources.html">geoModelSources</a></span>(mcmc = <span class="kw">m</span>, data = <span class="kw">d</span>)
+<span class="kw">ms</span>
 
 <span class="co"># add peaks to map</span>
 <span class="co"># NB requires ggplot2</span>
-<span class="kw">library</span>(ggplot2)
-mapSource &lt;-<span class="st"> </span>mapGP <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(ms<span class="op">$</span>longitude,ms<span class="op">$</span>latitude), <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">pch =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">"red"</span>)
-mapSource
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
+<span class="kw">mapSource</span> <span class="op">&lt;-</span> <span class="kw">mapGP</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">ms</span><span class="op">$</span><span class="kw">longitude</span>,<span class="kw">ms</span><span class="op">$</span><span class="kw">latitude</span>), size = <span class="fl">6</span>, pch = <span class="fl">3</span>, col = <span class="st">"red"</span>)
+<span class="kw">mapSource</span>
 
-<span class="co"># plot surface in style of 'unknown pleasures', for fun</span>
-<span class="kw">unknownPleasures</span>(m<span class="op">$</span>geoProfile, <span class="dt">paper_ref =</span> <span class="st">"RgeoProfile 2.1.0"</span>)
+<span class="co"># # plot surface in style of 'unknown pleasures', for fun</span>
+<span class="co"># unknownPleasures(m$geoProfile, paper_ref = "RgeoProfile 2.1.0")</span>
 
-<span class="co">#------------------------------------------------------------------</span>
-<span class="co"># compare to alternative ring search strategy</span>
-<span class="co">#------------------------------------------------------------------</span>
-<span class="co"># compare to geoprofile based on ring search strategy</span>
-surface_ring &lt;-<span class="st"> </span><span class="kw">geoRing</span>(<span class="dt">params =</span> p, <span class="dt">data =</span> d, <span class="dt">source =</span> s, <span class="dt">mcmc =</span> m)
-gp_ring &lt;-<span class="st"> </span><span class="kw">geoProfile</span>(<span class="dt">surface =</span> surface_ring)
-<span class="co"># map of ring search geoprofile</span>
-mapRing &lt;-<span class="st"> </span><span class="kw">geoPlotMap</span>(<span class="dt">params =</span> p, 
-                      <span class="dt">data =</span> d, 
-                      <span class="dt">source =</span> s, 
-                      <span class="dt">surface =</span> gp_ring,
-                      <span class="dt">surfaceCols =</span> <span class="kw">c</span>(<span class="st">"red"</span>, <span class="st">"white"</span>))
-mapRing
-
-<span class="co"># hitscores of ring search geoprofile</span>
-hs_ring &lt;-<span class="st"> </span><span class="kw">geoReportHitscores</span>(<span class="dt">params =</span> p, <span class="dt">source =</span> s, <span class="dt">surface =</span> gp_ring)
-hs_ring
-
-<span class="co">#------------------------------------------------------------------</span>
-<span class="co"># incorporate GIS data</span>
-<span class="co">#------------------------------------------------------------------</span>
-<span class="co"># read in north London shapefile as mask and adjust surface</span>
-north_london_mask &lt;-<span class="st"> </span><span class="kw">geoShapefile</span>()
-
-<span class="co"># restrict mask to Tower Hamlets</span>
-TH_mask &lt;-<span class="st"> </span>north_london_mask[<span class="kw">which</span>(north_london_mask<span class="op">$</span>NAME <span class="op">==</span><span class="st"> "Tower Hamlets"</span>),]
-prob_masked &lt;-<span class="st"> </span><span class="kw">geoMask</span>(<span class="dt">probSurface =</span> m<span class="op">$</span>posteriorSurface, 
-                       <span class="dt">params =</span> p, <span class="dt">mask =</span> TH_mask,
-                       <span class="dt">operation =</span> <span class="st">"outside"</span>, <span class="dt">scaleValue =</span> <span class="fl">1e-9</span>)
-gp_masked &lt;-<span class="st"> </span><span class="kw">geoProfile</span>(prob_masked<span class="op">$</span>prob)
-
-<span class="co"># plot new surface</span>
-mapMask &lt;-<span class="st"> </span><span class="kw">geoPlotMap</span>(<span class="dt">params =</span> p, 
-                      <span class="dt">data =</span> d, 
-                      <span class="dt">source =</span> s, 
-                      <span class="dt">surface =</span> gp_masked, 
-                      <span class="dt">breakPercent =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dt">l =</span> <span class="dv">11</span>))
-<span class="co">#mapMask</span>
-
-<span class="co"># hs of masked surface</span>
-hs_mask &lt;-<span class="st"> </span><span class="kw">geoReportHitscores</span>(<span class="dt">params =</span> p, <span class="dt">source =</span> s, <span class="dt">surface =</span> gp_masked)
-hs_mask
-
-<span class="co">#------------------------------------------------------------------</span>
-<span class="er">}</span></code></pre></div>
+<span class="co"># ------------------------------------------------------------------</span>
+</pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

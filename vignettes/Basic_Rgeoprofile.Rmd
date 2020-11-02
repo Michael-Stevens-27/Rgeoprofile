@@ -9,20 +9,29 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+# Introduction
 
-```{r, eval = FALSE}
+In this tutorial, we will walk through the step-by-step process of running an analysis using the R package, RgeoProfile. The general structure to using this package is as follows:
 
-# RgeoProfile: Dirichlet Process Mixture (DPM) model of geographic profiling
+* Loading and checking our data - we must ensure it's in the correct format for analysis. 
+* Setting up the parameters for the model and the MCMC algorithm.
+* Running the MCMC algorithm. 
+* Visualising the output of the model, for example the geoprofile.   
+
+First things first, we must load the package. Assuming the RgeoProfile package was [installed correctly](https://michael-stevens-27.github.io/Rgeoprofile/articles/installation.html), we can load in the package using `library(RgeoProfile)`. In addition to this we will be using the leaflet and raster packages for creating maps.  
+
+```{r, eval = TRUE, message = FALSE}
+# load prequired packages
+library(RgeoProfile)  # to run the analysis
+library(leaflet)      # to create interactive maps
+library(raster)       # for general spatial analysis
+```
+
+# Load and check data
+
+Next, we need to load in some data for the model to analyse. The package comes with some pre-made data that can be accessed via the `LondonExample_crimes` and `LondonExample_sources` objects. These consist of a set of longitudinal/latitudinal points and the source locations (also in long/lat format) that are responsible for said crimes. Normally we would read in our data using the `read.table` or `read.csv` functions but since the example data is provided to us, we will use this instead. We will also process the data using the `geoData()` and `geoDataSource()` functions to ensure that the data are in the correct format for running the model.    
  
-#  Carries out a DPM mixture model of geographic profiling (and associated functions) as described in Verity et al. (2014) For links to papers see http:/www.sbcs.qmul.ac.uk/staff/stevenlecomber.html or contact Steven Le Comber (s.c.lecomber@qmul.ac.uk). Created and maintained by Bob Verity (r.verity@imperial.ac.uk).  
- 
-# RgeoProfile: Dirichlet Process Mixture (DPM) model of geographic profiling
- 
-#  Carries out a DPM mixture model of geographic profiling (and associated functions) as described in Verity et al. (2014) For links to papers see http:/www.sbcs.qmul.ac.uk/staff/stevenlecomber.html or contact Steven Le Comber (s.c.lecomber@qmul.ac.uk). Created and maintained by Bob Verity (r.verity@imperial.ac.uk).  
- 
-#------------------------------------------------------------------
-# data and settings
-#------------------------------------------------------------------
+```{r, eval = TRUE, message = FALSE}
 # example data
 d <- LondonExample_crimes
 s <- LondonExample_sources
@@ -32,35 +41,80 @@ s <- LondonExample_sources
 # format; these steps are only relevant if for example d and s are 
 # imported as two-column matrices. They are included here for
 # completeness)
+
 d <- geoData(d$longitude, d$latitude)
 s <- geoDataSource(s$longitude, s$latitude)
 
+print(d)
+print(s)
+```
+
+Here we can see that we've got a set of 50 long/lat points and four source locations. 
+
+# Build a parameters objects
+
+Next we need to set the parameters that will govern the model that we are running. We do this using the `geoParams()` function. Firstly we feed this function our data object `d` using the `data` argument. Next we define our prior on the dispersal parameter sigma. This can be deinfed in a few different ways but we will stick with expressing out prior knowledge on sigma by stating our mean (`sigma_mean`) and variance (`sigma_var`) on it. Next we specify the MCMC parameters for the model. We set the length of the burn in (`burnin`) period and the number of sampling iterations (`samples`) as well as the number of MCMC chains to run in parallel (`chains`). Finally we set some parameters for controlling spatial extent and the resolution of the geoprofile. This is done via the `longitude_cells`, `latitude_cells` and `guardRail` arguments. To customise the priors and MCMC algorithm further, see the `geoParams()` documentation for the full list of arguments and defaults.  
+
+```{r, eval = TRUE}
 # set model and MCMC parameters
-p = geoParams(data = d, 
-              sigma_mean = 1, 
-              sigma_squared_shape = 2, 
-              chains = 5, 
-              burnin = 1e3, 
-              samples = 1e4)
+p <- geoParams(data = d, 
+               sigma_mean = 1, 
+               sigma_var = 5, 
+               chains = 5, 
+               burnin = 1e3, 
+               samples = 1e4,
+               longitude_cells = 200, 
+               latitude_cells = 200, 
+               guardRail = 0.1)
 
-#------------------------------------------------------------------
-# run model
-#------------------------------------------------------------------
+print(p)
+```
+
+Here we can see the full list of model and MCMC parameters that we will be using. Now that we have set up a parameters object we can now run the model. 
+
+# Run the model
+
+Running the MCMC algorithm itself is straightforward. We run the model using the `geoMCMC()` function. We provide this function with our `data` and our `params`. 
+
+```{r, eval = TRUE}
+
 # run MCMC
-m = geoMCMC(data = d, params = p)
+m <- geoMCMC(data = d, params = p)
 
-#------------------------------------------------------------------
-# output
-#------------------------------------------------------------------
-# plot prior and posterior of sigma
-geoPlotSigma(params = p, mcmc = m)
+```
 
+
+Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (REF). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (REF). 
+    
+# Visualise output
+
+The top parameter of interest that we are trying to estimate are the source locations responsible for generating the data. So first we want to have a look at our geographic profile. We generate the geographioc profile using the `geoplotmap2()` function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the `params` and `surface` arguments. 
+
+```{r, eval = TRUE}
 # plot profile on map
-mapGP <- geoPlotMap(params = p, 
-                    data = d, 
-                    source = s, 
-                    surface = m$geoProfile)
-mapGP
+geoPlotMap2(params = p,
+            surface = m$geoProfile)
+```
+
+This does not tell us too much. The `geoplotmap2()` function can be customised to display more information on the map. Let's add the sources and the crimes onto the map, as well as a legend that describes the colours we are seeing. 
+
+```{r, eval = TRUE}  
+geoPlotMap2(surface = m$geoProfile,
+            params = p,
+            data = d, 
+            source = s, 
+            surfaceCols = rev(viridis::plasma(10)),
+            threshold = 0.1,
+            opacity = 0.7,
+            crimeCex = 2,
+            sourceCex = 3,
+            gpLegend = TRUE)                       
+```
+
+Hitscores and Gini
+
+```{r, eval = TRUE}
+
 
 # get hitscores
 hs <- geoReportHitscores(params = p, 
@@ -71,17 +125,20 @@ hs
 # produce Lorenz plot
 Gini <- geoPlotLorenz(hit_scores = hs, crimeNumbers = NULL)
 Gini
+```
 
-# zoom
-zoomLon = c(-0.1, -0.01)
-zoomLat = c(51.51, 51.54)
-mapZoom <- geoPlotMap(lonLimits = zoomLon, 
-                      latLimits = zoomLat, 
-                      params = p,
-                      data = d, 
-                      source = s, 
-                      surface = m$geoProfile)
-mapZoom
+Sigma
+
+```{r, eval = TRUE}
+
+# plot prior and posterior of sigma
+geoPlotSigma(params = p, mcmc = m)
+
+```
+
+Allocations and profile peaks
+
+```{r, eval = FALSE}
 
 # plot allocation
 geoPlotAllocation(mcmc = m)
@@ -108,55 +165,9 @@ library(ggplot2)
 mapSource <- mapGP + geom_point(aes(ms$longitude,ms$latitude), size = 6, pch = 3, col = "red")
 mapSource
 
-# plot surface in style of 'unknown pleasures', for fun
-unknownPleasures(m$geoProfile, paper_ref = "RgeoProfile 2.1.0")
+# # plot surface in style of 'unknown pleasures', for fun
+# unknownPleasures(m$geoProfile, paper_ref = "RgeoProfile 2.1.0")
 
-#------------------------------------------------------------------
-# compare to alternative ring search strategy
-#------------------------------------------------------------------
-# compare to geoprofile based on ring search strategy
-surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
-gp_ring <- geoProfile(surface = surface_ring)
-# map of ring search geoprofile
-mapRing <- geoPlotMap(params = p, 
-                      data = d, 
-                      source = s, 
-                      surface = gp_ring,
-                      surfaceCols = c("red", "white"))
-mapRing
-
-# hitscores of ring search geoprofile
-hs_ring <- geoReportHitscores(params = p, source = s, surface = gp_ring)
-hs_ring
-
-#------------------------------------------------------------------
-# incorporate GIS data
-#------------------------------------------------------------------
-# read in north London shapefile as mask and adjust surface
-north_london_mask <- geoShapefile()
-
-# restrict mask to Tower Hamlets
-TH_mask <- north_london_mask[which(north_london_mask$NAME == "Tower Hamlets"),]
-prob_masked <- geoMask(probSurface = m$posteriorSurface, 
-                       params = p, mask = TH_mask,
-                       operation = "outside", scaleValue = 1e-9)
-gp_masked <- geoProfile(prob_masked$prob)
-
-# plot new surface
-mapMask <- geoPlotMap(params = p, 
-                      data = d, 
-                      source = s, 
-                      surface = gp_masked, 
-                      breakPercent = seq(0,25,l = 11))
-#mapMask
-
-# hs of masked surface
-hs_mask <- geoReportHitscores(params = p, source = s, surface = gp_masked)
-hs_mask
-
-#------------------------------------------------------------------
-}
-
-
+# ------------------------------------------------------------------
 
 ```

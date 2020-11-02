@@ -3,8 +3,9 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Acknowledgements: Acknowledgements.html
+  Advanced_Rgeoprofile: Advanced_Rgeoprofile.html
   Basic_Rgeoprofile: Basic_Rgeoprofile.html
   Install_R: Install_R.html
   installation: installation.html
-last_built: 2020-11-02T11:19Z
+last_built: 2020-11-02T16:54Z
 

@@ -16,6 +16,8 @@ Imports:
     fftwtools,
     ggplot2,
     ggmap,
+    leaflet, 
+    leaflet.minicharts,
     pkgdown,
     RColorBrewer,
     rgdal,

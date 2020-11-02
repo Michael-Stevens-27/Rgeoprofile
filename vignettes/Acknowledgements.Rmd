@@ -11,7 +11,7 @@ vignette: >
 ## Organisers and contributors
 
 * [Dr. Freya St John](https://www.bangor.ac.uk/natural-sciences/staff/freya-st-john/en)
-* [Dr. Leejah Dorward](https://www.bangor.ac.uk/natural-sciences/staff/leejiah-dorward/en)
+* [Dr. Leejiah Dorward](https://www.bangor.ac.uk/natural-sciences/staff/leejiah-dorward/en)
 * [Michael Stevens](https://www.qmul.ac.uk/sbcs/staff/michaelstevens.html)
 
 ## Institutions
