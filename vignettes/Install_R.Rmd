@@ -127,11 +127,19 @@ When you first open Rstudio you will be welcomed with this interface.
 
 The intereface should consist of four main panels: 
 
-1. The script window - This is where you will write all of your code. This is also the file that can and will be saved and shared with collaborators. 
-2. The terminal window - Once you have written your code, you will need to run it. The terminal window is where you will run your code and read off the output.
-3. The environment window - This panel lists off all the different R objects in the current R session. We can see an example here, that `x` is equal to `5`. 
-4. Help window - This panel is responsible for many things as we can see across the tabs:
-       * Files - This shows the current directory that we are in. This will be useful later for accessing data. 
-       * Plots - If we've written some code to plot a graph, this will show up in the window once we've run the relevant code. 
-       * Packages - This will list off all the packages that are currently installed on your computer.
-       * Help - This window will pop open anytime you run some code seeking help with a particular function. For example, running `?sd` will display the documentation on the `sd` function.  
+1. The **top left** panel is the script window; this is where you will write all of your code. This is also a file that can be saved and shared with collaborators.
+2. Once you have written your code, you will need to run it. The **bottom left** panel consists of the following tabs:
+       * *Console* - This is the window where you will be running your code and reading off the output. A line of code can be sent from the script to the console by clicking on the relevant line of code and hitting `Ctrl ENTER` on the keyboard. 
+       * *Terminal* - This allows you to access the command prompt from Rstudio without having to pull another window up.
+       * *Jobs* - This tab allows us to run some code in the background whilst allowing us to continue using Rstudio. 
+3. The **top right** panel displays a few different pieces of information:
+       * *Environment* - This will list the different R objects in the current R session. We can see an example here, that `x` is equal to `5`.
+       * *History* - This gives us a list of each piece of code we have sent to the terminal window
+       * *Connections* - Allows us to connect to data bases, making data importing and manipoulation an easier process. 
+       * *Tutorial* - Displays tutorials built via the `learnr` package.
+4. The **bottom right** panel is also responsible for many things as we can see across the tabs:
+       * *Files* - This shows the current directory that we are in. This will be useful later for accessing data. 
+       * *Plots* - If we've written some code to plot a graph, this will show up in the window once we've run the relevant code. 
+       * *Packages* - This will list off all the packages that are being used in the current R session. 
+       * *Help* - This window will pop open anytime you run some code seeking help with a particular function. For example, running `?sd` will display the documentation on the `sd` function.  
+       * *Viewer* - This will display a preview of any HTML documents or shiny apps that you are building. 
