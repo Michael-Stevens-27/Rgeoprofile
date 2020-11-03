@@ -96,7 +96,7 @@ geoPlotMap2(params = p,
             surface = m$geoProfile)
 ```
 
-This does not tell us too much. The `geoplotmap2()` function can be customised to display more information on the map. Let's add the sources and the crimes onto the map, as well as a legend that describes the colours we are seeing. 
+This does not tell us too much. The `geoplotmap2()` function can be customised to display more information on the map. Let's add sources and crimes onto the map, as well as a legend that describes the colours we are seeing. 
 
 ```{r, eval = TRUE}  
 geoPlotMap2(surface = m$geoProfile,
