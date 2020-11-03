@@ -593,45 +593,47 @@ geoPlotMap2 <- function(params,
                                   stroke = FALSE, 
                                   fillOpacity = opacity)
     }
+    
+    if(!is.null(surface)){
+      
+      # make a raster from the surface
+      surface <- raster(apply(surface,2,rev),
+                             xmn = fullExt[1], 
+                             xmx = fullExt[2],
+                             ymn = fullExt[3],  
+                             ymx = fullExt[4],
+                             crs = CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"))
+                   
+      # apply smoothing
+      if (smoothing > 1.0) {
+        surface <- disaggregate(surface, smoothing, method = "bilinear")
+      }
 
-    # make a raster from the surface
-    surface <- raster(apply(surface,2,rev),
-                           xmn = fullExt[1], 
-                           xmx = fullExt[2],
-                           ymn = fullExt[3],  
-                           ymx = fullExt[4],
-                           crs = CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"))
-                 
-    # apply smoothing
-    if (smoothing > 1.0) {
-      surface <- disaggregate(surface, smoothing, method = "bilinear")
-    }
+      # apply threshold
+      geoprofile_mat <- matrix(values(surface), nrow(surface), byrow = TRUE)
+      geoprofile_mat[geoprofile_mat > threshold*100] <- NA
+      surface <- setValues(surface, geoprofile_mat)
 
-    # apply threshold
-    geoprofile_mat <- matrix(values(surface), nrow(surface), byrow = TRUE)
-    geoprofile_mat[geoprofile_mat > threshold*100] <- NA
-    surface <- setValues(surface, geoprofile_mat)
+      # overlay raster
+      myplot <- addRasterImage(myplot, x = surface, colors = surfaceCols, opacity = opacity, project = FALSE)
 
-    # overlay raster
-    myplot <- addRasterImage(myplot, x = surface, colors = surfaceCols, opacity = opacity, project = FALSE)
+      # add bounding rect
+      myplot <- addRectangles(myplot, 
+                              xmin(surface), 
+                              ymin(surface),
+                              xmax(surface), 
+                              ymax(surface),
+                              fill = FALSE, 
+                              weight = 2, 
+                              color = grey(0.2))
 
-    # add bounding rect
-    myplot <- addRectangles(myplot, 
-                            xmin(surface), 
-                            ymin(surface),
-                            xmax(surface), 
-                            ymax(surface),
-                            fill = FALSE, 
-                            weight = 2, 
-                            color = grey(0.2))
-
-    # add hitscore legend
-    if (gpLegend == TRUE) {
-      hitscore_sequence <- seq(0, threshold, threshold / (length(surfaceCols) - 1))
-      pal <- colorNumeric(palette = surfaceCols, domain = hitscore_sequence)
-      myplot <- addLegend(myplot, "bottomright", pal = pal, values = hitscore_sequence, title = "Hit score", opacity = 1)
-    }
-  
+      # add hitscore legend
+      if (gpLegend == TRUE) {
+        hitscore_sequence <- seq(0, threshold, threshold / (length(surfaceCols) - 1))
+        pal <- colorNumeric(palette = surfaceCols, domain = hitscore_sequence)
+        myplot <- addLegend(myplot, "bottomright", pal = pal, values = hitscore_sequence, title = "Hit score", opacity = 1)
+      }
+  }
   
   # plot map
   return(myplot)

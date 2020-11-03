@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate hitscores — geoReportHitscores • Rgeoprofile</title>
+<title>Example Card sources — card_source • Rgeoprofile</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate hitscores — geoReportHitscores" />
-<meta property="og:description" content="Calculate hitscores of the potential sources for a given surface (usually the geoprofile)." />
+<meta property="og:title" content="Example Card sources — card_source" />
+<meta property="og:description" content="Old residence and qmul longitude latitude associated with card usage across london." />
 
 
 
@@ -152,43 +152,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate hitscores</h1>
+    <h1>Example Card sources</h1>
     
-    <div class="hidden name"><code>geoReportHitscores.Rd</code></div>
+    <div class="hidden name"><code>card_source.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate hitscores of the potential sources for a given surface (usually the geoprofile).</p>
+    <p>Old residence and qmul longitude latitude associated with card usage across london.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoReportHitscores</span>(<span class='kw'>params</span>, <span class='kw'>source</span>, <span class='kw'>surface</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>card_source</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>params</th>
-      <td><p>input parameters in the format defined by geoParams().</p></td>
-    </tr>
-    <tr>
-      <th>source</th>
-      <td><p>longitude and latitude of one or more source locations in the format defined by geoDataSource().</p></td>
-    </tr>
-    <tr>
-      <th>surface</th>
-      <td><p>the surface from which to calculate hitscores. Usually an object produced by geoProfile().</p></td>
-    </tr>
-    </table>
 
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>an object of class <code>list</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># John Snow cholera data</span>
-<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>latitude</span>)
-<span class='kw'>s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoDataSource.html'>geoDataSource</a></span>(<span class='kw'>WaterPumps</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>WaterPumps</span><span class='op'>$</span><span class='kw'>latitude</span>)
-<span class='kw'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(data = <span class='kw'>d</span>, sigma_mean = <span class='fl'>1.0</span>, sigma_squared_shape = <span class='fl'>2</span>)
-</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p, lambda=0.05)</span>
-<span class='co'>#geoReportHitscores(params = p, source = s, surface = m$geoProfile)</span>
-
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='kw'>card_crime</span><span class='op'>$</span><span class='kw'>latitude</span>, <span class='kw'>card_crime</span><span class='op'>$</span><span class='kw'>longitude</span>, xlab = <span class='st'>"lon"</span>, ylab = <span class='st'>"lat"</span>)
+</div><div class='output co'>#&gt; <span class='error'>Error in plot(card_crime$latitude, card_crime$longitude, xlab = "lon",     ylab = "lat"): object 'card_crime' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span>(<span class='kw'>card_source</span><span class='op'>$</span><span class='kw'>latitude</span>, <span class='kw'>card_source</span><span class='op'>$</span><span class='kw'>longitude</span>, pch = <span class='fl'>15</span>, col = <span class='st'>"blue"</span>)
+</div><div class='output co'>#&gt; <span class='error'>Error in points(card_source$latitude, card_source$longitude, pch = 15,     col = "blue"): object 'card_source' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

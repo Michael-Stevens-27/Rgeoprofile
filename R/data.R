@@ -1,5 +1,38 @@
 
 #------------------------------------------------
+#' Example Card crimes
+#'
+#' Locations package authors have used credit cards around london.
+#'
+#' @docType data
+#'
+#' @format an object of class \code{list}.
+#'
+#' @usage data(card_crime)
+#'
+#' @examples
+#' plot(card_crime$latitude, card_crime$longitude, xlab = "lon", ylab = "lat")
+#' 
+"card_crime"
+
+#------------------------------------------------
+#' Example Card sources
+#'
+#' Old residence and qmul longitude latitude associated with card usage across london. 
+#'
+#' @docType data
+#'
+#' @format an object of class \code{list}.
+#'
+#' @usage data(card_source)
+#' 
+#' @examples
+#' plot(card_crime$latitude, card_crime$longitude, xlab = "lon", ylab = "lat")
+#' points(card_source$latitude, card_source$longitude, pch = 15, col = "blue")
+#' 
+"card_source"
+
+#------------------------------------------------
 #' Example London crimes
 #'
 #' Dummy crime sites simulated using rDPM() and centred on Queen Mary University of London.
@@ -65,4 +98,3 @@
 #' points(WaterPumps$latitude, WaterPumps$longitude,  pch = 15, col = "blue")
 #' 
 "WaterPumps"
-

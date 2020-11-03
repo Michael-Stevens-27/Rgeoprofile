@@ -9,6 +9,50 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+Sigma
+
+```{r, eval = FALSE}
+
+# plot prior and posterior of sigma
+geoPlotSigma(params = p, mcmc = m)
+
+```
+
+Allocations and profile peaks
+
+```{r, eval = FALSE}
+
+# plot allocation
+geoPlotAllocation(mcmc = m)
+
+# plot co-allocation
+geoPlotCoallocation(mcmc = m)
+
+# produce perspective plots
+# probabilities
+geoPersp(surface = m$posteriorSurface, 
+         aggregate_size = 3, 
+         surface_type = "prob")
+         
+# ranked surface
+geoPersp(surface = m$geoProfile, aggregate_size = 3)
+
+# find centroids of data split by best grouping (placeholder for more thorough method)
+ms <- geoModelSources(mcmc = m, data = d)
+ms
+
+# add peaks to map
+# NB requires ggplot2
+library(ggplot2)
+mapSource <- mapGP + geom_point(aes(ms$longitude,ms$latitude), size = 6, pch = 3, col = "red")
+mapSource
+
+# # plot surface in style of 'unknown pleasures', for fun
+# unknownPleasures(m$geoProfile, paper_ref = "RgeoProfile 2.1.0")
+
+# ------------------------------------------------------------------
+
+```
 
 # Rasters
 

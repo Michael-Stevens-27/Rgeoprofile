@@ -19,6 +19,8 @@ navbar:
           href: articles/installation.html  
         - text: "Basic Rgeoprofile"
           href: articles/Basic_Rgeoprofile.html
+        - text: "Real world data"
+          href: articles/Data_Rgeoprofile.html
         - text: "Advanced Rgeoprofile"
           href: articles/Advanced_Rgeoprofile.html
         - text: "Function list"

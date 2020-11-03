@@ -65,6 +65,9 @@
       <a href="../articles/Basic_Rgeoprofile.html">Basic Rgeoprofile</a>
     </li>
     <li>
+      <a href="../articles/Data_Rgeoprofile.html">Real world data</a>
+    </li>
+    <li>
       <a href="../articles/Advanced_Rgeoprofile.html">Advanced Rgeoprofile</a>
     </li>
     <li>
@@ -121,6 +124,43 @@
 
     
     
+<p>Sigma</p>
+<div class="sourceCode"><pre class="downlit">
+<span class="co"># plot prior and posterior of sigma</span>
+<span class="fu"><a href="../reference/geoPlotSigma.html">geoPlotSigma</a></span>(params = <span class="kw">p</span>, mcmc = <span class="kw">m</span>)
+</pre></div>
+<p>Allocations and profile peaks</p>
+<div class="sourceCode"><pre class="downlit">
+<span class="co"># plot allocation</span>
+<span class="fu"><a href="../reference/geoPlotAllocation.html">geoPlotAllocation</a></span>(mcmc = <span class="kw">m</span>)
+
+<span class="co"># plot co-allocation</span>
+<span class="fu"><a href="../reference/geoPlotCoallocation.html">geoPlotCoallocation</a></span>(mcmc = <span class="kw">m</span>)
+
+<span class="co"># produce perspective plots</span>
+<span class="co"># probabilities</span>
+<span class="fu"><a href="../reference/geoPersp.html">geoPersp</a></span>(surface = <span class="kw">m</span><span class="op">$</span><span class="kw">posteriorSurface</span>, 
+         aggregate_size = <span class="fl">3</span>, 
+         surface_type = <span class="st">"prob"</span>)
+         
+<span class="co"># ranked surface</span>
+<span class="fu"><a href="../reference/geoPersp.html">geoPersp</a></span>(surface = <span class="kw">m</span><span class="op">$</span><span class="kw">geoProfile</span>, aggregate_size = <span class="fl">3</span>)
+
+<span class="co"># find centroids of data split by best grouping (placeholder for more thorough method)</span>
+<span class="kw">ms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geoModelSources.html">geoModelSources</a></span>(mcmc = <span class="kw">m</span>, data = <span class="kw">d</span>)
+<span class="kw">ms</span>
+
+<span class="co"># add peaks to map</span>
+<span class="co"># NB requires ggplot2</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
+<span class="kw">mapSource</span> <span class="op">&lt;-</span> <span class="kw">mapGP</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">ms</span><span class="op">$</span><span class="kw">longitude</span>,<span class="kw">ms</span><span class="op">$</span><span class="kw">latitude</span>), size = <span class="fl">6</span>, pch = <span class="fl">3</span>, col = <span class="st">"red"</span>)
+<span class="kw">mapSource</span>
+
+<span class="co"># # plot surface in style of 'unknown pleasures', for fun</span>
+<span class="co"># unknownPleasures(m$geoProfile, paper_ref = "RgeoProfile 2.1.0")</span>
+
+<span class="co"># ------------------------------------------------------------------</span>
+</pre></div>
 <div id="rasters" class="section level1">
 <h1 class="hasAnchor">
 <a href="#rasters" class="anchor"></a>Rasters</h1>
