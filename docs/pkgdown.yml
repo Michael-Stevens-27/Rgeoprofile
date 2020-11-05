@@ -2,11 +2,11 @@ pandoc: 1.19.2.4
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  Acknowledgements: Acknowledgements.html
   Advanced_Rgeoprofile: Advanced_Rgeoprofile.html
   Basic_Rgeoprofile: Basic_Rgeoprofile.html
   Data_Rgeoprofile: Data_Rgeoprofile.html
+  GP_background: GP_background.html
   Install_R: Install_R.html
   installation: installation.html
-last_built: 2020-11-05T10:43Z
+last_built: 2020-11-05T13:16Z
 

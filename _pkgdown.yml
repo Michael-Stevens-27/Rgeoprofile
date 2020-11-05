@@ -11,12 +11,17 @@ navbar:
       menu:
         - text: "Installing R and Rstudio"
           href: "articles/Install_R.html"
+        - text: ---------------
         - text: "Intro to R part 1"
         - text: "Intro to R part 2"
     - text: "GP tutorials"
       menu:
         - text: "Installation"
           href: articles/installation.html  
+        - text: ---------------
+        - text: "Background"
+          href: articles/GP_background.html
+        - text: ---------------
         - text: "Basic Rgeoprofile"
           href: articles/Basic_Rgeoprofile.html
         - text: "Real world data"
@@ -31,8 +36,6 @@ navbar:
         - text: "General R"
         - text: "Spatial Analysis in R"
         - text: "Ecology in R"
-    - text: "Acknowledgements"
-      href: articles/Acknowledgements.html
   right:
    - icon: fa-github
      href: https://github.com/Michael-Stevens-27/Rgeoprofile

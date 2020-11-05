@@ -1,48 +1,74 @@
 
-# RgeoProfile workshop
-
-[![Build Status](https://travis-ci.org/michael-stevens-27/Rgeoprofile.svg?branch=workshop)](https://travis-ci.org/michael-stevens-27/Rgeoprofile)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/michael-stevens-27/RgeoProfile?branch=workshop&svg=true)](https://ci.appveyor.com/project/michael-stevens-27/RgeoProfile)
+## Training workshop in geographic profiling and the role of legitimacy in achieving compliance
 
 This is the landing page for the training workshop in geographic profiling and the role of legitimacy in achieving compliance. This workshop was made in collaboration with Bangor University, Tanzania wildlife research institute and Queen Mary, University of London. This workshop was funded by the [Global Challenges Research Fund](https://www.ukri.org/research/global-challenges-research-fund/). 
 
 Access documentation [here](https://michael-stevens-27.github.io/Rgeoprofile/) 
 
-## Workshop timetable
+### Workshop goals
 
-## Background
+The aim of the workshop is to meet the following sustainable decelopment goals (SDGs) from the Global Challanges Research Fund:
 
-RgeoProfile is an R package for carrying out geographic profiling - a technique derived from criminology that uses the spatial locations of linked crimes to infer the home location (or locations) from which the criminal is operating<sup>1</sup>. More recently, this method has been applied to problems in ecology<sup>2-5</sup> and infectious disease<sup>6,7</sup>, where "crimes" are now equivalent to animal observations or sites of infection, and "home locations" may be roosts or persistent sources of disease. Finding these sources is often a key priority - for example in malaria this may provide a more efficient method of carrying out targeted larval source management<sup>7</sup>.
+**Make cities and human settlements inclusive, safe, resilient and sustainable**
+* Strengthen efforts to protect and safeguard the world’s cultural and natural heritage
 
-The RgeoProfile package uses the Dirichlet Process Mixture (DPM) modelling framework of *Verity et al.*<sup>7</sup>, which was designed to place geographic profiling in a Bayesian framework and to deal with the issue of multiple sources. In simple terms, the DPM model assumes a large (strictly infinite) number of *potential* source locations, although some of these sources are assumed to be more "active" than others. The RgeoProfile algorithm then attempts to infer the number of active sources (i.e. the number of sources that gave rise to the observed data), along with the spatial locations of these sources. It does this using Markov chain Monte Carlo (MCMC) - a statistical technique that provides estimates of unknown parameters by iteratively updating our guess.
+**Ensure sustainable consumption and production patterns** 
+* Support developing countries to strengthen their scientific and technological capacity to move towards more sustainable patterns of consumption and production
 
-<p align="center">
+**Life on Land** 
+* Take urgent and significant action to reduce the degradation of natural habitats, halt the loss of biodiversity and, by 2020, protect and prevent the extinction of threatened species
+* Take urgent action to end poaching and trafficking of protected species of flora and fauna and address both demand and supply of illegal wildlife products
+* Enhance global support for efforts to combat poaching and trafficking of protected species, including by increasing the capacity of local communities to pursue sustainable livelihood opportunities.
 
-<img src = "R_ignore/LondonExample_figure1.png" 
- width="700" 
- align="middle">
+**Peace, Justice and Strong Institutions** 
+* Promote the rule of law at the national and international levels and ensure equal access, to justice for all
+* Substantially reduce corruption and bribery in all their forms
+* Develop effective, accountable and transparent institutions at all levels
+* Promote and enforce non-discriminatory laws and policies for sustainable development
 
-<p align="center"> Example geoprofile produced by analysing the tutorial data set, included with the package. </p>
-</p>
+### Workshop timetable
 
-RgeoProfile is written in R, and links to C++ through the Rcpp package. The required data is nothing more than the longitude/latitude of observed "crimes". The user is also required to define a series of parameters, for example defining prior beliefs about the average distance of a crime from a source. After running the main MCMC algorithm, a large number of plotting functions are available for exploring the output and, for evaluating the efficiency of the search strategy.
+**Day 1**
+* Introductions and workshop outline
+* Presentation: An introduction to geographic profiling 
+* Discussion: Enforcement in conservation 
+* Presentation: An introduction to procedural justice 
+* Novel applications of geographic profiling: Finding illusive species and sources of malarial mosquitos
+* Data: What is needed
 
-## References
+**Day 2**
+* Practical: Using RGeoprofile Part 1
+* Practical: Using RGeoprofile Part 2
+* Progress review and troubleshooting for RGeoprofile
 
-<sup>1</sup> Rossmo, D.K., 1999. Geographic profiling. CRC press.<br/>
-The theory of geographic profiling, including the Criminal Geographic Targeting (CGT) algorithm used in criminology.
+**Day 3**
+* Practical: working with RGeoprofile 
+* Presentation: Understanding your geographic profile 
+* Discussion: How can geographic profiling help conservation in Tanzania? 
+* Presentation: GP as a compliance increasing tool (ethics, understanding human behaviour, contribution of social science, addressing causes (structure vs agency) 
+* Concluding remarks
 
-<sup>2</sup> Verity R, Stevenson MD, Rossmo DK, Nichols RA, Le Comber SC (2014). Spatial targeting of infectious disease control: Identifying multiple, unknown sources. Methods in Ecology and Evolution vol. 5 (7), 647-655. DOI: 10.1111/2041-210X.12190 <br/>
-Introducing the Dirichlet Process Mixture (DPM) model of geographic profiling.
+### Organisers and contributors
 
-<sup>3</sup> Faulkner SC, Verity R, Roberts D, Roy SS, Robertson PA, Stevenson MD, Le Comber SC (2016). Using geographic profiling to compare the value of sightings vs trap data in a biological invasion. Diversity and Distributions 23 (1), 104-112. DOI: 10.1111/ddi.12498 <br/>
-Using citizen science data with geographic profiling, and extending the DPM model to fit sigma, the dispersal parameter.
+* [Dr. Freya St John](https://www.bangor.ac.uk/natural-sciences/staff/freya-st-john/en)
+* [Dr. Edward Kohi](researchgate.net/profile/Edward_Kohi2)
+* [Dr. Leejiah Dorward](https://www.bangor.ac.uk/natural-sciences/staff/leejiah-dorward/en)
+* [Dr. Sally Faulkner](https://www.qmul.ac.uk/sbcs/staff/sallyfaulkner.html)
+* [Michael Stevens](https://www.qmul.ac.uk/sbcs/staff/michaelstevens.html)
 
-<sup>4</sup> Faulkner SC, Stevens MCA, Romañach SS, Lindsey PA, Le Comber SC (2018). A spatial approach to combatting wildlife crime. Conservation Biology 32 (3), 685-693. DOI: 10.1111/cobi.13027 <br/>
-A study of poaching in Zimbabwe showing how geospatial information can be incorporated within the GP framework.
+### Institutions
 
-<sup>5</sup> Struebig MJ, Linkie M, Deere N, Martyr DJ, Millyanawati B, Faulkner SC, Le Comber SC, Mangunjaya FM, Fachruddin M, Leader-Williams N, McKay JE, St John FAV (2018). Addressing human-tiger conflict using socio-ecological information on tolerance and risk. Nature Communications 9 (1), article 3455. DOI: 10.1038/s41467-018-05983-y <br/>
-A recent paper using geographic profiling to improve predictions of human-tiger conflict.
+* [Bangor University - The School of Natural Sciences](https://www.bangor.ac.uk/natural-sciences/index.php.en)
+* [Tanzania Wildlife Research Institute](http://tawiri.or.tz/)
+* [Queen Mary University of London - School of Biological and Chemical Sciences](https://www.qmul.ac.uk/sbcs/)
+* [Global Challenges Research Fund](https://www.ukri.org/research/global-challenges-research-fund/)
 
-<sup>6</sup> Rossmo DK, Lutermann H, Stevenson MD, Le Comber SC (2014). Geographic profiling in Nazi Berlin: fact and fiction. Geospatial Intelligence Review (Fall 2014). <br/>
-Applying geographic profiling to a case of German resistance to the Nazis which formed the basis of the classic novel, ‘Alone in Berlin’.
+<img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/bangor.png" height="200px" width="350px" />
+<img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/UKRI.png" height="100px" width="200px" />
+<img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/qmul.png" height="200px" width="350px" />
+<img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Tawiri.png" height="150px" width="200px" />
+
+
+### Special Thanks
+
+Extra people to thank ....

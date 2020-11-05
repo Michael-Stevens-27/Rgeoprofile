@@ -48,6 +48,7 @@
 <li>
       <a href="articles/Install_R.html">Installing R and Rstudio</a>
     </li>
+    <li class="divider">
     <li class="dropdown-header">Intro to R part 1</li>
     <li class="dropdown-header">Intro to R part 2</li>
   </ul>
@@ -62,6 +63,11 @@
 <li>
       <a href="articles/installation.html">Installation</a>
     </li>
+    <li class="divider">
+    <li>
+      <a href="articles/GP_background.html">Background</a>
+    </li>
+    <li class="divider">
     <li>
       <a href="articles/Basic_Rgeoprofile.html">Basic Rgeoprofile</a>
     </li>
@@ -89,9 +95,6 @@
     <li class="dropdown-header">Ecology in R</li>
   </ul>
 </li>
-<li>
-  <a href="articles/Acknowledgements.html">Acknowledgements</a>
-</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -112,37 +115,90 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rgeoprofile-workshop" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#rgeoprofile-workshop" class="anchor"></a>RgeoProfile workshop</h1></div>
-
+<div id="training-workshop-in-geographic-profiling-and-the-role-of-legitimacy-in-achieving-compliance" class="section level2">
+<h2 class="hasAnchor">
+<a href="#training-workshop-in-geographic-profiling-and-the-role-of-legitimacy-in-achieving-compliance" class="anchor"></a>Training workshop in geographic profiling and the role of legitimacy in achieving compliance</h2>
 <p>This is the landing page for the training workshop in geographic profiling and the role of legitimacy in achieving compliance. This workshop was made in collaboration with Bangor University, Tanzania wildlife research institute and Queen Mary, University of London. This workshop was funded by the <a href="https://www.ukri.org/research/global-challenges-research-fund/">Global Challenges Research Fund</a>.</p>
 <p>Access documentation <a href="https://michael-stevens-27.github.io/Rgeoprofile/">here</a></p>
-<div id="workshop-timetable" class="section level2">
-<h2 class="hasAnchor">
-<a href="#workshop-timetable" class="anchor"></a>Workshop timetable</h2>
+<div id="workshop-goals" class="section level3">
+<h3 class="hasAnchor">
+<a href="#workshop-goals" class="anchor"></a>Workshop goals</h3>
+<p>The aim of the workshop is to meet the following sustainable decelopment goals (SDGs) from the Global Challanges Research Fund:</p>
+<p><strong>Make cities and human settlements inclusive, safe, resilient and sustainable</strong></p>
+<ul>
+<li>Strengthen efforts to protect and safeguard the world’s cultural and natural heritage</li>
+</ul>
+<p><strong>Ensure sustainable consumption and production patterns</strong></p>
+<ul>
+<li>Support developing countries to strengthen their scientific and technological capacity to move towards more sustainable patterns of consumption and production</li>
+</ul>
+<p><strong>Life on Land</strong></p>
+<ul>
+<li>Take urgent and significant action to reduce the degradation of natural habitats, halt the loss of biodiversity and, by 2020, protect and prevent the extinction of threatened species</li>
+<li>Take urgent action to end poaching and trafficking of protected species of flora and fauna and address both demand and supply of illegal wildlife products</li>
+<li>Enhance global support for efforts to combat poaching and trafficking of protected species, including by increasing the capacity of local communities to pursue sustainable livelihood opportunities.</li>
+</ul>
+<p><strong>Peace, Justice and Strong Institutions</strong></p>
+<ul>
+<li>Promote the rule of law at the national and international levels and ensure equal access, to justice for all</li>
+<li>Substantially reduce corruption and bribery in all their forms</li>
+<li>Develop effective, accountable and transparent institutions at all levels</li>
+<li>Promote and enforce non-discriminatory laws and policies for sustainable development</li>
+</ul>
 </div>
-<div id="background" class="section level2">
-<h2 class="hasAnchor">
-<a href="#background" class="anchor"></a>Background</h2>
-<p>RgeoProfile is an R package for carrying out geographic profiling - a technique derived from criminology that uses the spatial locations of linked crimes to infer the home location (or locations) from which the criminal is operating<sup>1</sup>. More recently, this method has been applied to problems in ecology<sup>2-5</sup> and infectious disease<sup>6,7</sup>, where “crimes” are now equivalent to animal observations or sites of infection, and “home locations” may be roosts or persistent sources of disease. Finding these sources is often a key priority - for example in malaria this may provide a more efficient method of carrying out targeted larval source management<sup>7</sup>.</p>
-<p>The RgeoProfile package uses the Dirichlet Process Mixture (DPM) modelling framework of <em>Verity et al.</em><sup>7</sup>, which was designed to place geographic profiling in a Bayesian framework and to deal with the issue of multiple sources. In simple terms, the DPM model assumes a large (strictly infinite) number of <em>potential</em> source locations, although some of these sources are assumed to be more “active” than others. The RgeoProfile algorithm then attempts to infer the number of active sources (i.e. the number of sources that gave rise to the observed data), along with the spatial locations of these sources. It does this using Markov chain Monte Carlo (MCMC) - a statistical technique that provides estimates of unknown parameters by iteratively updating our guess.</p>
-<p align="center">
-
-<img src="R_ignore/LondonExample_figure1.png" width="700" align="middle"></p>
-<p align="center"> Example geoprofile produced by analysing the tutorial data set, included with the package. </p>
-
-<p>RgeoProfile is written in R, and links to C++ through the Rcpp package. The required data is nothing more than the longitude/latitude of observed “crimes”. The user is also required to define a series of parameters, for example defining prior beliefs about the average distance of a crime from a source. After running the main MCMC algorithm, a large number of plotting functions are available for exploring the output and, for evaluating the efficiency of the search strategy.</p>
+<div id="workshop-timetable" class="section level3">
+<h3 class="hasAnchor">
+<a href="#workshop-timetable" class="anchor"></a>Workshop timetable</h3>
+<p><strong>Day 1</strong></p>
+<ul>
+<li>Introductions and workshop outline</li>
+<li>Presentation: An introduction to geographic profiling</li>
+<li>Discussion: Enforcement in conservation</li>
+<li>Presentation: An introduction to procedural justice</li>
+<li>Novel applications of geographic profiling: Finding illusive species and sources of malarial mosquitos</li>
+<li>Data: What is needed</li>
+</ul>
+<p><strong>Day 2</strong></p>
+<ul>
+<li>Practical: Using RGeoprofile Part 1</li>
+<li>Practical: Using RGeoprofile Part 2</li>
+<li>Progress review and troubleshooting for RGeoprofile</li>
+</ul>
+<p><strong>Day 3</strong></p>
+<ul>
+<li>Practical: working with RGeoprofile</li>
+<li>Presentation: Understanding your geographic profile</li>
+<li>Discussion: How can geographic profiling help conservation in Tanzania?</li>
+<li>Presentation: GP as a compliance increasing tool (ethics, understanding human behaviour, contribution of social science, addressing causes (structure vs agency)</li>
+<li>Concluding remarks</li>
+</ul>
 </div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
-<p><sup>1</sup> Rossmo, D.K., 1999. Geographic profiling. CRC press.<br> The theory of geographic profiling, including the Criminal Geographic Targeting (CGT) algorithm used in criminology.</p>
-<p><sup>2</sup> Verity R, Stevenson MD, Rossmo DK, Nichols RA, Le Comber SC (2014). Spatial targeting of infectious disease control: Identifying multiple, unknown sources. Methods in Ecology and Evolution vol. 5 (7), 647-655. DOI: 10.1111/2041-210X.12190 <br> Introducing the Dirichlet Process Mixture (DPM) model of geographic profiling.</p>
-<p><sup>3</sup> Faulkner SC, Verity R, Roberts D, Roy SS, Robertson PA, Stevenson MD, Le Comber SC (2016). Using geographic profiling to compare the value of sightings vs trap data in a biological invasion. Diversity and Distributions 23 (1), 104-112. DOI: 10.1111/ddi.12498 <br> Using citizen science data with geographic profiling, and extending the DPM model to fit sigma, the dispersal parameter.</p>
-<p><sup>4</sup> Faulkner SC, Stevens MCA, Romañach SS, Lindsey PA, Le Comber SC (2018). A spatial approach to combatting wildlife crime. Conservation Biology 32 (3), 685-693. DOI: 10.1111/cobi.13027 <br> A study of poaching in Zimbabwe showing how geospatial information can be incorporated within the GP framework.</p>
-<p><sup>5</sup> Struebig MJ, Linkie M, Deere N, Martyr DJ, Millyanawati B, Faulkner SC, Le Comber SC, Mangunjaya FM, Fachruddin M, Leader-Williams N, McKay JE, St John FAV (2018). Addressing human-tiger conflict using socio-ecological information on tolerance and risk. Nature Communications 9 (1), article 3455. DOI: 10.1038/s41467-018-05983-y <br> A recent paper using geographic profiling to improve predictions of human-tiger conflict.</p>
-<p><sup>6</sup> Rossmo DK, Lutermann H, Stevenson MD, Le Comber SC (2014). Geographic profiling in Nazi Berlin: fact and fiction. Geospatial Intelligence Review (Fall 2014). <br> Applying geographic profiling to a case of German resistance to the Nazis which formed the basis of the classic novel, ‘Alone in Berlin’.</p>
+<div id="organisers-and-contributors" class="section level3">
+<h3 class="hasAnchor">
+<a href="#organisers-and-contributors" class="anchor"></a>Organisers and contributors</h3>
+<ul>
+<li><a href="https://www.bangor.ac.uk/natural-sciences/staff/freya-st-john/en">Dr. Freya St John</a></li>
+<li><a href="researchgate.net/profile/Edward_Kohi2">Dr. Edward Kohi</a></li>
+<li><a href="https://www.bangor.ac.uk/natural-sciences/staff/leejiah-dorward/en">Dr. Leejiah Dorward</a></li>
+<li><a href="https://www.qmul.ac.uk/sbcs/staff/sallyfaulkner.html">Dr. Sally Faulkner</a></li>
+<li><a href="https://www.qmul.ac.uk/sbcs/staff/michaelstevens.html">Michael Stevens</a></li>
+</ul>
+</div>
+<div id="institutions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#institutions" class="anchor"></a>Institutions</h3>
+<ul>
+<li><a href="https://www.bangor.ac.uk/natural-sciences/index.php.en">Bangor University - The School of Natural Sciences</a></li>
+<li><a href="http://tawiri.or.tz/">Tanzania Wildlife Research Institute</a></li>
+<li><a href="https://www.qmul.ac.uk/sbcs/">Queen Mary University of London - School of Biological and Chemical Sciences</a></li>
+<li><a href="https://www.ukri.org/research/global-challenges-research-fund/">Global Challenges Research Fund</a></li>
+</ul>
+<p><img src="/home/mstevens/Desktop/MAIN%20WORK/Bangor%20Workshop/Rgeoprofile/docs/articles/images/bangor.png" height="200px" width="350px"><img src="/home/mstevens/Desktop/MAIN%20WORK/Bangor%20Workshop/Rgeoprofile/docs/articles/images/UKRI.png" height="100px" width="200px"><img src="/home/mstevens/Desktop/MAIN%20WORK/Bangor%20Workshop/Rgeoprofile/docs/articles/images/qmul.png" height="200px" width="350px"><img src="/home/mstevens/Desktop/MAIN%20WORK/Bangor%20Workshop/Rgeoprofile/docs/articles/images/Tawiri.png" height="150px" width="200px"></p>
+</div>
+<div id="special-thanks" class="section level3">
+<h3 class="hasAnchor">
+<a href="#special-thanks" class="anchor"></a>Special Thanks</h3>
+<p>Extra people to thank ….</p>
 </div>
 </div>
   </div>
@@ -164,14 +220,7 @@
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://travis-ci.org/michael-stevens-27/Rgeoprofile"><img src="https://travis-ci.org/michael-stevens-27/Rgeoprofile.svg?branch=workshop" alt="Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/michael-stevens-27/RgeoProfile"><img src="https://ci.appveyor.com/api/projects/status/github/michael-stevens-27/RgeoProfile?branch=workshop&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-</ul>
-</div>
-</div>
+  </div>
 </div>
 
 
