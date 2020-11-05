@@ -23,6 +23,7 @@ navbar:
           href: articles/Data_Rgeoprofile.html
         - text: "Advanced Rgeoprofile"
           href: articles/Advanced_Rgeoprofile.html
+        - text: ---------------
         - text: "Function list"
           href: reference/index.html
     - text: "Other resources"

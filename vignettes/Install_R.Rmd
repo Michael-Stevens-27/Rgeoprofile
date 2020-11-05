@@ -17,7 +17,7 @@ We are going to install R from the [R project website](https://www.r-project.org
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_landing.png)
+![](articles/images/R_landing.png)
 
 \  
 
