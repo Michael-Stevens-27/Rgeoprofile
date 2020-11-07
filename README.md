@@ -56,7 +56,7 @@ The aim of the workshop is to meet the following sustainable decelopment goals (
 * [Dr. Sally Faulkner](https://www.qmul.ac.uk/sbcs/staff/sallyfaulkner.html)
 * [Michael Stevens](https://www.qmul.ac.uk/sbcs/staff/michaelstevens.html)
 
-### Institutions
+### Institutio  ns
 
 * [Bangor University - The School of Natural Sciences](https://www.bangor.ac.uk/natural-sciences/index.php.en)
 * [Tanzania Wildlife Research Institute](http://tawiri.or.tz/)
@@ -67,7 +67,6 @@ The aim of the workshop is to meet the following sustainable decelopment goals (
 <img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/UKRI.png" height="100px" width="200px" />
 <img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/qmul.png" height="200px" width="350px" />
 <img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Tawiri.png" height="150px" width="200px" />
-
 
 ### Special Thanks
 

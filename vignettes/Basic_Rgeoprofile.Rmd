@@ -32,6 +32,10 @@ library(raster)       # for general spatial analysis
 Next, we need to load in some data for the model to analyse. The package comes with some pre-made data that can be accessed via the `LondonExample_crimes` and `LondonExample_sources` objects. These consist of a set of longitudinal/latitudinal points and the source locations (also in long/lat format) that are responsible for said crimes. Normally we would read in our data using the `read.table` or `read.csv` functions but since the example data is provided to us, we will use this instead. We will also process the data using the `geoData()` and `geoDataSource()` functions to ensure that the data are in the correct format for running the model.    
  
 ```{r, eval = TRUE, message = FALSE}
+# load the data 
+data(LondonExample_crimes)
+data(LondonExample_sources)
+
 # example data
 d <- LondonExample_crimes
 s <- LondonExample_sources

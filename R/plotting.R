@@ -106,16 +106,16 @@ theme_nothing <- function(font_size = 14, font_family = ""){
 #' #m <- geoMCMC(data = d, params = p)
 #' #geoPlotSigma(params = p, mcmc = m)
 
-geoPlotSigma <- function(params, mcmc=NULL, plotMax=NULL) {
+geoPlotSigma <- function(params, mcmc = NULL, plotMax = NULL) {
   
   # check params
-  geoParamsCheck(params, silent=TRUE)
+  geoParamsCheck(params, silent = TRUE)
   
   # check that plotMax is sensible
   if (!is.null(plotMax)) {
     stopifnot(is.numeric(plotMax))
     stopifnot(is.finite(plotMax))
-    stopifnot(plotMax>0)
+    stopifnot(plotMax > 0)
   }
   
   # extract sigma parameters
@@ -125,7 +125,9 @@ geoPlotSigma <- function(params, mcmc=NULL, plotMax=NULL) {
   beta <- params$model$sigma_squared_rate
   
   # stop if using fixed sigma model
-  if (sigma_var==0) { stop('can only produce this plot under variable-sigma model (i.e. sigma_var>0)') }
+  if (sigma_var == 0) { 
+    stop('can only produce this plot under variable-sigma model (i.e. sigma_var>0)') 
+  }
   
   # extract sigma draws from mcmc object
   sigma_draws <- mcmc$sigma
@@ -139,23 +141,32 @@ geoPlotSigma <- function(params, mcmc=NULL, plotMax=NULL) {
   }
   
   # produce prior distribution
-  sigma_vec <- seq(0, plotMax, l=501)
+  sigma_vec <- seq(0.01, plotMax, l = 501)
   sigma_prior <- dRIG(sigma_vec, alpha, beta)
+  sigma_prior <- sample(sigma_vec, length(sigma_draws), replace = TRUE, prob = sigma_prior)
   
   # plot prior and overlay density of posterior draws if used
   if (is.null(sigma_draws)) {
     
-    plot(sigma_vec, sigma_prior, type='l', lty=1, xlab='sigma (km)', ylab='probability density', main='')
-    legend(x='topright', legend='prior', lty=1)
+    sigmaDF <- data.frame(sigma = sigma_prior, type = rep("Prior",length(sigma_prior)))
+    
+    ggplot() + geom_histogram(data = sigmaDF, mapping = aes(x = sigma_prior, fill = type), bins = 250) +
+               xlab("Sigma (Km)") + ylab("Probability density") 
+    
+    # plot(sigma_vec, sigma_prior, type='l', lty=1, xlab='sigma (km)', ylab='probability density', main='')
+    # legend(x='topright', legend='prior', lty=1)
     
   } else {
-    
-    sigma_posterior <- density(sigma_draws, from=0, to=plotMax)
-    y_max <- max(sigma_posterior$y, na.rm=TRUE)
-    
-    plot(sigma_vec, sigma_prior, type='l', lty=1, ylim=c(0,y_max), xlab='sigma (km)', ylab='probability density', main='')
-    lines(sigma_posterior, lty=2)
-    legend(x='topright', legend=c('prior','posterior'), lty=c(1,2))
+    sigmaDF <- data.frame(sigma = c(sigma_prior, mcmc$sigma), 
+                          type = c(rep("Prior", length(sigma_prior)), rep("Posterior",length(mcmc$sigma)))) 
+                          
+    ggplot() + geom_histogram(data = sigmaDF, mapping = aes(x = sigma, fill = type), bins = 250, alpha = 0.5) +
+               xlab("Sigma (Km)") + ylab("Probability density") 
+
+    # y_max <- max(sigma_posterior$y, na.rm=TRUE)
+    # plot(sigma_vec, sigma_prior, type='l', lty=1, ylim=c(0,y_max), xlab='sigma (km)', ylab='probability density', main='')
+    # lines(sigma_posterior, lty=2)
+    # legend(x='topright', legend=c('prior','posterior'), lty=c(1,2))
   }
   
 }
@@ -567,7 +578,18 @@ geoPlotMap2 <- function(params,
     # assert_in(map_type, 1:137, message = "map_type must be in 1:137")
     # 
     # get output extent from params 
-    fullExt <- c(params$output$longitude_minMax, params$output$latitude_minMax)
+    if(is.null(params)){
+      # if no params build extent based on data
+      lonMnMx <- range(data$longitude)
+      latMnMx <- range(data$latitude)
+      
+      lonEx <- (lonMnMx[2] - lonMnMx[1])*0.05
+      latEx <- (latMnMx[2] - latMnMx[1])*0.05
+      
+      fullExt <- c(lonMnMx + c(-lonEx, lonEx), latMnMx + c(-latEx, latEx))
+    } else {
+      fullExt <- c(params$output$longitude_minMax, params$output$latitude_minMax)
+    }
     
     # produce plot
     myplot <- leaflet()

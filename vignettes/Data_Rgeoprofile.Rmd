@@ -10,3 +10,153 @@ vignette: >
 ---
 
 # Introduction
+
+In this tutorial, we will walk through another example of running an analysis using the R package, RgeoProfile. The previous example saw us run an analysis on simulated data. This time, we will focus on a real-world data set where we try to infer my home and work location based on where I have used my credit card in London. Similarly to before, this analysis will consist of:
+
+* Loading and checking our data - we must ensure it's in the correct format for analysis. 
+* Setting up the parameters for the model and the MCMC algorithm.
+* Running the MCMC algorithm. 
+* Visualising the output of the model
+
+Once again, let's load the package [RgeoProfile](https://michael-stevens-27.github.io/Rgeoprofile/articles/installation.html) using `library(RgeoProfile)`. 
+
+```{r, eval = TRUE, message = FALSE}
+# load prequired packages
+library(RgeoProfile)  # to run the analysis
+library(leaflet)      # to create interactive maps
+library(raster)       # for general spatial analysis
+```
+
+# Load and check data
+
+The data for this tutorial can be accessed using `data(card_crime)` and `data(card_source)`. As already mentioned, these data sets consist of a set of longitudinal/latitudinal points and the source locations (also in long/lat format) that are responsible for said "crimes". Let's process our data using the `geoData()` and `geoDataSource()` functions to ensure that the data are in the correct format for running the model.    
+ 
+```{r, eval = TRUE, message = FALSE}
+# load the data 
+data(card_crime)
+data(card_source)
+
+# example data
+d <- card_crime
+s <- card_source
+
+# convert d and s to correct format for geoParams()
+# (note that in this case the example data are already in the correct
+# format; these steps are only relevant if for example d and s are 
+# imported as two-column matrices. They are included here for
+# completeness)
+
+d <- geoData(d$longitude, d$latitude)
+s <- geoDataSource(s$longitude, s$latitude)
+
+print(d)
+print(s)
+```
+
+We can see above that the data are in the correct format. This time, let's visualise our data. It's always worth doing this to get an idea of what we're working with. Mapping our data will give us an indication of if anything went wrong when collecting or processing the data. 
+
+```{r, eval = TRUE, message = FALSE}
+# plot the map
+geoPlotMap2(param = NULL, 
+            data = d, 
+            crimeCex = 6)
+```
+
+At a glance we have a total of 12 locations, seven of which lie in East London, around Mile End, and the other 5 are near Tower Bridge. We might also start thinking about where the source locations are and how many there might be. What do you think? Have a guess. I have purposefully neglected to put the source locations on the map, since in practice we won't know where they are. We might think there are two source locations since the crimes are split between Mile End and Tower Hill. We might alter this guess to three source locations, where the additional source is responsible for the single crime at Shadwell Basin. 
+
+# Build a parameters object
+
+The next step is to build a parameters object for our model. In the previous tutorial we did not discuss the choice of priors we used when running the model. All priors are controlled via the `geoParams()` function. We control the prior on source locations via the ` priorMean_longitude`, `priorMean_latitude` and `tau`. The first two of those arguments set a location where me might think the source(s) could be. By default, this is set to the spatial mean of our crimes, since this is an appropriate place to start looking for source locations. The last of those arguments (`tau`) controls how strongly we believe source locations are near the `priorMean_longitude` and `priorMean_latitude` location. If we set `tau` quite small then we believe source locations are very near the prior mean. Setting `tau` quite large will inform the model that source locations are just as likely far away from the mean as they are close to it. Let's look at our map again with the mean plotted as well as our crimes.      
+
+```{r, eval = TRUE, message = FALSE, echo = FALSE}
+geoPlotMap2(param = NULL, data = d, crimeCex = 6) %>% 
+            addCircleMarkers(lng = mean(d$longitude), stroke = FALSE, fillOpacity = 1,
+            lat = mean(d$latitude), radius = 6, fillColor = "blue") %>% addScaleBar(position = "bottomright")
+```
+
+As we can see, the spatial mean (in blue) is quite near a few of the crimes, but then again also quite far from others, So this indicates we should set a large `tau`. Another paramater we are interested in but yet to speak about is the dispersal parameter "sigma". Measured in kilometres, this parameter governs how far away crimes are from source locations. We control this parameter using the `sigma_mean` and `sigma_var` arguments. `Sigma_mean` is the explicit value we think sigma could be and `sigma_var` controls our uncertainty in this value. For a human roaming around committing crimes on foot this value is around X-Y km (REF). If they have access to a car this value might be much larger. Equivalently if a criminal is time restricted (committing crimes on a lunch break for example) this value may be much lower. In ecology, we might expect quite small values of sigma for mosquitoes but much larger values for tigers. It really depends if you are analysing data associated with a human or an animal etc. Since we are conisdering a human moving around on foot, we shall set our prior accordingly.    
+
+```{r, eval = TRUE, message = FALSE}
+# set model and MCMC parameters
+p <- geoParams(data = d, 
+               tau = 10,          # set tau large for source locations in any location
+               sigma_mean = 0.25, # we believe the majority of crimes ar within 1km of the source location 
+               sigma_var = 1,     # our uncertainty in the value of sigma
+               chains = 5, 
+               burnin = 1e4, 
+               samples = 5e4,
+               longitude_cells = 200, 
+               latitude_cells = 200, 
+               guardRail = 0.5,
+               burnin_printConsole = 1e3, 
+               samples_printConsole = 1e4)
+```
+
+Now that we have built our parameters object, we can visualise our prior on sigma using the `geoPlotSigma()` function. 
+
+```{r, eval = TRUE, message = FALSE}
+# plot sigma prior
+geoPlotSigma(params = p, plotMax  = 3)
+```
+
+Here we can see our prior distribution on sigma. The majority of the distribution lies between 0.2 and 1.9km. This is typical of a human committing crimes around a home or workplace. 
+
+# Run the model
+
+Once again, we run the model using the `geoMCMC()` function. We provide this function with our `data` and our `params`. 
+
+```{r, eval = TRUE}
+
+# run MCMC
+m <- geoMCMC(data = d, params = p)
+
+```
+
+Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (REF). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (REF). 
+    
+# Visualise output
+
+Let's have a look at our geographic profile. Again, we generate the geographic profile using the `geoplotmap2()` function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the `params` and `surface` arguments. 
+
+```{r, eval = TRUE}
+# plot profile on map
+```{r, eval = TRUE}  
+geoPlotMap2(surface = m$geoProfile,
+            params = p,
+            data = d, 
+            surfaceCols = rev(viridis::plasma(10)),
+            opacity = 0.7,
+            threshold = 0.25,
+            crimeCex = 5,
+            gpLegend = TRUE)                       
+```
+
+We have our geoprofile! Intuitively we can see the model telling us to search in those areas near Tower Bridge and Mile end. In addition to these two clusters there seems to be some search priority aimed at the spatial mean of the crime sites too. Finally, we can see the model also places a small amount of priority near the lone crime in Shadwell Basin. Before we add the source locations to the map and measure their hit scores, let's have a look at our estimate for sigma. This can be plotted by adding the `mcmc` argument into the `geoPlotMap()` function.      
+
+```{r, eval = TRUE, message = FALSE}
+# plot sigma prior
+geoPlotSigma(params = p, 
+             plotMax  = 3,
+             mcmc = m)
+```
+
+Now we can see our prior and posterior distributions for the dispersal parameter sigma. 
+
+Our model seems to be doing well, since the source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but how do we explicitly quantify model success? This is done via the source's *hit score* percentages and overall *Gini co-efficent*. Recall that the hit score percentage is the percentage of the area searched before finding the source locations divided by the total area searched. So the lower the hit score, the better the model is performing. Each source comes with its own hit score, but we can summarise these values using the Gini co-efficent. If we possessed the perfect model that found our source locations by searching almost none of the search area then we would expect a Gini co-efficent of one and if the model fails to find source locations after searching the entire search area, then we would expect a Gini value of zero. If we were to search for our source randomly then we would expect a Gini co-efficient of 0.5.
+
+Hit scores are produced via the `geoReportHitscores()` function where we provide the parameters, the sources and the geoprofile. We can then obtain a Gini co-efficent using these hit scores (see the `geoPlotLorenz()` function).
+
+```{r, eval = TRUE}
+
+# get hitscores
+hs <- geoReportHitscores(params = p, 
+                         source = s, 
+                         surface = m$geoProfile)
+hs
+
+# produce Lorenz plot
+Gini <- geoPlotLorenz(hit_scores = hs)
+Gini
+```
+
+We can see that the model found every source by searching less than 4\% of the total search area, excellent! Equivalently, the Gini co-efficient for these sources is 0.976. This tutorial was a quick walkthrough of the process one follows when running a geographic profiling analysis. The next tutorial will walkthrough analysing some real-world data in the form of inferring the home and work place of an individual via where their credit card has been used.  
