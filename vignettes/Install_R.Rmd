@@ -71,7 +71,7 @@ Once this is done, click "finish".
 
 # Installing Rstudio
 
-Now that we have installed R, we need to install the user interface for R, R studio. This can be installed from the [Rstudio](https://rstudio.com/) website. Click on "download" button on the top right hand corner of the screen.
+Now that we have installed R, we need to install the user interface for R, R studio. This can be installed from the [Rstudio](https://rstudio.com/) website. Click on the "download" button on the top right hand corner of the screen.
 
 \  
 
@@ -79,7 +79,7 @@ Now that we have installed R, we need to install the user interface for R, R stu
 
 \  
 
-Next we want the free version of Rstudio.  
+Next, we want the free version of Rstudio:  
 
 \  
 

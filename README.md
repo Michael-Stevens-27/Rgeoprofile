@@ -56,7 +56,7 @@ The aim of the workshop is to meet the following sustainable decelopment goals (
 * [Dr. Sally Faulkner](https://www.qmul.ac.uk/sbcs/staff/sallyfaulkner.html)
 * [Michael Stevens](https://www.qmul.ac.uk/sbcs/staff/michaelstevens.html)
 
-### Institutio  ns
+### Institutions
 
 * [Bangor University - The School of Natural Sciences](https://www.bangor.ac.uk/natural-sciences/index.php.en)
 * [Tanzania Wildlife Research Institute](http://tawiri.or.tz/)
