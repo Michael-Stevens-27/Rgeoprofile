@@ -165,14 +165,14 @@
     <p>This function can be used to generate parameters in the format required by other Rgeoprofile functions. Parameter values can be specified as input arguments to this function, or alternatively if data is input as an argument then some parameters can take default values directly from the data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoParams</span>(data = <span class='kw'>NULL</span>, sources = <span class='kw'>NULL</span>, sigma_mean = <span class='fl'>1</span>,
-  sigma_var = <span class='kw'>NULL</span>, sigma_squared_shape = <span class='kw'>NULL</span>,
-  sigma_squared_rate = <span class='kw'>NULL</span>, priorMean_longitude = <span class='kw'>NULL</span>,
-  priorMean_latitude = <span class='kw'>NULL</span>, tau = <span class='kw'>NULL</span>, alpha_shape = <span class='fl'>0.1</span>,
-  alpha_rate = <span class='fl'>0.1</span>, chains = <span class='fl'>10</span>, burnin = <span class='fl'>1000</span>, samples = <span class='fl'>10000</span>,
-  burnin_printConsole = <span class='fl'>100</span>, samples_printConsole = <span class='fl'>1000</span>,
-  longitude_minMax = <span class='kw'>NULL</span>, latitude_minMax = <span class='kw'>NULL</span>,
-  longitude_cells = <span class='fl'>500</span>, latitude_cells = <span class='fl'>500</span>, guardRail = <span class='fl'>0.05</span>)</pre>
+    <pre class="usage"><span class='fu'>geoParams</span><span class='op'>(</span>data <span class='op'>=</span> <span class='cn'>NULL</span>, sources <span class='op'>=</span> <span class='cn'>NULL</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1</span>,
+  sigma_var <span class='op'>=</span> <span class='cn'>NULL</span>, sigma_squared_shape <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sigma_squared_rate <span class='op'>=</span> <span class='cn'>NULL</span>, priorMean_longitude <span class='op'>=</span> <span class='cn'>NULL</span>,
+  priorMean_latitude <span class='op'>=</span> <span class='cn'>NULL</span>, tau <span class='op'>=</span> <span class='cn'>NULL</span>, alpha_shape <span class='op'>=</span> <span class='fl'>0.1</span>,
+  alpha_rate <span class='op'>=</span> <span class='fl'>0.1</span>, chains <span class='op'>=</span> <span class='fl'>10</span>, burnin <span class='op'>=</span> <span class='fl'>1000</span>, samples <span class='op'>=</span> <span class='fl'>10000</span>,
+  burnin_printConsole <span class='op'>=</span> <span class='fl'>100</span>, samples_printConsole <span class='op'>=</span> <span class='fl'>1000</span>,
+  longitude_minMax <span class='op'>=</span> <span class='cn'>NULL</span>, latitude_minMax <span class='op'>=</span> <span class='cn'>NULL</span>,
+  longitude_cells <span class='op'>=</span> <span class='fl'>500</span>, latitude_cells <span class='op'>=</span> <span class='fl'>500</span>, guardRail <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -266,10 +266,10 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># John Snow cholera data</span>
-<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>latitude</span>)
+<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>Cholera</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>Cholera</span><span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
 <span class='co'># define parameters such that the model fits sigma from the data</span>
-<span class='fu'>geoParams</span>(data = <span class='kw'>d</span>, sigma_mean = <span class='fl'>1.0</span>, sigma_squared_shape = <span class='fl'>2</span>, 
-chains = <span class='fl'>10</span>, burnin = <span class='fl'>1000</span>, samples = <span class='fl'>10000</span>, guardRail = <span class='fl'>0.1</span>)
+<span class='fu'>geoParams</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1.0</span>, sigma_squared_shape <span class='op'>=</span> <span class='fl'>2</span>, 
+chains <span class='op'>=</span> <span class='fl'>10</span>, burnin <span class='op'>=</span> <span class='fl'>1000</span>, samples <span class='op'>=</span> <span class='fl'>10000</span>, guardRail <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='output co'>#&gt; $model
 #&gt; $model$sigma_mean
 #&gt; [1] 1
@@ -331,12 +331,12 @@ chains = <span class='fl'>10</span>, burnin = <span class='fl'>1000</span>, samp
 #&gt; 
 #&gt; </div><div class='input'>
 <span class='co'># simulated data</span>
-<span class='kw'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span>(<span class='fl'>50</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude = 
-<span class='fl'>51.5235505</span>, alpha=<span class='fl'>1</span>, sigma=<span class='fl'>1</span>, tau=<span class='fl'>3</span>)
-<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='kw'>sim</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>sim</span> <span class='op'>$</span><span class='kw'>latitude</span>)
+<span class='va'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span><span class='op'>(</span><span class='fl'>50</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude <span class='op'>=</span> 
+<span class='fl'>51.5235505</span>, alpha<span class='op'>=</span><span class='fl'>1</span>, sigma<span class='op'>=</span><span class='fl'>1</span>, tau<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>sim</span> <span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
 <span class='co'># use a fixed value of sigma</span>
-<span class='fu'>geoParams</span>(data = <span class='kw'>d</span>, sigma_mean = <span class='fl'>1.0</span>, sigma_var = <span class='fl'>0</span>,
-chains=<span class='fl'>10</span>, burnin=<span class='fl'>1000</span>, samples = <span class='fl'>10000</span>, guardRail = <span class='fl'>0.1</span>)
+<span class='fu'>geoParams</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1.0</span>, sigma_var <span class='op'>=</span> <span class='fl'>0</span>,
+chains<span class='op'>=</span><span class='fl'>10</span>, burnin<span class='op'>=</span><span class='fl'>1000</span>, samples <span class='op'>=</span> <span class='fl'>10000</span>, guardRail <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Using fixed sigma model</div><div class='output co'>#&gt; $model
 #&gt; $model$sigma_mean
 #&gt; [1] 1

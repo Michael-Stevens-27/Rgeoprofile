@@ -63,10 +63,11 @@ The aim of the workshop is to meet the following sustainable decelopment goals (
 * [Queen Mary University of London - School of Biological and Chemical Sciences](https://www.qmul.ac.uk/sbcs/)
 * [Global Challenges Research Fund](https://www.ukri.org/research/global-challenges-research-fund/)
 
-<img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/bangor.png" height="200px" width="350px" />
-<img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/UKRI.png" height="100px" width="200px" />
-<img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/qmul.png" height="200px" width="350px" />
-<img src="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Tawiri.png" height="150px" width="200px" />
+
+<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/bangor.png" height="200px" width="350px" />
+<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/UKRI.png" height="100px" width="200px" />
+<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/qmul.png" height="200px" width="350px" />
+<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Tawiri.png" height="150px" width="200px" />
 
 ### Special Thanks
 

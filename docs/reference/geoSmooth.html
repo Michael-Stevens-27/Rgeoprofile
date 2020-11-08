@@ -165,7 +165,7 @@
     <p>Takes lon/lat coordinates, bins in two dimensions, and smooths using kernel density smoothing. Kernel densities are computed using the fast Fourier transform method, which is many times faster than simple summation when using a large number of points. Each Kernel is student's-t distributed with 3 degrees of freedom, and scaled by the bandwidth lambda. If lambda is set to <code>NULL</code> then the optimal value of lambda is chosen automatically using the leave-one-out maximum likelihood method.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoSmooth</span>(<span class='kw'>longitude</span>, <span class='kw'>latitude</span>, <span class='kw'>breaks_lon</span>, <span class='kw'>breaks_lat</span>, lambda = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>geoSmooth</span><span class='op'>(</span><span class='va'>longitude</span>, <span class='va'>latitude</span>, <span class='va'>breaks_lon</span>, <span class='va'>breaks_lat</span>, lambda <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -198,15 +198,15 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># create smooth surface based on raw LondonExample_crimes</span>
-<span class='kw'>breaks_lon</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='op'>-</span><span class='fl'>0.25</span>,<span class='fl'>0.05</span>,l=<span class='fl'>101</span>)
-<span class='kw'>breaks_lat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>51.45</span>,<span class='fl'>51.6</span>,l=<span class='fl'>101</span>)
-<span class='kw'>m</span> <span class='op'>&lt;-</span> <span class='fu'>geoSmooth</span>(<span class='kw'>LondonExample_crimes</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>LondonExample_crimes</span><span class='op'>$</span><span class='kw'>latitude</span>,
-                 <span class='kw'>breaks_lon</span>, <span class='kw'>breaks_lat</span>)
+<span class='va'>breaks_lon</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.25</span>,<span class='fl'>0.05</span>,l<span class='op'>=</span><span class='fl'>101</span><span class='op'>)</span>
+<span class='va'>breaks_lat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>51.45</span>,<span class='fl'>51.6</span>,l<span class='op'>=</span><span class='fl'>101</span><span class='op'>)</span>
+<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'>geoSmooth</span><span class='op'>(</span><span class='va'>LondonExample_crimes</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>LondonExample_crimes</span><span class='op'>$</span><span class='va'>latitude</span>,
+                 <span class='va'>breaks_lon</span>, <span class='va'>breaks_lat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Smoothing posterior surface..............
 #&gt; maximum likelihood lambda = 0.5</div><div class='input'>
 <span class='co'># produce image plot of surface and overlay points</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/image.html'>image</a></span>(<span class='kw'>breaks_lon</span>, <span class='kw'>breaks_lat</span>, <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span>(<span class='kw'>m</span>), xlab=<span class='st'>"longitude"</span>, ylab=<span class='st'>"latitude"</span>)
-</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span>(<span class='kw'>LondonExample_crimes</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>LondonExample_crimes</span><span class='op'>$</span><span class='kw'>latitude</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/image.html'>image</a></span><span class='op'>(</span><span class='va'>breaks_lon</span>, <span class='va'>breaks_lat</span>, <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>, xlab<span class='op'>=</span><span class='st'>"longitude"</span>, ylab<span class='op'>=</span><span class='st'>"latitude"</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span><span class='op'>(</span><span class='va'>LondonExample_crimes</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>LondonExample_crimes</span><span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
 </div><div class='img'><img src='geoSmooth-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

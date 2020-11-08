@@ -165,7 +165,7 @@
     <p>Produces a surface based on an alternative ring-search strategy (ie searching in an expanding radius out from the 'crimes'). The output from this function can be used with geoProfile() and geoReportHitscores to produce a map and hitscores based on this strategy.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoRing</span>(<span class='kw'>params</span>, <span class='kw'>data</span>, <span class='kw'>source</span>, <span class='kw'>mcmc</span>)</pre>
+    <pre class="usage"><span class='fu'>geoRing</span><span class='op'>(</span><span class='va'>params</span>, <span class='va'>data</span>, <span class='va'>source</span>, <span class='va'>mcmc</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,9 +192,9 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># John Snow cholera data</span>
-<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>latitude</span>)
-<span class='kw'>s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoDataSource.html'>geoDataSource</a></span>(<span class='kw'>WaterPumps</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>WaterPumps</span><span class='op'>$</span><span class='kw'>latitude</span>)
-<span class='kw'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span>(data = <span class='kw'>d</span>, sigma_mean = <span class='fl'>1.0</span>, sigma_squared_shape = <span class='fl'>2</span>)
+<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>Cholera</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>Cholera</span><span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
+<span class='va'>s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoDataSource.html'>geoDataSource</a></span><span class='op'>(</span><span class='va'>WaterPumps</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>WaterPumps</span><span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
+<span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1.0</span>, sigma_squared_shape <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p)</span>
 <span class='co'>#surface_ring &lt;- geoRing(params = p, data = d, source = s, mcmc = m)</span>
 <span class='co'>#gp_ring &lt;- geoProfile(surface = surface_ring)</span>

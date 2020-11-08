@@ -165,8 +165,8 @@
     <p>Provides random draws from a 2D spatial Dirichlet process mixture model. Both sigma and tau are defined in units of kilometres, representing the average distance that an observations lies from a source, and the average distance that a source lies from the centre point respectively. In contrast, the location of the centre point and the locations of the final output crime sites are defined in units of degrees lat/long to facilitate spatial analysis.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rDPM</span>(<span class='kw'>n</span>, sigma = <span class='fl'>1</span>, tau = <span class='fl'>10</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.1277</span>,
-  priorMean_latitude = <span class='fl'>51.5074</span>, alpha = <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>rDPM</span><span class='op'>(</span><span class='va'>n</span>, sigma <span class='op'>=</span> <span class='fl'>1</span>, tau <span class='op'>=</span> <span class='fl'>10</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.1277</span>,
+  priorMean_latitude <span class='op'>=</span> <span class='fl'>51.5074</span>, alpha <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -203,8 +203,8 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># produces clusters of points from sources centred on QMUL</span>
-<span class='fu'>rDPM</span>(<span class='fl'>50</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude = <span class='fl'>51.5235505</span>, 
-alpha=<span class='fl'>1</span>, sigma=<span class='fl'>1</span>, tau=<span class='fl'>3</span>) 
+<span class='fu'>rDPM</span><span class='op'>(</span><span class='fl'>50</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude <span class='op'>=</span> <span class='fl'>51.5235505</span>, 
+alpha<span class='op'>=</span><span class='fl'>1</span>, sigma<span class='op'>=</span><span class='fl'>1</span>, tau<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span> 
 </div><div class='output co'>#&gt; $longitude
 #&gt;  [1] -0.07071854 -0.02899804 -0.08771382 -0.06063891 -0.05081275 -0.04295398
 #&gt;  [7] -0.08024408 -0.08588012 -0.04688169 -0.06268836 -0.04944622 -0.09847647
@@ -235,8 +235,8 @@ alpha=<span class='fl'>1</span>, sigma=<span class='fl'>1</span>, tau=<span clas
 #&gt; $source_lat
 #&gt; [1] 51.52723 51.55234 51.52360 51.52733
 #&gt; </div><div class='input'><span class='co'># same, but increasing alpha to generate more clusters</span>
-<span class='fu'>rDPM</span>(<span class='fl'>50</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude = <span class='fl'>51.5235505</span>, 
-alpha=<span class='fl'>5</span>, sigma=<span class='fl'>1</span>, tau=<span class='fl'>3</span>)
+<span class='fu'>rDPM</span><span class='op'>(</span><span class='fl'>50</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude <span class='op'>=</span> <span class='fl'>51.5235505</span>, 
+alpha<span class='op'>=</span><span class='fl'>5</span>, sigma<span class='op'>=</span><span class='fl'>1</span>, tau<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $longitude
 #&gt;  [1] -0.061458998 -0.065096832 -0.090627180 -0.033639377 -0.067317680
 #&gt;  [6] -0.072873141 -0.054903906 -0.088553324 -0.052818062 -0.068406517

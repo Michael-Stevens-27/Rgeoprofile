@@ -17,7 +17,7 @@ We are going to install R from the [R project website](https://www.r-project.org
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_landing.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_landing.png)
 
 \  
 
@@ -25,7 +25,7 @@ Next we need to choose the location we will be installing from. For this worksho
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_mirrors.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_mirrors.png)
 
 \  
 
@@ -33,7 +33,7 @@ Go ahead and click on the "South Africa" option, leading us to:
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_for_windows.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_for_windows.png)
 
 \  
 
@@ -41,7 +41,7 @@ Since this will be the first time installing R, click on the "base" option.
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_version.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_version.png)
 
 \  
 
@@ -49,7 +49,7 @@ Finally, click on the "Download R 4.0.3 for Windows" option. Once this has finis
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_install.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_install.png)
 
 \  
 
@@ -57,7 +57,7 @@ Move through each of the steps by clicking "next" until you reach the install pr
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_installing.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_installing.png)
 
 \  
 
@@ -65,7 +65,7 @@ Once this is done, click "finish".
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/R_installing.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_installing.png)
 
 \  
 
@@ -75,7 +75,7 @@ Now that we have installed R, we need to install the user interface for R, R stu
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_landing.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_landing.png)
 
 \  
 
@@ -83,7 +83,7 @@ Next we want the free version of Rstudio.
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_version.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_version.png)
 
 \  
 
@@ -91,23 +91,23 @@ And we want to download the .exe file for windows. We will then follow the same 
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_download.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_download.png)
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_install.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_install.png)
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_setup.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_setup.png)
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_installing.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_installing.png)
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_finish.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_finish.png)
 
 \  
 
@@ -121,7 +121,7 @@ When you first open Rstudio you will be welcomed with this interface.
 
 \  
 
-![](/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/docs/articles/images/Rstudio_welcome_numbered.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_welcome_numbered.png)
 
 \  
 

@@ -165,7 +165,7 @@
     <p>Check that all data for use in Rgeoprofile MCMC is in the correct format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoDataCheck</span>(<span class='kw'>data</span>, silent = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>geoDataCheck</span><span class='op'>(</span><span class='va'>data</span>, silent <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,14 +183,14 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># John Snow cholera data</span>
-<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>Cholera</span><span class='op'>$</span><span class='kw'>latitude</span>)
-<span class='fu'>geoDataCheck</span>(<span class='kw'>d</span>)
+<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>Cholera</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>Cholera</span><span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
+<span class='fu'>geoDataCheck</span><span class='op'>(</span><span class='va'>d</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; data file passed all checks</div><div class='input'>
 <span class='co'># simulated data</span>
-<span class='kw'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span>(<span class='fl'>50</span>, priorMean_longitude = <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude = 
-<span class='fl'>51.5235505</span>, alpha=<span class='fl'>1</span>, sigma=<span class='fl'>1</span>, tau=<span class='fl'>3</span>)
-<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span>(<span class='kw'>sim</span><span class='op'>$</span><span class='kw'>longitude</span>, <span class='kw'>sim</span> <span class='op'>$</span><span class='kw'>latitude</span>)
-<span class='fu'>geoDataCheck</span>(<span class='kw'>d</span>)
+<span class='va'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span><span class='op'>(</span><span class='fl'>50</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude <span class='op'>=</span> 
+<span class='fl'>51.5235505</span>, alpha<span class='op'>=</span><span class='fl'>1</span>, sigma<span class='op'>=</span><span class='fl'>1</span>, tau<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>sim</span> <span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
+<span class='fu'>geoDataCheck</span><span class='op'>(</span><span class='va'>d</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; data file passed all checks</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
