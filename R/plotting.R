@@ -502,7 +502,7 @@ geoPlotMap <- function(params, data=NULL, source=NULL, surface=NULL, surfaceCols
 #' @param source potential sources object in the format defined by geoDataSource().
 #' @param surface a surface to overlay onto the map, typically a geoprofile obtained from the output of geoMCMC().
 #' @param surfaceCols vector of two or more colours to plot surface. Defaults to viridis palette.
-#' @param mapType the specific type of map to plot. Options available are "terrain", "satellite", "roadmap" and "hybrid" (google maps), "terrain-background", "terrain", "watercolor" and "toner" (stamen maps) or a positive integer for cloudmade maps (see ?get_cloudmademap from the package ggmap for details).
+#' @param map_type the specific type of map to plot. See leaflet::providers for options. 
 #' @param opacity value between 0 and 1 givin the opacity of surface colours.
 #' @param crimeCex relative size of symbols showing crimes.
 #' @param crimeCol colour of crime symbols.

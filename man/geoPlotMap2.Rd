@@ -30,6 +30,8 @@ geoPlotMap2(params, data = NULL, surface = NULL, source = NULL,
 
 \item{sourceCol}{colour of suspect sites symbols.}
 
+\item{map_type}{the specific type of map to plot. See leaflet::providers for options.}
+
 \item{threshold}{what level of the geoprofile to display}
 
 \item{opacity}{value between 0 and 1 givin the opacity of surface colours.}
@@ -37,8 +39,6 @@ geoPlotMap2(params, data = NULL, surface = NULL, source = NULL,
 \item{smoothing}{smooth profile}
 
 \item{gpLegend}{whether or not to add legend to plot.}
-
-\item{mapType}{the specific type of map to plot. Options available are "terrain", "satellite", "roadmap" and "hybrid" (google maps), "terrain-background", "terrain", "watercolor" and "toner" (stamen maps) or a positive integer for cloudmade maps (see ?get_cloudmademap from the package ggmap for details).}
 }
 \description{
 Plots geoprofile on map, with various customisable options.
