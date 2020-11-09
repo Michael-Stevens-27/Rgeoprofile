@@ -13,12 +13,13 @@ navbar:
           href: "articles/Install_R.html"
         - text: ---------------
         - text: "Intro to R part 1"
+          href: "articles/R_intro1.html"
         - text: "Intro to R part 2"
+          href: "articles/R_intro2.html"
     - text: "GP tutorials"
       menu:
         - text: "Installation"
           href: articles/installation.html  
-        - text: ---------------
         - text: "Background"
           href: articles/GP_background.html
         - text: ---------------
@@ -37,8 +38,6 @@ navbar:
           href: articles/General_R.html
         - text: "Spatial Analysis in R"
           href: articles/Spatial_R.html
-        - text: "Ecology in R"
-          href: articles/Ecology_R.html
         - text: "Geoprofiling"
           href: "articles/GP_resources.html"
   right:

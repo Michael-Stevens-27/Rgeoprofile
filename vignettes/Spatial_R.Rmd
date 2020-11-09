@@ -10,3 +10,5 @@ vignette: >
 ---
 
 Below is a collection of resources as a guide for spatial analysis in R. 
+
+* [Robin Lovelace's Geocomputation with R](https://geocompr.robinlovelace.net/)

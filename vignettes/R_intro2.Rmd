@@ -1,0 +1,16 @@
+---
+title: "Introduction to using R - Part 2"
+author: "Michael Stevens"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to using R - Part 2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+* classes
+* vectors
+* matrices
+* loading in data
+* basic functions (plot, print, sum, mean, var etc)

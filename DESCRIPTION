@@ -11,6 +11,8 @@ Authors@R: as.person(c(
 Description: Can be used to infer multiple source locations from spatial data
     using a Dirichlet process mixture (DPM) modelling framework.
 License: GPL (>= 2)
+Depends:
+    R (>= 3.0.0)
 Imports:
     Rcpp (>= 0.11.5),
     fftwtools,

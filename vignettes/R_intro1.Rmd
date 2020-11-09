@@ -1,0 +1,54 @@
+---
+title: "Introduction to using R - Part 1"
+author: "Michael Stevens"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to using R - Part 1}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+Now that we have installed R and Rstudio, it's time to get down to some coding! This tutorial will focus on the fundamental basics of writing and running R code. This will include:
+
+  * The Rstudio interface
+  * Where to write and run code
+  * Basic arithmetic
+  * Assigning objects
+  
+# The Rstudio interface
+
+As mentioned in the previous tutorial when you start up Rstudio, you should be welcomed with the following interface: 
+
+\  
+
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_welcome_numbered.png)
+
+\  
+
+The intereface should consist of four main panels: 
+
+**1** - The **top left** panel is the script window; this is where you will write all of your code. This window may not be currently visible, if not, click on File -> New File -> Rscript. Or, simply type `Ctrl Shift N` on the keyboard.
+  
+**2** - Once you have written your code, you will need to run it. The **bottom left** panel consists of the following tabs:
+
+* *Console* - This is the window where you will be running your code and reading off the output. A line of code can be sent from the script to the console by clicking on the relevant line of code and hitting `Ctrl ENTER` on the keyboard. 
+* *Terminal* - This allows you to access the command prompt from Rstudio without having to pull another window up.
+* *Jobs* - This tab allows us to run some code in the background whilst allowing us to continue using Rstudio.
+  
+**3** - The **top right** panel displays a few different pieces of information:
+
+* *Environment* - This will list the different R objects in the current R session. We can see an example here, that `x` is equal to `5`.
+* *History* - This gives us a list of each piece of code we have sent to the terminal window
+* *Connections* - Allows us to connect to data bases, making data importing and manipoulation an easier process. 
+* *Tutorial* - Displays tutorials built via the `learnr` package.
+  
+**4** - The **bottom right** panel is also responsible for many things as we can see across the tabs:
+
+* *Files* - This shows the current directory that we are in. This will be useful later for accessing data. 
+* *Plots* - If we've written some code to plot a graph, this will show up in the window once we've run the relevant code. 
+* *Packages* - This will list off all the packages that are being used in the current R session. 
+* *Help* - This window will pop open anytime you run some code seeking help with a particular function. For example, running `?sd` will display the documentation on the `sd` function.  
+* *Viewer* - This will display a preview of any HTML documents or shiny apps that you are building.

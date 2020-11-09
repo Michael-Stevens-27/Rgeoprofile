@@ -20,7 +20,7 @@ The Rcpp package requires the following OS-specific steps:
 Download and install the appropriate version of [Rtools](https://cran.rstudio.com/bin/windows/Rtools/) for your version of R. On installation, ensure you check the box to arrange your system PATH as recommended by Rtools:
 
 \      
-![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rtools.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/rtools.png)
 \  
 
 Once the file has finished downloading click on the .exe file and follow the installation process - this may take a few minutes.    

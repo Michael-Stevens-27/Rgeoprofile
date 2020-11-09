@@ -111,13 +111,7 @@ And we want to download the .exe file for windows. We will then follow the same 
 
 \  
 
-That's it! We have downloaded R and Rstudio. To open a new instance of Rstudio, click on the windows button at the bottom left of the screen, search for Rstudio and click on the Rstudio app in the results. 
-
-# Welcome to Rstudio
-
-\  
-
-When you first open Rstudio you will be welcomed with this interface. 
+That's it! We have downloaded R and Rstudio. To open a new instance of Rstudio, click on the windows button at the bottom left of the screen, search for Rstudio and click on the Rstudio app in the results. When you first open Rstudio you will be welcomed with this interface. 
 
 \  
 
@@ -125,21 +119,4 @@ When you first open Rstudio you will be welcomed with this interface.
 
 \  
 
-The intereface should consist of four main panels: 
-
-1. The **top left** panel is the script window; this is where you will write all of your code. This is also a file that can be saved and shared with collaborators.
-2. Once you have written your code, you will need to run it. The **bottom left** panel consists of the following tabs:
-       * *Console* - This is the window where you will be running your code and reading off the output. A line of code can be sent from the script to the console by clicking on the relevant line of code and hitting `Ctrl ENTER` on the keyboard. 
-       * *Terminal* - This allows you to access the command prompt from Rstudio without having to pull another window up.
-       * *Jobs* - This tab allows us to run some code in the background whilst allowing us to continue using Rstudio. 
-3. The **top right** panel displays a few different pieces of information:
-       * *Environment* - This will list the different R objects in the current R session. We can see an example here, that `x` is equal to `5`.
-       * *History* - This gives us a list of each piece of code we have sent to the terminal window
-       * *Connections* - Allows us to connect to data bases, making data importing and manipoulation an easier process. 
-       * *Tutorial* - Displays tutorials built via the `learnr` package.
-4. The **bottom right** panel is also responsible for many things as we can see across the tabs:
-       * *Files* - This shows the current directory that we are in. This will be useful later for accessing data. 
-       * *Plots* - If we've written some code to plot a graph, this will show up in the window once we've run the relevant code. 
-       * *Packages* - This will list off all the packages that are being used in the current R session. 
-       * *Help* - This window will pop open anytime you run some code seeking help with a particular function. For example, running `?sd` will display the documentation on the `sd` function.  
-       * *Viewer* - This will display a preview of any HTML documents or shiny apps that you are building. 
+That's all the installing we need to do for R and Rstudio. In the next tutorial we will have a look at the Rstudio interface in detail and start writing some R code.

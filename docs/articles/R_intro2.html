@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Installing R and Rstudio • Rgeoprofile</title>
+<title>Introduction to using R - Part 2 • Rgeoprofile</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Installing R and Rstudio">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to using R - Part 2">
 <meta property="og:description" content="RgeoProfile">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -121,121 +121,34 @@
 
       
 
-      </header><link href="Install_R_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="Install_R_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><link href="R_intro2_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="R_intro2_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Installing R and Rstudio</h1>
+      <h1 data-toc-skip>Introduction to using R - Part 2</h1>
                         <h4 class="author">Michael Stevens</h4>
             
             <h4 class="date">2020-11-09</h4>
       
       
-      <div class="hidden name"><code>Install_R.Rmd</code></div>
+      <div class="hidden name"><code>R_intro2.Rmd</code></div>
 
     </div>
 
     
     
-<p>This really is the very first step to getting to grips with R. Before we can do anything, we will need to install it on your computer.</p>
-<div id="installing-r" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installing-r" class="anchor"></a>Installing R</h1>
-<p>We are going to install R from the <a href="https://www.r-project.org/">R project website</a>. This is the main website for finding different versions of R, reporting bugs and help with using R in general. Clicking on the link above will lead us to the main website where we will find a link for downloading R, immediately below "getting started".</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_landing.png">
+<ul>
+<li>classes</li>
+<li>vectors</li>
+<li>matrices</li>
+<li>loading in data</li>
+<li>basic functions (plot, print, sum, mean, var etc)</li>
+</ul>
 </div>
-<p> </p>
-<p>Next we need to choose the location we will be installing from. For this workshop, the best location will be "South Africa". There are many options here, but choosing the closest location ensures the installation is as quick as possible.</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_mirrors.png">
-</div>
-<p> </p>
-<p>Go ahead and click on the "South Africa" option, leading us to:</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_for_windows.png">
-</div>
-<p> </p>
-<p>Since this will be the first time installing R, click on the "base" option.</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_version.png">
-</div>
-<p> </p>
-<p>Finally, click on the "Download R 4.0.3 for Windows" option. Once this has finished downloading run the .exe file and follow the installation process as prompted on your computer screen.</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_install.png">
-</div>
-<p> </p>
-<p>Move through each of the steps by clicking "next" until you reach the install process:</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_installing.png">
-</div>
-<p> </p>
-<p>Once this is done, click "finish".</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_installing.png">
-</div>
-<p> </p>
-</div>
-<div id="installing-rstudio" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installing-rstudio" class="anchor"></a>Installing Rstudio</h1>
-<p>Now that we have installed R, we need to install the user interface for R, R studio. This can be installed from the <a href="https://rstudio.com/">Rstudio</a> website. Click on the "download" button on the top right hand corner of the screen.</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_landing.png">
-</div>
-<p> </p>
-<p>Next, we want the free version of Rstudio:</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_version.png">
-</div>
-<p> </p>
-<p>And we want to download the .exe file for windows. We will then follow the same process as for the previous installation. Click on the .exe file once it's finished downloading and then follow the setup process prompted on screen.</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_download.png">
-</div>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_install.png">
-</div>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_setup.png">
-</div>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_installing.png">
-</div>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_finish.png">
-</div>
-<p> </p>
-<p>That's it! We have downloaded R and Rstudio. To open a new instance of Rstudio, click on the windows button at the bottom left of the screen, search for Rstudio and click on the Rstudio app in the results. When you first open Rstudio you will be welcomed with this interface.</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_welcome_numbered.png">
-</div>
-<p> </p>
-<p>That's all the installing we need to do for R and Rstudio. In the next tutorial we will have a look at the Rstudio interface in detail and start writing some R code.</p>
-</div>
-  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
