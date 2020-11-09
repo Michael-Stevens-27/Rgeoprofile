@@ -143,30 +143,21 @@ geoPlotSigma <- function(params, mcmc = NULL, plotMax = NULL) {
   # produce prior distribution
   sigma_vec <- seq(0.01, plotMax, l = 501)
   sigma_prior <- dRIG(sigma_vec, alpha, beta)
-  sigma_prior <- sample(sigma_vec, length(sigma_draws), replace = TRUE, prob = sigma_prior)
+  sigmaDF <- data.frame(sigma = sigma_vec, 
+                        density = sigma_prior, 
+                        type = rep("Prior",length(sigma_prior)))
   
   # plot prior and overlay density of posterior draws if used
   if (is.null(sigma_draws)) {
-    
-    sigmaDF <- data.frame(sigma = sigma_prior, type = rep("Prior",length(sigma_prior)))
-    
-    ggplot() + geom_histogram(data = sigmaDF, mapping = aes(x = sigma_prior, fill = type), bins = 250) +
+    ggplot() + geom_line(data = sigmaDF, mapping = aes(x = sigma, y = density, col = type)) +
                xlab("Sigma (Km)") + ylab("Probability density") 
-    
-    # plot(sigma_vec, sigma_prior, type='l', lty=1, xlab='sigma (km)', ylab='probability density', main='')
-    # legend(x='topright', legend='prior', lty=1)
     
   } else {
-    sigmaDF <- data.frame(sigma = c(sigma_prior, mcmc$sigma), 
-                          type = c(rep("Prior", length(sigma_prior)), rep("Posterior",length(mcmc$sigma)))) 
-                          
-    ggplot() + geom_histogram(data = sigmaDF, mapping = aes(x = sigma, fill = type), bins = 250, alpha = 0.5) +
+    sigmaPostDF <- data.frame(sigma = mcmc$sigma, 
+                              type = rep("Posterior",length(mcmc$sigma)))
+    ggplot(data = sigmaPostDF, mapping = aes(sigma, col = type)) + geom_density() +
+               geom_line(data = sigmaDF, mapping = aes(x = sigma, y = density, col = type)) +  
                xlab("Sigma (Km)") + ylab("Probability density") 
-
-    # y_max <- max(sigma_posterior$y, na.rm=TRUE)
-    # plot(sigma_vec, sigma_prior, type='l', lty=1, ylim=c(0,y_max), xlab='sigma (km)', ylab='probability density', main='')
-    # lines(sigma_posterior, lty=2)
-    # legend(x='topright', legend=c('prior','posterior'), lty=c(1,2))
   }
   
 }

@@ -131,7 +131,7 @@ geoPlotMap2(surface = m$geoProfile,
             gpLegend = TRUE)                       
 ```
 
-We have our geoprofile! Intuitively we can see the model telling us to search in those areas near Tower Bridge and Mile end. In addition to these two clusters there seems to be some search priority aimed at the spatial mean of the crime sites too. Finally, we can see the model also places a small amount of priority near the lone crime in Shadwell Basin. Before we add the source locations to the map and measure their hit scores, let's have a look at our estimate for sigma. This can be plotted by adding the `mcmc` argument into the `geoPlotMap()` function.      
+We have our geoprofile! Intuitively we can see the model telling us to search in those areas near Tower Bridge and Mile end. In addition to these two clusters there seems to be some search priority aimed at the spatial mean of the crime sites too. Finally, we can see the model also places a small amount of priority near the lone crime in Shadwell Basin. Before we add the source locations to the map and measure their hit scores, let's have a look at our estimate for sigma. This can be plotted by adding the `mcmc` argument into the `geoPlotSigma()` function.      
 
 ```{r, eval = TRUE, message = FALSE}
 # plot sigma prior
@@ -140,14 +140,27 @@ geoPlotSigma(params = p,
              mcmc = m)
 ```
 
-Now we can see our prior and posterior distributions for the dispersal parameter sigma. 
+Now we can see our prior and posterior distributions for the dispersal parameter sigma. We have already discussed our prior distribution but our posterior distribution tells a very different story. The main peak of the posterior distribution on sigma is around 0.45 km. Curiously though, the distribution is bi-modal, it has two peaks. This indicates the criminal might have two modes of transport, on foot or perhaps by bike. 
 
-Our model seems to be doing well, since the source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but how do we explicitly quantify model success? This is done via the source's *hit score* percentages and overall *Gini co-efficent*. Recall that the hit score percentage is the percentage of the area searched before finding the source locations divided by the total area searched. So the lower the hit score, the better the model is performing. Each source comes with its own hit score, but we can summarise these values using the Gini co-efficent. If we possessed the perfect model that found our source locations by searching almost none of the search area then we would expect a Gini co-efficent of one and if the model fails to find source locations after searching the entire search area, then we would expect a Gini value of zero. If we were to search for our source randomly then we would expect a Gini co-efficient of 0.5.
+Let's reveal the location of the source locations on the map 
 
-Hit scores are produced via the `geoReportHitscores()` function where we provide the parameters, the sources and the geoprofile. We can then obtain a Gini co-efficent using these hit scores (see the `geoPlotLorenz()` function).
+```{r, eval = TRUE, echo = FALSE}  
+geoPlotMap2(surface = m$geoProfile,
+            params = p,
+            data = d, 
+            source = s, 
+            sourceCex = 5,
+            sourceCol = "black",
+            surfaceCols = rev(viridis::plasma(10)),
+            opacity = 0.7,
+            threshold = 0.25,
+            crimeCex = 5,
+            gpLegend = TRUE)                       
+```
+
+Once again our model seems to be doing well, all source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but let's go back to the *hit score* and *Gini co-efficent* metrics using the the `geoReportHitscores()` and `geoPlotLorenz()` functions.
 
 ```{r, eval = TRUE}
-
 # get hitscores
 hs <- geoReportHitscores(params = p, 
                          source = s, 
@@ -156,7 +169,7 @@ hs
 
 # produce Lorenz plot
 Gini <- geoPlotLorenz(hit_scores = hs)
-Gini
+print(Gini)
 ```
 
-We can see that the model found every source by searching less than 4\% of the total search area, excellent! Equivalently, the Gini co-efficient for these sources is 0.976. This tutorial was a quick walkthrough of the process one follows when running a geographic profiling analysis. The next tutorial will walkthrough analysing some real-world data in the form of inferring the home and work place of an individual via where their credit card has been used.  
+We can see that the model found every source by searching less than 1\% of the total search area, excellent! Equivalently, the Gini co-efficient for these sources is 0.995. 
