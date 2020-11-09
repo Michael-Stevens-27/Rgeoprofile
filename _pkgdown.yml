@@ -34,8 +34,13 @@ navbar:
     - text: "Other resources"
       menu:
         - text: "General R"
+          href: articles/General_R.html
         - text: "Spatial Analysis in R"
+          href: articles/Spatial_R.html
         - text: "Ecology in R"
+          href: articles/Ecology_R.html
+        - text: "Geoprofiling"
+          href: "articles/GP_resources.html"
   right:
    - icon: fa-github
      href: https://github.com/Michael-Stevens-27/Rgeoprofile

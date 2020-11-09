@@ -9,46 +9,81 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+Before we can install Rgeoprofile, we need to install Rcpp, a package for linking R and C++ together to speed up the model. 
+
 ## Installing Rcpp
 
-## Installation
+The Rcpp package requires the following OS-specific steps:
 
-RgeoProfile relies on the Rcpp package, which requires the following OS-specific steps:
+### Windows
+    
+Download and install the appropriate version of [Rtools](https://cran.rstudio.com/bin/windows/Rtools/) for your version of R. On installation, ensure you check the box to arrange your system PATH as recommended by Rtools:
 
-* Windows
-    - Download and install the appropriate version of [Rtools](https://cran.rstudio.com/bin/windows/Rtools/) for your version of R. On installation, ensure you check the box to arrange your system PATH as recommended by Rtools
-* Mac OS X
-    - Download and install [XCode](http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-    - Within XCode go to Preferences : Downloads and install the Command Line Tools
-* Linux (Debian/Ubuntu)
-    - Install the core software development utilities required for R package development as well as LaTeX by executing
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rtools.png)
+\  
+
+Once the file has finished downloading click on the .exe file and follow the installation process - this may take a few minutes.    
+
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rtools_install.png)
+\  
+
+### Mac OS X
+
+  * Download and install [XCode](http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+  * Within XCode go to Preferences : Downloads and install the Command Line Tools
+
+### Linux (Debian/Ubuntu)
+  
+  * Install the core software development utilities required for R package development as well as LaTeX by executing
 
 ```
 sudo apt-get install r-base-dev texlive-full
 ```
 
-Next, ensure that you have devtools installed by running
+## Installing the RgeoProfile package
+
+Next, in order to install RgeoProfile from github we need the devtools package to be installed. This can be accomplished in Rstudio with the following code:
+
 ```{r, eval = FALSE}
 install.packages("devtools")
+```
+
+We then load the package using:
+
+```{r, eval = FALSE}
 library(devtools)
 ```
-Next you need an API key for Google Maps. Earlier this year GoogleMaps changed the way they price API calls – see here (https://cloud.google.com/maps-platform/pricing/#details). Under the new system there is a lower limit on API calls below which you won’t be charged, but annoyingly you still need to sign up for an API key otherwise it produces a 403 error.
 
-Instructions on signing up for a GoogleMaps API key can be found here (https://developers.google.com/maps/documentation/javascript/get-api-key). Then – just to be extra sure that you will never be charged - you can limit your budget to something very low (like £1) by following these instructions (https://cloud.google.com/billing/docs/how-to/budgets?hl=en). This way you can be sure you will only use the free API calls, and your account will cap before you start being charged any significant amount of money.
+Finally, we can install the RgeoProfile via the `install_github()` function and load the package using the `library() function`, this may also take a few minutes. 
 
-Once you have a key (which should look like a long string of letters and numbers) you need to register it in R as below, replacing 'xxxxxxx' with your key. Start by installing and loading the “ggmap” package. Note that this should be installed from GitHub since the CRAN version doesn’t currently include the function register_google(). After loading the ggmap library, load RgeoProfile as normal. Once your key is registered mapping functions in RgeoProfile should work normally.
 ```{r, eval = FALSE}
-install_github("dkahle/ggmap")
-library(ggmap)
-register_google(key ="xxxxxxxx")
-```
-More details can be found here: (https://rdrr.io/github/fresques/ggmap/man/register_google.html
-
-We know this is inconvenient and makes it more difficult for users to work with our package. For this reason the next version of RgeoProfile is likely to switch to open source alternatives.
-
-Finally, install the RgeoProfile package directly from GitHub by running
-```{r, eval = FALSE}
-install_github("bobverity/RgeoProfile")
+install_github("Michael-stevens-27/Rgeoprofile", ref = "workshop")
 library(RgeoProfile)
 ```
-Once installed, run `??RgeoProfile` to open the help for the package, which contains a number of worked examples.
+
+Once installed, documentation for each function can be found [here](https://michael-stevens-27.github.io/Rgeoprofile/reference/index.html) and can also be accessed by running the following code in Rstudio: 
+
+```{r, eval = FALSE}
+?geoData 
+```
+
+
+```{r, eval = FALSE, echo = FALSE}
+# Next you need an API key for Google Maps. Earlier this year GoogleMaps changed the way they price API calls – see here (https://cloud.google.com/maps-platform/pricing/#details). Under the new system there is a lower limit on API calls below which you won’t be charged, but annoyingly you still need to sign up for an API key otherwise it produces a 403 error.
+# 
+# Instructions on signing up for a GoogleMaps API key can be found here (https://developers.google.com/maps/documentation/javascript/get-api-key). Then – just to be extra sure that you will never be charged - you can limit your budget to something very low (like £1) by following these instructions (https://cloud.google.com/billing/docs/how-to/budgets?hl=en). This way you can be sure you will only use the free API calls, and your account will cap before you start being charged any significant amount of money.
+# 
+# Once you have a key (which should look like a long string of letters and numbers) you need to register it in R as below, replacing 'xxxxxxx' with your key. Start by installing and loading the “ggmap” package. Note that this should be installed from GitHub since the CRAN version doesn’t currently include the function register_google(). After loading the ggmap library, load RgeoProfile as normal. Once your key is registered mapping functions in RgeoProfile should work normally.
+# ```{r, eval = FALSE}
+# install_github("dkahle/ggmap")
+# library(ggmap)
+# register_google(key ="xxxxxxxx")
+# ```
+# More details can be found here: (https://rdrr.io/github/fresques/ggmap/man/register_google.html
+# 
+# We know this is inconvenient and makes it more difficult for users to work with our package. For this reason the next version of RgeoProfile is likely to switch to open source alternatives.
+# 
+# Finally, install the RgeoProfile package directly from GitHub by running
+```

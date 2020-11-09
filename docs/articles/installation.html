@@ -89,9 +89,18 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">General R</li>
-    <li class="dropdown-header">Spatial Analysis in R</li>
-    <li class="dropdown-header">Ecology in R</li>
+<li>
+      <a href="../articles/General_R.html">General R</a>
+    </li>
+    <li>
+      <a href="../articles/Spatial_R.html">Spatial Analysis in R</a>
+    </li>
+    <li>
+      <a href="../articles/Ecology_R.html">Ecology in R</a>
+    </li>
+    <li>
+      <a href="../articles/GP_resources.html">Geoprofiling</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -128,52 +137,53 @@
 
     
     
+<p>Before we can install Rgeoprofile, we need to install Rcpp, a package for linking R and C++ together to speed up the model.</p>
 <div id="installing-rcpp" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing-rcpp" class="anchor"></a>Installing Rcpp</h2>
+<p>The Rcpp package requires the following OS-specific steps:</p>
+<div id="windows" class="section level3">
+<h3 class="hasAnchor">
+<a href="#windows" class="anchor"></a>Windows</h3>
+<p>Download and install the appropriate version of <a href="https://cran.rstudio.com/bin/windows/Rtools/">Rtools</a> for your version of R. On installation, ensure you check the box to arrange your system PATH as recommended by Rtools:</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rtools.png">  </p>
+<p>Once the file has finished downloading click on the .exe file and follow the installation process - this may take a few minutes.</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rtools_install.png">  </p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>RgeoProfile relies on the Rcpp package, which requires the following OS-specific steps:</p>
-<ul>
-<li>Windows
-<ul>
-<li>Download and install the appropriate version of <a href="https://cran.rstudio.com/bin/windows/Rtools/">Rtools</a> for your version of R. On installation, ensure you check the box to arrange your system PATH as recommended by Rtools</li>
-</ul>
-</li>
-<li>Mac OS X
+<div id="mac-os-x" class="section level3">
+<h3 class="hasAnchor">
+<a href="#mac-os-x" class="anchor"></a>Mac OS X</h3>
 <ul>
 <li>Download and install <a href="http://itunes.apple.com/us/app/xcode/id497799835?mt=12">XCode</a>
 </li>
 <li>Within XCode go to Preferences : Downloads and install the Command Line Tools</li>
 </ul>
-</li>
-<li>Linux (Debian/Ubuntu)
+</div>
+<div id="linux-debianubuntu" class="section level3">
+<h3 class="hasAnchor">
+<a href="#linux-debianubuntu" class="anchor"></a>Linux (Debian/Ubuntu)</h3>
 <ul>
 <li>Install the core software development utilities required for R package development as well as LaTeX by executing</li>
 </ul>
-</li>
-</ul>
 <pre><code>sudo apt-get install r-base-dev texlive-full</code></pre>
-<p>Next, ensure that you have devtools installed by running</p>
+</div>
+</div>
+<div id="installing-the-rgeoprofile-package" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installing-the-rgeoprofile-package" class="anchor"></a>Installing the RgeoProfile package</h2>
+<p>Next, in order to install RgeoProfile from github we need the devtools package to be installed. This can be accomplished in Rstudio with the following code:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/devtools">devtools</a></span><span class="op">)</span></code></pre></div>
-<p>Next you need an API key for Google Maps. Earlier this year GoogleMaps changed the way they price API calls – see here (<a href="https://cloud.google.com/maps-platform/pricing/#details" class="uri">https://cloud.google.com/maps-platform/pricing/#details</a>). Under the new system there is a lower limit on API calls below which you won’t be charged, but annoyingly you still need to sign up for an API key otherwise it produces a 403 error.</p>
-<p>Instructions on signing up for a GoogleMaps API key can be found here (<a href="https://developers.google.com/maps/documentation/javascript/get-api-key" class="uri">https://developers.google.com/maps/documentation/javascript/get-api-key</a>). Then – just to be extra sure that you will never be charged - you can limit your budget to something very low (like £1) by following these instructions (<a href="https://cloud.google.com/billing/docs/how-to/budgets?hl=en" class="uri">https://cloud.google.com/billing/docs/how-to/budgets?hl=en</a>). This way you can be sure you will only use the free API calls, and your account will cap before you start being charged any significant amount of money.</p>
-<p>Once you have a key (which should look like a long string of letters and numbers) you need to register it in R as below, replacing 'xxxxxxx' with your key. Start by installing and loading the “ggmap” package. Note that this should be installed from GitHub since the CRAN version doesn’t currently include the function register_google(). After loading the ggmap library, load RgeoProfile as normal. Once your key is registered mapping functions in RgeoProfile should work normally.</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></code></pre></div>
+<p>We then load the package using:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dkahle/ggmap"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dkahle/ggmap">ggmap</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/ggmap/man/register_google.html">register_google</a></span><span class="op">(</span>key <span class="op">=</span><span class="st">"xxxxxxxx"</span><span class="op">)</span></code></pre></div>
-<p>More details can be found here: (<a href="https://rdrr.io/github/fresques/ggmap/man/register_google.html" class="uri">https://rdrr.io/github/fresques/ggmap/man/register_google.html</a></p>
-<p>We know this is inconvenient and makes it more difficult for users to work with our package. For this reason the next version of RgeoProfile is likely to switch to open source alternatives.</p>
-<p>Finally, install the RgeoProfile package directly from GitHub by running</p>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/devtools">devtools</a></span><span class="op">)</span></code></pre></div>
+<p>Finally, we can install the RgeoProfile via the <code><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github()</a></code> function and load the package using the <code>library() function</code>, this may also take a few minutes.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"bobverity/RgeoProfile"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"Michael-stevens-27/Rgeoprofile"</span>, ref <span class="op">=</span> <span class="st">"workshop"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RgeoProfile</span><span class="op">)</span></code></pre></div>
-<p>Once installed, run <code>??RgeoProfile</code> to open the help for the package, which contains a number of worked examples.</p>
+<p>Once installed, documentation for each function can be found <a href="https://michael-stevens-27.github.io/Rgeoprofile/reference/index.html">here</a> and can also be accessed by running the following code in Rstudio:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">?</span><span class="va">geoData</span> </code></pre></div>
 </div>
   </div>
 
