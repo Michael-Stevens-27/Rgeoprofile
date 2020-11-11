@@ -23,9 +23,7 @@ Now that we have installed R and Rstudio, it's time to get down to some coding! 
 As mentioned in the previous tutorial when you start up Rstudio, you should be welcomed with the following interface: 
 
 \  
-
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_welcome_numbered.png)
-
 \  
 
 The intereface should consist of four main panels: 
@@ -63,13 +61,13 @@ Let's start with a simple example - can we get R to add 1 and 2 together? There 
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/console.png)
 \  
 
-We should see the number `3` get spat out by the console as shown above. The other, and preferable, way to run this code is to type it up in the script window (number 1 above) and hit `Ctrl ENTER` to send the code down to the console. 
+We should see the number `3` get spat out by the console as shown above. The other, and preferable, way to run this code is to type it up in the script window (number 1 above), click on the line of code we want to run and hit `Ctrl ENTER` or click on the "Run" button to send the code down to the console. 
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/control_enter.png)
 \  
 
-As we can see, this results in the same output. Writing in an Rscript is preferable over typing code straight into the console because the console requires us to type out the same code over and over again. Writing in an Rscript means we write the code out once and only requires `Ctrl ENTER` to rerun. It's pretty obvious that running `1 + 2` will calculate the sum of one and two. However, it won't always be obvious what our code is doing and for this reason it is incredibly important to **comment our code**. Commenting consists of writing notes in the Rscript that describe what our code is doing and why. We can comment out a line of code using the "number" or "hashtag" symbol `#`. Revisiting our example of adding one and two: 
+As we can see, this results in the same output. Writing in an Rscript is preferable over typing code straight into the console because the console requires us to type out the same code over and over again. Writing in an Rscript means we write the code out once and only requires `Ctrl ENTER` or the "Run" button to rerun. It's pretty obvious that running `1 + 2` will calculate the sum of one and two. However, it won't always be obvious what our code is doing and for this reason it is incredibly important to **comment our code**. Commenting consists of writing notes in the Rscript that describe what our code is doing. We can comment out a line of code using the "number" or "hashtag" symbol `#`. Revisiting our example of adding one and two: 
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/comment.png)
@@ -79,72 +77,178 @@ Any line of code starting with the `#` symbol will be ignored by R when running 
 
 ### Assigning an object 
 
-assigning symbols "=" reads left to right, "<-" reads in the direction of the arrow
+The previous example of adding `1 + 2` gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by **assigning** an object a specific value. Assigning objects can be done using the `<-` symbol. This symbol conisists of the less than symbol `<` immediately fololowed by the minus symbol `-`. Let's see an example
 
-### R operators
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png)
+\  
 
-Arithmetic operators:
+Here we assigned the value `5` to `x`, via the code `x <- 5`, so `x` is the object with value `5` assigned to it. This assigning symbol `<-` should always point to the object name. In this case the arrow points to `x`. Note that we can obtain the same results by running `5 -> x`. Here, the arrow is still pointing towards `x`  hence we arrive at the same result. You may have noticed that when you ran `x <- 5` something appeared up in the *Environment* window in the top right screen (panel number 3).
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign_environment.png)
+\  
+
+R has told us that there is an object named "x" with the value "5" assigned to it in the "global environemnt". This is essentially what is stored in R's memory. So when we assigned the value `5` to `x`, R placed `x` in its memory. To access `x`, we can run the folowing code.
+
+```{r}
+# assign the value 5 to x
+x <- 5
+
+# print x
+x
+```
+
+Now we can use `x` as if it were the value `5` in another piece of code.
+
+```{r}
+# add 12 to x
+x + 12
+```  
+
+We added 12 to `x` resulting in the console output `17`. We can also assign objects using the equals symbol `=`. Note however that the object name must always be on the *left* of the equals sign. 
+
+```{r}
+# assign y the value 13 using the equals symbol
+y = 13
+
+```
+  
+We can now use our `x` and `y` objects in another piece of code, let's add them together. 
+
+```{r}
+# add x and y together
+x + y
+```  
+
+### Arithmetic operators
+
+So far all our code has consisted of adding two numbers together. R is capable of all the other **arithmetic operators** too including: 
+
+Addition - using the `+` symbol:
 
 ```{r}
 # addition "+"
 7 + 8
+```
 
+Subtraction - using the `-` symbol:
+
+```{r}
 # subtraction "-"
 19 - 22
+```
 
+Multiplication - using the `*` symbol:
+
+```{r}
 # multiplication "*"
 3 * 7
+```
 
+Division - using the `/` symbol:
+
+```{r}
 # division "/"
 52 / 9
+```
 
+Exponentiation or "to the power" - using `^` or `**`:
+
+```{r}
 # exponentiation "^" or "**"
 3 ^ 2
 # or
 3 ** 2
-
-# modulus "%%" - giving the remainder after division
-7 %% 3
-
-# integer division "%/%"
-7 %/% 3
-
 ```
 
-Logical operators:
+Modulus - using `%%`:
+
+```{r}
+# modulus "%%" - giving the remainder after division
+7 %% 3
+```
+
+Integer division - using the `%/%` symbol:
+
+```{r}
+# integer division "%/%"
+7 %/% 3
+```
+
+
+### Logical operators:
+
+In addition to arithmetic operators, R also has a list of **logical operators**. We will provide R with a statement and the console will return a binary output depending on whether or not the statement in our code is `TRUE` or `FALSE`. For example is five greater than 3?
+
+```{r}
+# is 5 greater than 3?
+5 > 3
+
+# is 5 greater than 7?
+5 > 7
+```
+
+We used the greater than symbol `>` in our statement, leading to the consoles TRUE/FALSE output. The other logical operators are:
+
+Less than - using the `<` symbol:
 
 ```{r}
 # less than "<"
 5 < 7
 7 < 5
+```
 
+Less than or equal to - using the `<=` symbol:
+
+```{r}
 # less than or equal to "<="
 19 <= 22
 22 <= 22
+```
 
-# greater than ">"
-7 > 3
-3 > 7
+Greater than or equal to - using the `>=` symbol:
 
+```{r}
 # greater than or equal to ">="
 52 >= 9
 52 >= 52
+```
 
+Exactly equal to - using the `==` symbol:
+
+```{r}
 # exactly equal to "=="
 3 == 3
 3 == 3.1
+```
 
+Not equal to - using the `!=` symbol:
+
+```{r}
 # not equal to "!="
 3 != 2
 3 != 3
+```
 
+Not `x` - using the `!` symbol:
+
+```{r}
 # not x "!x"
 5 > 4      
 !(5 > 4)
+```
 
+x or y - using the `|` symbol:
+
+```{r}
 # x or y "x | y"
 7 > 3 | 7 > 8
+```
 
+x and y - using the `&` symbol:
+
+```{r}
 # x and y "x & y"
 7 > 3 & 7 > 8
 7 > 3 & 7 > 6
@@ -152,4 +256,4 @@ Logical operators:
 
 ### More examples
 
-Putting everything together here's a few examples combining the above with some explanation too. 
+Here are a few examples combining the content of this tutorial.

@@ -152,11 +152,7 @@
 <h3 class="hasAnchor">
 <a href="#the-rstudio-interface" class="anchor"></a>The Rstudio interface</h3>
 <p>As mentioned in the previous tutorial when you start up Rstudio, you should be welcomed with the following interface:</p>
-<p> </p>
-<div class="figure">
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_welcome_numbered.png">
-</div>
-<p> </p>
+<p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_welcome_numbered.png">  </p>
 <p>The intereface should consist of four main panels:</p>
 <p><strong>1</strong> - The <strong>top left</strong> panel is the script window; this is where you will write all of your code. This window may not be currently visible, if not, click on File -&gt; New File -&gt; Rscript. Or, simply type <code>Ctrl Shift N</code> on the keyboard.</p>
 <p><strong>2</strong> - Once you have written your code, you will need to run it. The <strong>bottom left</strong> panel consists of the following tabs:</p>
@@ -200,37 +196,67 @@
 <a href="#running-writing-and-commenting-code" class="anchor"></a>Running, writing and commenting code</h3>
 <p>Let's start with a simple example - can we get R to add 1 and 2 together? There are two ways we can do this. Firstly, we can click inside the console window (number 2 above), type <code>1 + 2</code> and hit <code>ENTER</code>.</p>
 <p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/console.png">  </p>
-<p>We should see the number <code>3</code> get spat out by the console as shown above. The other, and preferable, way to run this code is to type it up in the script window (number 1 above) and hit <code>Ctrl ENTER</code> to send the code down to the console.</p>
+<p>We should see the number <code>3</code> get spat out by the console as shown above. The other, and preferable, way to run this code is to type it up in the script window (number 1 above), click on the line of code we want to run and hit <code>Ctrl ENTER</code> or click on the "Run" button to send the code down to the console.</p>
 <p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/control_enter.png">  </p>
-<p>As we can see, this results in the same output. Writing in an Rscript is preferable over typing code straight into the console because the console requires us to type out the same code over and over again. Writing in an Rscript means we write the code out once and only requires <code>Ctrl ENTER</code> to rerun. It's pretty obvious that running <code>1 + 2</code> will calculate the sum of one and two. However, it won't always be obvious what our code is doing and for this reason it is incredibly important to <strong>comment our code</strong>. Commenting consists of writing notes in the Rscript that describe what our code is doing and why. We can comment out a line of code using the "number" or "hashtag" symbol <code>#</code>. Revisiting our example of adding one and two:</p>
+<p>As we can see, this results in the same output. Writing in an Rscript is preferable over typing code straight into the console because the console requires us to type out the same code over and over again. Writing in an Rscript means we write the code out once and only requires <code>Ctrl ENTER</code> or the "Run" button to rerun. It's pretty obvious that running <code>1 + 2</code> will calculate the sum of one and two. However, it won't always be obvious what our code is doing and for this reason it is incredibly important to <strong>comment our code</strong>. Commenting consists of writing notes in the Rscript that describe what our code is doing. We can comment out a line of code using the "number" or "hashtag" symbol <code>#</code>. Revisiting our example of adding one and two:</p>
 <p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/comment.png">  </p>
 <p>Any line of code starting with the <code>#</code> symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran <code>1 + 2</code> normally. Commenting code is fundemental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others.</p>
 </div>
 <div id="assigning-an-object" class="section level3">
 <h3 class="hasAnchor">
 <a href="#assigning-an-object" class="anchor"></a>Assigning an object</h3>
-<p>assigning symbols "=" reads left to right, "&lt;-" reads in the direction of the arrow</p>
+<p>The previous example of adding <code>1 + 2</code> gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by <strong>assigning</strong> an object a specific value. Assigning objects can be done using the <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> symbol. This symbol conisists of the less than symbol <code><a href="https://rdrr.io/r/base/Comparison.html">&lt;</a></code> immediately fololowed by the minus symbol <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>. Let's see an example</p>
+<p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png">  </p>
+<p>Here we assigned the value <code>5</code> to <code>x</code>, via the code <code>x &lt;- 5</code>, so <code>x</code> is the object with value <code>5</code> assigned to it. This assigning symbol <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> should always point to the object name. In this case the arrow points to <code>x</code>. Note that we can obtain the same results by running <code>5 -&gt; x</code>. Here, the arrow is still pointing towards <code>x</code> hence we arrive at the same result. You may have noticed that when you ran <code>x &lt;- 5</code> something appeared up in the <em>Environment</em> window in the top right screen (panel number 3).</p>
+<p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign_environment.png">  </p>
+<p>R has told us that there is an object named "x" with the value "5" assigned to it in the "global environemnt". This is essentially what is stored in R's memory. So when we assigned the value <code>5</code> to <code>x</code>, R placed <code>x</code> in its memory. To access <code>x</code>, we can run the folowing code.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># assign the value 5 to x</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span>
+
+<span class="co"># print x</span>
+<span class="va">x</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>Now we can use <code>x</code> as if it were the value <code>5</code> in another piece of code.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># add 12 to x</span>
+<span class="va">x</span> <span class="op">+</span> <span class="fl">12</span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<p>We added 12 to <code>x</code> resulting in the console output <code>17</code>. We can also assign objects using the equals symbol <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>. Note however that the object name must always be on the <em>left</em> of the equals sign.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># assign y the value 13 using the equals symbol</span>
+<span class="va">y</span> <span class="op">=</span> <span class="fl">13</span></code></pre></div>
+<p>We can now use our <code>x</code> and <code>y</code> objects in another piece of code, let's add them together.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># add x and y together</span>
+<span class="va">x</span> <span class="op">+</span> <span class="va">y</span></code></pre></div>
+<pre><code>## [1] 18</code></pre>
 </div>
-<div id="r-operators" class="section level3">
+<div id="arithmetic-operators" class="section level3">
 <h3 class="hasAnchor">
-<a href="#r-operators" class="anchor"></a>R operators</h3>
-<p>Arithmetic operators:</p>
+<a href="#arithmetic-operators" class="anchor"></a>Arithmetic operators</h3>
+<p>So far all our code has consisted of adding two numbers together. R is capable of all the other <strong>arithmetic operators</strong> too including:</p>
+<p>Addition - using the <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># addition "+"</span>
 <span class="fl">7</span> <span class="op">+</span> <span class="fl">8</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
+<p>Subtraction - using the <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># subtraction "-"</span>
 <span class="fl">19</span> <span class="op">-</span> <span class="fl">22</span></code></pre></div>
 <pre><code>## [1] -3</code></pre>
+<p>Multiplication - using the <code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># multiplication "*"</span>
 <span class="fl">3</span> <span class="op">*</span> <span class="fl">7</span></code></pre></div>
 <pre><code>## [1] 21</code></pre>
+<p>Division - using the <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># division "/"</span>
 <span class="fl">52</span> <span class="op">/</span> <span class="fl">9</span></code></pre></div>
 <pre><code>## [1] 5.777778</code></pre>
+<p>Exponentiation or "to the power" - using <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code> or <code>**</code>:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># exponentiation "^" or "**"</span>
 <span class="fl">3</span> <span class="op">^</span> <span class="fl">2</span></code></pre></div>
@@ -239,15 +265,31 @@
 <code class="sourceCode R"><span class="co"># or</span>
 <span class="fl">3</span> <span class="op">**</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
+<p>Modulus - using <code><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></code>:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># modulus "%%" - giving the remainder after integer division</span>
+<code class="sourceCode R"><span class="co"># modulus "%%" - giving the remainder after division</span>
 <span class="fl">7</span> <span class="op">%%</span> <span class="fl">3</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
+<p>Integer division - using the <code><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># integer division "%/%"</span>
 <span class="fl">7</span> <span class="op">%/%</span> <span class="fl">3</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<p>Logical operators:</p>
+</div>
+<div id="logical-operators" class="section level3">
+<h3 class="hasAnchor">
+<a href="#logical-operators" class="anchor"></a>Logical operators:</h3>
+<p>In addition to arithmetic operators, R also has a list of <strong>logical operators</strong>. We will provide R with a statement and the console will return a binary output depending on whether or not the statement in our code is <code>TRUE</code> or <code>FALSE</code>. For example is five greater than 3?</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># is 5 greater than 3?</span>
+<span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">3</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># is 5 greater than 7?</span>
+<span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">7</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>We used the greater than symbol <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> in our statement, leading to the consoles TRUE/FALSE output. The other logical operators are:</p>
+<p>Less than - using the <code><a href="https://rdrr.io/r/base/Comparison.html">&lt;</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># less than "&lt;"</span>
 <span class="fl">5</span> <span class="op">&lt;</span> <span class="fl">7</span></code></pre></div>
@@ -255,6 +297,7 @@
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">7</span> <span class="op">&lt;</span> <span class="fl">5</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
+<p>Less than or equal to - using the <code><a href="https://rdrr.io/r/base/Comparison.html">&lt;=</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># less than or equal to "&lt;="</span>
 <span class="fl">19</span> <span class="op">&lt;=</span> <span class="fl">22</span></code></pre></div>
@@ -262,13 +305,7 @@
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">22</span> <span class="op">&lt;=</span> <span class="fl">22</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># greater than "&gt;"</span>
-<span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">3</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">3</span> <span class="op">&gt;</span> <span class="fl">7</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
+<p>Greater than or equal to - using the <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;=</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># greater than or equal to "&gt;="</span>
 <span class="fl">52</span> <span class="op">&gt;=</span> <span class="fl">9</span></code></pre></div>
@@ -276,6 +313,7 @@
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">52</span> <span class="op">&gt;=</span> <span class="fl">52</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
+<p>Exactly equal to - using the <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># exactly equal to "=="</span>
 <span class="fl">3</span> <span class="op">==</span> <span class="fl">3</span></code></pre></div>
@@ -283,6 +321,7 @@
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">3</span> <span class="op">==</span> <span class="fl">3.1</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
+<p>Not equal to - using the <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># not equal to "!="</span>
 <span class="fl">3</span> <span class="op">!=</span> <span class="fl">2</span></code></pre></div>
@@ -290,6 +329,7 @@
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">3</span> <span class="op">!=</span> <span class="fl">3</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
+<p>Not <code>x</code> - using the <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># not x "!x"</span>
 <span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">4</span>      </code></pre></div>
@@ -297,10 +337,12 @@
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">!</span><span class="op">(</span><span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
+<p>x or y - using the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># x or y "x | y"</span>
 <span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="op">|</span> <span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">8</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
+<p>x and y - using the <code><a href="https://rdrr.io/r/base/Logic.html">&amp;</a></code> symbol:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># x and y "x &amp; y"</span>
 <span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="op">&amp;</span> <span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">8</span></code></pre></div>
@@ -312,7 +354,7 @@
 <div id="more-examples" class="section level3">
 <h3 class="hasAnchor">
 <a href="#more-examples" class="anchor"></a>More examples</h3>
-<p>Putting everything together here's a few examples combining the above with some explanation too.</p>
+<p>Here are a few examples combining the content of this tutorial.</p>
 </div>
   </div>
 
