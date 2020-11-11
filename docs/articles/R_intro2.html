@@ -137,18 +137,77 @@
 
     
     
+<div id="introduction" class="section level2">
+<h2 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h2>
+<p>In this tutorial we will move on to the next steps of using R, this will include:</p>
 <ul>
-<li>classes</li>
-<li>vectors</li>
-<li>matrices</li>
-<li>loading in data</li>
-<li>basic functions (plot, print, sum, mean, var etc)</li>
+<li>Using functions</li>
+<li>Classes, vectors, matrices</li>
+<li>More functions</li>
+<li>Reading in data</li>
+<li>Plotting</li>
+<li>Getting help</li>
+<li>Packages</li>
+<li>Loops</li>
 </ul>
 </div>
+<div id="using-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-functions" class="anchor"></a>Using functions</h2>
+<p>In R, <strong>functions</strong> are tools that we use that take some input and produce an output. The standard format for a function is the following:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span> <span class="va">arguments</span> <span class="op">)</span> <span class="op">{</span> <span class="va">body</span> <span class="op">}</span></code></pre></div>
+<p>The term <code>function</code> here refers to the fact we are writing a function. This function has <code>arguments</code>. We refer to <code>arguments</code> as the input for the function. The <code>body</code> of the function contains all the code that manipulates the input arguments to produce the output. Finally, we assign this function to an object so we can use it later. Notice that the arguments ar contained within parantheses <code>()</code>, bu the body of the function is contained within curly brackets <code>{}</code>. Let's see an example. In the previous tutorial we wrote some code that added one and two together. Let's write a function that adds any two numbers together.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># write a function that adds two numbers together and returns the sum</span>
+<span class="va">add</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span> 
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<p>Let's go through this line by line. In the first line we assign our function to the object name <code>add</code>, we then open up <code>function</code> with a left parenthesis, type out our arguments (two numbers, <code>x</code> and <code>y</code>) then close the parentheses. We then open up the body of the function by opening the curly brackets. we then begin the body on the next line. The next two lines assign the sum of <code>x</code> and <code>y</code> to a new object <code>z</code> and then we return <code>z</code> using the <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> function. We then close the curly brackets. Let's try using our function:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># add one and two, again</span>
+<span class="fu">add</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Notice that the R environment now has a function in its memory.</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/function_env.png">  </p>
+</div>
+<div id="classes-vectors-matrices" class="section level2">
+<h2 class="hasAnchor">
+<a href="#classes-vectors-matrices" class="anchor"></a>Classes, vectors, matrices</h2>
+</div>
+<div id="more-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#more-functions" class="anchor"></a>More functions</h2>
+</div>
+<div id="reading-in-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#reading-in-data" class="anchor"></a>Reading in data</h2>
+</div>
+<div id="plotting" class="section level2">
+<h2 class="hasAnchor">
+<a href="#plotting" class="anchor"></a>Plotting</h2>
+</div>
+<div id="getting-help" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-help" class="anchor"></a>Getting help</h2>
+</div>
+<div id="packages" class="section level2">
+<h2 class="hasAnchor">
+<a href="#packages" class="anchor"></a>Packages</h2>
+</div>
+<div id="loops" class="section level2">
+<h2 class="hasAnchor">
+<a href="#loops" class="anchor"></a>Loops</h2>
+</div>
+  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

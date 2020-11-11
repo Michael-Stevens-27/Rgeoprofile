@@ -9,8 +9,60 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-* classes
-* vectors
-* matrices
-* loading in data
-* basic functions (plot, print, sum, mean, var etc)
+## Introduction 
+
+In this tutorial we will move on to the next steps of using R, this will include:
+
+* Using functions
+* Classes, vectors, matrices
+* More functions
+* Reading in data
+* Plotting
+* Getting help
+* Packages
+* Loops
+
+## Using functions
+
+In R, **functions** are tools that we use that take some input and produce an output. The standard format for a function is the following:
+
+```{r}
+my_function <- function( arguments ) { body }
+```    
+
+The term `function` here refers to the fact we are writing a function. This function has `arguments`. We refer to `arguments` as the input for the function. The `body` of the function contains all the code that manipulates the input arguments to produce the output. Finally, we assign this function to an object so we can use it later. Notice that the arguments ar contained within parantheses `()`, bu the body of the function is contained within curly brackets `{}`. Let's see an example. In the previous tutorial we wrote some code that added one and two together. Let's write a function that adds any two numbers together.  
+
+```{r}
+# write a function that adds two numbers together and returns the sum
+add <- function(x, y){
+  z <- x + y 
+  return(z)
+}
+```    
+
+Let's go through this line by line. In the first line we assign our function to the object name `add`, we then open up `function` with a left parenthesis, type out our arguments (two numbers, `x` and `y`) then close the parentheses. We then open up the body of the function by opening the curly brackets. we then begin the body on the next line. The next two lines assign the sum of `x` and `y` to a new object `z` and then we return `z` using the `return()` function. We then close the curly brackets. Let's try using our function:
+
+```{r}
+# add one and two, again
+add(1, 2)
+```    
+
+Notice that the R environment now has a function in its memory. 
+
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/function_env.png)
+\  
+
+## Classes, vectors, matrices
+
+## More functions
+
+## Reading in data
+
+## Plotting
+
+## Getting help
+
+## Packages
+
+## Loops

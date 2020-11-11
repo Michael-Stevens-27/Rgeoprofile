@@ -9,16 +9,16 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-### Introduction
+## Introduction
 
 Now that we have installed R and Rstudio, it's time to get down to some coding! This tutorial will focus on the fundamental basics of writing and running R code. This will include:
 
   * The Rstudio interface
   * Where to write and run code
-  * Basic arithmetic
   * Assigning objects
+  * Arithmetic and logical operators
   
-### The Rstudio interface
+## The Rstudio interface
 
 As mentioned in the previous tutorial when you start up Rstudio, you should be welcomed with the following interface: 
 
@@ -53,7 +53,7 @@ The intereface should consist of four main panels:
 
 This was a lot of information in one go! Don't worry too much about remembering it all. This page is here for you to come back to if and when you need it. There will be a reminder throughout these tutorials when we revisit any of the above.
 
-### Running, writing and commenting code
+## Running, writing and commenting code
 
 Let's start with a simple example - can we get R to add 1 and 2 together? There are two ways we can do this. Firstly, we can click inside the console window (number 2 above), type `1 + 2` and hit `ENTER`.
 
@@ -75,7 +75,20 @@ As we can see, this results in the same output. Writing in an Rscript is prefera
 
 Any line of code starting with the `#` symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran `1 + 2` normally. Commenting code is fundemental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others. 
 
-### Assigning an object 
+Throughout this tutorial and others, code will be presented to a user via an image of the Rstudio interface. A user might want to copy over code in these screenshots and include/play around with them in their own Rscripts. To save some time, code will also be visible to a user in the format below:
+
+```{r}
+1 + 2
+``` 
+
+This format will show a piece of R code and the output from the console (if there is any). In order to copy the code from these small snippets, simply hover your mouse over the chunk and an option to copy this code should appear in the top right of the code chunk. 
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/copy.png)
+\  
+
+
+## Assigning an object 
 
 The previous example of adding `1 + 2` gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by **assigning** an object a specific value. Assigning objects can be done using the `<-` symbol. This symbol conisists of the less than symbol `<` immediately fololowed by the minus symbol `-`. Let's see an example
 
@@ -121,7 +134,7 @@ We can now use our `x` and `y` objects in another piece of code, let's add them 
 x + y
 ```  
 
-### Arithmetic operators
+## Arithmetic operators
 
 So far all our code has consisted of adding two numbers together. R is capable of all the other **arithmetic operators** too including: 
 
@@ -177,7 +190,7 @@ Integer division - using the `%/%` symbol:
 ```
 
 
-### Logical operators:
+## Logical operators:
 
 In addition to arithmetic operators, R also has a list of **logical operators**. We will provide R with a statement and the console will return a binary output depending on whether or not the statement in our code is `TRUE` or `FALSE`. For example is five greater than 3?
 
@@ -254,6 +267,28 @@ x and y - using the `&` symbol:
 7 > 3 & 7 > 6
 ```
 
-### More examples
+## More examples
 
 Here are a few examples combining the content of this tutorial.
+
+```{r}
+# assign x the sum of the first four intgers
+x <- 1 + 2 + 3 + 4 
+
+# assign y the sum of 5, 6 and 7
+y <- 5 + 6 + 7
+
+# which is one is bigger?
+y > x
+
+# are they equal?
+y == x
+
+# assign z the value of y divided by x
+z <- y/x
+
+# raise z to the power of a half
+z ^ 0.5 
+```
+
+That's all from this tutorial, hopefully you've gotten a basic idea of what R is capable of. It's worth taking the time to come up with your own examples too. 
