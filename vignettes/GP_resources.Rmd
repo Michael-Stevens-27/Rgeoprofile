@@ -11,7 +11,7 @@ vignette: >
 
 This page is for documenting any additional resources on geographic profiling. 
 
-# Papers
+### Papers
 
 Below are a collection of open-access papers on geographic profiling. 
 
@@ -34,7 +34,7 @@ Novel applications
 
   * Stevens et al. 2020 [Investigating Sherlock Holmes: Using Geographic Profiling to Analyze the Novels of Arthur Conan Doyle](https://www.tandfonline.com/doi/full/10.1080/00330124.2020.1758575)
 
-# Blogs
+### Blogs
 
   * Faulkner 2014 [Geographic Profiling – a novel tool for locating tarsier sleeping sites](https://www.biodiversityscience.com/2014/09/22/geographic-profiling-tarsier-sites/)
   * Faulkner and Stevens 2018 [Geographic Profiling: Murder, maths, malaria and mammals](http://chalkdustmagazine.com/features/geographic-profiling-murder-maths-malaria-mammals/)

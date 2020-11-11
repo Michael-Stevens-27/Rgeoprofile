@@ -11,7 +11,7 @@ vignette: >
 
 Below is a collection of resources as a guide for using R. 
 
-# Immediate resources
+### Immediate resources
 
 * [CRAN's "An Introduction to R" manual](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
 * [Datamentor's "Learn R Programming"](https://www.datamentor.io/r-programming/#:~:text=R%20is%20a%20programming%20language,analyze%2C%20visualize%20and%20present%20data.)
@@ -20,7 +20,7 @@ Below is a collection of resources as a guide for using R.
 * [Bill Petti's Github tutorial](https://billpetti.github.io/Crash_course_in_R/)
 * [QMUL's statistical self help resources](https://qmplus.qmul.ac.uk/course/view.php?id=13492)
 
-# Free courses requiring an account
+### Free courses requiring an account
 
 * [Code academy](https://www.codecademy.com/learn/learn-r)
 * [Datacamp](https://www.datacamp.com/courses/free-introduction-to-r)

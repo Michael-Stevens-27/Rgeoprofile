@@ -128,7 +128,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 1</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-11-09</h4>
+            <h4 class="date">2020-11-11</h4>
       
       
       <div class="hidden name"><code>R_intro1.Rmd</code></div>
@@ -137,9 +137,9 @@
 
     
     
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
+<div id="introduction" class="section level3">
+<h3 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h3>
 <p>Now that we have installed R and Rstudio, it's time to get down to some coding! This tutorial will focus on the fundamental basics of writing and running R code. This will include:</p>
 <ul>
 <li>The Rstudio interface</li>
@@ -148,9 +148,9 @@
 <li>Assigning objects</li>
 </ul>
 </div>
-<div id="the-rstudio-interface" class="section level1">
-<h1 class="hasAnchor">
-<a href="#the-rstudio-interface" class="anchor"></a>The Rstudio interface</h1>
+<div id="the-rstudio-interface" class="section level3">
+<h3 class="hasAnchor">
+<a href="#the-rstudio-interface" class="anchor"></a>The Rstudio interface</h3>
 <p>As mentioned in the previous tutorial when you start up Rstudio, you should be welcomed with the following interface:</p>
 <p> </p>
 <div class="figure">
@@ -193,14 +193,132 @@
 <li>
 <em>Viewer</em> - This will display a preview of any HTML documents or shiny apps that you are building.</li>
 </ul>
+<p>This was a lot of information in one go! Don't worry too much about remembering it all. This page is here for you to come back to if and when you need it. There will be a reminder throughout these tutorials when we revisit any of the above.</p>
+</div>
+<div id="running-writing-and-commenting-code" class="section level3">
+<h3 class="hasAnchor">
+<a href="#running-writing-and-commenting-code" class="anchor"></a>Running, writing and commenting code</h3>
+<p>Let's start with a simple example - can we get R to add 1 and 2 together? There are two ways we can do this. Firstly, we can click inside the console window (number 2 above), type <code>1 + 2</code> and hit <code>ENTER</code>.</p>
+<p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/console.png">  </p>
+<p>We should see the number <code>3</code> get spat out by the console as shown above. The other, and preferable, way to run this code is to type it up in the script window (number 1 above) and hit <code>Ctrl ENTER</code> to send the code down to the console.</p>
+<p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/control_enter.png">  </p>
+<p>As we can see, this results in the same output. Writing in an Rscript is preferable over typing code straight into the console because the console requires us to type out the same code over and over again. Writing in an Rscript means we write the code out once and only requires <code>Ctrl ENTER</code> to rerun. It's pretty obvious that running <code>1 + 2</code> will calculate the sum of one and two. However, it won't always be obvious what our code is doing and for this reason it is incredibly important to <strong>comment our code</strong>. Commenting consists of writing notes in the Rscript that describe what our code is doing and why. We can comment out a line of code using the "number" or "hashtag" symbol <code>#</code>. Revisiting our example of adding one and two:</p>
+<p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/comment.png">  </p>
+<p>Any line of code starting with the <code>#</code> symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran <code>1 + 2</code> normally. Commenting code is fundemental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others.</p>
+</div>
+<div id="assigning-an-object" class="section level3">
+<h3 class="hasAnchor">
+<a href="#assigning-an-object" class="anchor"></a>Assigning an object</h3>
+<p>assigning symbols "=" reads left to right, "&lt;-" reads in the direction of the arrow</p>
+</div>
+<div id="r-operators" class="section level3">
+<h3 class="hasAnchor">
+<a href="#r-operators" class="anchor"></a>R operators</h3>
+<p>Arithmetic operators:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># addition "+"</span>
+<span class="fl">7</span> <span class="op">+</span> <span class="fl">8</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># subtraction "-"</span>
+<span class="fl">19</span> <span class="op">-</span> <span class="fl">22</span></code></pre></div>
+<pre><code>## [1] -3</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># multiplication "*"</span>
+<span class="fl">3</span> <span class="op">*</span> <span class="fl">7</span></code></pre></div>
+<pre><code>## [1] 21</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># division "/"</span>
+<span class="fl">52</span> <span class="op">/</span> <span class="fl">9</span></code></pre></div>
+<pre><code>## [1] 5.777778</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># exponentiation "^" or "**"</span>
+<span class="fl">3</span> <span class="op">^</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># or</span>
+<span class="fl">3</span> <span class="op">**</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># modulus "%%" - giving the remainder after integer division</span>
+<span class="fl">7</span> <span class="op">%%</span> <span class="fl">3</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># integer division "%/%"</span>
+<span class="fl">7</span> <span class="op">%/%</span> <span class="fl">3</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Logical operators:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># less than "&lt;"</span>
+<span class="fl">5</span> <span class="op">&lt;</span> <span class="fl">7</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">7</span> <span class="op">&lt;</span> <span class="fl">5</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># less than or equal to "&lt;="</span>
+<span class="fl">19</span> <span class="op">&lt;=</span> <span class="fl">22</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">22</span> <span class="op">&lt;=</span> <span class="fl">22</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># greater than "&gt;"</span>
+<span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">3</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">3</span> <span class="op">&gt;</span> <span class="fl">7</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># greater than or equal to "&gt;="</span>
+<span class="fl">52</span> <span class="op">&gt;=</span> <span class="fl">9</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">52</span> <span class="op">&gt;=</span> <span class="fl">52</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># exactly equal to "=="</span>
+<span class="fl">3</span> <span class="op">==</span> <span class="fl">3</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">3</span> <span class="op">==</span> <span class="fl">3.1</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># not equal to "!="</span>
+<span class="fl">3</span> <span class="op">!=</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">3</span> <span class="op">!=</span> <span class="fl">3</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># not x "!x"</span>
+<span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">4</span>      </code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">!</span><span class="op">(</span><span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># x or y "x | y"</span>
+<span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="op">|</span> <span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">8</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># x and y "x &amp; y"</span>
+<span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="op">&amp;</span> <span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">8</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="op">&amp;</span> <span class="fl">7</span> <span class="op">&gt;</span> <span class="fl">6</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="more-examples" class="section level3">
+<h3 class="hasAnchor">
+<a href="#more-examples" class="anchor"></a>More examples</h3>
+<p>Putting everything together here's a few examples combining the above with some explanation too.</p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 

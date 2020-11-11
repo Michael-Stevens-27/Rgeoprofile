@@ -7,7 +7,7 @@ Access documentation [here](https://michael-stevens-27.github.io/Rgeoprofile/)
 
 ### Workshop goals
 
-The aim of the workshop is to meet the following sustainable decelopment goals (SDGs) from the Global Challanges Research Fund:
+The aim of the workshop is to meet the following sustainable development goals (SDGs) from the Global Challanges Research Fund:
 
 **Make cities and human settlements inclusive, safe, resilient and sustainable**
 * Strengthen efforts to protect and safeguard the world’s cultural and natural heritage

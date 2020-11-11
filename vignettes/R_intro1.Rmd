@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Introduction
+### Introduction
 
 Now that we have installed R and Rstudio, it's time to get down to some coding! This tutorial will focus on the fundamental basics of writing and running R code. This will include:
 
@@ -18,7 +18,7 @@ Now that we have installed R and Rstudio, it's time to get down to some coding! 
   * Basic arithmetic
   * Assigning objects
   
-# The Rstudio interface
+### The Rstudio interface
 
 As mentioned in the previous tutorial when you start up Rstudio, you should be welcomed with the following interface: 
 
@@ -52,3 +52,104 @@ The intereface should consist of four main panels:
 * *Packages* - This will list off all the packages that are being used in the current R session. 
 * *Help* - This window will pop open anytime you run some code seeking help with a particular function. For example, running `?sd` will display the documentation on the `sd` function.  
 * *Viewer* - This will display a preview of any HTML documents or shiny apps that you are building.
+
+This was a lot of information in one go! Don't worry too much about remembering it all. This page is here for you to come back to if and when you need it. There will be a reminder throughout these tutorials when we revisit any of the above.
+
+### Running, writing and commenting code
+
+Let's start with a simple example - can we get R to add 1 and 2 together? There are two ways we can do this. Firstly, we can click inside the console window (number 2 above), type `1 + 2` and hit `ENTER`.
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/console.png)
+\  
+
+We should see the number `3` get spat out by the console as shown above. The other, and preferable, way to run this code is to type it up in the script window (number 1 above) and hit `Ctrl ENTER` to send the code down to the console. 
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/control_enter.png)
+\  
+
+As we can see, this results in the same output. Writing in an Rscript is preferable over typing code straight into the console because the console requires us to type out the same code over and over again. Writing in an Rscript means we write the code out once and only requires `Ctrl ENTER` to rerun. It's pretty obvious that running `1 + 2` will calculate the sum of one and two. However, it won't always be obvious what our code is doing and for this reason it is incredibly important to **comment our code**. Commenting consists of writing notes in the Rscript that describe what our code is doing and why. We can comment out a line of code using the "number" or "hashtag" symbol `#`. Revisiting our example of adding one and two: 
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/comment.png)
+\  
+
+Any line of code starting with the `#` symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran `1 + 2` normally. Commenting code is fundemental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others. 
+
+### Assigning an object 
+
+assigning symbols "=" reads left to right, "<-" reads in the direction of the arrow
+
+### R operators
+
+Arithmetic operators:
+
+```{r}
+# addition "+"
+7 + 8
+
+# subtraction "-"
+19 - 22
+
+# multiplication "*"
+3 * 7
+
+# division "/"
+52 / 9
+
+# exponentiation "^" or "**"
+3 ^ 2
+# or
+3 ** 2
+
+# modulus "%%" - giving the remainder after division
+7 %% 3
+
+# integer division "%/%"
+7 %/% 3
+
+```
+
+Logical operators:
+
+```{r}
+# less than "<"
+5 < 7
+7 < 5
+
+# less than or equal to "<="
+19 <= 22
+22 <= 22
+
+# greater than ">"
+7 > 3
+3 > 7
+
+# greater than or equal to ">="
+52 >= 9
+52 >= 52
+
+# exactly equal to "=="
+3 == 3
+3 == 3.1
+
+# not equal to "!="
+3 != 2
+3 != 3
+
+# not x "!x"
+5 > 4      
+!(5 > 4)
+
+# x or y "x | y"
+7 > 3 | 7 > 8
+
+# x and y "x & y"
+7 > 3 & 7 > 8
+7 > 3 & 7 > 6
+```
+
+### More examples
+
+Putting everything together here's a few examples combining the above with some explanation too. 
