@@ -170,7 +170,9 @@ So the matrix function has default values for the `nrow`, `ncol` and `byrow` arg
 
 With this you should notice that the "help" tab of the bottom right panel should open up with the documentation related to the matrix function. 
 
-images - matrix_help.png
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/matrix_help.png)
+\  
 
 It may cumbersome to write out all of the arguments in a function, so it is possible simply to write the value of the argument in thefunction leading to the same result:
 
@@ -205,7 +207,9 @@ my_matrix
 
 This code is neater and it becomes much easier to scan through which of the function's arguments we are using. Notice in the console that at the beginning of each line we now see a `+` symbol, instead of a `>` symbol. This `+` symbol indicates that we have started executing some of our code, but we're not finished. This `+` symbol is R's way of telling us that we've begun running some code, and R wants us to finish it off. In this case we started running the matrix function on one line and we finished running it three lines later.   
 
-image - plus.png
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/plus.png)
+\  
 
 There are a huge number of other functions that R has ready to use. Many of which were built to speed up operations on vectors and matrices. Imagine you have a numerical vector of length 15, and you wanted to find the sum of these numbers. It would be a lot of effort to type the summation out by hand. Instead we can use the `sum()` function. 
 
@@ -267,7 +271,6 @@ my_vector > 10
 my_vector[my_vector > 10]
 
 # create a matrix from this vector with 3 rows and 7 columns, fill it byrow
-# and name the rows
 my_matrix <- matrix(data = my_vector,
                     nrow = 3,
                     ncol = 7,
