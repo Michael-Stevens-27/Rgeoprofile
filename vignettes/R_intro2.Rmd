@@ -286,7 +286,7 @@ mean(my_matrix)
 sqrt(my_matrix)
 
 # or
-my_matrix^2
+my_matrix^0.5
 ```
 
 Once again, have a go coming up with your own examples and mess around with the ones above.  
