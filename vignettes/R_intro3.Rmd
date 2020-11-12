@@ -1,0 +1,35 @@
+---
+title: "Introduction to using R - Part 3"
+author: "Michael Stevens"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to using R - Part 3}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction 
+
+In this final R tutorial we will work through the last subjects to get you up to speed before moving on to geographic profiling in R. This tutorial will focus on the following: 
+
+* Packages
+* Reading in data
+* Plotting
+* Getting help
+
+## Packages
+
+Functions from other packages 
+
+## Reading in data 
+
+read.csv, read.table, R's built in data sets
+
+## Plotting 
+
+base R and the popular ggplot2
+
+## Getting help
+
+A list of help functions, dealing with bugs, coming up with examples. R ettiquette. Other resources. 

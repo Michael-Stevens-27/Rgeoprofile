@@ -12,10 +12,15 @@ navbar:
         - text: "Installing R and Rstudio"
           href: "articles/Install_R.html"
         - text: ---------------
-        - text: "Intro to R part 1"
+        - text: "Introduction to R - part 1"
           href: "articles/R_intro1.html"
-        - text: "Intro to R part 2"
+        - text: "Introduction to R - part 2"
           href: "articles/R_intro2.html"
+        - text: "Introduction to R - part 3"
+          href: "articles/R_intro3.html"
+        - text: ---------------
+        - text: "Extra resources"
+          href: articles/General_R.html
     - text: "GP tutorials"
       menu:
         - text: "Installation"
@@ -32,14 +37,12 @@ navbar:
         - text: ---------------
         - text: "Function list"
           href: reference/index.html
+        - text: "Extra resources"
+          href: "articles/GP_resources.html"
     - text: "Other resources"
       menu:
-        - text: "General R"
-          href: articles/General_R.html
         - text: "Spatial Analysis in R"
           href: articles/Spatial_R.html
-        - text: "Geoprofiling"
-          href: "articles/GP_resources.html"
   right:
    - icon: fa-github
      href: https://github.com/Michael-Stevens-27/Rgeoprofile

@@ -123,22 +123,12 @@ my_matrix <- matrix(data = my_vector, nrow = 3, ncol = 2)
 my_matrix
 ```
 
- 
-
 ## More on functions
 
 Arguments, where to put them, leaving them blank and defaults. 
 
-Function on vectors: sum, sd, mean, var. 
-
-```{r, echo = FALSE}
-## Reading in data
-
-## Plotting
+Function on vectors: sum, sd, mean, seq, max, min, range  
 
 ## More examples
 
-## Getting help
-
-## Packages
-```
+arithmetic and logical operators on vectors, indices for both vectors and matrices. Indexing with logical statements. 

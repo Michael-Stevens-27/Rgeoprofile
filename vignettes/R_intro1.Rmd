@@ -308,10 +308,10 @@ That's all from this tutorial, hopefully you've gotten a basic idea of what R is
 
 ## Saving your script
 
-One final thing! As we mentioned earlier in this tutorial, we should be writing our code in an R script. We can save the R script we've been working on in this tutorial by going to File -> Save As... and choosoing a name for this first R script. I've called mine "my_script.R"
+One final thing! As we mentioned earlier in this tutorial, we should be writing our code in an R script. We can save the R script we've been working on in this tutorial by going to File -> Save As... and choosoing a name for this first R script. I've called mine "my_script.R".
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/save.png)
 \  
 
-Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. If we were writing a piece of code using the python language our extension would be ".py".
+Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. Each coding language has its own extenstion, for example, if we were writing a piece of code using the python language our extension would be ".py".
