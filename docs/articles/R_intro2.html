@@ -147,13 +147,9 @@
 <p>In this tutorial we will move on to the next steps of using R, this will include:</p>
 <ul>
 <li>Using functions</li>
-<li>Classes, vectors, matrices</li>
-<li>More functions</li>
-<li>Reading in data</li>
-<li>Plotting</li>
-<li>Getting help</li>
-<li>Packages</li>
-<li>Loops</li>
+<li>Classes</li>
+<li>vectors, matrices</li>
+<li>More on functions</li>
 </ul>
 </div>
 <div id="using-functions" class="section level2">
@@ -232,24 +228,194 @@
 <p>A <strong>matrix</strong> is a collection of values that spans many rows and columns. We can constuct a matrix using the <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function. In order to build a matrix, the function requires a vector of values, the numbe of rows and the number of columns. Let's use <code>my_vector</code> to populate a matrix with 3 rows and 2 columns.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create a matrix using my_vector</span>
-<span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">my_vector</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">my_vector</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="va">my_matrix</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    7    1
 ## [2,]    2    6
 ## [3,]    5   19</code></pre>
+<p>As we can see we provide the matrix function with <code>data</code>, the number of rows and columns (<code>nrow</code> and <code>ncol</code>) and if we should fill the matrix by row or by column. To access a particular value in a matrix, we once again use the square brackets with a refference to the corresponding row and column of that value.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># get the 2nd value from the first column of the matrix</span>
+<span class="va">my_matrix</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># access the entire first row</span>
+<span class="va">my_matrix</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></code></pre></div>
+<pre><code>## [1] 7 1</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># access the entire second column </span>
+<span class="va">my_matrix</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1]  1  6 19</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># access the 2nd AND third values of the second row</span>
+<span class="va">my_matrix</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fl">2</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1]  6 19</code></pre>
+<p>Generally, the code <code>my_matrix[i, j]</code> will return the value in the ith row and the jth column of the matrix.</p>
 </div>
 <div id="more-on-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#more-on-functions" class="anchor"></a>More on functions</h2>
-<p>Arguments, where to put them, leaving them blank and defaults.</p>
-<p>Function on vectors: sum, sd, mean, seq, max, min, range</p>
+<p>Now we know a bit more about different data types in R, it's time to talk a little bit more about functions. Recall the general structure of a function is:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span> <span class="va">arguments</span> <span class="op">)</span> <span class="op">{</span> <span class="va">body</span> <span class="op">}</span></code></pre></div>
+<p>Each function comes with its own arguments that we need to supply it with to make it work properly. We just saw the arguments needed to run the matrix function, but what happens if we don't provide the matrix function with all of the arguments?</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a matrix using my_vector</span>
+<span class="va">my_new_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">my_vector</span><span class="op">)</span>
+
+<span class="va">my_new_matrix</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    7
+## [2,]    2
+## [3,]    5
+## [4,]    1
+## [5,]    6
+## [6,]   19</code></pre>
+<p>As we can see the code still works but it returns a different number of rows and columns. Why is this? Why doesn't the code break since we don't provide all the extra information? This will be due to the function's <strong>default arguments</strong>. Essentially, i we don't provide information to a function, such as the matrix's number of rows, the function will have a default that it will assume you wanted! We can see a function's default arguments using the <code><a href="https://rdrr.io/r/base/args.html">args()</a></code> function.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># show me the arguments of the matrix function</span>
+<span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">matrix</span><span class="op">)</span></code></pre></div>
+<pre><code>## function (data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL) 
+## NULL</code></pre>
+<p>So the matrix function has default values for the <code>nrow</code>, <code>ncol</code> and <code>byrow</code> arguments. The <code><a href="https://rdrr.io/r/base/args.html">args()</a></code> function is an incredibly useful, tool in understanding what a function needs. We can even see that <code><a href="https://rdrr.io/r/base/args.html">args(matrix)</a></code> tells us about an argument we didn't know was used in the matrix function <code>dimnames</code>. As we saw at the beginning of the first tutorial, we can learn more about how a function by placing a single question mark before a function name.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># help on the matrix function</span>
+<span class="op">?</span><span class="va">matrix</span></code></pre></div>
+<p>With this you should notice that the "help" tab of the bottom right panel should open up with the documentation related to the matrix function.</p>
+<p>images - matrix_help.png</p>
+<p>It may cumbersome to write out all of the arguments in a function, so it is possible simply to write the value of the argument in thefunction leading to the same result:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a matrix using my_vector</span>
+<span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">my_vector</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="va">my_matrix</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    7    1
+## [2,]    2    6
+## [3,]    5   19</code></pre>
+<p>As we can see this leads to the same result and is much neater. It is also possible to mix up the order of the arguments in a function, BUT you must include the argument names inside the function if you are to do this.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a matrix using my_vector</span>
+<span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span>, data <span class="op">=</span> <span class="va">my_vector</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="va">my_matrix</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    7    1
+## [2,]    2    6
+## [3,]    5   19</code></pre>
+<p>Despite mixing up the arguments, this code produced the same matrix. The matrix function only has a handful of arguments, but other R functions may have considerably more. That's why it is recommended to write each argument on a new line of code.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a matrix using my_vector</span>
+<span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">3</span>, 
+                    ncol <span class="op">=</span> <span class="fl">2</span>, 
+                    data <span class="op">=</span> <span class="va">my_vector</span>, 
+                    byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="va">my_matrix</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    7    1
+## [2,]    2    6
+## [3,]    5   19</code></pre>
+<p>This code is neater and it becomes much easier to scan through which of the function's arguments we are using. Notice in the console that at the beginning of each line we now see a <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> symbol, instead of a <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> symbol. This <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> symbol indicates that we have started executing some of our code, but we're not finished. This <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> symbol is R's way of telling us that we've begun running some code, and R wants us to finish it off. In this case we started running the matrix function on one line and we finished running it three lines later.</p>
+<p>image - plus.png</p>
+<p>There are a huge number of other functions that R has ready to use. Many of which were built to speed up operations on vectors and matrices. Imagine you have a numerical vector of length 15, and you wanted to find the sum of these numbers. It would be a lot of effort to type the summation out by hand. Instead we can use the <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> function.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a vector with 15 numerical values</span>
+<span class="va">my_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">54</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">34</span>, <span class="fl">5</span>, <span class="fl">45</span>, <span class="fl">126</span><span class="op">)</span>
+
+<span class="co"># add the numbers together</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 297</code></pre>
+<p>A few other useful functions are:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the average</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 18.5625</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the variance</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1107.463</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the maximum value</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 126</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the minimum</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
 </div>
 <div id="more-examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#more-examples" class="anchor"></a>More examples</h2>
-<p>arithmetic and logical operators on vectors, indices for both vectors and matrices. Indexing with logical statements.</p>
+<p>Here are a few more examples that combine many of the principles in this tutorial, whilst throwing in some additional basic function.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a vector</span>
+<span class="va">my_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">8</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">34</span>, <span class="fl">24</span>, <span class="fl">56</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">3</span><span class="op">)</span>
+
+<span class="co"># check the length of this vector</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 21</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># double every value in this vector </span>
+<span class="fl">2</span><span class="op">*</span><span class="va">my_vector</span></code></pre></div>
+<pre><code>##  [1]   2  10  12  16   6   8  10   0  16   2   4   6  10  12  10  68  48 112  10
+## [20]   8   6</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the minimum of this vector</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the index of the minimum value</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/which.minmax.html">which.min</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># check with a logical statement</span>
+<span class="va">my_vector</span><span class="op">[</span><span class="fl">8</span><span class="op">]</span> <span class="op">==</span> <span class="fl">0</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the 7th, 10th and 12th values in this vector</span>
+<span class="va">my_vector</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>,<span class="fl">10</span>,<span class="fl">12</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 5 1 3</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># tell me which values are greater than 10</span>
+<span class="va">my_vector</span> <span class="op">&gt;</span> <span class="fl">10</span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [13] FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># now return the values greater than ten with a logical statment for the index</span>
+<span class="va">my_vector</span><span class="op">[</span><span class="va">my_vector</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 34 24 56</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a matrix from this vector with 3 rows and 7 columns and fill it byrow</span>
+<span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">my_vector</span>,
+                    nrow <span class="op">=</span> <span class="fl">3</span>,
+                    ncol <span class="op">=</span> <span class="fl">7</span>,
+                    byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="co"># return the 1st value of the 3rd row                    </span>
+<span class="va">my_matrix</span><span class="op">[</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the mean of a the values in the matrix</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">my_matrix</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 8.952381</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># find the square root of each value in the matrix</span>
+<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">my_matrix</span><span class="op">)</span></code></pre></div>
+<pre><code>##          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]
+## [1,] 1.000000 2.236068 2.449490 2.828427 1.732051 2.000000 2.236068
+## [2,] 0.000000 2.828427 1.000000 1.414214 1.732051 2.236068 2.449490
+## [3,] 2.236068 5.830952 4.898979 7.483315 2.236068 2.000000 1.732051</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># or</span>
+<span class="va">my_matrix</span><span class="op">^</span><span class="fl">2</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+## [1,]    1   25   36   64    9   16   25
+## [2,]    0   64    1    4    9   25   36
+## [3,]   25 1156  576 3136   25   16    9</code></pre>
+<p>Once again, have a go coming up with your own examples and mess around with the ones above.</p>
 </div>
   </div>
 

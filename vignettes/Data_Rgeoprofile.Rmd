@@ -1,10 +1,10 @@
 ---
-title: "Real world data"
+title: "RgeoProfile example - real world data"
 author: "Michael Stevens"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Real world data}
+  %\VignetteIndexEntry{RgeoProfile example - real world data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -14,13 +14,9 @@ vignette: >
 In this tutorial we will move on to the next steps of using R, this will include:
 
 * Using functions
-* Classes, vectors, matrices
-* More functions
-* Reading in data
-* Plotting
-* Getting help
-* Packages
-* Loops
+* Classes
+* vectors, matrices
+* More on functions
 
 ## Using functions
 
@@ -118,17 +114,176 @@ A **matrix** is a collection of values that spans many rows and columns. We can 
 
 ```{r}
 # create a matrix using my_vector
-my_matrix <- matrix(data = my_vector, nrow = 3, ncol = 2)
+my_matrix <- matrix(data = my_vector, nrow = 3, ncol = 2, byrow = FALSE)
 
 my_matrix
 ```
 
+As we can see we provide the matrix function with `data`, the number of rows and columns (`nrow` and `ncol`) and if we should fill the matrix by row or by column. To access a particular value in a matrix, we once again use the square brackets with a refference to the corresponding row and column of that value.  
+
+```{r}
+# get the 2nd value from the first column of the matrix
+my_matrix[2, 1]
+
+# access the entire first row
+my_matrix[1, ]
+
+# access the entire second column 
+my_matrix[, 2]
+
+# access the 2nd AND third values of the second row
+my_matrix[c(2,3), 2]
+```
+
+Generally, the code `my_matrix[i, j]` will return the value in the ith row and the jth column of the matrix.  
+
 ## More on functions
 
-Arguments, where to put them, leaving them blank and defaults. 
+Now we know a bit more about different data types in R, it's time to talk a little bit more about functions. Recall the general structure of a function is:
 
-Function on vectors: sum, sd, mean, seq, max, min, range  
+```{r}
+my_function <- function( arguments ) { body }
+```
+
+Each function comes with its own arguments that we need to supply it with to make it work properly. We just saw the arguments needed to run the matrix function, but what happens if we don't provide the matrix function with all of the arguments? 
+
+```{r}
+# create a matrix using my_vector
+my_new_matrix <- matrix(data = my_vector)
+
+my_new_matrix
+```
+
+As we can see the code still works but it returns a different number of rows and columns. Why is this? Why doesn't the code break since we don't provide all the extra information? This will be due to the function's **default arguments**. Essentially, i we don't provide information to a function, such as the matrix's number of rows, the function will have a default that it will assume you wanted! We can see a function's default arguments using the `args()` function.
+
+```{r}
+# show me the arguments of the matrix function
+args(matrix)
+```
+
+So the matrix function has default values for the `nrow`, `ncol` and `byrow` arguments. The `args()` function is an incredibly useful, tool in understanding what a function needs. We can even see that `args(matrix)` tells us about an argument we didn't know was used in the matrix function `dimnames`. As we saw at the beginning of the first tutorial, we can learn more about how a function by placing a single question mark before a function name.  
+
+```{r}
+# help on the matrix function
+?matrix
+```
+
+With this you should notice that the "help" tab of the bottom right panel should open up with the documentation related to the matrix function. 
+
+images - matrix_help.png
+
+It may cumbersome to write out all of the arguments in a function, so it is possible simply to write the value of the argument in thefunction leading to the same result:
+
+```{r}
+# create a matrix using my_vector
+my_matrix <- matrix(my_vector, 3, 2, FALSE)
+
+my_matrix
+```
+
+As we can see this leads to the same result and is much neater. It is also possible to mix up the order of the arguments in a function, BUT you must include the argument names inside the function if you are to do this. 
+
+
+```{r}
+# create a matrix using my_vector
+my_matrix <- matrix(nrow = 3, ncol = 2, data = my_vector, byrow = FALSE)
+
+my_matrix
+```
+
+Despite mixing up the arguments, this code produced the same matrix. The matrix function only has a handful of arguments, but other R functions may have considerably more. That's why it is recommended to write each argument on a new line of code.  
+
+```{r, eval = TRUE}
+# create a matrix using my_vector
+my_matrix <- matrix(nrow = 3, 
+                    ncol = 2, 
+                    data = my_vector, 
+                    byrow = FALSE)
+
+my_matrix
+```
+
+This code is neater and it becomes much easier to scan through which of the function's arguments we are using. Notice in the console that at the beginning of each line we now see a `+` symbol, instead of a `>` symbol. This `+` symbol indicates that we have started executing some of our code, but we're not finished. This `+` symbol is R's way of telling us that we've begun running some code, and R wants us to finish it off. In this case we started running the matrix function on one line and we finished running it three lines later.   
+
+image - plus.png
+
+There are a huge number of other functions that R has ready to use. Many of which were built to speed up operations on vectors and matrices. Imagine you have a numerical vector of length 15, and you wanted to find the sum of these numbers. It would be a lot of effort to type the summation out by hand. Instead we can use the `sum()` function. 
+
+```{r, eval = TRUE}
+# create a vector with 15 numerical values
+my_vector <- c(1, 3, 6, 54, 3, 2, 3, 5, 5, 2, 1, 2, 34, 5, 45, 126)
+
+# add the numbers together
+sum(my_vector)
+```
+
+A few other useful functions are:
+
+```{r, eval = TRUE}
+# find the average
+mean(my_vector)
+
+# find the variance
+var(my_vector)
+
+# find the maximum value
+max(my_vector)
+
+# find the minimum
+min(my_vector)
+```
 
 ## More examples
 
-arithmetic and logical operators on vectors, indices for both vectors and matrices. Indexing with logical statements. 
+Here are a few more examples that combine many of the principles in this tutorial, whilst throwing in some additional basic function. 
+
+
+```{r, eval = TRUE}
+# create a vector
+my_vector <- c(1, 5, 6, 8, 3, 4, 5, 0, 8, 1, 2, 3, 5, 6, 5, 34, 24, 56, 5, 4, 3)
+
+# check the length of this vector
+length(my_vector)
+
+# double every value in this vector 
+2*my_vector
+
+# find the minimum of this vector
+min(my_vector)
+
+# find the index of the minimum value
+which.min(my_vector)
+
+# check with a logical statement
+my_vector[8] == 0
+
+# find the 7th, 10th and 12th values in this vector
+my_vector[c(7,10,12)]
+
+# tell me which values are greater than 10
+my_vector > 10
+
+# now return the values greater than ten with a logical statment for the index
+my_vector[my_vector > 10]
+
+# create a matrix from this vector with 3 rows and 7 columns, fill it byrow
+# and name the rows
+my_matrix <- matrix(data = my_vector,
+                    nrow = 3,
+                    ncol = 7,
+                    byrow = TRUE)
+
+# return the 1st value of the 3rd row                    
+my_matrix[3, 1]
+
+# find the mean of a the values in the matrix
+mean(my_matrix)
+
+# find the square root of each value in the matrix
+sqrt(my_matrix)
+
+# or
+my_matrix^2
+```
+
+Once again, have a go coming up with your own examples and mess around with the ones above.  
