@@ -53,16 +53,92 @@ Notice that the R environment now has a function in its memory.
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/function_env.png)
 \  
 
-## Classes, vectors, matrices
+## Classes
 
-## More functions
+In the previous tutorial we played around with some basic arithmetic and logical statements such as the below:
 
+```{r}
+# assign x the value 7
+x <- 7
+
+# assign y the outcome of the logical statement x > 4
+y <- x > 4
+y
+``` 
+
+In these examples the **class** of `x` is reffered to as **numeric** and the class of `y` is reffered to as **logical**. This is of course, since `x` represents the numerical value `5` and `y`, the logical value `TRUE`. There is another important class we are yet to use, that is, the **character** class. The class of an object is character if it has been assigned using double or single quotation marks (`" "` or `' '`).
+
+```{r}
+# create a character object
+my_name <- "john smith"
+my_address <- '123 Fake Street'
+```
+
+We can view an object's class using the `class()` function. For this function, we input an object and the output will print the object's class. 
+
+```{r}
+# create a numerical, logical and character objects
+x <- 27
+class(x)
+
+y <- 15 != 12
+class(y)
+
+z <- "hello"
+class(z)
+```
+
+## Vectors and Matrices
+
+Vectors and matrices are a couple of the main data types in R.  Using vectors and matrices we can collect and manipulate multiple R objects at the same time. To create a vector we use an important R function denoted by `c()`. Here, `c()` can be thought of as short for "concatonate" or "collect". Using `c()` we can collect objects of the same type together to create a vector.
+
+```{r}
+# create a vector
+my_vector <- c(7, 2, 5, 1, 6, 19)
+my_vector
+```
+
+Notice that `my_vector` has appeared in the top right in R studio. 
+
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/my_vec.png)
+\  
+
+We can see that now gives us more information than simply the values in this vector. In addition to this, R stores the class of the vector "num" short for "numerical" and the **index** of the vector runs from one to six, denoted by "[1:6]". If we want to access a particular value or set of values from our vector, then we need to provide R with the index of the values we want. We do this using square brakets `[]`.
+
+```{r}
+# access the 3rd value in our vector
+my_vector[3]
+
+# access the 2nd and 5th value in our vector
+my_vector[c(2,5)]
+```
+
+A **matrix** is a collection of values that spans many rows and columns. We can constuct a matrix using the `matrix()` function. In order to build a matrix, the function requires a vector of values, the numbe of rows and the number of columns. Let's use `my_vector` to populate a matrix with 3 rows and 2 columns. 
+
+```{r}
+# create a matrix using my_vector
+my_matrix <- matrix(data = my_vector, nrow = 3, ncol = 2)
+
+my_matrix
+```
+
+ 
+
+## More on functions
+
+Arguments, where to put them, leaving them blank and defaults. 
+
+Function on vectors: sum, sd, mean, var. 
+
+```{r, echo = FALSE}
 ## Reading in data
 
 ## Plotting
 
+## More examples
+
 ## Getting help
 
 ## Packages
-
-## Loops
+```

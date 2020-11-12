@@ -53,7 +53,7 @@ The intereface should consist of four main panels:
 
 This was a lot of information in one go! Don't worry too much about remembering it all. This page is here for you to come back to if and when you need it. There will be a reminder throughout these tutorials when we revisit any of the above.
 
-## Running, writing and commenting code
+## Write, run and comment code
 
 Let's start with a simple example - can we get R to add 1 and 2 together? There are two ways we can do this. Firstly, we can click inside the console window (number 2 above), type `1 + 2` and hit `ENTER`.
 
@@ -88,7 +88,7 @@ This format will show a piece of R code and the output from the console (if ther
 \  
 
 
-## Assigning an object 
+## Assigning and naming objects 
 
 The previous example of adding `1 + 2` gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by **assigning** an object a specific value. Assigning objects can be done using the `<-` symbol. This symbol conisists of the less than symbol `<` immediately fololowed by the minus symbol `-`. Let's see an example
 
@@ -133,6 +133,19 @@ We can now use our `x` and `y` objects in another piece of code, let's add them 
 # add x and y together
 x + y
 ```  
+
+Though we've chosen `x` and `y` for the names of our objects, the names themselves are arbitrary.  
+
+```{r}
+# create some objects with different names
+value <- 12
+
+my_number <- 27
+
+smallValue <- 0.001
+```  
+
+Notice with the last assignment that the variable name conveniently gives us some information about the value itself. There are some exceptions to what we can choose as an object name. For example an object name can't start with a numerical value. So assigning a value to the object name `3my_value` will result in an error. Follow [this link](https://www.dummies.com/programming/r/how-to-successfully-follow-naming-conventions-in-r/) for more information on choosing object names. 
 
 ## Arithmetic operators
 
@@ -190,7 +203,7 @@ Integer division - using the `%/%` symbol:
 ```
 
 
-## Logical operators:
+## Logical operators
 
 In addition to arithmetic operators, R also has a list of **logical operators**. We will provide R with a statement and the console will return a binary output depending on whether or not the statement in our code is `TRUE` or `FALSE`. For example is five greater than 3?
 
@@ -292,3 +305,13 @@ z ^ 0.5
 ```
 
 That's all from this tutorial, hopefully you've gotten a basic idea of what R is capable of. It's worth taking the time to come up with your own examples too. 
+
+## Saving your script
+
+One final thing! As we mentioned earlier in this tutorial, we should be writing our code in an R script. We can save the R script we've been working on in this tutorial by going to File -> Save As... and choosoing a name for this first R script. I've called mine "my_script.R"
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/save.png)
+\  
+
+Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. If we were writing a piece of code using the python language our extension would be ".py".

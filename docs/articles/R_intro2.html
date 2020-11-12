@@ -71,10 +71,10 @@
     </li>
     <li class="divider">
     <li>
-      <a href="../articles/Basic_Rgeoprofile.html">Basic Rgeoprofile</a>
+      <a href="../articles/Basic_Rgeoprofile.html">Basic Rgeoprofile example 1</a>
     </li>
     <li>
-      <a href="../articles/Data_Rgeoprofile.html">Real world data</a>
+      <a href="../articles/Data_Rgeoprofile.html">Basic Rgeoprofile example 2</a>
     </li>
     <li>
       <a href="../articles/Advanced_Rgeoprofile.html">Advanced Rgeoprofile</a>
@@ -128,7 +128,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 2</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-11-11</h4>
+            <h4 class="date">2020-11-12</h4>
       
       
       <div class="hidden name"><code>R_intro2.Rmd</code></div>
@@ -173,33 +173,74 @@
 <p>Notice that the R environment now has a function in its memory.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/function_env.png">  </p>
 </div>
-<div id="classes-vectors-matrices" class="section level2">
+<div id="classes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#classes-vectors-matrices" class="anchor"></a>Classes, vectors, matrices</h2>
+<a href="#classes" class="anchor"></a>Classes</h2>
+<p>In the previous tutorial we played around with some basic arithmetic and logical statements such as the below:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># assign x the value 7</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">7</span>
+
+<span class="co"># assign y the outcome of the logical statement x &gt; 4</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">4</span>
+<span class="va">y</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>In these examples the <strong>class</strong> of <code>x</code> is reffered to as <strong>numeric</strong> and the class of <code>y</code> is reffered to as <strong>logical</strong>. This is of course, since <code>x</code> represents the numerical value <code>5</code> and <code>y</code>, the logical value <code>TRUE</code>. There is another important class we are yet to use, that is, the <strong>character</strong> class. The class of an object is character if it has been assigned using double or single quotation marks (<code>" "</code> or <code>' '</code>).</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a character object</span>
+<span class="va">my_name</span> <span class="op">&lt;-</span> <span class="st">"john smith"</span>
+<span class="va">my_address</span> <span class="op">&lt;-</span> <span class="st">'123 Fake Street'</span></code></pre></div>
+<p>We can view an object's class using the <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> function. For this function, we input an object and the output will print the object's class.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a numerical, logical and character objects</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">27</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "numeric"</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">15</span> <span class="op">!=</span> <span class="fl">12</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "logical"</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="st">"hello"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "character"</code></pre>
 </div>
-<div id="more-functions" class="section level2">
+<div id="vectors-and-matrices" class="section level2">
 <h2 class="hasAnchor">
-<a href="#more-functions" class="anchor"></a>More functions</h2>
+<a href="#vectors-and-matrices" class="anchor"></a>Vectors and Matrices</h2>
+<p>Vectors and matrices are a couple of the main data types in R. Using vectors and matrices we can collect and manipulate multiple R objects at the same time. To create a vector we use an important R function denoted by <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. Here, <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> can be thought of as short for "concatonate" or "collect". Using <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> we can collect objects of the same type together to create a vector.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a vector</span>
+<span class="va">my_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">6</span>, <span class="fl">19</span><span class="op">)</span>
+<span class="va">my_vector</span></code></pre></div>
+<pre><code>## [1]  7  2  5  1  6 19</code></pre>
+<p>Notice that <code>my_vector</code> has appeared in the top right in R studio.</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/my_vec.png">  </p>
+<p>We can see that now gives us more information than simply the values in this vector. In addition to this, R stores the class of the vector "num" short for "numerical" and the <strong>index</strong> of the vector runs from one to six, denoted by "[1:6]". If we want to access a particular value or set of values from our vector, then we need to provide R with the index of the values we want. We do this using square brakets <code>[]</code>.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># access the 3rd value in our vector</span>
+<span class="va">my_vector</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># access the 2nd and 5th value in our vector</span>
+<span class="va">my_vector</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 2 6</code></pre>
+<p>A <strong>matrix</strong> is a collection of values that spans many rows and columns. We can constuct a matrix using the <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function. In order to build a matrix, the function requires a vector of values, the numbe of rows and the number of columns. Let's use <code>my_vector</code> to populate a matrix with 3 rows and 2 columns.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a matrix using my_vector</span>
+<span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">my_vector</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
+<span class="va">my_matrix</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    7    1
+## [2,]    2    6
+## [3,]    5   19</code></pre>
 </div>
-<div id="reading-in-data" class="section level2">
+<div id="more-on-functions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#reading-in-data" class="anchor"></a>Reading in data</h2>
-</div>
-<div id="plotting" class="section level2">
-<h2 class="hasAnchor">
-<a href="#plotting" class="anchor"></a>Plotting</h2>
-</div>
-<div id="getting-help" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-help" class="anchor"></a>Getting help</h2>
-</div>
-<div id="packages" class="section level2">
-<h2 class="hasAnchor">
-<a href="#packages" class="anchor"></a>Packages</h2>
-</div>
-<div id="loops" class="section level2">
-<h2 class="hasAnchor">
-<a href="#loops" class="anchor"></a>Loops</h2>
+<a href="#more-on-functions" class="anchor"></a>More on functions</h2>
+<p>Arguments, where to put them, leaving them blank and defaults.</p>
+<p>Function on vectors: sum, sd, mean, var.</p>
 </div>
   </div>
 

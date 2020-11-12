@@ -71,10 +71,10 @@
     </li>
     <li class="divider">
     <li>
-      <a href="../articles/Basic_Rgeoprofile.html">Basic Rgeoprofile</a>
+      <a href="../articles/Basic_Rgeoprofile.html">Basic Rgeoprofile example 1</a>
     </li>
     <li>
-      <a href="../articles/Data_Rgeoprofile.html">Real world data</a>
+      <a href="../articles/Data_Rgeoprofile.html">Basic Rgeoprofile example 2</a>
     </li>
     <li>
       <a href="../articles/Advanced_Rgeoprofile.html">Advanced Rgeoprofile</a>
@@ -128,7 +128,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 1</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-11-11</h4>
+            <h4 class="date">2020-11-12</h4>
       
       
       <div class="hidden name"><code>R_intro1.Rmd</code></div>
@@ -191,9 +191,9 @@
 </ul>
 <p>This was a lot of information in one go! Don't worry too much about remembering it all. This page is here for you to come back to if and when you need it. There will be a reminder throughout these tutorials when we revisit any of the above.</p>
 </div>
-<div id="running-writing-and-commenting-code" class="section level2">
+<div id="write-run-and-comment-code" class="section level2">
 <h2 class="hasAnchor">
-<a href="#running-writing-and-commenting-code" class="anchor"></a>Running, writing and commenting code</h2>
+<a href="#write-run-and-comment-code" class="anchor"></a>Write, run and comment code</h2>
 <p>Let's start with a simple example - can we get R to add 1 and 2 together? There are two ways we can do this. Firstly, we can click inside the console window (number 2 above), type <code>1 + 2</code> and hit <code>ENTER</code>.</p>
 <p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/console.png">  </p>
 <p>We should see the number <code>3</code> get spat out by the console as shown above. The other, and preferable, way to run this code is to type it up in the script window (number 1 above), click on the line of code we want to run and hit <code>Ctrl ENTER</code> or click on the "Run" button to send the code down to the console.</p>
@@ -208,9 +208,9 @@
 <p>This format will show a piece of R code and the output from the console (if there is any). In order to copy the code from these small snippets, simply hover your mouse over the chunk and an option to copy this code should appear in the top right of the code chunk.</p>
 <p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/copy.png">  </p>
 </div>
-<div id="assigning-an-object" class="section level2">
+<div id="assigning-and-naming-objects" class="section level2">
 <h2 class="hasAnchor">
-<a href="#assigning-an-object" class="anchor"></a>Assigning an object</h2>
+<a href="#assigning-and-naming-objects" class="anchor"></a>Assigning and naming objects</h2>
 <p>The previous example of adding <code>1 + 2</code> gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by <strong>assigning</strong> an object a specific value. Assigning objects can be done using the <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> symbol. This symbol conisists of the less than symbol <code><a href="https://rdrr.io/r/base/Comparison.html">&lt;</a></code> immediately fololowed by the minus symbol <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>. Let's see an example</p>
 <p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png">  </p>
 <p>Here we assigned the value <code>5</code> to <code>x</code>, via the code <code>x &lt;- 5</code>, so <code>x</code> is the object with value <code>5</code> assigned to it. This assigning symbol <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> should always point to the object name. In this case the arrow points to <code>x</code>. Note that we can obtain the same results by running <code>5 -&gt; x</code>. Here, the arrow is still pointing towards <code>x</code> hence we arrive at the same result. You may have noticed that when you ran <code>x &lt;- 5</code> something appeared up in the <em>Environment</em> window in the top right screen (panel number 3).</p>
@@ -237,6 +237,15 @@
 <code class="sourceCode R"><span class="co"># add x and y together</span>
 <span class="va">x</span> <span class="op">+</span> <span class="va">y</span></code></pre></div>
 <pre><code>## [1] 18</code></pre>
+<p>Though we've chosen <code>x</code> and <code>y</code> for the names of our objects, the names themselves are arbitrary.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create some objects with different names</span>
+<span class="va">value</span> <span class="op">&lt;-</span> <span class="fl">12</span>
+
+<span class="va">my_number</span> <span class="op">&lt;-</span> <span class="fl">27</span>
+
+<span class="va">smallValue</span> <span class="op">&lt;-</span> <span class="fl">0.001</span></code></pre></div>
+<p>Notice with the last assignment that the variable name conveniently gives us some information about the value itself. There are some exceptions to what we can choose as an object name. For example an object name can't start with a numerical value. So assigning a value to the object name <code>3my_value</code> will result in an error. Follow <a href="https://www.dummies.com/programming/r/how-to-successfully-follow-naming-conventions-in-r/">this link</a> for more information on choosing object names.</p>
 </div>
 <div id="arithmetic-operators" class="section level2">
 <h2 class="hasAnchor">
@@ -284,7 +293,7 @@
 </div>
 <div id="logical-operators" class="section level2">
 <h2 class="hasAnchor">
-<a href="#logical-operators" class="anchor"></a>Logical operators:</h2>
+<a href="#logical-operators" class="anchor"></a>Logical operators</h2>
 <p>In addition to arithmetic operators, R also has a list of <strong>logical operators</strong>. We will provide R with a statement and the console will return a binary output depending on whether or not the statement in our code is <code>TRUE</code> or <code>FALSE</code>. For example is five greater than 3?</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># is 5 greater than 3?</span>
@@ -383,6 +392,13 @@
 <span class="va">z</span> <span class="op">^</span> <span class="fl">0.5</span> </code></pre></div>
 <pre><code>## [1] 1.341641</code></pre>
 <p>That's all from this tutorial, hopefully you've gotten a basic idea of what R is capable of. It's worth taking the time to come up with your own examples too.</p>
+</div>
+<div id="saving-your-script" class="section level2">
+<h2 class="hasAnchor">
+<a href="#saving-your-script" class="anchor"></a>Saving your script</h2>
+<p>One final thing! As we mentioned earlier in this tutorial, we should be writing our code in an R script. We can save the R script we've been working on in this tutorial by going to File -&gt; Save As... and choosoing a name for this first R script. I've called mine "my_script.R"</p>
+<p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/save.png">  </p>
+<p>Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. If we were writing a piece of code using the python language our extension would be ".py".</p>
 </div>
   </div>
 
