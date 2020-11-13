@@ -1,11 +1,10 @@
 
-title: Rgeoprofile
+title: Rgeoprofile*
 template:
   params:
     bootswatch: flatly
 
 navbar:
-  title: "Rgeoprofile workshop "
   left:
     - text: "R basics"
       menu:
@@ -16,32 +15,32 @@ navbar:
           href: "articles/R_intro1.html"
         - text: "Introduction to R - part 2"
           href: "articles/R_intro2.html"
-        - text: "Introduction to R - part 3"
+        - text: "Introduction to R - part 3*"
           href: "articles/R_intro3.html"
         - text: ---------------
         - text: "Extra resources"
           href: articles/General_R.html
     - text: "GP tutorials"
       menu:
-        - text: "Installation"
+        - text: "Installing RgeoProfile"
           href: articles/installation.html  
-        - text: "Background"
+        - text: "Background*"
           href: articles/GP_background.html
         - text: ---------------
         - text: "Basic Rgeoprofile example 1"
           href: articles/Basic_Rgeoprofile.html
         - text: "Basic Rgeoprofile example 2"
           href: articles/Data_Rgeoprofile.html
-        - text: "Advanced Rgeoprofile"
+        - text: "Advanced Rgeoprofile*"
           href: articles/Advanced_Rgeoprofile.html
         - text: ---------------
-        - text: "Function list"
+        - text: "Function list*"
           href: reference/index.html
-        - text: "Extra resources"
+        - text: "Extra resources*"
           href: "articles/GP_resources.html"
     - text: "Other resources"
       menu:
-        - text: "Spatial Analysis in R"
+        - text: "Spatial Analysis in R*"
           href: articles/Spatial_R.html
   right:
    - icon: fa-github

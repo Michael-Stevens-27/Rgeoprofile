@@ -98,7 +98,4 @@ read.csv, read.table, R's built in data sets
 
 base R and the popular ggplot2 using the built in 
 
-
-## Getting help
-
-A list of help functions, dealing with bugs, coming up with examples. R ettiquette. Other resources. 
+## Summary of R content

@@ -9,18 +9,46 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Below is a collection of resources as a guide for using R. 
+The last three tutorials contained a lot of information to digest. In no way was it a complete guide to using R, but it should certainly start you off in the right places. To supplement these tutorials in using R, below are a collection of resources that should help you develop the skills you have already gained and put you on the right track to learning more advanced techniques in R.  
 
-### Immediate resources
+## Immediate help in R 
 
-* [CRAN's "An Introduction to R" manual](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
+We have already touched briefly on getting help whilst using Rstudio. For example, using the question mark symbol, `?`, infront of a function will bring up the documentation on said function. A double `??` should be used for package documentation. Below are a few more functions you can use in R.
+
+```{r, eval = FALSE}
+help.start()     # general help
+help(plot)       # help with function plot
+apropos("plot")  # list all the functions containing the string plot
+example(plot)    # show an example of using the plot function 
+
+# search for plot in the help manuals and archived mailing lists
+RSiteSearch("plot")
+
+# get vignettes on using installed packages
+vignette()      # show available vingettes
+```
+
+It is inevitable that at some point in your coding career, a bug in your code will lead to an error from R. This is very common in when coding and is something even the most advanced users of R will have to deal with. You may have even seen a few bugs or errors when playing around with some of the exmples in these tutorials. Debugging code will require some patience and detective work. However, there are many guides out there to debugging code that can offer a hand:
+
+* [Debugging code, from Rstats](https://rstats.wtf/debugging-r-code.html)
+* [Stack overflow](https://stackoverflow.com/questions/tagged/r)
+* [Data flair's guide to debugging R code](https://data-flair.training/blogs/debugging-in-r-programming/)
+  
+
+## Other tutorials
+
+The past tutorials follow a similar structure to the [Quick-R tutorials from Datacamp](https://www.statmethods.net/r-tutorial/index.html). These contain all of the subjects we have covered and more with the option to delve into a specific topic in more detail. Some other useful guides include:
+
+* [CRAN's introduction to R manual](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
 * [Datamentor's "Learn R Programming"](https://www.datamentor.io/r-programming/#:~:text=R%20is%20a%20programming%20language,analyze%2C%20visualize%20and%20present%20data.)
-* [Quick-R from Datacamp](https://www.statmethods.net/r-tutorial/index.html)
 * [R tutorial's "R introduction"](http://www.r-tutor.com/r-introduction)
 * [Bill Petti's Github tutorial](https://billpetti.github.io/Crash_course_in_R/)
-* [QMUL's statistical self help resources](https://qmplus.qmul.ac.uk/course/view.php?id=13492)
 
-### Free courses requiring an account
+I also think [QMUL's statistical self help resources](https://qmplus.qmul.ac.uk/course/view.php?id=13492) will be useful to anyone wanting to learn R. These are the resources we aim at undergaduate and postrgraduate students looking to learn with an emphasis to apply it in environmental science. 
+
+## Free courses requiring an account
+
+If you're willing to commit a lot more time to learning about R, below are a few links to online courses that break down learning R into manageable chunks. However, enrolling on these free courses requires making an account. 
 
 * [Code academy](https://www.codecademy.com/learn/learn-r)
 * [Datacamp](https://www.datacamp.com/courses/free-introduction-to-r)

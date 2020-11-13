@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>General R resources • Rgeoprofile</title>
+<title>General R resources • Rgeoprofile*</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -30,7 +30,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">Rgeoprofile</a>
+        <a class="navbar-link" href="../index.html">Rgeoprofile*</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
       </span>
     </div>
@@ -55,11 +55,11 @@
       <a href="../articles/R_intro2.html">Introduction to R - part 2</a>
     </li>
     <li>
-      <a href="../articles/R_intro3.html">Introduction to R - part 3</a>
+      <a href="../articles/R_intro3.html">Introduction to R - part 3*</a>
     </li>
     <li class="divider">
     <li>
-      <a href="../articles/General_R.html">Extra resources</a>
+      <a href="../articles/General_R.html">Extra resources*</a>
     </li>
   </ul>
 </li>
@@ -71,10 +71,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/installation.html">Installation</a>
+      <a href="../articles/installation.html">Installing RgeoProfile</a>
     </li>
     <li>
-      <a href="../articles/GP_background.html">Background</a>
+      <a href="../articles/GP_background.html">Background*</a>
     </li>
     <li class="divider">
     <li>
@@ -84,14 +84,14 @@
       <a href="../articles/Data_Rgeoprofile.html">Basic Rgeoprofile example 2</a>
     </li>
     <li>
-      <a href="../articles/Advanced_Rgeoprofile.html">Advanced Rgeoprofile</a>
+      <a href="../articles/Advanced_Rgeoprofile.html">Advanced Rgeoprofile*</a>
     </li>
     <li class="divider">
     <li>
-      <a href="../reference/index.html">Function list</a>
+      <a href="../reference/index.html">Function list*</a>
     </li>
     <li>
-      <a href="../articles/GP_resources.html">Extra resources</a>
+      <a href="../articles/GP_resources.html">Extra resources*</a>
     </li>
   </ul>
 </li>
@@ -103,7 +103,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/Spatial_R.html">Spatial Analysis in R</a>
+      <a href="../articles/Spatial_R.html">Spatial Analysis in R*</a>
     </li>
   </ul>
 </li>
@@ -141,22 +141,45 @@
 
     
     
-<p>Below is a collection of resources as a guide for using R.</p>
-<div id="immediate-resources" class="section level3">
-<h3 class="hasAnchor">
-<a href="#immediate-resources" class="anchor"></a>Immediate resources</h3>
+<p>The last three tutorials contained a lot of information to digest. In no way was it a complete guide to using R, but it should certainly start you off in the right places. To supplement these tutorials in using R, below are a collection of resources that should help you develop the skills you have already gained and put you on the right track to learning more advanced techniques in R.</p>
+<div id="immediate-help-in-r" class="section level2">
+<h2 class="hasAnchor">
+<a href="#immediate-help-in-r" class="anchor"></a>Immediate help in R</h2>
+<p>We have already touched briefly on getting help whilst using Rstudio. For example, using the question mark symbol, <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code>, infront of a function will bring up the documentation on said function. A double <code>??</code> should be used for package documentation. Below are a few more functions you can use in R.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.start.html">help.start</a></span><span class="op">(</span><span class="op">)</span>     <span class="co"># general help</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span>       <span class="co"># help with function plot</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/apropos.html">apropos</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span>  <span class="co"># list all the functions containing the string plot</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span>     <span class="co"># show an example of using the plot function </span>
+
+<span class="co"># search for plot in the help manuals and archived mailing lists</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/RSiteSearch.html">RSiteSearch</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span>
+
+<span class="co"># get vignettes on using installed packages</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span><span class="op">(</span><span class="op">)</span>      <span class="co"># show available vingettes</span></code></pre></div>
+<p>It is inevitable that at some point in your coding career, a bug in your code will lead to an error from R. This is very common in when coding and is something even the most advanced users of R will have to deal with. You may have even seen a few bugs or errors when playing around with some of the exmples in these tutorials. Debugging code will require some patience and detective work. However, there are many guides out there to debugging code that can offer a hand:</p>
 <ul>
-<li><a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf">CRAN's "An Introduction to R" manual</a></li>
-<li><a href="https://www.datamentor.io/r-programming/#:~:text=R%20is%20a%20programming%20language,analyze%2C%20visualize%20and%20present%20data.">Datamentor's "Learn R Programming"</a></li>
-<li><a href="https://www.statmethods.net/r-tutorial/index.html">Quick-R from Datacamp</a></li>
-<li><a href="http://www.r-tutor.com/r-introduction">R tutorial's "R introduction"</a></li>
-<li><a href="https://billpetti.github.io/Crash_course_in_R/">Bill Petti's Github tutorial</a></li>
-<li><a href="https://qmplus.qmul.ac.uk/course/view.php?id=13492">QMUL's statistical self help resources</a></li>
+<li><a href="https://rstats.wtf/debugging-r-code.html">Debugging code, from Rstats</a></li>
+<li><a href="https://stackoverflow.com/questions/tagged/r">Stack overflow</a></li>
+<li><a href="https://data-flair.training/blogs/debugging-in-r-programming/">Data flair's guide to debugging R code</a></li>
 </ul>
 </div>
-<div id="free-courses-requiring-an-account" class="section level3">
-<h3 class="hasAnchor">
-<a href="#free-courses-requiring-an-account" class="anchor"></a>Free courses requiring an account</h3>
+<div id="other-tutorials" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-tutorials" class="anchor"></a>Other tutorials</h2>
+<p>The past tutorials follow a similar structure to the <a href="https://www.statmethods.net/r-tutorial/index.html">Quick-R tutorials from Datacamp</a>. These contain all of the subjects we have covered and more with the option to delve into a specific topic in more detail. Some other useful guides include:</p>
+<ul>
+<li><a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf">CRAN's introduction to R manual</a></li>
+<li><a href="https://www.datamentor.io/r-programming/#:~:text=R%20is%20a%20programming%20language,analyze%2C%20visualize%20and%20present%20data.">Datamentor's "Learn R Programming"</a></li>
+<li><a href="http://www.r-tutor.com/r-introduction">R tutorial's "R introduction"</a></li>
+<li><a href="https://billpetti.github.io/Crash_course_in_R/">Bill Petti's Github tutorial</a></li>
+</ul>
+<p>I also think <a href="https://qmplus.qmul.ac.uk/course/view.php?id=13492">QMUL's statistical self help resources</a> will be useful to anyone wanting to learn R. These are the resources we aim at undergaduate and postrgraduate students looking to learn with an emphasis to apply it in environmental science.</p>
+</div>
+<div id="free-courses-requiring-an-account" class="section level2">
+<h2 class="hasAnchor">
+<a href="#free-courses-requiring-an-account" class="anchor"></a>Free courses requiring an account</h2>
+<p>If you're willing to commit a lot more time to learning about R, below are a few links to online courses that break down learning R into manageable chunks. However, enrolling on these free courses requires making an account.</p>
 <ul>
 <li><a href="https://www.codecademy.com/learn/learn-r">Code academy</a></li>
 <li><a href="https://www.datacamp.com/courses/free-introduction-to-r">Datacamp</a></li>
@@ -166,7 +189,9 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
