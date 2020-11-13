@@ -163,7 +163,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span></code></pre></div>
 <pre><code>## Loading required package: sp</code></pre>
 <p>The raster package also loads another package for spatial analysis; the "sp" package. Notice the empty boxes down the left hand side of the "Packages" tab. Clicking on these boxes is another method for loading packages.</p>
-<p>image - load_packages.png</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/load_packages.png">  </p>
 <p>In order to install a package that is not in our system, we use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function in the following way:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install package</span>
@@ -177,7 +177,7 @@
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># show list of built-in data sets</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>images - data.png</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data.png">  </p>
 <p>Here we can see a few examples, including the "mtcars" data set, this describes the ouput of road tests carried out on a series of popular motor vehicles. To load the "mtcars" data set, we simply return to the <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> function:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load mtcars data set</span>
@@ -185,10 +185,18 @@
 
 <span class="co"># view to first handful of rows of this data set using the head() function </span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/headtail.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></code></pre></div>
-<p>R was built for statistical analysis, but a user will need to provide their own data before they can run an analysis.</p>
-<p>images - import_data.png</p>
-<p>images - directories.png</p>
-<p>images - shift_directories.png</p>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<p>In addition to built-in data sets, a user will need to import their own data into R too. Rstudio makes this a little easier by allowing the user to choose the type of file when importing their data and where R can find said file. We can import a data file by going to File -&gt; Import Dataset -&gt; From ... and choosing from the options depending on your file type.</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png">  </p>
+<p>Rstudio will then open up a screen for you to navigate to the file. I've got an example file "my_data.txt" setup in my documents.</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png">  </p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png">    <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png">  </p>
 <p>read.csv, read.table, R's built in data sets</p>
 </div>
 <div id="plotting" class="section level2">

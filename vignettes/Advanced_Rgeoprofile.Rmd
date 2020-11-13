@@ -9,63 +9,144 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Allocations and profile peaks
+## Introduction
 
-```{r, eval = FALSE}
+In this last Rgeoprofile tutorial we will walk through some of the more advanced features of the package. This includes:
+
+* How many source locations are there?
+* Allocating crimes to sources
+* Extracting peaks from a geoprofile 
+* A ring search strategy against a random one
+* Using rasters to manipulate a geoprofile
+* A summary of using Rgeoprofile 
+
+Once again, we shall load the packages we need for processing the ouput of the model.  
+
+```{r, message = FALSE}
+# load packages
+library(RgeoProfile)
+library(leaflet)
+library(raster)
+```
+
+```{r, echo = FALSE, message = FALSE}
+
+# read params and mcmc objects
+param_dir <- system.file("extdata/params_object.rds", package = "RgeoProfile", mustWork = TRUE)
+p <- readRDS(param_dir)
+
+mcmc_dir <- system.file("extdata/mcmc_object.rds", package = "RgeoProfile", mustWork = TRUE)
+m <- readRDS(mcmc_dir)
+
+# load the data 
+data(LondonExample_crimes)
+data(LondonExample_sources)
+
+# assign data
+d <- LondonExample_crimes
+s <- LondonExample_sources
+
+# remake map
+my_map <- geoPlotMap2(surface = m$geoProfile,
+                      params = p,
+                      data = d, 
+                      source = s, 
+                      surfaceCols = rev(viridis::plasma(10)),
+                      opacity = 0.7,
+                      threshold = 0.1,
+                      crimeCex = 2,
+                      sourceCex = 3,
+                      sourceCol = "black",
+                      gpLegend = TRUE)   
+```
+
+In this tutorial we will revisit the analysis from the [first tutorial](https://michael-stevens-27.github.io/Rgeoprofile/articles/Basic_Rgeoprofile.html).   
+
+## How many source locations are there?
+
+The main objective of geographic profiling is to estimate source locations based on the locations of crimes. This problem becomes complicated when you do not know **how many** source locations there are prior to running the model. This is what makes the DIrichlet process mixture model so powerful. We do not need to specify the number of source locations prior to running the model, it will come up with an estimate for us. The `geoMCMC()` function will create a "unique_groups" object for us that tells us how many source locations there are at every iteration of the MCMC algorithm. 
+
+```{r}
+# access the unique_groups object from the MCMC output
+groups <- m$unique_groups
+head(groups, 20)
+```
+
+A quick glance indicates that most of the time the model thinks there are four sources responsible for producing the data. We can summarise this object using the `table()` function. This will count up how many times the model thinks there are x number of sources. 
+
+```{r}
+# summarise the unique groupings object
+group_table <- table(groups)
+group_table
+
+# plot the table using the barplot function
+barplot(group_table,
+        xlab = "Number",
+        ylab = "Count",
+        main = "Number of source locations")
+```
+
+As we can see the model thinks there could be anywhere between two and eleven source locations, but with an emphasis on four and five. 
+
+## Allocation probabilities
+
+
+
+```{r, eval = TRUE}
 
 # plot allocation
 geoPlotAllocation(mcmc = m)
 
 # plot co-allocation
 geoPlotCoallocation(mcmc = m)
+```
 
-# produce perspective plots
-# probabilities
-geoPersp(surface = m$posteriorSurface, 
-         aggregate_size = 3, 
-         surface_type = "prob")
-         
-# ranked surface
-geoPersp(surface = m$geoProfile, aggregate_size = 3)
+## Extracting peaks from a geoprofile 
 
+Quote rossmo's "this model is not an X marks the spot kind of model"
+
+```{r}
 # find centroids of data split by best grouping (placeholder for more thorough method)
 ms <- geoModelSources(mcmc = m, data = d)
 ms
 
 # add peaks to map
 # NB requires ggplot2
-library(ggplot2)
-mapSource <- mapGP + geom_point(aes(ms$longitude,ms$latitude), size = 6, pch = 3, col = "red")
+mapSource <- addCircles(map = my_map,
+                        lng = ms$longitude, 
+                        lat = ms$latitude,
+                        fillColor = "brown")
 mapSource
-
-# # plot surface in style of 'unknown pleasures', for fun
-# unknownPleasures(m$geoProfile, paper_ref = "RgeoProfile 2.1.0")
-
-# ------------------------------------------------------------------
-
 ```
 
-# Rasters
+## A ring search strategy against a random one
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 #------------------------------------------------------------------
 # compare to alternative ring search strategy
 #------------------------------------------------------------------
 # compare to geoprofile based on ring search strategy
 surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
 gp_ring <- geoProfile(surface = surface_ring)
+
 # map of ring search geoprofile
-mapRing <- geoPlotMap(params = p, 
-                      data = d, 
-                      source = s, 
-                      surface = gp_ring,
-                      surfaceCols = c("red", "white"))
+mapRing <- geoPlotMap2(params = p, 
+                       data = d, 
+                       source = s, 
+                       surface = gp_ring,
+                       surfaceCols = c("red", "white"),
+                       threshold = 0.25,
+                       gpLegend = TRUE)
 mapRing
 
 # hitscores of ring search geoprofile
 hs_ring <- geoReportHitscores(params = p, source = s, surface = gp_ring)
 hs_ring
+```
 
+## Using rasters to manipulate a geoprofile
+
+```{r}
 #------------------------------------------------------------------
 # incorporate GIS data
 #------------------------------------------------------------------
@@ -80,26 +161,19 @@ prob_masked <- geoMask(probSurface = m$posteriorSurface,
 gp_masked <- geoProfile(prob_masked$prob)
 
 # plot new surface
-mapMask <- geoPlotMap(params = p, 
-                      data = d, 
-                      source = s, 
-                      surface = gp_masked, 
-                      breakPercent = seq(0,25,l = 11))
-#mapMask
+mapMask <- geoPlotMap2(params = p, 
+                       data = d, 
+                       source = s, 
+                       surface = gp_masked,
+                       threshold = 1)
+mapMask
 
 # hs of masked surface
 hs_mask <- geoReportHitscores(params = p, source = s, surface = gp_masked)
 hs_mask
-# zoom
-zoomLon = c(-0.1, -0.01)
-zoomLat = c(51.51, 51.54)
-mapZoom <- geoPlotMap(lonLimits = zoomLon, 
-                      latLimits = zoomLat, 
-                      params = p,
-                      data = d, 
-                      source = s, 
-                      surface = m$geoProfile)
-mapZoom
 
-#------------------------------------------------------------------
 ```
+
+## A summary of using Rgeoprofile 
+
+Throughout these tutorials we have learnt how to use the Rgeoprofile package. This consisted of: checking data and loading data, building a parameters object, running the model, plotting maps, measuring results (hs and gini), choosing priors, visualising sigma, visualising K, allocation probabilities, extracting peaks from the profiles, learning about a better default strategy than random, rasters manipulating a profile.

@@ -601,7 +601,8 @@ geoMCMC <- function(data, params, lambda=NULL) {
   output$allocation <- allocation
   output$bestGrouping <- bestGrouping
   output$coAllocation <- coAllocation
-  
+  output$unique_groups <- rawOutput$unique_groups
+
   return(output)
 }
 

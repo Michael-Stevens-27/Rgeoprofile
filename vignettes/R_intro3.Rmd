@@ -71,11 +71,20 @@ data(mtcars)
 head(mtcars)
 ```
 
-R was built for statistical analysis, but a user will need to provide their own data before they can run an analysis.  
+In addition to built-in data sets, a user will need to import their own data into R too. Rstudio makes this a little easier by allowing the user to choose the type of file when importing their data and where R can find said file. We can import a data file by going to File -> Import Dataset -> From ... and choosing from the options depending on your file type. 
 
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png)
 \  
+
+Rstudio will then open up a screen for you to navigate to the file. I've got an example file "my_data.txt" setup in my documents.
+
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png)
+\ 
+
+
+
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png)
 \  

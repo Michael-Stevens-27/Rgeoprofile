@@ -280,6 +280,7 @@ Rcpp::List C_geoMCMC(Rcpp::List data, Rcpp::List params) {
     // create objects for storing results
     vector<double> sigma_store(samples);
     vector<double> alpha_store(samples);
+    vector<double> store_unique_groups(samples);
     
     vector<double> mu_postDraw_x_store;
     vector<double> mu_postDraw_y_store;
@@ -363,6 +364,7 @@ Rcpp::List C_geoMCMC(Rcpp::List data, Rcpp::List params) {
         // store some results
         sigma_store[rep] = sqrt(sigma2);
         alpha_store[rep] = alpha;
+        store_unique_groups[rep] = uniqueGroups;
      
     } // loop over sampling iterations
     
@@ -382,6 +384,7 @@ Rcpp::List C_geoMCMC(Rcpp::List data, Rcpp::List params) {
                               Rcpp::Named("coAllocation")=coAllocation,
                               Rcpp::Named("mu_x")=mu_postDraw_x_store,
                               Rcpp::Named("mu_y")=mu_postDraw_y_store,
+                              Rcpp::Named("unique_groups")=store_unique_groups,
                               Rcpp::Named("mu_iteration")=mu_iteration_store);
 }
 
