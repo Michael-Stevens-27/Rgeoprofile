@@ -13,22 +13,82 @@ vignette: >
 
 In this final R tutorial we will work through the last subjects to get you up to speed before moving on to geographic profiling in R. This tutorial will focus on the following: 
 
-* Packages
-* Reading in data
+* Installing and using R packages
+* Directories and reading data
 * Plotting
 * Getting help
 
 ## Packages
 
-Functions from other packages 
+In the previous tutorial we touched on a few of R's built in functions. We even saw an example of writing our own `add` function. You may find yourself in a position where you need a function that R's built-in library cannot provide you with and that may be too complex to write yourself. There are a number of **R packages** that can be downloaded that provide you with extra functions for many different uses. We will see in the next tutorial how to download `RgeoProfile`, a package for spatial analysis. Navigate to the "Packages" tab of the bottom right pane in Rstudio. 
 
-## Reading in data 
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/packages.png)
+\  
+
+Here we can see all of the packages that are already been downloaded. To load a package we use the `library()` function. For example, to load the "raster" package, we would run:
+
+```{r}
+# load raster package
+library(raster)
+```
+
+The raster package also loads another package for spatial analysis; the "sp" package. Notice the empty boxes down the left hand side of the "Packages" tab. Clicking on these boxes is another method for loading packages. 
+
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/load_packages.png)
+\  
+
+In order to install a package that is not in our system, we use the `install.packages()` function in the following way:
+
+```{r, eval = FALSE}
+# install package
+install.packages("INSERT PACKAGE NAME HERE")
+```
+
+The `install.packages()` function will download the chosen package from **CRAN**, the online repository for R packages. The full list of R packages can be found [via this link](https://cran.r-project.org/web/packages/available_packages_by_date.html).
+
+## Directories and reading data
+
+In addition to many built-in functions, R also comes with a variety of different data sets for a user to play around with when developing their R skills. To see the full list of datasets provided by R and other packages, run the `data()` function with blank parantheses.
+
+```{r, eval = FALSE}
+# show list of built-in data sets
+data()
+```
+
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data.png)
+\  
+
+Here we can see a few examples, including the "mtcars" data set, this describes the ouput of road tests carried out on a series of popular motor vehicles. To load the "mtcars" data set, we simply return to the `data()` function:
+
+```{r}
+# load mtcars data set
+data(mtcars)
+
+# view to first handful of rows of this data set using the head() function 
+head(mtcars)
+```
+
+R was built for statistical analysis, but a user will need to provide their own data before they can run an analysis.  
+
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png)
+\  
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png)
+\  
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png)
+\  
 
 read.csv, read.table, R's built in data sets
 
 ## Plotting 
 
-base R and the popular ggplot2
+base R and the popular ggplot2 using the built in 
+
 
 ## Getting help
 
