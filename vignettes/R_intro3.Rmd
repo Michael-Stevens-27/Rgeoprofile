@@ -15,6 +15,7 @@ In this final R tutorial we will work through the last subjects to get you up to
 
 * Installing and using R packages
 * Directories and reading data
+* Data frames
 * Plotting
 * Getting help
 
@@ -94,8 +95,109 @@ Rstudio will then open up a screen for you to navigate to the file. I've got an 
 
 read.csv, read.table, R's built in data sets
 
+## Data frames
+
+In the previous tutorial we looked at a few different data structures in R such as vectors and matrices. We established that these vectors or matrices were made up of either numerical, logical of character values. Another common data type is the **data frame**. A data frame is of a similar structure to a matrix, except that each column of that matrix may be of a different data type (numerical, logical or character). We've already seen an example of this in the "mtcars" data set. However, all the vales in this data frame were numerical. Let's see an example of a data frame with different data types in them. 
+
+```{r, eval = TRUE}
+# load the iris data frame
+data(iris)
+
+# see the first few rows of the data frame
+head(iris)
+``` 
+
+Here we have loaded the `iris` data frame. This consists of the sepal and petal length and width of three different species of iris flower. Using the `head()` function we had look at the first few rows of our data frame. As we can see all the lengths and widths are numerical values whereas the species name is a character value. When reading in data, R will automatically decide which of the three categories each of column of your data fall under. To check this we can use the `str()` function.
+
+```{r, eval = TRUE}
+# summarise each variable of the iris data 
+str(iris)
+``` 
+
+So we can see, the data frame has 150 observations over 5 different variables. Notice that the final variable "Species" is reffered to as a "Factor". This is R's way of organising the character variables into categories. `Factor w/ 3 levels` referrs to the fact that the species variable has character values with 3 different categories. The `"setosa", "versicolor", ...: 1 1 1 1 ...` firstly shows R listing off each of the categories, these being the species names and then the numbers (`1 1 1 1 1 1 ...`) indicate which species this observation is associated with. So we know that the first few flowers are from the first category, in other words, the first species, which is "setosa". 
+
+Say we wanted to find out which flower species has the largest sepal width. The first place your mind might go is to use the `max()` or `which.max()` functions on the data frame. However we don't want to look for the maximum value of all the vraibles, only sepal width. So how do I access this variable from the data frame? If you look closely at the ouput of the `str()` function, you'll see R is giving us a hint. 
+
+```{r, echo = FALSE}
+str(iris)
+```     
+
+Next to each of the variables is a `$` sign. To access a variable from a data frame we write the name of the data frame followed by the `$` symbol followed by the variable name we want. 
+
+```{r}
+# access sepal length from the iris data frame
+sepal_width_only <- iris$Sepal.Width
+
+print(sepal_width_only)
+```     
+
+We now have the values we want. Let's find out which one is the maximum. 
+
+```{r}
+# which sepal length is largest
+max_sepal_width_index <- which.max(sepal_width_only)
+
+# find all the rest of the data for this observation
+iris[max_sepal_width_index, ]
+```     
+
+So the 16th flower has the largest sepal width and this flower is a memeber of the "setosa" species. 
+
 ## Plotting 
 
-base R and the popular ggplot2 using the built in 
+R comes with many different built-in functions to plot and visualise our data. The most common function we use to do this is the `plot()` function. In its simplest form, the `plot()` function will produce a graph based on the object that is provided by a user:
+
+```{r}
+# create an object with some values
+some_values <- c(1,4,2,3,6,5,8,2,9,10,2,4,5)
+plot(some_values)
+``` 
+
+As we can see, R has plotted our values on the y-axis, with the corresponding index on the x-axis. We only plotted a single object though, let's specify the `x` and `y` values ourselves:
+
+```{r}
+# create two objects that will to plot on the x and y axis
+some_x_values <- c(1, 4, 2, 3, 6, 5, 8, 2, 9, 10, 2, 4, 5)
+some_y_values <- c(9, 7, 8, 6, 7, 8, 6, 7, 5, 6, 4, 5, 6)
+
+# plot 
+plot(x = some_x_values, y = some_y_values)
+``` 
+
+R has automatically generated this plot window along with all of its characteristics such as: the limits of the x and y axis, the size of the points, the symbol for the points, the x and y labels and many more. All of the above and more can be customised. See the `plot()` function documentation for the extensive list but here are a few examples: 
+
+```{r}
+# plot 
+plot(x = some_x_values,        # plot x values
+     y = some_y_values,        # plot y values 
+     xlim = c(0, 11),          # set x limits
+     ylim = c(3, 10),          # set y limits
+     pch = 4,                  # set point symbol
+     cex = 1,                  # set the size of points
+     col = "red",              # set the colour of the points 
+     xlab = "x values",        # set the x axis label
+     ylab = "y values",        # set the y axis label
+     main = "My plot title")   # set the plot title
+``` 
+
+In these plots, we have plotted continuous data against continuous data, hence R has responded accordingly and created a scatterplot when we called the `plot()` function. What if we switch the kind of data we are using? Let's say we have a "low", "medium" and "high" dose for a drug treatment. let's see what happens when we plot this against a continuous response variable. 
+
+```{r}
+# create a categorical object 
+treatments <- c(rep("low", 10), rep("high", 10))
+response <- c(abs(rnorm(10, 1.5, 2)), rnorm(10, 9.5, 2))
+my_data <- data.frame(dose = treatments, response = response)
+
+# plot 
+plot(x = my_data$dose,
+     y = my_data$response,
+     ylim = c(-2, 20),         # set y limits
+     pch = 4,                  # set point symbol
+     cex = 1,                  # set the size of points
+     col = "red",              # set the colour of the points 
+     xlab = "Treatement",      # set the x axis label
+     ylab = "Response",        # set the y axis label
+     main = "My plot title")   # set the plot title
+```  
 
 ## Summary of R content
