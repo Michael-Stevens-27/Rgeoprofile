@@ -43,7 +43,7 @@ Access documentation [here](https://michael-stevens-27.github.io/Rgeoprofile/)
 * [Global Challenges Research Fund](https://www.ukri.org/research/global-challenges-research-fund/)
 * [The European Research Council:](https://erc.europa.eu/) - This project has received funding from the European Research Council (ERC) under the [Horizon 2020 research and innovation programme](https://ec.europa.eu/programmes/horizon2020/en) (grant agreement No 755965)
 
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/bangor.png" height="200px" width="350px" />
+<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/bangor.png" height="250px" width="350px" />
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/UKRI.png" height="100px" width="200px" />
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/qmul.png" height="200px" width="350px" />
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Tawiri.png" height="150px" width="200px" />

@@ -15,6 +15,7 @@ Now that we have installed R and Rstudio, it's time to get down to some coding! 
 
   * The Rstudio interface
   * Where to write and run code
+  * Saving a script
   * Assigning objects
   * Arithmetic and logical operators
   
@@ -38,9 +39,9 @@ The intereface should consist of four main panels:
   
 **3** - The **top right** panel displays a few different pieces of information:
 
-* *Environment* - This will list the different R objects in the current R session. We can see an example here, that `x` is equal to `5`.
+* *Environment* - This will list the different R objects in the current R session. We can see an example in the screenshot above, that `x` is equal to `5`.
 * *History* - This gives us a list of each piece of code we have sent to the terminal window
-* *Connections* - Allows us to connect to data bases, making data importing and manipoulation an easier process. 
+* *Connections* - Allows us to connect to data bases, speeding up the process of importing and manipulating data.
 * *Tutorial* - Displays tutorials built via the `learnr` package.
   
 **4** - The **bottom right** panel is also responsible for many things as we can see across the tabs:
@@ -48,7 +49,7 @@ The intereface should consist of four main panels:
 * *Files* - This shows the current directory that we are in. This will be useful later for accessing data. 
 * *Plots* - If we've written some code to plot a graph, this will show up in the window once we've run the relevant code. 
 * *Packages* - This will list off all the packages that are being used in the current R session. 
-* *Help* - This window will pop open anytime you run some code seeking help with a particular function. For example, running `?sd` will display the documentation on the `sd` function.  
+* *Help* - This window will pop open anytime you run some code seeking help with a particular function. For example, running `?sd` will display the documentation on the standard deviation function.  
 * *Viewer* - This will display a preview of any HTML documents or shiny apps that you are building.
 
 This was a lot of information in one go! Don't worry too much about remembering it all. This page is here for you to come back to if and when you need it. There will be a reminder throughout these tutorials when we revisit any of the above.
@@ -88,15 +89,25 @@ This format will show a piece of R code and the output from the console (if ther
 \  
 
 
+## Saving your script
+
+We can save the R script we've been working on in this tutorial by going to File -> Save As... and choosing a name for this first R script. I've called mine "my_script.R".
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/save.png)
+\  
+
+Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. Each coding language has its own extenstion, for example, if we were writing a piece of code using the python language our extension would be ".py".
+
 ## Assigning and naming objects 
 
-The previous example of adding `1 + 2` gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by **assigning** an object a specific value. Assigning objects can be done using the `<-` symbol. This symbol conisists of the less than symbol `<` immediately fololowed by the minus symbol `-`. Let's see an example
+The previous example of adding `1 + 2` gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by **assigning** an object a specific value. Assigning objects can be done using the `<-` symbol. This symbol conisists of the less than symbol `<` immediately followed by the minus symbol `-`. Let's see an example
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png)
 \  
 
-Here we assigned the value `5` to `x`, via the code `x <- 5`, so `x` is the object with value `5` assigned to it. This assigning symbol `<-` should always point to the object name. In this case the arrow points to `x`. Note that we can obtain the same results by running `5 -> x`. Here, the arrow is still pointing towards `x`  hence we arrive at the same result. You may have noticed that when you ran `x <- 5` something appeared up in the *Environment* window in the top right screen (panel number 3).
+Here we assigned the value `5` to `x`, via the code `x <- 5`, so `x` is the object with value `5` assigned to it. This assigning symbol `<-` should always point to the object name. In this case the arrow points to `x`. You may have noticed that when you ran `x <- 5` something appeared up in the *Environment* window in the top right screen (panel number 3).
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign_environment.png)
@@ -119,11 +130,11 @@ Now we can use `x` as if it were the value `5` in another piece of code.
 x + 12
 ```  
 
-We added 12 to `x` resulting in the console output `17`. We can also assign objects using the equals symbol `=`. Note however that the object name must always be on the *left* of the equals sign. 
+We added 12 to `x` resulting in the console output `17`. Let's assign a value to a new object with a different name.
 
 ```{r}
-# assign y the value 13 using the equals symbol
-y = 13
+# assign y the value 13 
+y <- 13
 
 ```
   
@@ -265,12 +276,16 @@ Not `x` - using the `!` symbol:
 !(5 > 4)
 ```
 
+Given a logical statement, adding `!` in front of it will return the opposite answer we would normally receive. So, in this example, `5 > 4` returns `TRUE`. Hence, `!(5 > 4)` returns the opposite of `TRUE`, which is `FALSE`. 
+
 x or y - using the `|` symbol:
 
 ```{r}
 # x or y "x | y"
 7 > 3 | 7 > 8
 ```
+
+This statement is returning `TRUE` since **either** `7 > 3` or `7 > 8` are `TRUE`. The whole statement only requires a single of the two statements to be `TRUE` for the whole thing to be `TRUE`.  
 
 x and y - using the `&` symbol:
 
@@ -279,6 +294,8 @@ x and y - using the `&` symbol:
 7 > 3 & 7 > 8
 7 > 3 & 7 > 6
 ```
+
+This time, we require both individual statements to be `TRUE` for the whole statement to return `TRUE`.
 
 ## More examples
 
@@ -305,13 +322,3 @@ z ^ 0.5
 ```
 
 That's all from this tutorial, hopefully you've gotten a basic idea of what R is capable of. It's worth taking the time to come up with your own examples too. 
-
-## Saving your script
-
-One final thing! As we mentioned earlier in this tutorial, we should be writing our code in an R script. We can save the R script we've been working on in this tutorial by going to File -> Save As... and choosoing a name for this first R script. I've called mine "my_script.R".
-
-\  
-![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/save.png)
-\  
-
-Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. Each coding language has its own extenstion, for example, if we were writing a piece of code using the python language our extension would be ".py".
