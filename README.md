@@ -3,7 +3,7 @@
 
 This is the landing page for the training workshop in geographic profiling and the role of legitimacy in achieving compliance. This workshop was made in collaboration with Bangor University, Tanzania Wildlife Research Institute and Queen Mary, University of London. This workshop was funded by the [Global Challenges Research Fund](https://www.ukri.org/research/global-challenges-research-fund/). 
 
-Access documentation [here](https://michael-stevens-27.github.io/Rgeoprofile/) 
+Access full documentation [here](https://michael-stevens-27.github.io/Rgeoprofile/) 
 
 ### Workshop timetable
 

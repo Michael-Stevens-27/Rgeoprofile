@@ -77,7 +77,13 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
+        <li>
+  <a href="../index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R basics
      
@@ -150,7 +156,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/Michael-Stevens-27/Rgeoprofile">
+  <a href="https://github.com/Michael-Stevens-27/Rgeoprofile/tree/workshop">
     <span class="fa fa-github"></span>
      
   </a>
@@ -182,8 +188,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>Functions for creating, processing and loading data</p></p>
         </th>
       </tr>
       
@@ -192,42 +198,6 @@
       
       
       <tr>
-        
-        <td>
-          <p><code><a href="Cholera.html">Cholera</a></code> </p>
-        </td>
-        <td><p>Cholera data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="LondonExample_crimes.html">LondonExample_crimes</a></code> </p>
-        </td>
-        <td><p>Example London crimes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="LondonExample_sources.html">LondonExample_sources</a></code> </p>
-        </td>
-        <td><p>Example London sources</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="WaterPumps.html">WaterPumps</a></code> </p>
-        </td>
-        <td><p>Cholera sources</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="card_crime.html">card_crime</a></code> </p>
-        </td>
-        <td><p>Example Card crimes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="card_source.html">card_source</a></code> </p>
-        </td>
-        <td><p>Example Card sources</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="geoData.html">geoData()</a></code> </p>
@@ -248,22 +218,59 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="geoMCMC.html">geoMCMC()</a></code> </p>
+          <p><code><a href="Cholera.html">Cholera</a></code> </p>
         </td>
-        <td><p>MCMC under Rgeoprofile model</p></td>
+        <td><p>Cholera data</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="geoMask.html">geoMask()</a></code> </p>
+          <p><code><a href="WaterPumps.html">WaterPumps</a></code> </p>
         </td>
-        <td><p>Incorporate shapefile or raster information into a geoprofile</p></td>
+        <td><p>Cholera sources</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="geoModelSources.html">geoModelSources()</a></code> </p>
+          <p><code><a href="LondonExample_crimes.html">LondonExample_crimes</a></code> </p>
         </td>
-        <td><p>Extract latitude and longitude of points identified as sources by geoMCMC()</p></td>
+        <td><p>Example London crimes</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="LondonExample_sources.html">LondonExample_sources</a></code> </p>
+        </td>
+        <td><p>Example London sources</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="card_crime.html">card_crime</a></code> </p>
+        </td>
+        <td><p>Example Card crimes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="card_source.html">card_source</a></code> </p>
+        </td>
+        <td><p>Example Card sources</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="rDPM.html">rDPM()</a></code> </p>
+        </td>
+        <td><p>Draw from Dirichlet process mixture model</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-main" class="hasAnchor"><a href="#section-main" class="anchor"></a>Main</h2>
+          <p class="section-desc"><p>Main functions for running the model</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="geoParams.html">geoParams()</a></code> </p>
@@ -278,9 +285,82 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="geoPersp.html">geoPersp()</a></code> </p>
+          <p><code><a href="geoMCMC.html">geoMCMC()</a></code> </p>
         </td>
-        <td><p>Perspective plot of geoprofile or raw probabilities</p></td>
+        <td><p>MCMC under Rgeoprofile model</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoReportHitscores.html">geoReportHitscores()</a></code> </p>
+        </td>
+        <td><p>Calculate hitscores</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoModelSources.html">geoModelSources()</a></code> </p>
+        </td>
+        <td><p>Extract latitude and longitude of points identified as sources by geoMCMC()</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoShapefile.html">geoShapefile()</a></code> </p>
+        </td>
+        <td><p>Import shapefile</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoMask.html">geoMask()</a></code> </p>
+        </td>
+        <td><p>Incorporate shapefile or raster information into a geoprofile</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoProfile.html">geoProfile()</a></code> </p>
+        </td>
+        <td><p>Calculate geoprofile from surface</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoRing.html">geoRing()</a></code> </p>
+        </td>
+        <td><p>Produces a surface based on an alternative ring-search strategy</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-plotting" class="hasAnchor"><a href="#section-plotting" class="anchor"></a>Plotting</h2>
+          <p class="section-desc"><p>Functions for plotting</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="geoPlotMap.html">geoPlotMap()</a></code> </p>
+        </td>
+        <td><p>Plot a map and overlay data and/or geoprofile</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoPlotLeaflet.html">geoPlotLeaflet()</a></code> </p>
+        </td>
+        <td><p>Plot a map and overlay data and/or geoprofile via leaflet</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoPlotLorenz.html">geoPlotLorenz()</a></code> </p>
+        </td>
+        <td><p>Produce Lorenz Plot</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geoPlotSigma.html">geoPlotSigma()</a></code> </p>
+        </td>
+        <td><p>Plot prior and posterior distributions of sigma.</p></td>
       </tr><tr>
         
         <td>
@@ -296,52 +376,23 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="geoPlotLorenz.html">geoPlotLorenz()</a></code> </p>
+          <p><code><a href="geoPersp.html">geoPersp()</a></code> </p>
         </td>
-        <td><p>Produce Lorenz Plot</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geoPlotMap.html">geoPlotMap()</a></code> </p>
-        </td>
-        <td><p>Plot a map and overlay data and/or geoprofile</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geoPlotMap2.html">geoPlotMap2()</a></code> </p>
-        </td>
-        <td><p>Plot a map and overlay data and/or geoprofile via leaflet</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geoPlotSigma.html">geoPlotSigma()</a></code> </p>
-        </td>
-        <td><p>Plot prior and posterior distributions of sigma.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geoProfile.html">geoProfile()</a></code> </p>
-        </td>
-        <td><p>Calculate geoprofile from surface</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geoReportHitscores.html">geoReportHitscores()</a></code> </p>
-        </td>
-        <td><p>Calculate hitscores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geoRing.html">geoRing()</a></code> </p>
-        </td>
-        <td><p>Produces a surface based on an alternative ring-search strategy</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geoShapefile.html">geoShapefile()</a></code> </p>
-        </td>
-        <td><p>Import shapefile</p></td>
-      </tr><tr>
+        <td><p>Perspective plot of geoprofile or raw probabilities</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-misc" class="hasAnchor"><a href="#section-misc" class="anchor"></a>Misc</h2>
+          <p class="section-desc"><p>Miscellaneous functions</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="geoSmooth.html">geoSmooth()</a></code> </p>
@@ -353,12 +404,6 @@
           <p><code><a href="latlon_to_bearing.html">latlon_to_bearing()</a></code> </p>
         </td>
         <td><p>Convert lat-lon to bearing</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rDPM.html">rDPM()</a></code> </p>
-        </td>
-        <td><p>Draw from Dirichlet process mixture model</p></td>
       </tr><tr>
         
         <td>

@@ -47,17 +47,17 @@ d <- LondonExample_crimes
 s <- LondonExample_sources
 
 # remake map
-my_map <- geoPlotMap2(surface = m$geoProfile,
-                      params = p,
-                      data = d, 
-                      source = s, 
-                      surfaceCols = rev(viridis::plasma(10)),
-                      opacity = 0.7,
-                      threshold = 0.1,
-                      crimeCex = 2,
-                      sourceCex = 3,
-                      sourceCol = "black",
-                      gpLegend = TRUE)   
+my_map <- geoPlotLeaflet(surface = m$geoProfile,
+                         params = p,
+                         data = d, 
+                         source = s, 
+                         surfaceCols = rev(viridis::plasma(10)),
+                         opacity = 0.7,
+                         threshold = 0.1,
+                         crimeCex = 2,
+                         sourceCex = 3,
+                         sourceCol = "black",
+                         gpLegend = TRUE)   
 ```
 
 In this tutorial we will revisit the analysis from the [first tutorial](https://michael-stevens-27.github.io/Rgeoprofile/articles/Basic_Rgeoprofile.html).   
@@ -130,13 +130,13 @@ surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
 gp_ring <- geoProfile(surface = surface_ring)
 
 # map of ring search geoprofile
-mapRing <- geoPlotMap2(params = p, 
-                       data = d, 
-                       source = s, 
-                       surface = gp_ring,
-                       surfaceCols = c("red", "white"),
-                       threshold = 0.25,
-                       gpLegend = TRUE)
+mapRing <- geoPlotLeaflet(params = p, 
+                          data = d, 
+                          source = s, 
+                          surface = gp_ring,
+                          surfaceCols = c("red", "white"),
+                          threshold = 0.25,
+                          gpLegend = TRUE)
 mapRing
 
 # hitscores of ring search geoprofile
@@ -161,11 +161,11 @@ prob_masked <- geoMask(probSurface = m$posteriorSurface,
 gp_masked <- geoProfile(prob_masked$prob)
 
 # plot new surface
-mapMask <- geoPlotMap2(params = p, 
-                       data = d, 
-                       source = s, 
-                       surface = gp_masked,
-                       threshold = 1)
+mapMask <- geoPlotLeaflet(params = p, 
+                          data = d, 
+                          source = s, 
+                          surface = gp_masked,
+                          threshold = 1)
 mapMask
 
 # hs of masked surface

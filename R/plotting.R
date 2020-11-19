@@ -541,21 +541,21 @@ geoPlotMap <- function(params, data=NULL, source=NULL, surface=NULL, surfaceCols
 #' #                opacity = 0.7, gpLegend = FALSE)
 #' }
 
-geoPlotMap2 <- function(params, 
-                        data = NULL, 
-                        surface = NULL, 
-                        source = NULL,
-                        surfaceCols = c("#F0F921FF", "#FDC926FF", "#FA9E3BFF", "#ED7953FF", 
-                        "#D8576BFF", "#BD3786FF", "#9C179EFF", "#7301A8FF", "#47039FFF", "#0D0887FF") ,
-                        crimeCex = 1.5, 
-                        crimeCol = 'red', 
-                        sourceCex = 1.5, 
-                        sourceCol = 'blue', 
-                        map_type = 110,
-                        threshold = 0.1,
-                        opacity = 0.8,
-                        smoothing = 1,
-                        gpLegend  = FALSE) {
+geoPlotLeaflet <- function(params, 
+                           data = NULL, 
+                           surface = NULL, 
+                           source = NULL,
+                           surfaceCols = c("#F0F921FF", "#FDC926FF", "#FA9E3BFF", "#ED7953FF", 
+                           "#D8576BFF", "#BD3786FF", "#9C179EFF", "#7301A8FF", "#47039FFF", "#0D0887FF") ,
+                           crimeCex = 1.5, 
+                           crimeCol = 'red', 
+                           sourceCex = 1.5, 
+                           sourceCol = 'blue', 
+                           map_type = 110,
+                           threshold = 0.1,
+                           opacity = 0.8,
+                           smoothing = 1,
+                           gpLegend  = FALSE) {
                         
     # check inputs
     # assert_bounded(threshold)

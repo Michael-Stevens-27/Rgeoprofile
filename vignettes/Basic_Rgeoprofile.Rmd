@@ -90,44 +90,44 @@ Here we can see the model stating how far through the burn in and sampling phase
     
 ## Visualise output
 
-The top parameter of interest that we are trying to estimate are the source locations responsible for generating the data. So first we want to have a look at our geographic profile. We generate the geographic profile using the `geoplotmap2()` function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the `params` and `surface` arguments. 
+The top parameter of interest that we are trying to estimate are the source locations responsible for generating the data. So first we want to have a look at our geographic profile. We generate the geographic profile using the `geoPlotLeaflet()` function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the `params` and `surface` arguments. 
 
 ```{r, eval = TRUE}
 # plot profile on map
-geoPlotMap2(params = p,
-            surface = m$geoProfile)
+geoPlotLeaflet(params = p,
+               surface = m$geoProfile)
 ```
 
-Here the colour scheme moves from yellow to purple, where yellow indicates areas we believe might conatin a source location. The purple on the other hand illustrates areas we believe are less likely to contain a source location. This does not tell us too much. The `geoplotmap2()` function can be customised to display more information on the map. Let's add sources and crimes onto the map, as well as a legend that describes the colours we are seeing. 
+Here the colour scheme moves from yellow to purple, where yellow indicates areas we believe might conatin a source location. The purple on the other hand illustrates areas we believe are less likely to contain a source location. This does not tell us too much. The `geoPlotLeaflet()` function can be customised to display more information on the map. Let's add sources and crimes onto the map, as well as a legend that describes the colours we are seeing. 
 
 ```{r, eval = TRUE}  
-geoPlotMap2(surface = m$geoProfile,
-            params = p,
-            data = d, 
-            source = s, 
-            surfaceCols = rev(viridis::plasma(10)),
-            opacity = 0.7,
-            threshold = 0.1,
-            crimeCex = 2,
-            sourceCex = 3,
-            sourceCol = "black",
-            gpLegend = TRUE)                       
+geoPlotLeaflet(surface = m$geoProfile,
+               params = p,
+               data = d, 
+               source = s, 
+               surfaceCols = rev(viridis::plasma(10)),
+               opacity = 0.7,
+               threshold = 0.1,
+               crimeCex = 2,
+               sourceCex = 3,
+               sourceCol = "black",
+               gpLegend = TRUE)                       
 ```
 
 Much better! So now we can see the explicit source and crime locations on the map. The map is only showing the top 10\% of the geoprofile. This is indicated by the legend too. This can be quickly changed using the `threshold` argument. Let's change this so we're looking at the top 50\% instead.
 
 ```{r, eval = TRUE}  
-geoPlotMap2(surface = m$geoProfile,
-            params = p,
-            data = d, 
-            source = s, 
-            surfaceCols = rev(viridis::plasma(10)),
-            opacity = 0.7,
-            threshold = 0.5, # how top 50% of the geoprofile
-            crimeCex = 2,
-            sourceCex = 3,
-            sourceCol = "black",
-            gpLegend = TRUE)                       
+geoPlotLeaflet(surface = m$geoProfile,
+               params = p,
+               data = d, 
+               source = s, 
+               surfaceCols = rev(viridis::plasma(10)),
+               opacity = 0.7,
+               threshold = 0.5, # how top 50% of the geoprofile
+               crimeCex = 2,
+               sourceCex = 3,
+               sourceCol = "black",
+               gpLegend = TRUE)                       
 ```
  
 Our model seems to be doing well, since the source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but how do we explicitly quantify model success? This is done via the source's *hit score* percentages and overall *Gini co-efficent*. Recall that the hit score percentage is the percentage of the area searched before finding the source locations divided by the total area searched. So the lower the hit score, the better the model is performing. Each source comes with its own hit score, but we can summarise these values using the Gini co-efficent. If we possessed the perfect model that found our source locations by searching almost none of the search area then we would expect a Gini co-efficent of one and if the model fails to find source locations after searching the entire search area, then we would expect a Gini value of zero. If we were to search for our source randomly then we would expect a Gini co-efficient of 0.5.

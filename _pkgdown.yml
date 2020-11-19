@@ -4,8 +4,52 @@ template:
   params:
     bootswatch: flatly
 
+reference:
+  - title: Data
+    desc: Functions for creating, processing and loading data
+    contents:
+      - '`geoData`'
+      - '`geoDataCheck`'
+      - '`geoDataSource`'
+      - '`Cholera`'
+      - '`WaterPumps`'
+      - '`LondonExample_crimes`'
+      - '`LondonExample_sources`'
+      - '`card_crime`'
+      - '`card_source`'
+      - '`rDPM`'
+  - title: Main
+    desc: Main functions for running the model
+    contents:
+      - '`geoParams`'
+      - '`geoParamsCheck`'
+      - '`geoMCMC`'
+      - '`geoReportHitscores`'
+      - '`geoModelSources`'
+      - '`geoShapefile`'
+      - '`geoMask`'
+      - '`geoProfile`'
+      - '`geoRing`'
+  - title: Plotting 
+    desc: Functions for plotting 
+    contents:
+      - '`geoPlotMap`'
+      - '`geoPlotLeaflet`'
+      - '`geoPlotLorenz`'
+      - '`geoPlotSigma`'
+      - '`geoPlotAllocation`'
+      - '`geoPlotCoallocation`'
+      - '`geoPersp`'
+  - title: Misc
+    desc: Miscellaneous functions
+    contents:
+      - '`geoSmooth`'
+      - '`latlon_to_bearing`'
+      - '`unknownPleasures`'
 navbar:
   left:
+    - icon: fa-home
+      href: index.html
     - text: "R basics"
       menu:
         - text: "Installing R and Rstudio"
@@ -44,4 +88,4 @@ navbar:
           href: articles/Spatial_R.html
   right:
    - icon: fa-github
-     href: https://github.com/Michael-Stevens-27/Rgeoprofile
+     href: https://github.com/Michael-Stevens-27/Rgeoprofile/tree/workshop
