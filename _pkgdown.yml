@@ -15,7 +15,7 @@ navbar:
           href: "articles/R_intro1.html"
         - text: "Introduction to R - part 2"
           href: "articles/R_intro2.html"
-        - text: "Introduction to R - part 3*"
+        - text: "Introduction to R - part 3"
           href: "articles/R_intro3.html"
         - text: ---------------
         - text: "Extra resources"

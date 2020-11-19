@@ -31,9 +31,18 @@ Next we need to choose the location we will be installing from. For this worksho
 
 Go ahead and click on the "South Africa" option, leading us to:
 
+
 \  
 
-![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_for_windows.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_choose_windows.png)
+
+\  
+
+Click on the "Download R for windows" option. 
+
+\  
+
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_base.png)
 
 \  
 
@@ -41,7 +50,7 @@ Since this will be the first time installing R, click on the "base" option.
 
 \  
 
-![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_version.png)
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_for_windows.png)
 
 \  
 
