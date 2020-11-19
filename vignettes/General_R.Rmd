@@ -28,7 +28,7 @@ RSiteSearch("plot")
 vignette()      # show available vingettes
 ```
 
-It is inevitable that at some point in your coding career, a bug in your code will lead to an error from R. This is very common in when coding and is something even the most advanced users of R will have to deal with. You may have even seen a few bugs or errors when playing around with some of the exmples in these tutorials. Debugging code will require some patience and detective work. However, there are many guides out there to debugging code that can offer a hand:
+It is inevitable that at some point in your coding career, a bug in your code will lead to an error from R. This is very common when coding and is something even the most advanced users of R will have to deal with. You may have even seen a few bugs or errors when playing around with some of the exmples in these tutorials. Debugging code will require some patience and detective work. However, there are many guides out there to debugging code that can offer a hand:
 
 * [Debugging code, from Rstats](https://rstats.wtf/debugging-r-code.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/r)

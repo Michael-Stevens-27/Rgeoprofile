@@ -132,7 +132,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 3</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-11-18</h4>
+            <h4 class="date">2020-11-19</h4>
       
       
       <div class="hidden name"><code>R_intro3.Rmd</code></div>
@@ -203,7 +203,7 @@
 <div id="data-frames" class="section level2">
 <h2 class="hasAnchor">
 <a href="#data-frames" class="anchor"></a>Data frames</h2>
-<p>In the previous tutorial we looked at a few different data structures in R such as vectors and matrices. We established that these vectors or matrices were made up of either numerical, logical of character values. Another common data type is the <strong>data frame</strong>. A data frame is of a similar structure to a matrix, except that each column of that matrix may be of a different data type (numerical, logical or character). We've already seen an example of this in the "mtcars" data set. However, all the vales in this data frame were numerical. Let's see an example of a data frame with different data types in them.</p>
+<p>In the previous tutorial we looked at a few different data types in R such as vectors and matrices. We established that these vectors or matrices were made up of either numeric, logical or character values. Another common data type is the <strong>data frame</strong>. A data frame is of a similar structure to a matrix, except that each column of that matrix may be of a different class (numerical, logical or character). We've already seen an example of this in the "mtcars" data set. However, all the values in this data frame were numerical. Let's see an example of a data frame with different classes in them.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load the iris data frame</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
@@ -217,7 +217,7 @@
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<p>Here we have loaded the <code>iris</code> data frame. This consists of the sepal and petal length and width of three different species of iris flower. Using the <code><a href="https://rdrr.io/pkg/raster/man/headtail.html">head()</a></code> function we had look at the first few rows of our data frame. As we can see all the lengths and widths are numerical values whereas the species name is a character value. When reading in data, R will automatically decide which of the three categories each of column of your data fall under. To check this we can use the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function.</p>
+<p>Here we have loaded the <code>iris</code> data frame. This consists of the sepal and petal length and width of three different species of iris flower. Using the <code><a href="https://rdrr.io/pkg/raster/man/headtail.html">head()</a></code> function we had look at the first few rows of our data frame. As we can see all the lengths and widths are numeric values whereas the species names are character values. When reading in data, R will automatically decide which of the three categories each column of your data falls under. To check this we can use the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># summarise each variable of the iris data </span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></code></pre></div>
@@ -227,8 +227,8 @@
 ##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<p>So we can see, the data frame has 150 observations over 5 different variables. Notice that the final variable "Species" is reffered to as a "Factor". This is R's way of organising the character variables into categories. <code>Factor w/ 3 levels</code> referrs to the fact that the species variable has character values with 3 different categories. The <code>"setosa", "versicolor", ...: 1 1 1 1 ...</code> firstly shows R listing off each of the categories, these being the species names and then the numbers (<code>1 1 1 1 1 1 ...</code>) indicate which species this observation is associated with. So we know that the first few flowers are from the first category, in other words, the first species, which is "setosa".</p>
-<p>Say we wanted to find out which flower species has the largest sepal width. The first place your mind might go is to use the <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> or <code><a href="https://rdrr.io/pkg/raster/man/which.minmax.html">which.max()</a></code> functions on the data frame. However we don't want to look for the maximum value of all the vraibles, only sepal width. So how do I access this variable from the data frame? If you look closely at the ouput of the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function, you'll see R is giving us a hint.</p>
+<p>So we can see, the data frame has 150 observations over 5 different variables. Notice that the final variable "Species" is reffered to as a "Factor". This is R's way of organising the character variables into categories. <code>Factor w/ 3 levels</code> referrs to the fact that the species variable has character values with 3 different categories. The <code>"setosa", "versicolor", ...: 1 1 1 1 ...</code> firstly shows R listing off each of these categories, these being the species names and then the numbers (<code>1 1 1 1 1 1 ...</code>) indicate which species each observation is associated with. So we know that the first few flowers are from the first category, in other words, the first species, which is "setosa".</p>
+<p>Say we wanted to find out which flower species has the largest sepal width. The first place your mind might go is to use the <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> or <code><a href="https://rdrr.io/pkg/raster/man/which.minmax.html">which.max()</a></code> functions on the data frame. However we don't want to look for the maximum value of all the vraibles, only sepal width. So how do we access this variable from the data frame? If you look closely at the ouput of the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function, you'll see R is giving us a hint.</p>
 <pre><code>## 'data.frame':    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -237,7 +237,7 @@
 ##  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <p>Next to each of the variables is a <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> sign. To access a variable from a data frame we write the name of the data frame followed by the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> symbol followed by the variable name we want.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># access sepal length from the iris data frame</span>
+<code class="sourceCode R"><span class="co"># access sepal length from the iris data frame using the $ symbol</span>
 <span class="va">sepal_width_only</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">sepal_width_only</span><span class="op">)</span></code></pre></div>
@@ -264,7 +264,7 @@
 <div id="plotting" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plotting" class="anchor"></a>Plotting</h2>
-<p>R comes with many different built-in functions to plot and visualise our data. The most common function we use to do this is the <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> function. In its simplest form, the <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> function will produce a graph based on the object that is provided by a user:</p>
+<p>We've read in our data and now we would like to visualise it. R comes with many different built-in functions to plot and visualise our data. The most common function we use to do this is the <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> function. In its simplest form, the <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> function will produce a graph based on the object that is provided by a user:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create an object with some values</span>
 <span class="va">some_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">5</span>,<span class="fl">8</span>,<span class="fl">2</span>,<span class="fl">9</span>,<span class="fl">10</span>,<span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>
@@ -293,28 +293,61 @@
      ylab <span class="op">=</span> <span class="st">"y values"</span>,        <span class="co"># set the y axis label</span>
      main <span class="op">=</span> <span class="st">"My plot title"</span><span class="op">)</span>   <span class="co"># set the plot title</span></code></pre></div>
 <p><img src="R_intro3_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
-<p>In these plots, we have plotted continuous data against continuous data, hence R has responded accordingly and created a scatterplot when we called the <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> function. What if we switch the kind of data we are using? Let's say we have a "low", "medium" and "high" dose for a drug treatment. let's see what happens when we plot this against a continuous response variable.</p>
+<p>If we go back to our Iris data, let's plot sepal length against sepal width for each of the flowers.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># create a categorical object </span>
-<span class="va">treatments</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"high"</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
-<span class="va">response</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1.5</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">9.5</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>dose <span class="op">=</span> <span class="va">treatments</span>, response <span class="op">=</span> <span class="va">response</span><span class="op">)</span>
-
-<span class="co"># plot </span>
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">my_data</span><span class="op">$</span><span class="va">dose</span>,
-     y <span class="op">=</span> <span class="va">my_data</span><span class="op">$</span><span class="va">response</span>,
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">20</span><span class="op">)</span>,         <span class="co"># set y limits</span>
-     pch <span class="op">=</span> <span class="fl">4</span>,                  <span class="co"># set point symbol</span>
-     cex <span class="op">=</span> <span class="fl">1</span>,                  <span class="co"># set the size of points</span>
-     col <span class="op">=</span> <span class="st">"red"</span>,              <span class="co"># set the colour of the points </span>
-     xlab <span class="op">=</span> <span class="st">"Treatement"</span>,      <span class="co"># set the x axis label</span>
-     ylab <span class="op">=</span> <span class="st">"Response"</span>,        <span class="co"># set the y axis label</span>
-     main <span class="op">=</span> <span class="st">"My plot title"</span><span class="op">)</span>   <span class="co"># set the plot title</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># plot </span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Petal.Width</span>,         <span class="co"># plot width of petals on the x axis</span>
+     y <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Petal.Length</span>,        <span class="co"># plot length of petals on the y axis</span>
+     col <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>,           <span class="co"># set the colour of the points based on species </span>
+     pch <span class="op">=</span> <span class="fl">20</span>,                     <span class="co"># set point symbol</span>
+     cex <span class="op">=</span> <span class="fl">1</span>,                      <span class="co"># set the size of points</span>
+     xlab <span class="op">=</span> <span class="st">"Petal Width"</span>,         <span class="co"># set the x axis label</span>
+     ylab <span class="op">=</span> <span class="st">"Petal Length"</span>,        <span class="co"># set the y axis label</span>
+     main <span class="op">=</span> <span class="st">"Petal measurements"</span><span class="op">)</span>  <span class="co"># set the plot title</span></code></pre></div>
 <p><img src="R_intro3_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p>Notice how we also coloured the points based on a categorical variable! In these plots, we have plotted continuous data against continuous data, hence R has responded accordingly and created a scatterplot when we called the <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> function. What if we switch the kind of data we are using? Let's say we want to plot the petal length for each species. We want to plot a continuous variable (petal length) against a categorical variable (species).</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># plot petal length against flower species  </span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>,
+     y <span class="op">=</span> <span class="va">iris</span><span class="op">$</span><span class="va">Petal.Length</span>,
+     xlab <span class="op">=</span> <span class="st">"Species"</span>,                       <span class="co"># set the x axis label</span>
+     ylab <span class="op">=</span> <span class="st">"Petal Length (cm)"</span>,             <span class="co"># set the y axis label</span>
+     main <span class="op">=</span> <span class="st">"Petal Length for each species"</span><span class="op">)</span> <span class="co"># set the plot title</span></code></pre></div>
+<p><img src="R_intro3_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+<p>R has automatically recognised that we are plotting a continuous variable against a categorical one, hence it has generated a boxplot of our data.</p>
+<p>All of these plots have been using the built-in R function <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> to visualise our data. There are many R packages out there for visualising data. One of the most popular being <code>ggplot2</code>. The ggplot2 package comes with extensive documentation but the syntax for plotting can be a bit tricky at first. I won't go through it here, but as an example, here's a piece of R code using the ggplot syntax that to make the make original scatterplot of the iris data.</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># load ggplot package</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+
+<span class="co"># plot petal length against flower species  </span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">iris</span>, 
+                      mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Petal.Width</span>, 
+                                    y <span class="op">=</span> <span class="va">Petal.Length</span>,
+                                    col <span class="op">=</span> <span class="va">Species</span><span class="op">)</span>,
+                      size <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">+</span>
+            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Petal Length (cm)"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Petal Length (cm)"</span><span class="op">)</span> <span class="op">+</span>
+            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Petal length vs petal width"</span><span class="op">)</span></code></pre></div>
+<p><img src="R_intro3_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
+<p>There are plenty of R blogs out there that can guide you when using ggplot2. <a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.3.2">Here's a link</a> to the documentation.</p>
 </div>
 <div id="summary-of-r-content" class="section level2">
 <h2 class="hasAnchor">
 <a href="#summary-of-r-content" class="anchor"></a>Summary of R content</h2>
+<p>In summary, these introduction to R tutorials should have equipped you with what you need to start running the <code>RgeoProfile</code> package. In an incredibly short space of time we have covered:</p>
+<ul>
+<li>The Rstudio interface and saving a script</li>
+<li>Writing, running and commenting code</li>
+<li>Assigning and naming objects</li>
+<li>Arithmetic and logical operators</li>
+<li>Writing and using functions</li>
+<li>Different classes and data types</li>
+<li>Installing and using R packages</li>
+<li>Navigating directories and reading data</li>
+<li>Using data frames</li>
+<li>Using and plotting data sets</li>
+</ul>
+<p>This is a lot of material! Like learning any new skill, your ability to code will develop slowly over time and will come with practice. So don't be too disheartened if it was hard to digest all of the content in these tutorials. You will always be able to return to these tutorials for a reminder of anything that's forgotten. I also encourage you to go searching for other R tutorials. The [extra resources] (<a href="https://michael-stevens-27.github.io/Rgeoprofile/articles/General_R.html" class="uri">https://michael-stevens-27.github.io/Rgeoprofile/articles/General_R.html</a>) page under the "R basics" tab contains a small collection of other rsources to help develop your R skills.</p>
 </div>
   </div>
 

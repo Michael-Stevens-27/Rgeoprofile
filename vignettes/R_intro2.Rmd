@@ -163,7 +163,7 @@ args(matrix)
 
 So the matrix function has default values for the `nrow`, `ncol` and `byrow` arguments. The `args()` function is an incredibly useful, tool in understanding what a function needs. We can even see that `args(matrix)` tells us about an argument we didn't know was used in the matrix function `dimnames`. As we saw at the beginning of the first tutorial, we can learn more about how a function by placing a single question mark before a function name.  
 
-```{r}
+```{r, eval = FALSE}
 # help on the matrix function
 ?matrix
 ```
