@@ -54,17 +54,22 @@ my_map <- geoPlotLeaflet(surface = m$geoProfile,
                          surfaceCols = rev(viridis::plasma(10)),
                          opacity = 0.7,
                          threshold = 0.1,
-                         crimeCex = 2,
-                         sourceCex = 3,
+                         crimeCex = 4,
+                         sourceCex = 5,
                          sourceCol = "black",
                          gpLegend = TRUE)   
 ```
 
-In this tutorial we will revisit the analysis from the [first tutorial](https://michael-stevens-27.github.io/Rgeoprofile/articles/Basic_Rgeoprofile.html).   
+In this tutorial we will revisit the analysis from the [first tutorial](https://michael-stevens-27.github.io/Rgeoprofile/articles/Basic_Rgeoprofile.html). Recall the geoprofile created in the first tutorial displayed on the map below.
+
+```{r, eval = TRUE, echo = FALSE}
+# plot profile on map
+my_map
+```   
 
 ## How many source locations are there?
 
-The main objective of geographic profiling is to estimate source locations based on the locations of crimes. This problem becomes complicated when you do not know **how many** source locations there are prior to running the model. This is what makes the DIrichlet process mixture model so powerful. We do not need to specify the number of source locations prior to running the model, it will come up with an estimate for us. The `geoMCMC()` function will create a "unique_groups" object for us that tells us how many source locations there are at every iteration of the MCMC algorithm. 
+The main objective of geographic profiling is to estimate source locations based on the locations of crimes. This problem becomes complicated when you do not know **how many** source locations there are prior to running the model. This is what makes the Dirichlet process mixture model so powerful. We do not need to specify the number of source locations prior to running the model, it will come up with an estimate for us. The `geoMCMC()` function will create a "unique_groups" object for us that tells us how many source locations there are at every iteration of the MCMC algorithm. 
 
 ```{r}
 # access the unique_groups object from the MCMC output
@@ -78,7 +83,11 @@ A quick glance indicates that most of the time the model thinks there are four s
 # summarise the unique groupings object
 group_table <- table(groups)
 group_table
+```
 
+It's then possible to visualise this table using the `barplot()` function. 
+
+```{r}
 # plot the table using the barplot function
 barplot(group_table,
         xlab = "Number",
@@ -86,27 +95,33 @@ barplot(group_table,
         main = "Number of source locations")
 ```
 
-As we can see the model thinks there could be anywhere between two and eleven source locations, but with an emphasis on four and five. 
+As we can see the model thinks there could be anywhere between two and eleven source locations, but with an emphasis on four and five. Luckily we can verify this since we know the model has four source locations. 
 
 ## Allocation probabilities
 
-
+Another useful output from the DPM model is the ability to quantify which crimes originated from which source locations. The model's allocation of crimes to source locations is accessible via the `geoPlotAllocation()` function. 
 
 ```{r, eval = TRUE}
+# get number of crimes
+n_crimes <- length(d$longitude)
 
 # plot allocation
-geoPlotAllocation(mcmc = m)
-
-# plot co-allocation
-geoPlotCoallocation(mcmc = m)
+geoPlotAllocation(mcmc = m, 
+                  xlab = "Crimes",
+                  ylab = "Probability",
+                  xTicks_on = TRUE,
+                  names = 1:n_crimes) 
 ```
+
+In this allocation plot each vertical strip corresponds to an individual crime where strips are partitioned to represent the probability that said crime originated from a particular source locations. For example, we can see that crime one is made up of three colours, indicating it could be allocated to 3 different sources. However, given over 90% of crime one's strip is a single colour, we believe the model is pretty sure which source this crime should be allocated to. If we instead consider crime twenty one, we can see the model is torn between allocating it to the source associated with dark orange and the one associated with pale yellow.   
 
 ## Extracting peaks from a geoprofile 
 
-Quote rossmo's "this model is not an X marks the spot kind of model"
+The geographic profile created by the model allows us to visualise how we might prioritise a search strategy to find the source locations associated with a criminal. The `geoModelSources()` function allows us to extract the explicit peaks of the profile by returning a set of longitudinal/latitudinal points.
+
 
 ```{r}
-# find centroids of data split by best grouping (placeholder for more thorough method)
+# 
 ms <- geoModelSources(mcmc = m, data = d)
 ms
 
@@ -115,11 +130,19 @@ ms
 mapSource <- addCircles(map = my_map,
                         lng = ms$longitude, 
                         lat = ms$latitude,
-                        fillColor = "brown")
+                        fillColor = "darkgreen",
+                        color = "darkgreen",
+                        opacity = 1,
+                        fillOpacity = 0.5,
+                        radius = 75)
 mapSource
 ```
 
+Here we can see the set of points plotted on our map in dark green (with crimes in red and sources in black). **NOTE:** although we now have a set of locations to investigate it must be stressed that **geographic profiling is not an X marks the spot kind of model** (REF ROSSMO). These locations should be used to influence a search strategy into finding the source locations associated with a criminal.   
+
 ## A ring search strategy against a random one
+
+So far, we have covered a few different metrics for model success; in the form of a hit score or gini co-effient. Our hitscores tell us what proportion of the area we must search before finding a source location. Hence, the smaller the hit score, the better the model performs. We also noted that a hitscore of 50% is what you would expect with a random search strategy. However, it would be foolish to invest resources into searching an area completely randomly for a criminal, hence we require some default search strategy. REF SALLY introduces us to the ring search stratgey, in which we search for source locations by starting at each crime and searching radially outwards. We can create a geographic profile based on a ring search strategy via the `geoRing()` function. We then create a geoprofile via the `geoProfile()` function. 
 
 ```{r, eval = TRUE}
 #------------------------------------------------------------------
@@ -134,15 +157,31 @@ mapRing <- geoPlotLeaflet(params = p,
                           data = d, 
                           source = s, 
                           surface = gp_ring,
-                          surfaceCols = c("red", "white"),
-                          threshold = 0.25,
+                          crimeCex = 4,
+                          sourceCex = 5,
+                          sourceCol = "black",
+                          surfaceCols = rev(viridis::plasma(10)),
+                          threshold = 0.5,
                           gpLegend = TRUE)
 mapRing
+```
+
+As we can see this process leads us to a geoprofile with a peak on top of every crime location. Let's compare the hit scores of our sources for the ring search to the original profile we created.  
+
+```{r}
+# original hitscores
+og_hitscores <- geoReportHitscores(params = p, source = s, surface = m$geoProfile)
+names(og_hitscores) <- c("lat", "lon", "Original_profile")
 
 # hitscores of ring search geoprofile
 hs_ring <- geoReportHitscores(params = p, source = s, surface = gp_ring)
-hs_ring
+names(hs_ring) <- c("lat", "lon", "Ring_search")
+
+# combine both
+cbind(og_hitscores, hs_ring$Ring_search)
 ```
+
+Clearly the DPM model is performing most efficently, however the ring search gives us a better deafult search strategy than searching our area randomly. 
 
 ## Using rasters to manipulate a geoprofile
 
