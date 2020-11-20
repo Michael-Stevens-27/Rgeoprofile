@@ -185,6 +185,19 @@ Clearly the DPM model is performing most efficently, however the ring search giv
 
 ## Using rasters to manipulate a geoprofile
 
+Finally, RgeoProfile allows us manipulate our geographic profile based on spatial information we have about an area. For example, if a large body of water is present in our search area, then we are certain that this shouldn't be considered in our search strategy. In REF FAULKNER, author's infferred locations associated with poachers responsible for animal deaths within a wildlife conservency. However, poachers could not reside within the conservancy, hence they masked out the conservancy via the `geoMask()` function. The profile can be seen below. 
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/poaching.png)
+\  
+
+Before we look at how to include different spatial information in our geoprofile, we must first talk about shapefiles. 
+
+### Shapefiles 
+
+
+### Maniulating a geoprofile post-hoc
+
 ```{r}
 #------------------------------------------------------------------
 # incorporate GIS data
