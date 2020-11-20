@@ -3,6 +3,7 @@ title: "Advanced Rgeoprofile"
 author: "Michael Stevens"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{Advanced Rgeoprofile}
   %\VignetteEngine{knitr::rmarkdown}
@@ -138,11 +139,11 @@ mapSource <- addCircles(map = my_map,
 mapSource
 ```
 
-Here we can see the set of points plotted on our map in dark green (with crimes in red and sources in black). **NOTE:** although we now have a set of locations to investigate it must be stressed that **geographic profiling is not an X marks the spot kind of model** (REF ROSSMO). These locations should be used to influence a search strategy into finding the source locations associated with a criminal.   
+Here we can see the set of points plotted on our map in dark green (with crimes in red and sources in black). **NOTE:** although we now have a set of locations to investigate it must be stressed that **geographic profiling is not an X marks the spot kind of model** (@Rossmo2000). These locations should be used to influence a search strategy into finding the source locations associated with a criminal.   
 
 ## A ring search strategy against a random one
 
-So far, we have covered a few different metrics for model success; in the form of a hit score or gini co-effient. Our hitscores tell us what proportion of the area we must search before finding a source location. Hence, the smaller the hit score, the better the model performs. We also noted that a hitscore of 50% is what you would expect with a random search strategy. However, it would be foolish to invest resources into searching an area completely randomly for a criminal, hence we require some default search strategy. REF SALLY introduces us to the ring search stratgey, in which we search for source locations by starting at each crime and searching radially outwards. We can create a geographic profile based on a ring search strategy via the `geoRing()` function. We then create a geoprofile via the `geoProfile()` function. 
+So far, we have covered a few different metrics for model success; in the form of a hit score or gini co-effient. Our hitscores tell us what proportion of the area we must search before finding a source location. Hence, the smaller the hit score, the better the model performs. We also noted that a hitscore of 50% is what you would expect with a random search strategy. However, it would be foolish to invest resources into searching an area completely randomly for a criminal, hence we require some default search strategy. @Faulkner2017 introduces us to the ring search stratgey, in which we search for source locations by starting at each crime and searching radially outwards. We can create a geographic profile based on a ring search strategy via the `geoRing()` function. We then create a geoprofile via the `geoProfile()` function. 
 
 ```{r, eval = TRUE}
 #------------------------------------------------------------------
@@ -185,7 +186,7 @@ Clearly the DPM model is performing most efficently, however the ring search giv
 
 ## Using rasters to manipulate a geoprofile
 
-Finally, RgeoProfile allows us manipulate our geographic profile based on spatial information we have about an area. For example, if a large body of water is present in our search area, then we are certain that this shouldn't be considered in our search strategy. In REF FAULKNER, author's infferred locations associated with poachers responsible for animal deaths within a wildlife conservency. However, poachers could not reside within the conservancy, hence they masked out the conservancy via the `geoMask()` function. The profile can be seen below. 
+Finally, RgeoProfile allows us manipulate our geographic profile based on spatial information we have about an area. For example, if a large body of water is present in our search area, then we are certain that this shouldn't be considered in our search strategy. In @Faulkner2017, author's infferred locations associated with poachers responsible for animal deaths within a wildlife conservency. However, poachers could not reside within the conservancy, hence they masked out the conservancy via the `geoMask()` function. The profile can be seen below. 
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/poaching.png)
@@ -196,7 +197,8 @@ Before we look at how to include different spatial information in our geoprofile
 ### Shapefiles 
 
 
-### Maniulating a geoprofile post-hoc
+
+### Manipulating a geoprofile post-hoc
 
 ```{r}
 #------------------------------------------------------------------
@@ -229,3 +231,5 @@ hs_mask
 ## A summary of using Rgeoprofile 
 
 Throughout these tutorials we have learnt how to use the Rgeoprofile package. This consisted of: checking data and loading data, building a parameters object, running the model, plotting maps, measuring results (hs and gini), choosing priors, visualising sigma, visualising K, allocation probabilities, extracting peaks from the profiles, learning about a better default strategy than random, rasters manipulating a profile.
+
+## References

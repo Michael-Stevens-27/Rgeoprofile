@@ -78,13 +78,7 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="../index.html">
-    <span class="fa fa-home"></span>
-     
-  </a>
-</li>
-<li class="dropdown">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R basics
      
@@ -142,18 +136,6 @@
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Other resources
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/Spatial_R.html">Spatial Analysis in R*</a>
-    </li>
-  </ul>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -198,7 +180,8 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># load London boroughs by default</span>
-<span class='fu'>geoShapefile</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>my_shapefile</span> <span class='op'>&lt;-</span> <span class='fu'>geoShapefile</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>my_shapefile</span>
 </div><div class='output co'>#&gt; class       : SpatialPolygonsDataFrame 
 #&gt; features    : 8 
 #&gt; extent      : 521203.5, 539533.3, 175530.6, 188327.4  (xmin, xmax, ymin, ymax)
@@ -206,7 +189,8 @@
 #&gt; variables   : 7
 #&gt; names       :        NAME,  GSS_CODE, HECTARES, NONLD_AREA, ONS_INNER, SUB_2009, SUB_2006 
 #&gt; min values  :      Camden, E09000001,  314.942,          0,         T,       NA,       NA 
-#&gt; max values  : Westminster, E09000033, 2203.005,    179.707,         T,       NA,       NA </div></pre>
+#&gt; max values  : Westminster, E09000033, 2203.005,    179.707,         T,       NA,       NA </div><div class='input'><span class='fu'>raster</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>my_shapefile</span><span class='op'>)</span>
+</div><div class='img'><img src='geoShapefile-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

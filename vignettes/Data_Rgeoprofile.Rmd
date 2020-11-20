@@ -3,13 +3,14 @@ title: "RgeoProfile example - real world data"
 author: "Michael Stevens"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{RgeoProfile example - real world data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-# Introduction
+## Introduction
 
 In this tutorial, we will walk through another example of running an analysis using the R package, RgeoProfile. The previous example saw us run an analysis on simulated data. This time, we will focus on a real-world data set where we try to infer my home and work location based on where I have used my credit card in London. Similarly to before, this analysis will consist of:
 
@@ -27,7 +28,7 @@ library(leaflet)      # to create interactive maps
 library(raster)       # for general spatial analysis
 ```
 
-# Load and check data
+## Load and check data
 
 The data for this tutorial can be accessed using `data(card_crime)` and `data(card_source)`. As already mentioned, these data sets consist of a set of longitudinal/latitudinal points and the source locations (also in long/lat format) that are responsible for said "crimes". Let's process our data using the `geoData()` and `geoDataSource()` functions to ensure that the data are in the correct format for running the model.    
  
@@ -64,7 +65,7 @@ geoPlotLeaflet(param = NULL,
 
 At a glance we have a total of 12 locations, seven of which lie in East London, around Mile End, and the other 5 are near Tower Bridge. We might also start thinking about where the source locations are and how many there might be. What do you think? Have a guess. I have purposefully neglected to put the source locations on the map, since in practice we won't know where they are. We might think there are two source locations since the crimes are split between Mile End and Tower Hill. We might alter this guess to three source locations, where the additional source is responsible for the single crime at Shadwell Basin. 
 
-# Build a parameters object
+## Build a parameters object
 
 The next step is to build a parameters object for our model. In the previous tutorial we did not discuss the choice of priors we used when running the model. All priors are controlled via the `geoParams()` function. We control the prior on source locations via the ` priorMean_longitude`, `priorMean_latitude` and `tau`. The first two of those arguments set a location where me might think the source(s) could be. By default, this is set to the spatial mean of our crimes, since this is an appropriate place to start looking for source locations. The last of those arguments (`tau`) controls how strongly we believe source locations are near the `priorMean_longitude` and `priorMean_latitude` location. If we set `tau` quite small then we believe source locations are very near the prior mean. Setting `tau` quite large will inform the model that source locations are just as likely far away from the mean as they are close to it. Let's look at our map again with the mean plotted as well as our crimes.      
 
@@ -74,7 +75,7 @@ geoPlotLeaflet(param = NULL, data = d, crimeCex = 6) %>%
                lat = mean(d$latitude), radius = 6, fillColor = "blue") %>% addScaleBar(position = "bottomright")
 ```
 
-As we can see, the spatial mean (in blue) is quite near a few of the crimes, but then again also quite far from others, So this indicates we should set a large `tau`. Another paramater we are interested in but yet to speak about is the dispersal parameter "sigma". Measured in kilometres, this parameter governs how far away crimes are from source locations. We control this parameter using the `sigma_mean` and `sigma_var` arguments. `Sigma_mean` is the explicit value we think sigma could be and `sigma_var` controls our uncertainty in this value. For a human roaming around committing crimes on foot this value is around X-Y km (REF). If they have access to a car this value might be much larger. Equivalently if a criminal is time restricted (committing crimes on a lunch break for example) this value may be much lower. In ecology, we might expect quite small values of sigma for mosquitoes but much larger values for tigers. It really depends if you are analysing data associated with a human or an animal etc. Since we are conisdering a human moving around on foot, we shall set our prior accordingly.    
+As we can see, the spatial mean (in blue) is quite near a few of the crimes, but then again also quite far from others, So this indicates we should set a large `tau`. Another paramater we are interested in but yet to speak about is the dispersal parameter "sigma". Measured in kilometres, this parameter governs how far away crimes are from source locations. We control this parameter using the `sigma_mean` and `sigma_var` arguments. `Sigma_mean` is the explicit value we think sigma could be and `sigma_var` controls our uncertainty in this value. For a human roaming around committing crimes on foot this value will be much smaller than those that have access to a car. Equivalently if a criminal is time restricted (committing crimes on a lunch break for example) this value may be much lower. In ecology, we might expect quite small values of sigma for mosquitoes but much larger values for tigers. It really depends if you are analysing data associated with a human or an animal etc. Since we are conisdering a human moving around on foot, we shall set our prior accordingly.    
 
 ```{r, eval = TRUE, message = FALSE}
 # set model and MCMC parameters
@@ -101,7 +102,7 @@ geoPlotSigma(params = p, plotMax  = 3)
 
 Here we can see our prior distribution on sigma. The majority of the distribution lies between 0.2 and 1.9km. This is typical of a human committing crimes around a home or workplace. 
 
-# Run the model
+## Run the model
 
 Once again, we run the model using the `geoMCMC()` function. We provide this function with our `data` and our `params`. 
 
@@ -112,9 +113,9 @@ m <- geoMCMC(data = d, params = p)
 
 ```
 
-Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (REF). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (REF). 
+Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (@Gelman2014). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (@Barnard2010). 
     
-# Visualise output
+## Visualise output
 
 Let's have a look at our geographic profile. Again, we generate the geographic profile using the `geoPlotLeaflet()` function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the `params` and `surface` arguments. 
 
@@ -173,3 +174,5 @@ print(Gini)
 ```
 
 We can see that the model found every source by searching less than 1\% of the total search area, excellent! Equivalently, the Gini co-efficient for these sources is 0.995. 
+
+## References

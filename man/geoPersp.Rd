@@ -25,15 +25,16 @@ geoPersp(surface, aggregate_size = 3, surface_type = "gp",
 Plots persp plot of geoprofile or posterior surface (coloured according to height), reducing matrix dimensions if necessary to avoid grid lines being too close together. NB Only works with square matrix
 }
 \examples{
+\dontrun{
 # John Snow cholera data
 d <- geoData(Cholera$longitude, Cholera$latitude)
 s <- geoDataSource(WaterPumps$longitude, WaterPumps$latitude)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p, lambda=0.05)
+m <- geoMCMC(data = d, params = p, lambda=0.05)
 # raw probabilities
-#geoPersp(m$posteriorSurface, surface_type = "prob")
+geoPersp(m$posteriorSurface, surface_type = "prob")
 # geoprofile
-#geoPersp(m$geoProfile, aggregate_size = 3, surface_type = "gp")
+geoPersp(m$geoProfile, aggregate_size = 3, surface_type = "gp")
 
 # simulated data
 sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
@@ -41,9 +42,10 @@ sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude =
 d <- geoData(sim$longitude, sim $latitude)
 s <- geoDataSource(sim$source_lon, sim$source_lat)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p)
+m <- geoMCMC(data = d, params = p)
 # raw probabilities
-#geoPersp(m$posteriorSurface, surface_type = "prob")
+geoPersp(m$posteriorSurface, surface_type = "prob")
 # geoprofile
-#geoPersp(surface = m$geoProfile, aggregate_size = 3, surface_type = "gp")
+geoPersp(surface = m$geoProfile, aggregate_size = 3, surface_type = "gp")
+}
 }

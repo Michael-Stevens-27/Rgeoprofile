@@ -15,20 +15,30 @@ geoModelSources(mcmc, data)
 This function takes the output of geoMCMC() and, for each 'crime', extracts the group to which it is assigned with the highest probability. For each group, the model returns the mean lat/long of all crimes assigned to that group.
 }
 \examples{
-\donttest{
+\dontrun{
 # simulated data
 sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
 51.5235505, alpha=10, sigma=1, tau=3)
 d <- geoData(sim$longitude, sim $latitude)
 s <- geoDataSource(sim$source_lon, sim$source_lat)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p)
-## extract sources identified by the model
-#ms <- geoModelSources(mcmc = m, data = d)
+m <- geoMCMC(data = d, params = p)
+
+# extract sources identified by the model
+ms <- geoModelSources(mcmc = m, data = d)
+
 # plot data showing the sources identified by the model (note: NOT the actual suspect sites)
-# geoPlotMap(data = d, source = ms, params = p, breakPercent = seq(0, 10, 1), 
-#                  mapType = "roadmap", surfaceCols =c("red", "orange","yellow","white"),
-#                  crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2,
-#                  surface = m$geoProfile, gpLegend=TRUE, opacity = 0.4)
+ geoPlotLeaflet(data = d, 
+                source = ms, 
+                params = p, 
+                mapType = 110, 
+                surfaceCols = c("red", "orange","yellow","white"),
+                crimeCol = "black", 
+                crimeCex = 2, 
+                sourceCol = "red", 
+                sourceCex = 2,
+                surface = m$geoProfile, 
+                gpLegend=TRUE, 
+                opacity = 0.4)
 }
 }

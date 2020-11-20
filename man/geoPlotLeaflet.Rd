@@ -4,12 +4,12 @@
 \alias{geoPlotLeaflet}
 \title{Plot a map and overlay data and/or geoprofile via leaflet}
 \usage{
-geoPlotLeaflet(params, data = NULL, surface = NULL, source = NULL,
-  surfaceCols = c("#F0F921FF", "#FDC926FF", "#FA9E3BFF", "#ED7953FF",
-  "#D8576BFF", "#BD3786FF", "#9C179EFF", "#7301A8FF", "#47039FFF",
-  "#0D0887FF"), crimeCex = 1.5, crimeCol = "red", sourceCex = 1.5,
-  sourceCol = "blue", map_type = 110, threshold = 0.1,
-  opacity = 0.8, smoothing = 1, gpLegend = FALSE)
+geoPlotLeaflet(params = NULL, data = NULL, surface = NULL,
+  source = NULL, surfaceCols = c("#F0F921FF", "#FDC926FF", "#FA9E3BFF",
+  "#ED7953FF", "#D8576BFF", "#BD3786FF", "#9C179EFF", "#7301A8FF",
+  "#47039FFF", "#0D0887FF"), crimeCex = 1.5, crimeCol = "red",
+  sourceCex = 1.5, sourceCol = "blue", map_type = 110,
+  threshold = 0.1, opacity = 0.8, smoothing = 1, gpLegend = FALSE)
 }
 \arguments{
 \item{params}{parameters list in the format defined by geoParams().}
@@ -44,26 +44,38 @@ geoPlotLeaflet(params, data = NULL, surface = NULL, source = NULL,
 Plots geoprofile on map, with various customisable options.
 }
 \examples{
-\donttest{
+\dontrun{
 # London example data
 d <- LondonExample_crimes
 s <- LondonExample_sources
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p)
+m <- geoMCMC(data = d, params = p)
 # produce simple map
-#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#                breakPercent = seq(0, 50, 5), mapType = "hybrid",
-#                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+geoPlotLeaflet(params = p, 
+               data = d, 
+               source = s, 
+               surface = m$geoProfile,
+               map_type = 110,
+               crimeCol = "black", 
+               crimeCex = 2, 
+               sourceCol = "red", 
+               sourceCex = 2)
 
 # John Snow cholera data
 d <- Cholera
 s <- WaterPumps
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p, lambda=0.05)
+m <- geoMCMC(data = d, params = p, lambda=0.05)
 # produce simple map
-#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#                breakPercent = seq(0, 50, 5), mapType = "hybrid",
-#                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+geoPlotLeaflet(params = p, 
+               data = d, 
+               source = s, 
+               surface = m$geoProfile,
+               map_type = 110,
+               crimeCol = "black", 
+               crimeCex = 2, 
+               sourceCol = "red", 
+               sourceCex = 2)
 
 # simulated data
 sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
@@ -71,12 +83,19 @@ sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude =
 d <- geoData(sim$longitude, sim $latitude)
 s <- geoDataSource(sim$source_lon, sim$source_lat)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p)
+m <- geoMCMC(data = d, params = p)
 # change colour palette, map type, opacity and range of geoprofile and omit legend
-#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#                breakPercent = seq(0, 30, 5), mapType = "terrain", 
-#                surfaceCols = c("blue","white"), crimeCol = "black", 
-#                crimeBorderCol = "white",crimeCex = 2, sourceCol = "red", sourceCex = 2,
-#                opacity = 0.7, gpLegend = FALSE)
+geoPlotLeaflet(params = p, 
+               data = d, 
+               source = s, 
+               surface = m$geoProfile,
+               map_type = 110, 
+               surfaceCols = c("blue","white"), 
+               crimeCol = "black", 
+               crimeCex = 2, 
+               sourceCol = "red", 
+               sourceCex = 2,
+               opacity = 0.7, 
+               gpLegend = FALSE)
 }
 }

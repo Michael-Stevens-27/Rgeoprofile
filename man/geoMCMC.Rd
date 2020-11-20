@@ -20,7 +20,7 @@ This function carries out the main MCMC under the Rgeoprofile model. Posterior d
 # John Snow cholera data
 d <- geoData(Cholera$longitude, Cholera$latitude)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p, lambda=0.05)
+m <- geoMCMC(data = d, params = p, lambda = 0.05)
 
 # simulated data
 sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 

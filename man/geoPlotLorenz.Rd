@@ -24,17 +24,19 @@ should equal the number of suspect sites. If this is present, the function calcu
 based on the number of crimes; otherwise, this is calculated based on the number of suspect sites.
 }
 \examples{
+\dontrun{
 # London example data
 d <- LondonExample_crimes
 s <- LondonExample_sources
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p)
-#hs <- geoReportHitscores(params = p, source = s, surface = m$geoProfile)
-#hs 
+m <- geoMCMC(data = d, params = p)
+hs <- geoReportHitscores(params = p, source = s, surface = m$geoProfile)
+hs 
 # Lorenz plot on sources
-#geoPlotLorenz(hs)
+geoPlotLorenz(hs)
 # Lorenz plot on sources and crimes
 # extract numbers of crimes allocated per source as a proxy
-#cn <- as.vector(table(m$bestGrouping))
-#geoPlotLorenz(hs, crimeNumbers = cn)
+cn <- as.vector(table(m$bestGrouping))
+geoPlotLorenz(hs, crimeNumbers = cn)
+}
 }

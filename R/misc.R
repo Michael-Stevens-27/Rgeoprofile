@@ -160,11 +160,19 @@ dts <- function(x, df, scale=1, log=FALSE) {
 #' @export
 #' @examples
 #' # produces clusters of points from sources centred on QMUL
-#' rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 51.5235505, 
-#' alpha=1, sigma=1, tau=3) 
+#' rDPM(n = 50, 
+#'      priorMean_longitude = -0.04217491, 
+#'      priorMean_latitude = 51.5235505, 
+#'      alpha = 1, 
+#'      sigma = 1, 
+#'      tau=3) 
 #' # same, but increasing alpha to generate more clusters
-#' rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 51.5235505, 
-#' alpha=5, sigma=1, tau=3)
+#' rDPM(n = 50, 
+#'      priorMean_longitude = -0.04217491, 
+#'      priorMean_latitude = 51.5235505, 
+#'      alpha = 5, 
+#'      sigma = 1, 
+#'      tau = 3)
 
 rDPM <- function(n, sigma=1, tau=10, priorMean_longitude=-0.1277, priorMean_latitude=51.5074, alpha=1) {
   
@@ -257,8 +265,10 @@ bin2D <- function(x, y, x_breaks, y_breaks) {
 #' # create smooth surface based on raw LondonExample_crimes
 #' breaks_lon <- seq(-0.25,0.05,l=101)
 #' breaks_lat <- seq(51.45,51.6,l=101)
-#' m <- geoSmooth(LondonExample_crimes$longitude, LondonExample_crimes$latitude,
-#'                  breaks_lon, breaks_lat)
+#' m <- geoSmooth(LondonExample_crimes$longitude, 
+#'                LondonExample_crimes$latitude,
+#'                breaks_lon, 
+#'                breaks_lat)
 #' 
 #' # produce image plot of surface and overlay points
 #' image(breaks_lon, breaks_lat, t(m), xlab="longitude", ylab="latitude")

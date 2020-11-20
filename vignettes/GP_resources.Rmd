@@ -39,3 +39,7 @@ Novel applications
   * Faulkner 2014 [Geographic Profiling – a novel tool for locating tarsier sleeping sites](https://www.biodiversityscience.com/2014/09/22/geographic-profiling-tarsier-sites/)
   * Faulkner and Stevens 2018 [Geographic Profiling: Murder, maths, malaria and mammals](http://chalkdustmagazine.com/features/geographic-profiling-murder-maths-malaria-mammals/)
   * Romanach, Faulkner and Stevens 2019 [Targeting wildlife crime interventions through geographic profiling](https://www.illegalwildlifetrade.net/2019/10/28/targeting-wildlife-crime-interventions-through-geographic-profiling/)
+  
+### Spatial analysis
+
+* [Robin Lovelace's Geocomputation with R](https://geocompr.robinlovelace.net/)

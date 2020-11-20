@@ -24,8 +24,10 @@ Takes lon/lat coordinates, bins in two dimensions, and smooths using kernel dens
 # create smooth surface based on raw LondonExample_crimes
 breaks_lon <- seq(-0.25,0.05,l=101)
 breaks_lat <- seq(51.45,51.6,l=101)
-m <- geoSmooth(LondonExample_crimes$longitude, LondonExample_crimes$latitude,
-                 breaks_lon, breaks_lat)
+m <- geoSmooth(LondonExample_crimes$longitude, 
+               LondonExample_crimes$latitude,
+               breaks_lon, 
+               breaks_lat)
 
 # produce image plot of surface and overlay points
 image(breaks_lon, breaks_lat, t(m), xlab="longitude", ylab="latitude")

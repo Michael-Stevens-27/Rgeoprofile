@@ -78,13 +78,7 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="../index.html">
-    <span class="fa fa-home"></span>
-     
-  </a>
-</li>
-<li class="dropdown">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R basics
      
@@ -139,18 +133,6 @@
     </li>
     <li>
       <a href="../articles/GP_resources.html">Extra resources*</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Other resources
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/Spatial_R.html">Spatial Analysis in R*</a>
     </li>
   </ul>
 </li>
@@ -218,36 +200,46 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># load London example data and set params</span>
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='va'>LondonExample_crimes</span>
 <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='va'>LondonExample_sources</span>
 <span class='va'>p</span> <span class='op'>=</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1</span>, sigma_squared_shape <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'># run model</span>
-<span class='co'>#m = geoMCMC(data = d, params = p)</span>
+<span class='co'># run model</span>
+<span class='va'>m</span> <span class='op'>=</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, params <span class='op'>=</span> <span class='va'>p</span><span class='op'>)</span>
 
 <span class='co'># plot original map</span>
-<span class='co'>#map1 &lt;- geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile)</span>
-<span class='co'>#map1</span>
+<span class='va'>map1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoPlotLeaflet.html'>geoPlotLeaflet</a></span><span class='op'>(</span>params <span class='op'>=</span> <span class='va'>p</span>, data <span class='op'>=</span> <span class='va'>d</span>, source <span class='op'>=</span> <span class='va'>s</span>, surface <span class='op'>=</span> <span class='va'>m</span><span class='op'>$</span><span class='va'>geoProfile</span><span class='op'>)</span>
+<span class='va'>map1</span>
 
 <span class='co'># mask out North London and replot</span>
 <span class='va'>north_london_mask</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoShapefile.html'>geoShapefile</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='co'>#prob_masked &lt;- geoMask(probSurface = m$posteriorSurface, params = p, mask = north_london_mask,</span>
-<span class='co'>#                operation = "inside", scaleValue = 0)</span>
-<span class='co'>#gp_masked &lt;- geoProfile(prob_masked$prob)</span>
+<span class='va'>prob_masked</span> <span class='op'>&lt;-</span> <span class='fu'>geoMask</span><span class='op'>(</span>probSurface <span class='op'>=</span> <span class='va'>m</span><span class='op'>$</span><span class='va'>posteriorSurface</span>, 
+                       params <span class='op'>=</span> <span class='va'>p</span>, 
+                       mask <span class='op'>=</span> <span class='va'>north_london_mask</span>,
+                       operation <span class='op'>=</span> <span class='st'>"inside"</span>, 
+                       scaleValue <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+<span class='va'>gp_masked</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoProfile.html'>geoProfile</a></span><span class='op'>(</span><span class='va'>prob_masked</span><span class='op'>$</span><span class='va'>prob</span><span class='op'>)</span>
+
 <span class='co'># plot new surface</span>
-<span class='co'>#map2 &lt;- geoPlotMap(params = p, data = d, source = s, surface = gp_masked)</span>
-<span class='co'>#map2</span>
+<span class='va'>map2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoPlotLeaflet.html'>geoPlotLeaflet</a></span><span class='op'>(</span>params <span class='op'>=</span> <span class='va'>p</span>, data <span class='op'>=</span> <span class='va'>d</span>, source <span class='op'>=</span> <span class='va'>s</span>, surface <span class='op'>=</span> <span class='va'>gp_masked</span><span class='op'>)</span>
+<span class='va'>map2</span>
 
 <span class='co'># repeat, restricting mask to Tower Hamlets and using 'near' instead of 'inside'</span>
 <span class='va'>TH_mask</span> <span class='op'>&lt;-</span> <span class='va'>north_london_mask</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/which.html'>which</a></span><span class='op'>(</span><span class='va'>north_london_mask</span><span class='op'>$</span><span class='va'>NAME</span> <span class='op'>==</span> <span class='st'>"Tower Hamlets"</span><span class='op'>)</span>,<span class='op'>]</span>
-<span class='co'>#prob_masked2 &lt;- geoMask(probSurface = m$posteriorSurface, params = p, mask = TH_mask, </span>
-<span class='co'>#                 operation = "far", scaleValue = 1)</span>
-<span class='co'>#gp_masked2 &lt;- geoProfile(prob_masked2$prob)</span>
+
+<span class='va'>prob_masked2</span> <span class='op'>&lt;-</span> <span class='fu'>geoMask</span><span class='op'>(</span>probSurface <span class='op'>=</span> <span class='va'>m</span><span class='op'>$</span><span class='va'>posteriorSurface</span>, 
+                        params <span class='op'>=</span> <span class='va'>p</span>, 
+                        mask <span class='op'>=</span> <span class='va'>TH_mask</span>, 
+                        operation <span class='op'>=</span> <span class='st'>"far"</span>, 
+                        scaleValue <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+
+<span class='va'>gp_masked2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoProfile.html'>geoProfile</a></span><span class='op'>(</span><span class='va'>prob_masked2</span><span class='op'>$</span><span class='va'>prob</span><span class='op'>)</span>
+
 <span class='co'># plot new surface</span>
-<span class='co'>#map3 &lt;- geoPlotMap(params = p, data = d, source = s, surface = gp_masked2)</span>
-<span class='co'>#map3</span>
-<span class='co'># }</span>
+<span class='va'>map3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoPlotLeaflet.html'>geoPlotLeaflet</a></span><span class='op'>(</span>params <span class='op'>=</span> <span class='va'>p</span>, data <span class='op'>=</span> <span class='va'>d</span>, source <span class='op'>=</span> <span class='va'>s</span>, surface <span class='op'>=</span> <span class='va'>gp_masked2</span><span class='op'>)</span>
+<span class='va'>map3</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

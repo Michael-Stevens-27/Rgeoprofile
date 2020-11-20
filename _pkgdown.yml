@@ -48,8 +48,6 @@ reference:
       - '`unknownPleasures`'
 navbar:
   left:
-    - icon: fa-home
-      href: index.html
     - text: "R basics"
       menu:
         - text: "Installing R and Rstudio"
@@ -82,10 +80,6 @@ navbar:
           href: reference/index.html
         - text: "Extra resources*"
           href: "articles/GP_resources.html"
-    - text: "Other resources"
-      menu:
-        - text: "Spatial Analysis in R*"
-          href: articles/Spatial_R.html
   right:
    - icon: fa-github
      href: https://github.com/Michael-Stevens-27/Rgeoprofile/tree/workshop

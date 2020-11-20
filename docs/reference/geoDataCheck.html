@@ -78,13 +78,7 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="../index.html">
-    <span class="fa fa-home"></span>
-     
-  </a>
-</li>
-<li class="dropdown">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R basics
      
@@ -142,18 +136,6 @@
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Other resources
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/Spatial_R.html">Spatial Analysis in R*</a>
-    </li>
-  </ul>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -207,7 +189,7 @@
 </div><div class='output co'>#&gt; data file passed all checks</div><div class='input'>
 <span class='co'># simulated data</span>
 <span class='va'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span><span class='op'>(</span><span class='fl'>50</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude <span class='op'>=</span> 
-<span class='fl'>51.5235505</span>, alpha<span class='op'>=</span><span class='fl'>1</span>, sigma<span class='op'>=</span><span class='fl'>1</span>, tau<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
+<span class='fl'>51.5235505</span>, alpha <span class='op'>=</span> <span class='fl'>1</span>, sigma <span class='op'>=</span> <span class='fl'>1</span>, tau <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>sim</span> <span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
 <span class='fu'>geoDataCheck</span><span class='op'>(</span><span class='va'>d</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; data file passed all checks</div></pre>

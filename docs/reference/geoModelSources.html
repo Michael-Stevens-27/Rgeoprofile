@@ -78,13 +78,7 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="../index.html">
-    <span class="fa fa-home"></span>
-     
-  </a>
-</li>
-<li class="dropdown">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R basics
      
@@ -142,18 +136,6 @@
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Other resources
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/Spatial_R.html">Spatial Analysis in R*</a>
-    </li>
-  </ul>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -201,22 +183,32 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># simulated data</span>
 <span class='va'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span><span class='op'>(</span><span class='fl'>50</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude <span class='op'>=</span> 
 <span class='fl'>51.5235505</span>, alpha<span class='op'>=</span><span class='fl'>10</span>, sigma<span class='op'>=</span><span class='fl'>1</span>, tau<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>sim</span> <span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
 <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoDataSource.html'>geoDataSource</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>$</span><span class='va'>source_lon</span>, <span class='va'>sim</span><span class='op'>$</span><span class='va'>source_lat</span><span class='op'>)</span>
 <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1.0</span>, sigma_squared_shape <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p)</span>
-<span class='co'>## extract sources identified by the model</span>
-<span class='co'>#ms &lt;- geoModelSources(mcmc = m, data = d)</span>
+<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, params <span class='op'>=</span> <span class='va'>p</span><span class='op'>)</span>
+
+<span class='co'># extract sources identified by the model</span>
+<span class='va'>ms</span> <span class='op'>&lt;-</span> <span class='fu'>geoModelSources</span><span class='op'>(</span>mcmc <span class='op'>=</span> <span class='va'>m</span>, data <span class='op'>=</span> <span class='va'>d</span><span class='op'>)</span>
+
 <span class='co'># plot data showing the sources identified by the model (note: NOT the actual suspect sites)</span>
-<span class='co'># geoPlotMap(data = d, source = ms, params = p, breakPercent = seq(0, 10, 1), </span>
-<span class='co'>#                  mapType = "roadmap", surfaceCols =c("red", "orange","yellow","white"),</span>
-<span class='co'>#                  crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2,</span>
-<span class='co'>#                  surface = m$geoProfile, gpLegend=TRUE, opacity = 0.4)</span>
-<span class='co'># }</span>
+ <span class='fu'><a href='geoPlotLeaflet.html'>geoPlotLeaflet</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, 
+                source <span class='op'>=</span> <span class='va'>ms</span>, 
+                params <span class='op'>=</span> <span class='va'>p</span>, 
+                mapType <span class='op'>=</span> <span class='fl'>110</span>, 
+                surfaceCols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"orange"</span>,<span class='st'>"yellow"</span>,<span class='st'>"white"</span><span class='op'>)</span>,
+                crimeCol <span class='op'>=</span> <span class='st'>"black"</span>, 
+                crimeCex <span class='op'>=</span> <span class='fl'>2</span>, 
+                sourceCol <span class='op'>=</span> <span class='st'>"red"</span>, 
+                sourceCex <span class='op'>=</span> <span class='fl'>2</span>,
+                surface <span class='op'>=</span> <span class='va'>m</span><span class='op'>$</span><span class='va'>geoProfile</span>, 
+                gpLegend<span class='op'>=</span><span class='cn'>TRUE</span>, 
+                opacity <span class='op'>=</span> <span class='fl'>0.4</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

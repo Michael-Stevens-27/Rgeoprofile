@@ -20,6 +20,6 @@ geoData(Cholera$longitude, Cholera$latitude)
 
 # simulated data
 sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
-51.5235505, alpha=1, sigma=1, tau=3)
+51.5235505, alpha = 1, sigma = 1, tau = 3)
 geoData(sim$longitude, sim $latitude)
 }

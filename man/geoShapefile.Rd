@@ -14,5 +14,7 @@ This function imports spatial information in the form of SpatialPolygonsDataFram
 }
 \examples{
 # load London boroughs by default
-geoShapefile()
+my_shapefile <- geoShapefile()
+my_shapefile
+raster::plot(my_shapefile)
 }

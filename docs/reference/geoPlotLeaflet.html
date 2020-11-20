@@ -78,13 +78,7 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="../index.html">
-    <span class="fa fa-home"></span>
-     
-  </a>
-</li>
-<li class="dropdown">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R basics
      
@@ -142,18 +136,6 @@
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Other resources
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/Spatial_R.html">Spatial Analysis in R*</a>
-    </li>
-  </ul>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -184,12 +166,12 @@
     <p>Plots geoprofile on map, with various customisable options.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoPlotLeaflet</span><span class='op'>(</span><span class='va'>params</span>, data <span class='op'>=</span> <span class='cn'>NULL</span>, surface <span class='op'>=</span> <span class='cn'>NULL</span>, source <span class='op'>=</span> <span class='cn'>NULL</span>,
-  surfaceCols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#F0F921FF"</span>, <span class='st'>"#FDC926FF"</span>, <span class='st'>"#FA9E3BFF"</span>, <span class='st'>"#ED7953FF"</span>,
-  <span class='st'>"#D8576BFF"</span>, <span class='st'>"#BD3786FF"</span>, <span class='st'>"#9C179EFF"</span>, <span class='st'>"#7301A8FF"</span>, <span class='st'>"#47039FFF"</span>,
-  <span class='st'>"#0D0887FF"</span><span class='op'>)</span>, crimeCex <span class='op'>=</span> <span class='fl'>1.5</span>, crimeCol <span class='op'>=</span> <span class='st'>"red"</span>, sourceCex <span class='op'>=</span> <span class='fl'>1.5</span>,
-  sourceCol <span class='op'>=</span> <span class='st'>"blue"</span>, map_type <span class='op'>=</span> <span class='fl'>110</span>, threshold <span class='op'>=</span> <span class='fl'>0.1</span>,
-  opacity <span class='op'>=</span> <span class='fl'>0.8</span>, smoothing <span class='op'>=</span> <span class='fl'>1</span>, gpLegend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>geoPlotLeaflet</span><span class='op'>(</span>params <span class='op'>=</span> <span class='cn'>NULL</span>, data <span class='op'>=</span> <span class='cn'>NULL</span>, surface <span class='op'>=</span> <span class='cn'>NULL</span>,
+  source <span class='op'>=</span> <span class='cn'>NULL</span>, surfaceCols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#F0F921FF"</span>, <span class='st'>"#FDC926FF"</span>, <span class='st'>"#FA9E3BFF"</span>,
+  <span class='st'>"#ED7953FF"</span>, <span class='st'>"#D8576BFF"</span>, <span class='st'>"#BD3786FF"</span>, <span class='st'>"#9C179EFF"</span>, <span class='st'>"#7301A8FF"</span>,
+  <span class='st'>"#47039FFF"</span>, <span class='st'>"#0D0887FF"</span><span class='op'>)</span>, crimeCex <span class='op'>=</span> <span class='fl'>1.5</span>, crimeCol <span class='op'>=</span> <span class='st'>"red"</span>,
+  sourceCex <span class='op'>=</span> <span class='fl'>1.5</span>, sourceCol <span class='op'>=</span> <span class='st'>"blue"</span>, map_type <span class='op'>=</span> <span class='fl'>110</span>,
+  threshold <span class='op'>=</span> <span class='fl'>0.1</span>, opacity <span class='op'>=</span> <span class='fl'>0.8</span>, smoothing <span class='op'>=</span> <span class='fl'>1</span>, gpLegend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -254,26 +236,38 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># London example data</span>
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='va'>LondonExample_crimes</span>
 <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='va'>LondonExample_sources</span>
 <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1.0</span>, sigma_squared_shape <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p)</span>
+<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, params <span class='op'>=</span> <span class='va'>p</span><span class='op'>)</span>
 <span class='co'># produce simple map</span>
-<span class='co'>#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,</span>
-<span class='co'>#                breakPercent = seq(0, 50, 5), mapType = "hybrid",</span>
-<span class='co'>#                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)</span>
+<span class='fu'>geoPlotLeaflet</span><span class='op'>(</span>params <span class='op'>=</span> <span class='va'>p</span>, 
+               data <span class='op'>=</span> <span class='va'>d</span>, 
+               source <span class='op'>=</span> <span class='va'>s</span>, 
+               surface <span class='op'>=</span> <span class='va'>m</span><span class='op'>$</span><span class='va'>geoProfile</span>,
+               map_type <span class='op'>=</span> <span class='fl'>110</span>,
+               crimeCol <span class='op'>=</span> <span class='st'>"black"</span>, 
+               crimeCex <span class='op'>=</span> <span class='fl'>2</span>, 
+               sourceCol <span class='op'>=</span> <span class='st'>"red"</span>, 
+               sourceCex <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'># John Snow cholera data</span>
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='va'>Cholera</span>
 <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='va'>WaterPumps</span>
 <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1.0</span>, sigma_squared_shape <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p, lambda=0.05)</span>
+<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, params <span class='op'>=</span> <span class='va'>p</span>, lambda<span class='op'>=</span><span class='fl'>0.05</span><span class='op'>)</span>
 <span class='co'># produce simple map</span>
-<span class='co'>#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,</span>
-<span class='co'>#                breakPercent = seq(0, 50, 5), mapType = "hybrid",</span>
-<span class='co'>#                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)</span>
+<span class='fu'>geoPlotLeaflet</span><span class='op'>(</span>params <span class='op'>=</span> <span class='va'>p</span>, 
+               data <span class='op'>=</span> <span class='va'>d</span>, 
+               source <span class='op'>=</span> <span class='va'>s</span>, 
+               surface <span class='op'>=</span> <span class='va'>m</span><span class='op'>$</span><span class='va'>geoProfile</span>,
+               map_type <span class='op'>=</span> <span class='fl'>110</span>,
+               crimeCol <span class='op'>=</span> <span class='st'>"black"</span>, 
+               crimeCex <span class='op'>=</span> <span class='fl'>2</span>, 
+               sourceCol <span class='op'>=</span> <span class='st'>"red"</span>, 
+               sourceCex <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'># simulated data</span>
 <span class='va'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span><span class='op'>(</span><span class='fl'>50</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude <span class='op'>=</span> 
@@ -281,14 +275,21 @@
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>sim</span> <span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
 <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoDataSource.html'>geoDataSource</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>$</span><span class='va'>source_lon</span>, <span class='va'>sim</span><span class='op'>$</span><span class='va'>source_lat</span><span class='op'>)</span>
 <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoParams.html'>geoParams</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1.0</span>, sigma_squared_shape <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Using sigma_mean and sigma_squared_shape to define prior on sigma</div><div class='input'><span class='co'>#m &lt;- geoMCMC(data = d, params = p)</span>
+<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoMCMC.html'>geoMCMC</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, params <span class='op'>=</span> <span class='va'>p</span><span class='op'>)</span>
 <span class='co'># change colour palette, map type, opacity and range of geoprofile and omit legend</span>
-<span class='co'>#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,</span>
-<span class='co'>#                breakPercent = seq(0, 30, 5), mapType = "terrain", </span>
-<span class='co'>#                surfaceCols = c("blue","white"), crimeCol = "black", </span>
-<span class='co'>#                crimeBorderCol = "white",crimeCex = 2, sourceCol = "red", sourceCex = 2,</span>
-<span class='co'>#                opacity = 0.7, gpLegend = FALSE)</span>
-<span class='co'># }</span>
+<span class='fu'>geoPlotLeaflet</span><span class='op'>(</span>params <span class='op'>=</span> <span class='va'>p</span>, 
+               data <span class='op'>=</span> <span class='va'>d</span>, 
+               source <span class='op'>=</span> <span class='va'>s</span>, 
+               surface <span class='op'>=</span> <span class='va'>m</span><span class='op'>$</span><span class='va'>geoProfile</span>,
+               map_type <span class='op'>=</span> <span class='fl'>110</span>, 
+               surfaceCols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"blue"</span>,<span class='st'>"white"</span><span class='op'>)</span>, 
+               crimeCol <span class='op'>=</span> <span class='st'>"black"</span>, 
+               crimeCex <span class='op'>=</span> <span class='fl'>2</span>, 
+               sourceCol <span class='op'>=</span> <span class='st'>"red"</span>, 
+               sourceCex <span class='op'>=</span> <span class='fl'>2</span>,
+               opacity <span class='op'>=</span> <span class='fl'>0.7</span>, 
+               gpLegend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

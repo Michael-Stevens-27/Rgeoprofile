@@ -78,13 +78,7 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="../index.html">
-    <span class="fa fa-home"></span>
-     
-  </a>
-</li>
-<li class="dropdown">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     R basics
      
@@ -139,18 +133,6 @@
     </li>
     <li>
       <a href="../articles/GP_resources.html">Extra resources*</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Other resources
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/Spatial_R.html">Spatial Analysis in R*</a>
     </li>
   </ul>
 </li>
@@ -351,7 +333,7 @@ chains <span class='op'>=</span> <span class='fl'>10</span>, burnin <span class=
 #&gt; </div><div class='input'>
 <span class='co'># simulated data</span>
 <span class='va'>sim</span> <span class='op'>&lt;-</span><span class='fu'><a href='rDPM.html'>rDPM</a></span><span class='op'>(</span><span class='fl'>50</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.04217491</span>, priorMean_latitude <span class='op'>=</span> 
-<span class='fl'>51.5235505</span>, alpha<span class='op'>=</span><span class='fl'>1</span>, sigma<span class='op'>=</span><span class='fl'>1</span>, tau<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
+<span class='fl'>51.5235505</span>, alpha <span class='op'>=</span> <span class='fl'>1</span>, sigma <span class='op'>=</span> <span class='fl'>1</span>, tau <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='geoData.html'>geoData</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>sim</span> <span class='op'>$</span><span class='va'>latitude</span><span class='op'>)</span>
 <span class='co'># use a fixed value of sigma</span>
 <span class='fu'>geoParams</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d</span>, sigma_mean <span class='op'>=</span> <span class='fl'>1.0</span>, sigma_var <span class='op'>=</span> <span class='fl'>0</span>,
@@ -370,13 +352,13 @@ chains<span class='op'>=</span><span class='fl'>10</span>, burnin<span class='op
 #&gt; NULL
 #&gt; 
 #&gt; $model$priorMean_longitude
-#&gt; [1] -0.07020909
+#&gt; [1] -0.04205033
 #&gt; 
 #&gt; $model$priorMean_latitude
-#&gt; [1] 51.52113
+#&gt; [1] 51.51366
 #&gt; 
 #&gt; $model$tau
-#&gt; [1] 7.036477
+#&gt; [1] 7.122435
 #&gt; 
 #&gt; $model$alpha_shape
 #&gt; [1] 0.1
@@ -404,10 +386,10 @@ chains<span class='op'>=</span><span class='fl'>10</span>, burnin<span class='op
 #&gt; 
 #&gt; $output
 #&gt; $output$longitude_minMax
-#&gt; [1] -0.1413884162  0.0009702357
+#&gt; [1] -0.15562249  0.07152182
 #&gt; 
 #&gt; $output$latitude_minMax
-#&gt; [1] 51.45528 51.58697
+#&gt; [1] 51.46826 51.55906
 #&gt; 
 #&gt; $output$longitude_cells
 #&gt; [1] 500

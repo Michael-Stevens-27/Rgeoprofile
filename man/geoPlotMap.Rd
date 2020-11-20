@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotting.R
 \name{geoPlotMap}
 \alias{geoPlotMap}
-\title{Plot a map and overlay data and/or geoprofile}
+\title{Plot a map and overlay data and/or geoprofile using google maps - REQUIRES API}
 \usage{
 geoPlotMap(params, data = NULL, source = NULL, surface = NULL,
   surfaceCols = NULL, zoom = NULL, latLimits = NULL,
@@ -61,26 +61,26 @@ geoPlotMap(params, data = NULL, source = NULL, surface = NULL,
 Plots geoprofile on map, with various customisable options.
 }
 \examples{
-\donttest{
+\dontrun{
 # London example data
 d <- LondonExample_crimes
 s <- LondonExample_sources
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p)
+m <- geoMCMC(data = d, params = p)
 # produce simple map
-#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#                breakPercent = seq(0, 50, 5), mapType = "hybrid",
-#                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+                breakPercent = seq(0, 50, 5), mapType = "hybrid",
+                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
 
 # John Snow cholera data
 d <- Cholera
 s <- WaterPumps
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p, lambda=0.05)
+m <- geoMCMC(data = d, params = p, lambda=0.05)
 # produce simple map
-#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#                breakPercent = seq(0, 50, 5), mapType = "hybrid",
-#                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
+geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+                breakPercent = seq(0, 50, 5), mapType = "hybrid",
+                crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2)
 
 # simulated data
 sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
@@ -88,12 +88,12 @@ sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude =
 d <- geoData(sim$longitude, sim $latitude)
 s <- geoDataSource(sim$source_lon, sim$source_lat)
 p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#m <- geoMCMC(data = d, params = p)
+m <- geoMCMC(data = d, params = p)
 # change colour palette, map type, opacity and range of geoprofile and omit legend
-#geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
-#                breakPercent = seq(0, 30, 5), mapType = "terrain", 
-#                surfaceCols = c("blue","white"), crimeCol = "black", 
-#                crimeBorderCol = "white",crimeCex = 2, sourceCol = "red", sourceCex = 2,
-#                opacity = 0.7, gpLegend = FALSE)
+geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile,
+                breakPercent = seq(0, 30, 5), mapType = "terrain", 
+                surfaceCols = c("blue","white"), crimeCol = "black", 
+                crimeBorderCol = "white",crimeCex = 2, sourceCol = "red", sourceCex = 2,
+                opacity = 0.7, gpLegend = FALSE)
 }
 }

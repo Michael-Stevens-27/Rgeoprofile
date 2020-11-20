@@ -42,7 +42,7 @@ NULL
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
-#' 51.5235505, alpha=1, sigma=1, tau=3)
+#' 51.5235505, alpha = 1, sigma = 1, tau = 3)
 #' geoData(sim$longitude, sim $latitude)
 
 geoData <- function(longitude=NULL, latitude=NULL) {
@@ -72,7 +72,7 @@ geoData <- function(longitude=NULL, latitude=NULL) {
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
-#' 51.5235505, alpha=1, sigma=1, tau=3)
+#' 51.5235505, alpha = 1, sigma = 1, tau = 3)
 #' geoDataSource(sim$longitude, sim$latitude)
 
 geoDataSource <- function(longitude=NULL, latitude=NULL) {
@@ -124,7 +124,7 @@ geoDataSource <- function(longitude=NULL, latitude=NULL) {
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
-#' 51.5235505, alpha=1, sigma=1, tau=3)
+#' 51.5235505, alpha = 1, sigma = 1, tau = 3)
 #' d <- geoData(sim$longitude, sim $latitude)
 #' # use a fixed value of sigma
 #' geoParams(data = d, sigma_mean = 1.0, sigma_var = 0,
@@ -280,7 +280,9 @@ geoParams <- function(data=NULL, sources=NULL, sigma_mean=1, sigma_var=NULL, sig
 #' @export
 #' @examples
 #' # load London boroughs by default
-#' geoShapefile()
+#' my_shapefile <- geoShapefile()
+#' my_shapefile
+#' raster::plot(my_shapefile)
 
 geoShapefile <- function(fileName=NULL) {
   
@@ -311,7 +313,7 @@ geoShapefile <- function(fileName=NULL) {
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
-#' 51.5235505, alpha=1, sigma=1, tau=3)
+#' 51.5235505, alpha = 1, sigma = 1, tau = 3)
 #' d <- geoData(sim$longitude, sim $latitude)
 #' geoDataCheck(d)
 
@@ -355,9 +357,9 @@ geoDataCheck <- function(data, silent=FALSE) {
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
-#' 51.5235505, alpha=1, sigma=1, tau=3)
+#' 51.5235505, alpha = 1, sigma = 1, tau = 3)
 #' d <- geoData(Cholera$longitude, Cholera$latitude)
-#' p <- geoParams(data = d, sigma_mean = 1.0, sigma_var=0)
+#' p <- geoParams(data = d, sigma_mean = 1.0, sigma_var = 0)
 #' geoParamsCheck(p)
 
 geoParamsCheck <- function(params, silent=FALSE) {
@@ -510,7 +512,7 @@ geoParamsCheck <- function(params, silent=FALSE) {
 #' # John Snow cholera data
 #' d <- geoData(Cholera$longitude, Cholera$latitude)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' #m <- geoMCMC(data = d, params = p, lambda=0.05)
+#' m <- geoMCMC(data = d, params = p, lambda = 0.05)
 #' 
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
@@ -700,21 +702,31 @@ geoReportHitscores <- function(params, source, surface) {
 #' 
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # simulated data
 #' sim <-rDPM(50, priorMean_longitude = -0.04217491, priorMean_latitude = 
 #' 51.5235505, alpha=10, sigma=1, tau=3)
 #' d <- geoData(sim$longitude, sim $latitude)
 #' s <- geoDataSource(sim$source_lon, sim$source_lat)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' #m <- geoMCMC(data = d, params = p)
-#' ## extract sources identified by the model
-#' #ms <- geoModelSources(mcmc = m, data = d)
+#' m <- geoMCMC(data = d, params = p)
+#' 
+#' # extract sources identified by the model
+#' ms <- geoModelSources(mcmc = m, data = d)
+#' 
 #' # plot data showing the sources identified by the model (note: NOT the actual suspect sites)
-#' # geoPlotMap(data = d, source = ms, params = p, breakPercent = seq(0, 10, 1), 
-#' #                  mapType = "roadmap", surfaceCols =c("red", "orange","yellow","white"),
-#' #                  crimeCol = "black", crimeCex = 2, sourceCol = "red", sourceCex = 2,
-#' #                  surface = m$geoProfile, gpLegend=TRUE, opacity = 0.4)
+#'  geoPlotLeaflet(data = d, 
+#'                 source = ms, 
+#'                 params = p, 
+#'                 mapType = 110, 
+#'                 surfaceCols = c("red", "orange","yellow","white"),
+#'                 crimeCol = "black", 
+#'                 crimeCex = 2, 
+#'                 sourceCol = "red", 
+#'                 sourceCex = 2,
+#'                 surface = m$geoProfile, 
+#'                 gpLegend=TRUE, 
+#'                 opacity = 0.4)
 #' }
 
 geoModelSources <- function (mcmc, data) {
@@ -738,17 +750,20 @@ geoModelSources <- function (mcmc, data) {
 #'
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # John Snow cholera data
 #' d <- geoData(Cholera$longitude, Cholera$latitude)
 #' s <- geoDataSource(WaterPumps$longitude, WaterPumps$latitude)
 #' p <- geoParams(data = d, sigma_mean = 1.0, sigma_squared_shape = 2)
-#' #m <- geoMCMC(data = d, params = p)
-#' #surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
-#' #gp_ring <- geoProfile(surface = surface_ring)
-#' #map <- geoPlotMap(params = p, data = d, source = s, surface = gp_ring, 
-#' #opacity = 1, breakPercent = seq(0,50,l=21))
-#' #map
+#' m <- geoMCMC(data = d, params = p)
+#' surface_ring <- geoRing(params = p, data = d, source = s, mcmc = m)
+#' gp_ring <- geoProfile(surface = surface_ring)
+#' map <- geoPlotLeaflet(params = p, 
+#'                       data = d, 
+#'                       source = s, 
+#'                       surface = gp_ring, 
+#'                       opacity = 1) 
+#' map
 #' }
 
 
@@ -792,35 +807,45 @@ geoRing <- function(params, data, source, mcmc) {
 #' 
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # load London example data and set params
 #' d <- LondonExample_crimes
 #' s <- LondonExample_sources
 #' p = geoParams(data = d, sigma_mean = 1, sigma_squared_shape = 2)
 #' # run model
-#' #m = geoMCMC(data = d, params = p)
+#' m = geoMCMC(data = d, params = p)
 #' 
 #' # plot original map
-#' #map1 <- geoPlotMap(params = p, data = d, source = s, surface = m$geoProfile)
-#' #map1
+#' map1 <- geoPlotLeaflet(params = p, data = d, source = s, surface = m$geoProfile)
+#' map1
 #' 
 #' # mask out North London and replot
 #' north_london_mask <- geoShapefile()
-#' #prob_masked <- geoMask(probSurface = m$posteriorSurface, params = p, mask = north_london_mask,
-#' #                operation = "inside", scaleValue = 0)
-#' #gp_masked <- geoProfile(prob_masked$prob)
+#' prob_masked <- geoMask(probSurface = m$posteriorSurface, 
+#'                        params = p, 
+#'                        mask = north_london_mask,
+#'                        operation = "inside", 
+#'                        scaleValue = 0)
+#' gp_masked <- geoProfile(prob_masked$prob)
+#'
 #' # plot new surface
-#' #map2 <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked)
-#' #map2
+#' map2 <- geoPlotLeaflet(params = p, data = d, source = s, surface = gp_masked)
+#' map2
 #' 
 #' # repeat, restricting mask to Tower Hamlets and using 'near' instead of 'inside'
 #' TH_mask <- north_london_mask[which(north_london_mask$NAME == "Tower Hamlets"),]
-#' #prob_masked2 <- geoMask(probSurface = m$posteriorSurface, params = p, mask = TH_mask, 
-#' #                 operation = "far", scaleValue = 1)
-#' #gp_masked2 <- geoProfile(prob_masked2$prob)
+#'
+#' prob_masked2 <- geoMask(probSurface = m$posteriorSurface, 
+#'                         params = p, 
+#'                         mask = TH_mask, 
+#'                         operation = "far", 
+#'                         scaleValue = 1)
+#'
+#' gp_masked2 <- geoProfile(prob_masked2$prob)
+#' 
 #' # plot new surface
-#' #map3 <- geoPlotMap(params = p, data = d, source = s, surface = gp_masked2)
-#' #map3
+#' map3 <- geoPlotLeaflet(params = p, data = d, source = s, surface = gp_masked2)
+#' map3
 #' }
 
 geoMask <- function (probSurface, params, mask, scaleValue = 1, operation = "inside", maths = "multiply") {

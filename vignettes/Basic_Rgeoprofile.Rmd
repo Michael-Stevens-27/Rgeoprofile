@@ -3,6 +3,7 @@ title: "Basic Rgeoprofile"
 author: "Michael Stevens"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{Basic Rgeoprofile}
   %\VignetteEngine{knitr::rmarkdown}
@@ -86,7 +87,7 @@ Running the MCMC algorithm itself is straightforward. We run the model using the
 m <- geoMCMC(data = d, params = p)
 ```
 
-Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (REF). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (REF). 
+Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (@Gelman2014). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (@Barnard2010). 
     
 ## Visualise output
 
@@ -154,3 +155,4 @@ We can see that the model found every source by searching less than 4\% of the t
 # saveRDS(m, file =  "/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/inst/extdata/mcmc_object.rds")
 # saveRDS(p, file =  "/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/Rgeoprofile/inst/extdata/params_object.rds")
 ```
+## References
