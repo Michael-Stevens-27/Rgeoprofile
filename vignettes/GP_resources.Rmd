@@ -3,6 +3,7 @@ title: "Geoprofiling resources"
 author: "Michael Stevens"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{Geoprofiling resources}
   %\VignetteEngine{knitr::rmarkdown}
@@ -11,35 +12,38 @@ vignette: >
 
 This page is for documenting any additional resources on geographic profiling. 
 
-### Papers
+## Papers
 
 Below are a collection of open-access papers on geographic profiling. 
 
 In ecology:
-
-  * Faulkner et al. 2016 [Using geographic profiling to compare the value of sightings vs trap data in a biological invasion](https://onlinelibrary.wiley.com/doi/full/10.1111/ddi.12498)
-  * Heald et al. 2019 [Understanding the origins of the ring‐necked parakeet in the UK](https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/jzo.12753)
+  
+  * @Faulkner2016 [Using geographic profiling to compare the value of sightings vs trap data in a biological invasion](https://onlinelibrary.wiley.com/doi/full/10.1111/ddi.12498)
+  * @Faulkner2017 [A spatial approach to combatting wildlife crime](https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/25863/Le%20Comber%20A%20spatial%20approach%202017%20Accepted.pdf?sequence=1&isAllowed=y)
+  * @Heald2019 [Understanding the origins of the ring‐necked parakeet in the UK](https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/jzo.12753)
   
 In epidemiology
 
-  * Le comber et al. 2011 [Geographic profiling as a novel spatial tool for targeting infectious disease control](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3123167/)
-  * Verity et al. 2014 [Spatial targeting of infectious disease control: identifying multiple, unknown sources](https://besjournals.onlinelibrary.wiley.com/doi/epdf/10.1111/2041-210X.12190)
-  * Smith et al. 2015 [Spatial Targeting for Bovine Tuberculosis Control: Can the Locations of Infected Cattle Be Used to Find Infected Badgers?](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0142710&type=printable)
+  * @LeComber2011 [Geographic profiling as a novel spatial tool for targeting infectious disease control](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3123167/)
+  * @Verity2014 [Spatial targeting of infectious disease control: identifying multiple, unknown sources](https://besjournals.onlinelibrary.wiley.com/doi/epdf/10.1111/2041-210X.12190)
+  * @Smith2015 [Spatial Targeting for Bovine Tuberculosis Control: Can the Locations of Infected Cattle Be Used to Find Infected Badgers?](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0142710&type=printable)
 
 In criminology
 
-  * Rossmo et al. 2014 [Geographic profiling in Nazi Berlin: fact and fiction](https://core.ac.uk/download/pdf/30697125.pdf)
+  * @Rossmo2015 [Geographic profiling in Nazi Berlin: fact and fiction](https://core.ac.uk/download/pdf/30697125.pdf)
 
 Novel applications
 
-  * Stevens et al. 2020 [Investigating Sherlock Holmes: Using Geographic Profiling to Analyze the Novels of Arthur Conan Doyle](https://www.tandfonline.com/doi/full/10.1080/00330124.2020.1758575)
+  * @Stevens2020 [Investigating Sherlock Holmes: Using Geographic Profiling to Analyze the Novels of Arthur Conan Doyle](https://www.tandfonline.com/doi/full/10.1080/00330124.2020.1758575)
 
-### Blogs
+## Blogs
 
   * Faulkner 2014 [Geographic Profiling – a novel tool for locating tarsier sleeping sites](https://www.biodiversityscience.com/2014/09/22/geographic-profiling-tarsier-sites/)
   * Faulkner and Stevens 2018 [Geographic Profiling: Murder, maths, malaria and mammals](http://chalkdustmagazine.com/features/geographic-profiling-murder-maths-malaria-mammals/)
   * Romanach, Faulkner and Stevens 2019 [Targeting wildlife crime interventions through geographic profiling](https://www.illegalwildlifetrade.net/2019/10/28/targeting-wildlife-crime-interventions-through-geographic-profiling/)
   
-### Spatial analysis
+## Spatial analysis
 
 * [Robin Lovelace's Geocomputation with R](https://geocompr.robinlovelace.net/)
+
+## References

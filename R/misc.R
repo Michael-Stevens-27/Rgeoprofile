@@ -126,8 +126,8 @@ cartesian_to_latlon <- function(centre_lat, centre_lon, data_x, data_y) {
 # The variance can also be written purely in terms of alpha and epsilon as follows: v=epsilon^2*(gamma(alpha-1)*gamma(alpha)/gamma(alpha-0.5)^2 - 1).
 # (not exported)
 
-dRIG <- function(x,alpha,beta,log=FALSE) {
-  output <- log(2)+alpha*log(beta)-lgamma(alpha)-(2*alpha+1)*log(x)-beta/x^2
+dRIG <- function(x, alpha, beta, log = FALSE) {
+  output <- log(2) + alpha*log(beta) - lgamma(alpha) - (2*alpha+1)*log(x) - beta/x^2
   if (!log)
     output <- exp(output)
   return(output)

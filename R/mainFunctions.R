@@ -1,6 +1,7 @@
 
 #------------------------------------------------
-# The following commands are needed to ensure that the roxygen2 package, which deals with documenting the package, does not conflict with the Rcpp package.
+# The following commands are needed to ensure that the roxygen2 package, which 
+# deals with documenting the package, does not conflict with the Rcpp package.
 
 # Rcpp          - allows C++ integration
 # fftwtools     - fast Fourier transform, used when smoothing posterior draws into final surface
@@ -869,7 +870,12 @@ geoMask <- function (probSurface, params, mask, scaleValue = 1, operation = "ins
   }
   
   # convert probSurface to raster
-  raster_probSurface <- raster(probSurface, xmn = params$output$longitude_minMax[1], xmx = params$output$longitude_minMax[2], ymn = params$output$latitude_minMax[1], ymx = params$output$latitude_minMax[2], crs="+proj=longlat +datum=WGS84")
+  raster_probSurface <- raster(probSurface, 
+                               xmn = params$output$longitude_minMax[1], 
+                               xmx = params$output$longitude_minMax[2], 
+                               ymn = params$output$latitude_minMax[1], 
+                               ymx = params$output$latitude_minMax[2], 
+                               crs="+proj=longlat +datum=WGS84")
   
   # project mask onto same coordinate system as probSurface
   rf <- projectRaster(rf, raster_probSurface, crs="+proj=longlat +datum=WGS84")

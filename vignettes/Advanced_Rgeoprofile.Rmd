@@ -143,7 +143,7 @@ Here we can see the set of points plotted on our map in dark green (with crimes 
 
 ## A ring search strategy against a random one
 
-So far, we have covered a few different metrics for model success; in the form of a hit score or gini co-effient. Our hitscores tell us what proportion of the area we must search before finding a source location. Hence, the smaller the hit score, the better the model performs. We also noted that a hitscore of 50% is what you would expect with a random search strategy. However, it would be foolish to invest resources into searching an area completely randomly for a criminal, hence we require some default search strategy. @Faulkner2017 introduces us to the ring search stratgey, in which we search for source locations by starting at each crime and searching radially outwards. We can create a geographic profile based on a ring search strategy via the `geoRing()` function. We then create a geoprofile via the `geoProfile()` function. 
+So far, we have covered a few different metrics for model success; in the form of a hit score or gini co-effient. Our hitscores tell us what proportion of the area we must search before finding a source location. Hence, the smaller the hit score, the better the model performs. We also noted that a hitscore of 50% is what you would expect with a random search strategy. However, it would be foolish to invest resources into searching an area completely randomly for a criminal, hence we require some default search strategy. @Smith2015 introduces us to the ring search stratgey, in which we search for source locations by starting at each crime and searching radially outwards. We can create a geographic profile based on a ring search strategy via the `geoRing()` function. We then create a geoprofile via the `geoProfile()` function. 
 
 ```{r, eval = TRUE}
 #------------------------------------------------------------------
@@ -186,47 +186,98 @@ Clearly the DPM model is performing most efficently, however the ring search giv
 
 ## Using rasters to manipulate a geoprofile
 
-Finally, RgeoProfile allows us manipulate our geographic profile based on spatial information we have about an area. For example, if a large body of water is present in our search area, then we are certain that this shouldn't be considered in our search strategy. In @Faulkner2017, author's infferred locations associated with poachers responsible for animal deaths within a wildlife conservency. However, poachers could not reside within the conservancy, hence they masked out the conservancy via the `geoMask()` function. The profile can be seen below. 
+Finally, RgeoProfile allows us manipulate our geographic profile based on spatial information we have about an area. For example, if a large body of water is present in our search area, then we are certain that this shouldn't be considered in our search strategy. So we need some way to alter the geoprofile accordingly.  
+
+In @Faulkner2017, author's inferred locations associated with poachers responsible for animal deaths within Sav$\'{e}$ Valley Conservancy, Zimbabwe. However, poachers could not reside within the conservancy, hence they masked out the conservancy via the `geoMask()` function. The profile can be seen below. 
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/poaching.png)
 \  
 
+Here, the points in black represent locations associated with illegal hunting incidents and the blue squares are associated with the poacher's source locations. We can also see the outline of Sav$\'{e}$ Valley Conservancy where the majority of source locations are outside the Conservancy but all crimes are within it.    
+
 Before we look at how to include different spatial information in our geoprofile, we must first talk about shapefiles. 
 
 ### Shapefiles 
 
+A shapefile is a simple format for storing the location and attributes of different geographic features. These features can consist of either geographic points, lines or areas. The attributes could be any kind of variable such as population density, average rainfall, deaths from a disease etc. You can think of a shapefile as a data frame with explicit geographical information embedded inside. In the following example we will have a look at a shapefile for a section of central London.   
 
+```{r, echo = TRUE}
+# access built in shapefile from package
+north_london_mask <- geoShapefile()
+```
+
+Here we can see the class of this spatial object, its features, extent, co-ordinate reference system and variables/attributed. We won't delve too far into the meaning of each one of these, but as we can see, it's a spatial polygon data frame, meaning our shapefile consists of different areas (or polygons) each yielding a particular value for seven different varaibles such as `NAME` and `HECTARES`. 
+
+```{r, echo = FALSE, message = FALSE}
+# plot shapefile
+plot(north_london_mask, col = north_london_mask$NAME)
+
+# names of each london borough
+north_london_mask$NAME
+```
+
+Here we can see the polygons have been plotted together, and we've listed off the name of each London borough in the shapefile.
 
 ### Manipulating a geoprofile post-hoc
 
+Let's say that we are confident our criminal resides somewhere in the London borough of Westminster. We want to use our shapefile to manipulate the geographic profile shown at the beginning of this tutorial to focus search priority within this borough. First we must subset this shapefile so that we only have the information relating to Westminster.     
+
 ```{r}
-#------------------------------------------------------------------
-# incorporate GIS data
-#------------------------------------------------------------------
-# read in north London shapefile as mask and adjust surface
-north_london_mask <- geoShapefile()
+# restrict mask to Westminster
+TH_mask <- north_london_mask[north_london_mask$NAME == "Westminster", ]
 
-# restrict mask to Tower Hamlets
-TH_mask <- north_london_mask[which(north_london_mask$NAME == "Tower Hamlets"),]
+# plot smaller shapefile
+plot(TH_mask)
+```
+
+Now that we have the Westminster part of the shapefile we need to use on our geoprofile. Let's say we think there is only a 10% chance that our criminal resides outside the borough of Westminster. Hence we need to scale all probabilities outside the borough by 0.1. To apply our shapefile to the geoprofile, we use the `geoMask()` function.  
+
+```{r}
+# apply shapefile to probability surface
 prob_masked <- geoMask(probSurface = m$posteriorSurface, 
-                       params = p, mask = TH_mask,
-                       operation = "outside", scaleValue = 1e-9)
-gp_masked <- geoProfile(prob_masked$prob)
+                       params = p, 
+                       mask = TH_mask,
+                       maths = "multiply",
+                       operation = "outside", 
+                       scaleValue = 0.1)
 
+# rank the surface to create the new geoprofile                       
+gp_masked <- geoProfile(prob_masked$prob)
+```
+
+We have provided the `geoMask()` function with our probability surface and parameters object. We then provide it with the shapefile, and the three arguments following tells the function to **multiply** all values **outside** the shapefile by the **scaleValue** 0.1. Finally, we rank our probability surface using the `geoProfile()` function to create a geoprofile. 
+
+```{r}
 # plot new surface
 mapMask <- geoPlotLeaflet(params = p, 
                           data = d, 
                           source = s, 
                           surface = gp_masked,
-                          threshold = 1)
+                          threshold = 1,
+                          gpLegend = TRUE,
+                          opacity = 0.7,
+                          crimeCex = 4,
+                          sourceCex = 5,
+                          sourceCol = "black",)
 mapMask
+```
+
+Here we can see that the areas inside the borough of Westminster have increased. Let's see what has happened to our hitscores. 
+
+```{r}
+# original hit scores
+og_hitscores <- geoReportHitscores(params = p, source = s, surface = m$geoProfile)
+names(og_hitscores) <- c("lat", "lon", "Original_surface")
 
 # hs of masked surface
 hs_mask <- geoReportHitscores(params = p, source = s, surface = gp_masked)
-hs_mask
+names(hs_mask) <- c("lat", "lon", "Manipulated_surface")
 
+cbind(og_hitscores, hs_mask$Manipulated_surface)
 ```
+
+Notice that the hit scores for sources two and three have improved, since they are within Westminster. However, also notice that hit scores for sources one and four have worsened. This reflects the fact these two sources are outside of Westminster. 
 
 ## A summary of using Rgeoprofile 
 

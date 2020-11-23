@@ -60,7 +60,7 @@ navbar:
         - text: "Introduction to R - part 3"
           href: "articles/R_intro3.html"
         - text: ---------------
-        - text: "Extra resources"
+        - text: "Extra resources*"
           href: articles/General_R.html
     - text: "GP tutorials"
       menu:
