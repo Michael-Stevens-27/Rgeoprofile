@@ -28,6 +28,7 @@ Once again, we shall load the packages we need for processing the ouput of the m
 library(RgeoProfile)
 library(leaflet)
 library(raster)
+library(sp)
 ```
 
 ```{r, echo = FALSE, message = FALSE}
@@ -205,19 +206,21 @@ A shapefile is a simple format for storing the location and attributes of differ
 ```{r, echo = TRUE}
 # access built in shapefile from package
 north_london_mask <- geoShapefile()
+
+print(north_london_mask)
 ```
 
-Here we can see the class of this spatial object, its features, extent, co-ordinate reference system and variables/attributed. We won't delve too far into the meaning of each one of these, but as we can see, it's a spatial polygon data frame, meaning our shapefile consists of different areas (or polygons) each yielding a particular value for seven different varaibles such as `NAME` and `HECTARES`. 
+Here we can see the class of this spatial object, its features, extent, co-ordinate reference system and variables/attributes. We won't delve too far into the meaning of each one of these, but as we can see, it's a spatial polygon data frame, meaning our shapefile consists of different areas (or polygons) each yielding a particular value for seven different variables such as `NAME` and `HECTARES`. 
 
 ```{r, echo = FALSE, message = FALSE}
 # plot shapefile
-plot(north_london_mask, col = north_london_mask$NAME)
-
+plot(north_london_mask, col = as.numeric(north_london_mask$NAME))
+ 
 # names of each london borough
 north_london_mask$NAME
 ```
 
-Here we can see the polygons have been plotted together, and we've listed off the name of each London borough in the shapefile.
+Here we can see the polygons have been plotted together, and we've listed off the name of each London borough in the shapefile. All manner of different shapefiles can be loaded into R. For a list of resources to help with finding shapefiles and other spatial data, see the extra data section of the [geographic profiling resources](https://michael-stevens-27.github.io/Rgeoprofile/articles/GP_resources.html) page.   
 
 ### Manipulating a geoprofile post-hoc
 
@@ -263,7 +266,7 @@ mapMask <- geoPlotLeaflet(params = p,
 mapMask
 ```
 
-Here we can see that the areas inside the borough of Westminster have increased. Let's see what has happened to our hitscores. 
+Here we can see that the areas inside the borough of Westminster have increased. Let's see what has happened to our hitscores.
 
 ```{r}
 # original hit scores
@@ -277,10 +280,59 @@ names(hs_mask) <- c("lat", "lon", "Manipulated_surface")
 cbind(og_hitscores, hs_mask$Manipulated_surface)
 ```
 
-Notice that the hit scores for sources two and three have improved, since they are within Westminster. However, also notice that hit scores for sources one and four have worsened. This reflects the fact these two sources are outside of Westminster. 
+Notice that the hit scores for sources two and three have improved, since they are within Westminster. However, also notice that hit scores for sources one and four have worsened. This reflects the fact these two sources are outside of Westminster. Let's say that our intuition was the other way around. We now think that the chance of the criminal residing **inside** Westminster is about 10%. 
+
+We change the code such that the `operation` argument is "inside".  
+
+```{r}
+# apply shapefile to probability surface
+prob_masked <- geoMask(probSurface = m$posteriorSurface, 
+                       params = p, 
+                       mask = TH_mask,
+                       maths = "multiply",
+                       operation = "inside", 
+                       scaleValue = 0.1)
+
+# rank the surface to create the new geoprofile                       
+gp_masked <- geoProfile(prob_masked$prob)
+
+```
+
+```{r, echo = FALSE}
+# plot new surface
+mapMask <- geoPlotLeaflet(params = p, 
+                          data = d, 
+                          source = s, 
+                          surface = gp_masked,
+                          threshold = 1,
+                          gpLegend = TRUE,
+                          opacity = 0.7,
+                          crimeCex = 4,
+                          sourceCex = 5,
+                          sourceCol = "black",)
+mapMask
+```
+
+We can see that the search priority has weakened inside Westminster and become tighter outside.  The `geoMask()` comes with many other operations too, see the function documentation for more options.
+
 
 ## A summary of using Rgeoprofile 
 
-Throughout these tutorials we have learnt how to use the Rgeoprofile package. This consisted of: checking data and loading data, building a parameters object, running the model, plotting maps, measuring results (hs and gini), choosing priors, visualising sigma, visualising K, allocation probabilities, extracting peaks from the profiles, learning about a better default strategy than random, rasters manipulating a profile.
+Throughout these tutorials we have learnt how to use the Rgeoprofile package. This consisted of learning how to use RgeoProfile for:  
+
+* Checking and loading data
+* Building a parameters object
+* Running the model
+* Plotting maps
+* Model success metrics 
+* Choosing priors
+* Visualising the dispersal distance, sigma
+* Visualising the number of sources $K$
+* Allocation probabilities
+* Extracting peaks from the profiles
+* Learning about a better default strategy than a random search
+* Shapefiles and manipulating a geoprofile based on other spatial information
+
+Like the R tutorials, these vignettes have covered a lot of information in a short amount of time. For extra help in using and understanding RgeoProfile, see the [extra resources](https://michael-stevens-27.github.io/Rgeoprofile/articles/GP_resources.html) page.   
 
 ## References

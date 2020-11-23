@@ -42,7 +42,7 @@ Novel applications
   * Faulkner and Stevens 2018 [Geographic Profiling: Murder, maths, malaria and mammals](http://chalkdustmagazine.com/features/geographic-profiling-murder-maths-malaria-mammals/)
   * Romanach, Faulkner and Stevens 2019 [Targeting wildlife crime interventions through geographic profiling](https://www.illegalwildlifetrade.net/2019/10/28/targeting-wildlife-crime-interventions-through-geographic-profiling/)
   
-## Spatial analysis
+## Spatial data and analysis
 
 * [Robin Lovelace's Geocomputation with R](https://geocompr.robinlovelace.net/)
 
