@@ -10,33 +10,33 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This page is for documenting any additional resources on geographic profiling. 
+To supplement the knowledge gained in the past three tutorials below are a collection of resources to aide further investigation in RgeoProfile and general geographic profiling methods. Firstly, here is a long but not necessarily exhaustive list/links to open-access papers using geographic profiling. 
 
 ## Papers
 
-Below are a collection of open-access papers on geographic profiling. 
-
-In ecology:
+### In ecology:
   
   * @Faulkner2016 [Using geographic profiling to compare the value of sightings vs trap data in a biological invasion](https://onlinelibrary.wiley.com/doi/full/10.1111/ddi.12498)
   * @Faulkner2017 [A spatial approach to combatting wildlife crime](https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/25863/Le%20Comber%20A%20spatial%20approach%202017%20Accepted.pdf?sequence=1&isAllowed=y)
   * @Heald2019 [Understanding the origins of the ring‐necked parakeet in the UK](https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/jzo.12753)
   
-In epidemiology
+### In epidemiology
 
   * @LeComber2011 [Geographic profiling as a novel spatial tool for targeting infectious disease control](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3123167/)
   * @Verity2014 [Spatial targeting of infectious disease control: identifying multiple, unknown sources](https://besjournals.onlinelibrary.wiley.com/doi/epdf/10.1111/2041-210X.12190)
   * @Smith2015 [Spatial Targeting for Bovine Tuberculosis Control: Can the Locations of Infected Cattle Be Used to Find Infected Badgers?](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0142710&type=printable)
 
-In criminology
+### In criminology
 
   * @Rossmo2015 [Geographic profiling in Nazi Berlin: fact and fiction](https://core.ac.uk/download/pdf/30697125.pdf)
 
-Novel applications
+### Novel applications
 
   * @Stevens2020 [Investigating Sherlock Holmes: Using Geographic Profiling to Analyze the Novels of Arthur Conan Doyle](https://www.tandfonline.com/doi/full/10.1080/00330124.2020.1758575)
 
 ## Blogs
+
+Blogs and popular science articles corresponding to some of the articles above are listed below. These offer a brief summary into some of the applications of geographic profiling. In addition to this, the chalkdust article from *Faulkner and Stevens 2018* offers a gentle introduction into the history and methods associated with geographic profiling.  
 
   * Faulkner 2014 [Geographic Profiling – a novel tool for locating tarsier sleeping sites](https://www.biodiversityscience.com/2014/09/22/geographic-profiling-tarsier-sites/)
   * Faulkner and Stevens 2018 [Geographic Profiling: Murder, maths, malaria and mammals](http://chalkdustmagazine.com/features/geographic-profiling-murder-maths-malaria-mammals/)
@@ -44,6 +44,12 @@ Novel applications
   
 ## Spatial data and analysis
 
+Geographic profiling is a small branch of the broader topic of spatial analysis. Alongside the many blogs and websites built to teach R, there's also a wide collection of sites that can guide users in spatial analysis with R. A few note worthy resources are:    
+
 * [Robin Lovelace's Geocomputation with R](https://geocompr.robinlovelace.net/)
+* [Spatial Data Science with R](https://www.rspatial.org/intr/index.html), this also comes with a crash course in R itself. 
+* [Coding club's intro to spatial analysis with R](https://ourcodingclub.github.io/tutorials/spatial/index.html)
+* [R journalism's spatial analysis](https://learn.r-journalism.com/en/mapping/)
+* [A collection of R packages for spatial analysis](https://urbandemographics.blogspot.com/2018/08/assorted-r-packages-for-spatial-analysis.html)
 
 ## References

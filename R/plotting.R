@@ -495,6 +495,7 @@ geoPlotMap <- function(params, data=NULL, source=NULL, surface=NULL, surfaceCols
 #' @param surfaceCols vector of two or more colours to plot surface. Defaults to viridis palette.
 #' @param map_type the specific type of map to plot. See leaflet::providers for options. 
 #' @param opacity value between 0 and 1 givin the opacity of surface colours.
+#' @param colOpacity opacity of crime and source colours
 #' @param crimeCex relative size of symbols showing crimes.
 #' @param crimeCol colour of crime symbols.
 #' @param sourceCex relative size of symbols showing suspect sites.
@@ -573,6 +574,7 @@ geoPlotLeaflet <- function(params = NULL,
                            map_type = 110,
                            threshold = 0.1,
                            opacity = 0.8,
+                           colOpacity = 1,
                            smoothing = 1,
                            gpLegend  = FALSE) {
                         
@@ -613,7 +615,7 @@ geoPlotLeaflet <- function(params = NULL,
                                  radius = crimeCex,
                                  fillColor = crimeCol, 
                                  stroke = FALSE, 
-                                 fillOpacity = opacity)
+                                 fillOpacity = colOpacity)
     }
     if(!is.null(source)){
        # add crimes markers
@@ -623,7 +625,7 @@ geoPlotLeaflet <- function(params = NULL,
                                   radius = sourceCex,
                                   fillColor = sourceCol, 
                                   stroke = FALSE, 
-                                  fillOpacity = opacity)
+                                  fillOpacity = colOpacity)
     }
     
     if(!is.null(surface)){

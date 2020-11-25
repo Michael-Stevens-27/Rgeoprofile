@@ -115,7 +115,7 @@
       <a href="../articles/installation.html">Installing RgeoProfile</a>
     </li>
     <li>
-      <a href="../articles/GP_background.html">Background*</a>
+      <a href="../articles/GP_background.html">Background</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -125,14 +125,14 @@
       <a href="../articles/Data_Rgeoprofile.html">Basic Rgeoprofile example 2</a>
     </li>
     <li>
-      <a href="../articles/Advanced_Rgeoprofile.html">Advanced Rgeoprofile*</a>
+      <a href="../articles/Advanced_Rgeoprofile.html">Advanced Rgeoprofile</a>
     </li>
     <li class="divider"></li>
     <li>
       <a href="../reference/index.html">Function list*</a>
     </li>
     <li>
-      <a href="../articles/GP_resources.html">Extra resources*</a>
+      <a href="../articles/GP_resources.html">Extra resources</a>
     </li>
   </ul>
 </li>
@@ -171,7 +171,8 @@
   <span class='st'>"#ED7953FF"</span>, <span class='st'>"#D8576BFF"</span>, <span class='st'>"#BD3786FF"</span>, <span class='st'>"#9C179EFF"</span>, <span class='st'>"#7301A8FF"</span>,
   <span class='st'>"#47039FFF"</span>, <span class='st'>"#0D0887FF"</span><span class='op'>)</span>, crimeCex <span class='op'>=</span> <span class='fl'>1.5</span>, crimeCol <span class='op'>=</span> <span class='st'>"red"</span>,
   sourceCex <span class='op'>=</span> <span class='fl'>1.5</span>, sourceCol <span class='op'>=</span> <span class='st'>"blue"</span>, map_type <span class='op'>=</span> <span class='fl'>110</span>,
-  threshold <span class='op'>=</span> <span class='fl'>0.1</span>, opacity <span class='op'>=</span> <span class='fl'>0.8</span>, smoothing <span class='op'>=</span> <span class='fl'>1</span>, gpLegend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+  threshold <span class='op'>=</span> <span class='fl'>0.1</span>, opacity <span class='op'>=</span> <span class='fl'>0.8</span>, colOpacity <span class='op'>=</span> <span class='fl'>1</span>, smoothing <span class='op'>=</span> <span class='fl'>1</span>,
+  gpLegend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -223,6 +224,10 @@
     <tr>
       <th>opacity</th>
       <td><p>value between 0 and 1 givin the opacity of surface colours.</p></td>
+    </tr>
+    <tr>
+      <th>colOpacity</th>
+      <td><p>opacity of crime and source colours</p></td>
     </tr>
     <tr>
       <th>smoothing</th>

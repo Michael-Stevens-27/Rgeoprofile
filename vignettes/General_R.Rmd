@@ -53,6 +53,4 @@ If you're willing to commit a lot more time to learning about R, below are a few
 * [Code academy](https://www.codecademy.com/learn/learn-r)
 * [Datacamp](https://www.datacamp.com/courses/free-introduction-to-r)
 
-## Books  
-
-* [Rob's books](https://www.amazon.co.uk/Introductory-Beginners-Visualisation-Statistical-Programming-ebook/dp/B00BU34QTM/ref=sr_1_1?dchild=1&keywords=knell+introduction+R&qid=1606128296&sr=8-1)
+In addition to tutorials [here is a blog post](https://www.datasciencecentral.com/profiles/blogs/10-great-books-about-r-1) from TechTarget with a list of useful books for beginners using R. This page also provides a link to a rather exhaustive list [books related to R](https://www.r-project.org/doc/bib/R-books.html) from R project. 

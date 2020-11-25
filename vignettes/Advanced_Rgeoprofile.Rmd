@@ -189,13 +189,13 @@ Clearly the DPM model is performing most efficently, however the ring search giv
 
 Finally, RgeoProfile allows us manipulate our geographic profile based on spatial information we have about an area. For example, if a large body of water is present in our search area, then we are certain that this shouldn't be considered in our search strategy. So we need some way to alter the geoprofile accordingly.  
 
-In @Faulkner2017, author's inferred locations associated with poachers responsible for animal deaths within Sav$\'{e}$ Valley Conservancy, Zimbabwe. However, poachers could not reside within the conservancy, hence they masked out the conservancy via the `geoMask()` function. The profile can be seen below. 
+In @Faulkner2017, author's inferred locations associated with poachers responsible for animal deaths within Sav{\'{e}} Valley Conservancy, Zimbabwe. However, the majority of poachers resided outside the conservancy, hence they masked out the conservancy via the `geoMask()` function. The profile can be seen below. 
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/poaching.png)
 \  
 
-Here, the points in black represent locations associated with illegal hunting incidents and the blue squares are associated with the poacher's source locations. We can also see the outline of Sav$\'{e}$ Valley Conservancy where the majority of source locations are outside the Conservancy but all crimes are within it.    
+Here, the points in black represent locations associated with illegal hunting incidents and the blue squares are associated with the poacher's source locations. We can also see the outline of Sav{\'{e}} Valley Conservancy where the majority of source locations are outside the Conservancy but all crimes are within it.    
 
 Before we look at how to include different spatial information in our geoprofile, we must first talk about shapefiles. 
 
@@ -313,8 +313,16 @@ mapMask <- geoPlotLeaflet(params = p,
 mapMask
 ```
 
-We can see that the search priority has weakened inside Westminster and become tighter outside.  The `geoMask()` comes with many other operations too, see the function documentation for more options.
+We can see that the search priority has weakened inside Westminster and become tighter outside.  The `geoMask()` comes with many other operations too, see the function documentation for more options. The shapefile used in this tutorial is built into the RgeoProfile package. Any other external shapefile should be loaded into R using the `readOGR()` function from the `rgdal` package. 
 
+```{r, eval = FALSE}
+library(rgdal)
+
+# read in external shapefile
+readOGR("PATH TO SHAPEFILE/SHAPEFILE NAME.shp")
+```
+
+Notice the extension for a shapefile is ".shp".
 
 ## A summary of using Rgeoprofile 
 

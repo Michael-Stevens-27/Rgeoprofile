@@ -66,19 +66,19 @@ navbar:
       menu:
         - text: "Installing RgeoProfile"
           href: articles/installation.html  
-        - text: "Background*"
+        - text: "Background"
           href: articles/GP_background.html
         - text: ---------------
         - text: "Basic Rgeoprofile example 1"
           href: articles/Basic_Rgeoprofile.html
         - text: "Basic Rgeoprofile example 2"
           href: articles/Data_Rgeoprofile.html
-        - text: "Advanced Rgeoprofile*"
+        - text: "Advanced Rgeoprofile"
           href: articles/Advanced_Rgeoprofile.html
         - text: ---------------
         - text: "Function list*"
           href: reference/index.html
-        - text: "Extra resources*"
+        - text: "Extra resources"
           href: "articles/GP_resources.html"
   right:
    - icon: fa-github
