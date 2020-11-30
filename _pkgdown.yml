@@ -76,6 +76,8 @@ navbar:
         - text: "Advanced Rgeoprofile"
           href: articles/Advanced_Rgeoprofile.html
         - text: ---------------
+        - text: "Maps via Google"
+          href: "articles/Maps_with_google.html"
         - text: "Function list*"
           href: reference/index.html
         - text: "Extra resources"

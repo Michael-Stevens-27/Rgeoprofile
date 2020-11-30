@@ -1,42 +1,24 @@
 ---
-title: "Installation"
+title: "Installating the RgeoProfile package"
 author: "Michael Stevens"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Installation}
+  %\VignetteIndexEntry{Installating the RgeoProfile package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-Before we can install Rgeoprofile, we need to install Rcpp, a package for linking R and C++ together to speed up the model. 
 
 ## Installing Rcpp
 
-The Rcpp package requires the following OS-specific steps:
+Before we can install Rgeoprofile, we need to install Rcpp. Although Rcpp is an R package, it requires another piece of software to work properly that is dependent on the operating system you are using. This piece of software will link the R coding language with the C++ coding language. C++ is used in the RgeoProfile package in order to decrease the time it takes to run the model.  
 
-### Windows
-    
-Download and install the appropriate version of [Rtools](https://cran.rstudio.com/bin/windows/Rtools/) for your version of R. On installation, ensure you check the box to arrange your system PATH as recommended by Rtools:
+If you are working on a **windows** computer you need to download and install [Rtools40](https://cran.rstudio.com/bin/windows/Rtools/) via the " rtools40-x86_64.exe" link. On installation, ensure you check the box to arrange your system as recommended by Rtools. Once the file has finished downloading click on the .exe file and follow the installation process - this may take a few minutes.    
 
-\      
-![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/rtools.png)
-\  
+If you are working on a **mac** computer download and install [XCode](http://itunes.apple.com/us/app/xcode/id497799835?mt=12). Within XCode go to Preferences: Downloads and install the Command Line Tools
 
-Once the file has finished downloading click on the .exe file and follow the installation process - this may take a few minutes.    
-
-\      
-![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rtools_install.png)
-\  
-
-### Mac OS X
-
-  * Download and install [XCode](http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-  * Within XCode go to Preferences : Downloads and install the Command Line Tools
-
-### Linux (Debian/Ubuntu)
-  
-  * Install the core software development utilities required for R package development as well as LaTeX by executing
+If you are using **Linux (Debian/Ubuntu)** install the core software development utilities required for R package development as well as LaTeX by executing the following in a terminal window:
 
 ```
 sudo apt-get install r-base-dev texlive-full

@@ -300,7 +300,7 @@ getZoom <- function(x,y) {
 }
 
 #------------------------------------------------
-#' Plot a map and overlay data and/or geoprofile using google maps - REQUIRES API
+#' Plot a map and overlay data and/or geoprofile using google maps
 #'
 #' Plots geoprofile on map, with various customisable options.
 #'

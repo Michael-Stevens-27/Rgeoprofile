@@ -1,0 +1,39 @@
+---
+title: "Creating maps with google"
+author: "Michael Stevens"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Creating maps with google}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+The Rgeoprofile package offers a neat way of visualising a geoprofile using interactvie maps via the leaflet package. A disadvantage to using this method is that leaflet's maps are hard to extract as high quality images. The Rgeoprofile package conatins another method of plotting geoprofiles via google maps and the `ggmap` package. Through this package and the `ggplotmap()` function from Rgeoprofile we can create higher quality maps such as the one below.  
+
+\  
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/LondonExample_figure1.png)
+\  
+
+In order to create a map such as this, you are required to make a google account and enter credit card details to obtain an API key. This API key is then used to pull the maps from google's servers. Although a user would need to create hundreds of thousands of maps to be charged any substantial amount of money for using google's services, we do not want to force users to create such an account in order to complete this workshop, hence we have stuck to producing interactive maps through `leaflet` in the tutorials. Should you want to create one of these maps, a step by stpe guide can be found below. 
+
+## Obtaining an API key     
+
+GoogleMaps changed the way they price API calls – see here (https://cloud.google.com/maps-platform/pricing/#details). Under the new system there is a lower limit on API calls below which you won’t be charged, but annoyingly you still need to sign up for an API key otherwise it produces a 403 error.
+
+Instructions on signing up for a GoogleMaps API key can be found here (https://developers.google.com/maps/documentation/javascript/get-api-key). Then – just to be extra sure that you will never be charged - you can limit your budget to something very low (like £1) by following these instructions (https://cloud.google.com/billing/docs/how-to/budgets?hl=en). This way you can be sure you will only use the free API calls, and your account will cap before you start being charged any significant amount of money.
+
+Once you have a key (which should look like a long string of letters and numbers) you need to register it in R as below, replacing 'xxxxxxx' with your key. Start by installing and loading the “ggmap” package. Note that this should be installed from GitHub since the CRAN version doesn’t currently include the function `register_google()`. After loading the `ggmap` library, load RgeoProfile as normal. Once your key is registered mapping functions in RgeoProfile should work normally.
+
+```{r, eval = FALSE}
+library(devtools) # for the install_github function
+install_github("dkahle/ggmap")
+
+library(ggmap)
+register_google(key ="xxxxxxxx")
+```
+More details can be found here: https://rdrr.io/github/fresques/ggmap/man/register_google.html.
+
+We know this is inconvenient and makes it more difficult for users to work with our package. For this reason the next version of RgeoProfile is likely to switch to open source alternatives.
