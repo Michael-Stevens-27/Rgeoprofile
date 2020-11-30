@@ -45,7 +45,7 @@ Access full documentation [here](https://michael-stevens-27.github.io/Rgeoprofil
 
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/bangor.png" height="250px" width="350px" />
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/UKRI.png" height="100px" width="200px" />
-<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/qmul.png" height="200px" width="350px" />
+<img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/qmul.png" height="150px" width="350px" />
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Tawiri.png" height="150px" width="200px" />
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/ERC.png" height="150px" width="150px" />
 

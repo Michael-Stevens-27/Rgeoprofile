@@ -27,7 +27,14 @@ In the previous tutorial we touched on a few of R's built in functions. We even 
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/packages.png)
 \  
 
-Here we can see all of the packages that are already been downloaded. To load a package we use the `library()` function. For example, to load the "raster" package, we would run:
+Here we can see all of the packages that have already been downloaded. In order to install a package that is not in our system, we use the `install.packages()` function in the following way:
+
+```{r, eval = FALSE}
+# install raster package
+install.packages("raster")
+```
+
+Using this we will install the `raster` package. This package is full of tools for spatial analysis and we will need in future tutorials. The `install.packages()` function will download the chosen package from **CRAN**, the online repository for R packages. The full list of R packages can be found [via this link](https://cran.r-project.org/web/packages/available_packages_by_date.html). To load a package we use the `library()` function. For example, to load the "raster" package, we would run the following in the script window:
 
 ```{r}
 # load raster package
@@ -40,14 +47,6 @@ The raster package also loads another package for spatial analysis; the "sp" pac
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/load_packages.png)
 \  
 
-In order to install a package that is not in our system, we use the `install.packages()` function in the following way:
-
-```{r, eval = FALSE}
-# install package
-install.packages("INSERT PACKAGE NAME HERE")
-```
-
-The `install.packages()` function will download the chosen package from **CRAN**, the online repository for R packages. The full list of R packages can be found [via this link](https://cran.r-project.org/web/packages/available_packages_by_date.html).
 
 ## Directories and reading data
 
@@ -78,22 +77,36 @@ In addition to built-in data sets, a user will need to import their own data int
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png)
 \  
 
-Rstudio will then open up a screen for you to navigate to the file. I've got an example file "my_data.txt" setup in my documents.
+Rstudio will then open up a screen for you to navigate to the file. I've got an example file "my_data.txt" setup on my desktop here.
 
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png)
 \ 
 
-
+It is common practice in R to make sure you are working within the directory that contains all the files associated with your work or project. We will know we are working in the correct directory when we can see our script and data file in the "files" tab of the bottom right window in Rstudio. We can choose our working directory by going to Session -> Set Working Directory -> Choose Directory.  
 
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png)
 \  
+
+R will then prompt you to pick which location you wish to use as your working directory. Here I have chosen the location where I stored my data and script.    
+
+\      
+![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/desk_directory.png)
+\  
+
+Notice in the console window R ran the `setwd()` function for you automatically to change the directory. The "set working directory" function `setwd()` can be used manually, but it is much easier to navigate to your working directory using the process above. 
+
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png)
 \  
 
-read.csv, read.table, R's built in data sets
+It is possible to check anytime which working directory is being currently used by using the `getwd()` function as follows:
+
+```{r, eval = F}
+# get the working directory
+getwd()
+```
 
 ## Data frames
 
@@ -107,7 +120,7 @@ data(iris)
 head(iris)
 ``` 
 
-Here we have loaded the `iris` data frame. This consists of the sepal and petal length and width of three different species of iris flower. Using the `head()` function we had look at the first few rows of our data frame. As we can see all the lengths and widths are numeric values whereas the species names are character values. When reading in data, R will automatically decide which of the three categories each column of your data falls under. To check this we can use the `str()` function.
+Here we have loaded the `iris` data frame. This consists of the sepal and petal length and width of three different species of iris flower. Using the `head()` function tells R to display the first few rows of our data frame in the console window. As we can see all the lengths and widths are numeric values whereas the species names are character values (i.e. letters/words). When reading in data, R will automatically decide which of the three categories each column of your data falls under. To check this we can use the `str()` function.
 
 ```{r, eval = TRUE}
 # summarise each variable of the iris data 
@@ -116,7 +129,7 @@ str(iris)
 
 So we can see, the data frame has 150 observations over 5 different variables. Notice that the final variable "Species" is reffered to as a "Factor". This is R's way of organising the character variables into categories. `Factor w/ 3 levels` referrs to the fact that the species variable has character values with 3 different categories. The `"setosa", "versicolor", ...: 1 1 1 1 ...` firstly shows R listing off each of these categories, these being the species names and then the numbers (`1 1 1 1 1 1 ...`) indicate which species each observation is associated with. So we know that the first few flowers are from the first category, in other words, the first species, which is "setosa". 
 
-Say we wanted to find out which flower species has the largest sepal width. The first place your mind might go is to use the `max()` or `which.max()` functions on the data frame. However we don't want to look for the maximum value of all the vraibles, only sepal width. So how do we access this variable from the data frame? If you look closely at the ouput of the `str()` function, you'll see R is giving us a hint. 
+Say we wanted to find out which flower species has the largest sepal width. The first place your mind might go is to use the `max()` or `which.max()` functions on the data frame. However we don't want to look for the maximum value of all the variables, only sepal width. So how do we access this variable from the data frame? If you look closely at the ouput of the `str()` function, you'll see R is giving us a hint. 
 
 ```{r, echo = FALSE}
 str(iris)
@@ -208,11 +221,11 @@ plot(x = iris$Species,
 
 R has automatically recognised that we are plotting a continuous variable against a categorical one, hence it has generated a boxplot of our data.
 
-All of these plots have been using the built-in R function `plot()` to visualise our data. There are many R packages out there for visualising data. One of the most popular being `ggplot2`. The ggplot2 package comes with extensive documentation but the syntax for plotting can be a bit tricky at first. I won't go through it here, but as an example, here's a piece of R code using the ggplot syntax that to make the make original scatterplot of the iris data. 
+All of these plots have been using the built-in R function `plot()` to visualise our data. There are many R packages out there for visualising data. One of the most popular being `ggplot2`. The ggplot2 package comes with extensive documentation but the syntax for plotting can be a bit tricky at first. I won't go through it here, but as an example, here's a piece of R code using the ggplot syntax to make the original scatterplot of the iris data. 
 
 ```{r}
 # load ggplot package
-library(ggplot2)
+library(ggplot2) # remember, this can be installed by running "install.packages('ggplot2')"
 
 # plot petal length against flower species  
 ggplot() + geom_point(data = iris, 
@@ -241,4 +254,4 @@ In summary, these introduction to R tutorials should have equipped you with what
 * Using data frames
 * Using and plotting data sets 
 
- This is a lot of material! Like learning any new skill, your ability to code will develop slowly over time and will come with practice. So don't be too disheartened if it was hard to digest all of the content in these tutorials. You will always be able to return to these tutorials for a reminder of anything that's forgotten. I also encourage you to go searching for other R tutorials. The [extra resources]  (https://michael-stevens-27.github.io/Rgeoprofile/articles/General_R.html) page under the "R basics" tab contains a small collection of other rsources to help develop your R skills. 
+ This is a lot of material! Like learning any new skill, your ability to code will develop slowly over time and will come with practice. So don't be too disheartened if it was hard to digest all of the content in these tutorials. You will always be able to return to these tutorials for a reminder of anything that's forgotten. I also encourage you to go searching for other R tutorials. The [extra resources](https://michael-stevens-27.github.io/Rgeoprofile/articles/General_R.html) page under the "R basics" tab contains a small collection of other rsources to help develop your R skills. 

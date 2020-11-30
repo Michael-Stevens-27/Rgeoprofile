@@ -120,7 +120,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 3</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-11-25</h4>
+            <h4 class="date">2020-11-30</h4>
       
       
       <div class="hidden name"><code>R_intro3.Rmd</code></div>
@@ -146,18 +146,17 @@
 <a href="#packages" class="anchor"></a>Packages</h2>
 <p>In the previous tutorial we touched on a few of R's built in functions. We even saw an example of writing our own <code>add</code> function. You may find yourself in a position where you need a function that R's built-in library cannot provide you with and that may be too complex to write yourself. There are a number of <strong>R packages</strong> that can be downloaded that provide you with extra functions for many different uses. We will see in the next tutorial how to download <code>RgeoProfile</code>, a package for spatial analysis. Navigate to the "Packages" tab of the bottom right pane in Rstudio.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/packages.png">  </p>
-<p>Here we can see all of the packages that are already been downloaded. To load a package we use the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function. For example, to load the "raster" package, we would run:</p>
+<p>Here we can see all of the packages that have already been downloaded. In order to install a package that is not in our system, we use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function in the following way:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install raster package</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"raster"</span><span class="op">)</span></code></pre></div>
+<p>Using this we will install the <code>raster</code> package. This package is full of tools for spatial analysis and we will need in future tutorials. The <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function will download the chosen package from <strong>CRAN</strong>, the online repository for R packages. The full list of R packages can be found <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">via this link</a>. To load a package we use the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function. For example, to load the "raster" package, we would run the following in the script window:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load raster package</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span></code></pre></div>
 <pre><code>## Loading required package: sp</code></pre>
 <p>The raster package also loads another package for spatial analysis; the "sp" package. Notice the empty boxes down the left hand side of the "Packages" tab. Clicking on these boxes is another method for loading packages.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/load_packages.png">  </p>
-<p>In order to install a package that is not in our system, we use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function in the following way:</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install package</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"INSERT PACKAGE NAME HERE"</span><span class="op">)</span></code></pre></div>
-<p>The <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function will download the chosen package from <strong>CRAN</strong>, the online repository for R packages. The full list of R packages can be found <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">via this link</a>.</p>
 </div>
 <div id="directories-and-reading-data" class="section level2">
 <h2 class="hasAnchor">
@@ -183,10 +182,18 @@
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <p>In addition to built-in data sets, a user will need to import their own data into R too. Rstudio makes this a little easier by allowing the user to choose the type of file when importing their data and where R can find said file. We can import a data file by going to File -&gt; Import Dataset -&gt; From ... and choosing from the options depending on your file type.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png">  </p>
-<p>Rstudio will then open up a screen for you to navigate to the file. I've got an example file "my_data.txt" setup in my documents.</p>
+<p>Rstudio will then open up a screen for you to navigate to the file. I've got an example file "my_data.txt" setup on my desktop here.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png">  </p>
-<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png">    <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png">  </p>
-<p>read.csv, read.table, R's built in data sets</p>
+<p>It is common practice in R to make sure you are working within the directory that contains all the files associated with your work or project. We will know we are working in the correct directory when we can see our script and data file in the "files" tab of the bottom right window in Rstudio. We can choose our working directory by going to Session -&gt; Set Working Directory -&gt; Choose Directory.</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png">  </p>
+<p>R will then prompt you to pick which location you wish to use as your working directory. Here I have chosen the location where I stored my data and script.</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png">  </p>
+<p>Notice in the console window R ran the <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> function for you automatically to change the directory. The "set working directory" function <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> can be used manually, but it is much easier to navigate to your working directory using the process above.</p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png">  </p>
+<p>It is possible to check anytime which working directory is being currently used by using the <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> function as follows:</p>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># get the working directory</span>
+<span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="data-frames" class="section level2">
 <h2 class="hasAnchor">
@@ -205,7 +212,7 @@
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<p>Here we have loaded the <code>iris</code> data frame. This consists of the sepal and petal length and width of three different species of iris flower. Using the <code><a href="https://rdrr.io/pkg/raster/man/headtail.html">head()</a></code> function we had look at the first few rows of our data frame. As we can see all the lengths and widths are numeric values whereas the species names are character values. When reading in data, R will automatically decide which of the three categories each column of your data falls under. To check this we can use the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function.</p>
+<p>Here we have loaded the <code>iris</code> data frame. This consists of the sepal and petal length and width of three different species of iris flower. Using the <code><a href="https://rdrr.io/pkg/raster/man/headtail.html">head()</a></code> function tells R to display the first few rows of our data frame in the console window. As we can see all the lengths and widths are numeric values whereas the species names are character values (i.e. letters/words). When reading in data, R will automatically decide which of the three categories each column of your data falls under. To check this we can use the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># summarise each variable of the iris data </span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></code></pre></div>
@@ -216,7 +223,7 @@
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <p>So we can see, the data frame has 150 observations over 5 different variables. Notice that the final variable "Species" is reffered to as a "Factor". This is R's way of organising the character variables into categories. <code>Factor w/ 3 levels</code> referrs to the fact that the species variable has character values with 3 different categories. The <code>"setosa", "versicolor", ...: 1 1 1 1 ...</code> firstly shows R listing off each of these categories, these being the species names and then the numbers (<code>1 1 1 1 1 1 ...</code>) indicate which species each observation is associated with. So we know that the first few flowers are from the first category, in other words, the first species, which is "setosa".</p>
-<p>Say we wanted to find out which flower species has the largest sepal width. The first place your mind might go is to use the <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> or <code><a href="https://rdrr.io/pkg/raster/man/which.minmax.html">which.max()</a></code> functions on the data frame. However we don't want to look for the maximum value of all the vraibles, only sepal width. So how do we access this variable from the data frame? If you look closely at the ouput of the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function, you'll see R is giving us a hint.</p>
+<p>Say we wanted to find out which flower species has the largest sepal width. The first place your mind might go is to use the <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> or <code><a href="https://rdrr.io/pkg/raster/man/which.minmax.html">which.max()</a></code> functions on the data frame. However we don't want to look for the maximum value of all the variables, only sepal width. So how do we access this variable from the data frame? If you look closely at the ouput of the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function, you'll see R is giving us a hint.</p>
 <pre><code>## 'data.frame':    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -257,7 +264,7 @@
 <code class="sourceCode R"><span class="co"># create an object with some values</span>
 <span class="va">some_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">5</span>,<span class="fl">8</span>,<span class="fl">2</span>,<span class="fl">9</span>,<span class="fl">10</span>,<span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">some_values</span><span class="op">)</span></code></pre></div>
-<p><img src="R_intro3_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p><img src="R_intro3_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
 <p>As we can see, R has plotted our values on the y-axis, with the corresponding index on the x-axis. We only plotted a single object though, let's specify the <code>x</code> and <code>y</code> values ourselves:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create two objects that will to plot on the x and y axis</span>
@@ -266,7 +273,7 @@
 
 <span class="co"># plot </span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">some_x_values</span>, y <span class="op">=</span> <span class="va">some_y_values</span><span class="op">)</span></code></pre></div>
-<p><img src="R_intro3_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p><img src="R_intro3_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
 <p>R has automatically generated this plot window along with all of its characteristics such as: the limits of the x and y axis, the size of the points, the symbol for the points, the x and y labels and many more. All of the above and more can be customised. See the <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> function documentation for the extensive list but here are a few examples:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># plot </span>
@@ -280,7 +287,7 @@
      xlab <span class="op">=</span> <span class="st">"x values"</span>,        <span class="co"># set the x axis label</span>
      ylab <span class="op">=</span> <span class="st">"y values"</span>,        <span class="co"># set the y axis label</span>
      main <span class="op">=</span> <span class="st">"My plot title"</span><span class="op">)</span>   <span class="co"># set the plot title</span></code></pre></div>
-<p><img src="R_intro3_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<p><img src="R_intro3_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 <p>If we go back to our Iris data, let's plot sepal length against sepal width for each of the flowers.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># plot </span>
@@ -292,7 +299,7 @@
      xlab <span class="op">=</span> <span class="st">"Petal Width"</span>,         <span class="co"># set the x axis label</span>
      ylab <span class="op">=</span> <span class="st">"Petal Length"</span>,        <span class="co"># set the y axis label</span>
      main <span class="op">=</span> <span class="st">"Petal measurements"</span><span class="op">)</span>  <span class="co"># set the plot title</span></code></pre></div>
-<p><img src="R_intro3_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p><img src="R_intro3_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
 <p>Notice how we also coloured the points based on a categorical variable! In these plots, we have plotted continuous data against continuous data, hence R has responded accordingly and created a scatterplot when we called the <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> function. What if we switch the kind of data we are using? Let's say we want to plot the petal length for each species. We want to plot a continuous variable (petal length) against a categorical variable (species).</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># plot petal length against flower species  </span>
@@ -301,12 +308,12 @@
      xlab <span class="op">=</span> <span class="st">"Species"</span>,                       <span class="co"># set the x axis label</span>
      ylab <span class="op">=</span> <span class="st">"Petal Length (cm)"</span>,             <span class="co"># set the y axis label</span>
      main <span class="op">=</span> <span class="st">"Petal Length for each species"</span><span class="op">)</span> <span class="co"># set the plot title</span></code></pre></div>
-<p><img src="R_intro3_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+<p><img src="R_intro3_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
 <p>R has automatically recognised that we are plotting a continuous variable against a categorical one, hence it has generated a boxplot of our data.</p>
-<p>All of these plots have been using the built-in R function <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> to visualise our data. There are many R packages out there for visualising data. One of the most popular being <code>ggplot2</code>. The ggplot2 package comes with extensive documentation but the syntax for plotting can be a bit tricky at first. I won't go through it here, but as an example, here's a piece of R code using the ggplot syntax that to make the make original scatterplot of the iris data.</p>
+<p>All of these plots have been using the built-in R function <code><a href="https://rdrr.io/pkg/raster/man/plot.html">plot()</a></code> to visualise our data. There are many R packages out there for visualising data. One of the most popular being <code>ggplot2</code>. The ggplot2 package comes with extensive documentation but the syntax for plotting can be a bit tricky at first. I won't go through it here, but as an example, here's a piece of R code using the ggplot syntax to make the original scatterplot of the iris data.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load ggplot package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> <span class="co"># remember, this can be installed by running "install.packages('ggplot2')"</span>
 
 <span class="co"># plot petal length against flower species  </span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">iris</span>, 
@@ -316,7 +323,7 @@
                       size <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">+</span>
             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Petal Length (cm)"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Petal Length (cm)"</span><span class="op">)</span> <span class="op">+</span>
             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Petal length vs petal width"</span><span class="op">)</span></code></pre></div>
-<p><img src="R_intro3_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
+<p><img src="R_intro3_files/figure-html/unnamed-chunk-16-1.png" width="700"></p>
 <p>There are plenty of R blogs out there that can guide you when using ggplot2. <a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.3.2">Here's a link</a> to the documentation.</p>
 </div>
 <div id="summary-of-r-content" class="section level2">
@@ -335,7 +342,7 @@
 <li>Using data frames</li>
 <li>Using and plotting data sets</li>
 </ul>
-<p>This is a lot of material! Like learning any new skill, your ability to code will develop slowly over time and will come with practice. So don't be too disheartened if it was hard to digest all of the content in these tutorials. You will always be able to return to these tutorials for a reminder of anything that's forgotten. I also encourage you to go searching for other R tutorials. The [extra resources] (<a href="https://michael-stevens-27.github.io/Rgeoprofile/articles/General_R.html" class="uri">https://michael-stevens-27.github.io/Rgeoprofile/articles/General_R.html</a>) page under the "R basics" tab contains a small collection of other rsources to help develop your R skills.</p>
+<p>This is a lot of material! Like learning any new skill, your ability to code will develop slowly over time and will come with practice. So don't be too disheartened if it was hard to digest all of the content in these tutorials. You will always be able to return to these tutorials for a reminder of anything that's forgotten. I also encourage you to go searching for other R tutorials. The <a href="https://michael-stevens-27.github.io/Rgeoprofile/articles/General_R.html">extra resources</a> page under the "R basics" tab contains a small collection of other rsources to help develop your R skills.</p>
 </div>
   </div>
 
