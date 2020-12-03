@@ -59,9 +59,6 @@ navbar:
           href: "articles/R_intro2.html"
         - text: "Introduction to R - part 3"
           href: "articles/R_intro3.html"
-        - text: ---------------
-        - text: "Extra resources*"
-          href: articles/General_R.html
     - text: "GP tutorials"
       menu:
         - text: "Installing RgeoProfile"
@@ -73,15 +70,20 @@ navbar:
           href: articles/Basic_Rgeoprofile.html
         - text: "Basic Rgeoprofile example 2"
           href: articles/Data_Rgeoprofile.html
+        - text: ---------------
         - text: "Advanced Rgeoprofile"
           href: articles/Advanced_Rgeoprofile.html
+    - text: "Extra resources"
+      menu:
+        - text: "Help with R"
+          href: articles/General_R.html  
         - text: ---------------
-        - text: "Maps via Google"
-          href: "articles/Maps_with_google.html"
-        - text: "Function list*"
-          href: reference/index.html
-        - text: "Extra resources"
-          href: "articles/GP_resources.html"
+        - text: "RgeoProfile function list"
+          href: reference/index.html 
+        - text: "Geoprofiling resources"
+          href: articles/GP_resources.html  
+        - text: "Maps with Google"
+          href: articles/Maps_with_google.html     
   right:
    - icon: fa-github
      href: https://github.com/Michael-Stevens-27/Rgeoprofile/tree/workshop
