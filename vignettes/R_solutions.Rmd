@@ -16,42 +16,49 @@ Use R to carry out the following calculations:
 * 3 times 5
 
 ```{r}
+# multiply 3 and 5 with the * symbol
 3*5
 ```
  
 * 5 to the power of 2
 
 ```{r}
+# raise 5 to the power of 2 using the ^ symbol
 5^2
 ```
 
 * Add together 8 and 22 and then multiply the answer by 3
 
 ```{r}
+# add 8 and 22, then divid by 3
 (8 + 22)/3
 ```
 
 * Subtract 2.8 from 12 and then raise the answer to the power of 1.5 plus 1.3924
 
 ```{r}
+# subtract 2.8 from 12, and raise this to 1.5 plus 1.3924
 (12 - 2.8)^(1.5 + 1.3924)
 ```
 
 * Divide 8 by 2.5 and then divide the answer by 3
 
 ```{r}
+# divide 8 by 2.5, then divide again by 3
 (8/2.5)/3
 ```
 
 * Subtract 2.5 from 8 and then divide the answer by 3
 
 ```{r}
+# take 2.5 away from 8 then divide by 3
 (8 - 2.5)/3
 ```
 
 * Divide 2.5 by 3 and subtract the answer from 8
 
 ```{r}
+# divide 2.5 by t3, then take this away from 8
 8 - (2.5/3)
 ```
 
@@ -60,24 +67,28 @@ Use R to carry out the following calculations:
 * Create an object called "x" and assign it the numerical value 73
 
 ```{r}
+# assign x the value 73
 x <- 73
 ```
 
 * Create another object called “y” which is the answer to the sum of 101 and 36
 
 ```{r}
+# assign y the value 101 plus 36
 y <- 101 + 36
 ```
 
 * Multiply x and y together and assign this value to the object called z
 
 ```{r}
+# assign z the value of x multiplied by y
 z <- x*y
 ```
 
 * Subtract 1 from z and then calculate the 4th root (note you can raise to the ith root by raising to the power of 1/i)
 
 ```{r}
+# subtract 1 from z and raise this to 1/4
 (z - 1)^(0.25)
 ```
 
@@ -88,24 +99,28 @@ Using the same objects x, y and z that were set up in the previous exercises:
 * Calculate the log to the base 10 of x using the function `log10()`
 
 ```{r}
+# log base 10 of the value 10
 log10(10)
 ```
 
 * Calculate the square root of y using the function `sqrt()`
 
 ```{r}
+# square root y using the function
 sqrt(y)
 ```
 
 * Calculate the square root of y by raising it to the power 0.5: your answer should be the same as when you used the `sqrt()` function
 
 ```{r}
+# square root the value of y by raising to a half
 y^0.5
 ```
 
 * use the function `sum()` to add x and y: you'll need to put both object names inside the brackets and separate them with a comma
 
 ```{r}
+# add x and y using the sum function
 sum(x,y)
 ```
 
@@ -115,24 +130,28 @@ sum(x,y)
 # collect x and y as a vector
 xy_vec <- c(x,y)
 
+# calculate their average using the mean function
 mean(xy_vec)
 ```
 
 * Create an object called “w” which is assigned the value 67.8953
 
 ```{r}
+# assign w the value 67.8953
 w <- 67.8953
 ```
 
 * The function `round()` will round a number to a given number of decimal places. The default is zero so start by using this function to round w off to zero decimal places
 
 ```{r}
+# round w to the nearest integer 
 round(w)
 ```
 
 * Now use the round function to give you the value specified by w rounded off to three decimal places
 
 ```{r}
+# round w to 3 decimal places
 round(w, 3)
 ```
 
@@ -151,48 +170,56 @@ ceiling(w)
 * Delete the objects x, y, z and w that you set up for the previous set of exercises using the `rm()` function
 
 ```{r}
+# remove past objects using the rm function
 rm(x, y, z, w)
 ```
 
 * Create a vector called “x” consisting of the numbers 1,3,5 and 7
 
 ```{r}
+# asign x the vector of values 1,3,5,7
 x <- c(1, 3, 5, 7)
 ```
 
 * Create a vector called “y” consisting of the numbers 2,4,6 and 8
 
 ```{r}
+# asign y the vector of values 2,4,6,8
 y <- c(2, 4, 6, 8)
 ```
 
 * Subtract x from y
 
 ```{r}
+# take x away from y
 y - x
 ```
 
 * Create a new vector called “z” by multiplying vector x by vector y
 
 ```{r}
+# assign z the value of x multiplied by y
 z <- x*y
 ```
 
 * Create a new vector called “w” by taking the square root of each member of z
 
 ```{r}
+# assign w the value of z square rooted
 w <- sqrt(z)
 ```
 
 * Use the `mean()` function to calculate the arithmetic mean of the numbers in vector w
 
 ```{r}
+# calculate the mean of the w values
 mean(w)
 ```
 
 * Use the  `median()` function to calculate the median value of the numbers in vector z
 
 ```{r}
+# find the median of the z values
 median(z)
 ```
 
@@ -201,18 +228,21 @@ median(z)
 * Create a new vector called “V1” consisting of the following numbers 1,3,5,7,9,11
 
 ```{r}
+# assign V1 the vector with values 1,3,5,7,9,11
 V1 <- c(1, 3, 5, 7, 9, 11)
 ```
 
 * Create a matrix called “mat1” using the following function: `mat1 <- matrix(V1, nrow = 2)`
 
 ```{r}
+# create a matrix with two rows using the V1 values
 mat1 <- matrix(V1, nrow = 2)
 ```
 
 * Create a matrix called “mat2” using the same function but add an extra argument `byrow = TRUE`
 
 ```{r}
+# create the same matrix as before but fill the matrix by row
 mat2 <- matrix(V1, nrow = 2, byrow = TRUE)
 ```
 
@@ -231,6 +261,7 @@ The vectors x, y, z and w refer to the vectors set up in exercise 4.
 * Find the value of the 3rd number in vector x
 
 ```{r}
+# access the 3rd value of the vector x
 x[3]
 ```
 
@@ -245,31 +276,40 @@ y[-3]
 * Add the 1st number in vector z to the 4th number in vector w
 
 ```{r}
+# add the first of z with the 4th of w
 z[1] + w[4]
 ```
 
 * Create a new vector called “In” which consists of the numbers 1 and 4
 
 ```{r}
+# assign the values 1 and 4 to the object In
 In <- c(1, 4)
 ```
 
 * Use indexing rules and the “In” vector to create a new vector, "my_vec", which consists of the sums of the 1st and the 4th numbers of z and w
 
 ```{r}
-my_vec <- c(sum(z[In]), sum(w[In]))
+# create vector consisting of the sum of the 1st and 4th value of z and w.
+sum_z <- sum(z[In])
+sum_w <- sum(w[In])
+my_vec <- c(sum_z, sum_w)
 ```
 
 * Calculate the sum of all the numbers in y that are less than 7
 
 ```{r}
-sum(y[y < 7])
+# access the values of y less than 7 and sum them
+y_gl7 <- y < 7 # gives the index of y values less than 7
+sum(y[y_gl7])
 ```
 
 * Calculate the mean of all the numbers in x that are greater than or equal to 3
 
 ```{r}
-mean(x[x >= 3])
+# access the values in x that are greater than or equal to 3 then find their average
+x_gte3 <- x >= 3 # gives up the values of x greater than or equal to 3 
+mean(x[x_gte3])
 ```
 
 ## 7. Matrix indexing
@@ -279,24 +319,31 @@ These exercises use the objects previously set up in exercise 5.
 * Multiply the second value in the first row of mat1 by the third value in the second row of mat2
 
 ```{r}
+# multiply 2nd value of the first row of mat1 with third value of 2nd row of mat2
+# recall one can access the ith row and jth column of a matrix via the square 
+# brackets and indices [i, j]
 mat1[1, 2]*mat2[2, 3]
 ```
 
 * Create a new vector called “V2” which consists of the numbers in the first row of mat1 added to the numbers in the second row of mat2
 
 ```{r}
+# add the first row of mat1 with the 2nd row of mat2
 V2 <- mat1[1, ] + mat2[2, ]
 ```
 
 * Create a new vector called “V3” which consists of the numbers in the second column of mat2 multiplied by the mean of the numbers in the second row of mat1
 
 ```{r}
-V3 <- mat2[, 2]*mean(mat1[2, ])
+# access 2nd row of mat1 and find its average. Then multiply this value by the second column of mat2
+mean_mat1 <- mean(mat1[2, ])
+V3 <- mat2[, 2]*mean_mat1
 ```
 
 * Create a new matrix called “mat3” which consists of the first row of mat1 as the first column and then the first row of mat2 as the second column
 
 ```{r}
+# 
 mat3 <- matrix(c(mat1[1, ], mat2[1, ]), 
                ncol = 2, 
                byrow = FALSE)
@@ -304,12 +351,13 @@ mat3 <- matrix(c(mat1[1, ], mat2[1, ]),
 
 ## 8. Writing functions
 
-* Write a function that will take a number square it
+* Write a function that will take a number and square it
 
 ```{r}
-square_power <- function(x){
-  value <- x^2
-  return(value)
+# start by naming the function appropriately
+square_power <- function(x){ # add the necessary argument, in this case a single value
+  value <- x^2               # assign an object the value of x squared
+  return(value)              # return the value
 }
 ```
 
@@ -330,9 +378,9 @@ square_power(random_numbers)
 
 ```{r}
 # rename function appropriately 
-power_function <- function(x, power){
-  value <- x^power
-  return(value)
+power_function <- function(x, power){ # add in a new argument to operate as the power being raised
+  value <- x^power                    # alter the value assignment accordingly 
+  return(value)                       # again return the object value
 }
 
 # use the function on the random numbers with the power set to 5 and 20
@@ -344,20 +392,27 @@ power_function(random_numbers, power = 20)
 
 ```{r}
 # rename function appropriately 
-my_function <- function(x, power, multiply = 2){
-  value <- multiply*x^power
-  return(value)
+my_function <- function(x, power, multiply = 2){ # add another argument and set its default
+  value <- multiply*x^power                      # alter the assignment again adding in the new argument
+  return(value)                                  # return the value object 
 }
 
+# apply tge function to the random numbers with a power of six and muliply by 12
 my_function(random_numbers, power = 6, multiply = 12)
 ```
-
 
 * Set up a vector called “new_vec” with a sequence of 400 numbers from 0 to 12 (using the `seq()` function) and use this and your function to plot a graph with the sequence on the x axis and the output of the function on the y axis
 
 ```{r}
-new_vec <- seq(0, 12, l = 400)
+# create a sequence of numbers using the sequence function 
+new_vec <- seq(from = 0, # start at 0 
+               to = 12,  # end at 12 
+               l = 400)  # length of 400
+               
+# use the my_function on the sequence of values                 
 y_points <- my_function(new_vec, power = 6, multiply = 12)
 
-plot(new_vec, y_points)
+# plot the sequence on the x axis and the function output on the y axis
+plot(x = new_vec, 
+     y = y_points)
 ```
