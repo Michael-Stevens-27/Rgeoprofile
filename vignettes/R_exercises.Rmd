@@ -1,0 +1,99 @@
+---
+title: "R exercises"
+author: "Michael Stevens"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{R exercises}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+As mentioned in the previous tutorial we have covered a lot of material. Working through these tutorials will put you on the right path to becoming competent in coding with R but most of what you will learn will come through practice as well as trying, failing and trying again. So to supplement these tutorials are a set of exercises for you to do in your own time. 
+
+Have a go! Refer back to the previous tutorials for help as well as the [help with R](https://michael-stevens-27.github.io/Rgeoprofile/articles/General_R.html) page for some hints if you're stuck. As this page mentions, it is inevitable that you will come across an error in your code. In that case, be sure to check your syntax carefully. What does the error say? What part of your code is it referring to? 
+
+Once you've had a go at these problems, the solutions can be found [here]().
+
+## 1. Calculations
+
+Use R to carry out the following calculations:
+
+* 3 times 5 
+* 5 to the power of 2
+* Add together 8 and 22 and then multiply the answer by 3
+* Subtract 2.8 from 12 and then raise the answer to the power of 1.5 plus 1.3924
+* Divide 8 by 2.5 and then divide the answer by 3
+* Subtract 2.5 from 8 and then divide the answer by 3
+* Divide 2.5 by 3 and subtract the answer from 8
+
+## 2. Objects
+
+* Create an object called "x" and assign it the numerical value 73
+* Create another object called “y” which is the answer to the sum of 101 and 36
+* Multiply x and y together and assign this value to the object called z
+* Subtract 1 from z and then calculate the 4th root (note you can raise to the ith root by raising to the power of 1/i)
+
+## 3. Functions
+
+Using the same objects x, y and z that were set up in the previous exercises:
+
+* Calculate the log to the base 10 of x using the function `log10()`
+* Calculate the square root of y using the function `sqrt()`
+* Calculate the square root of y by raising it to the power 0.5: your answer should be the same as when you used the `sqrt()` function
+* use the function `sum()` to add x and y: you'll need to put both object names inside the brackets and separate them with a comma
+* use the `mean()` function to calculate the arithmetic mean (i.e. the average) of x and y. NB mean() will only work on a vector so you will need to use the `c()` function to collect x and y together.
+* Create an object called “w” which is assigned the value 67.8953
+* The function `round()` will round a number to a given number of decimal places. The default is zero so start by using this function to round w off to zero decimal places
+* Now use the round function to give you the value specified by w rounded off to three decimal places
+* `floor()` and `ceiling()` can also be used to trim a number down to an integer: apply both of these functions to `w` and compare the output.
+
+## 4. Vectors
+
+* Delete the objects x, y, z and w that you set up for the previous set of exercises using the `rm()` function
+* Create a vector called “x” consisting of the numbers 1,3,5 and 7
+* Create a vector called “y” consisting of the numbers 2,4,6 and 8
+* Subtract x from y
+* Create a new vector called “z” by multiplying vector x by vector y
+* Create a new vector called “w” by taking the square root of each member of z
+* Use the `mean()` function to calculate the arithmetic mean of the numbers in vector w
+* Use the  `median()` function to calculate the median value of the numbers in vector z
+
+## 5. Matrices
+
+* Create a new vector called “V1” consisting of the following numbers 1,3,5,7,9,11
+* Create a matrix called “mat1” using the following function: `mat1 <- matrix(V1, nrow = 2)`
+* Create a matrix called “mat2” using the same function but add an extra argument `byrow = TRUE`
+* Compare the two matrices and note how the data stored in the vector V1 are used to fill up the cells of the two matrices
+
+## 6. Vector indexing and logical operators
+
+The vectors x, y, z and w refer to the vectors set up in exercise 4. 
+
+* Find the value of the 3rd number in vector x
+* Find the value of the numbers in vector y that **ARE NOT** in the 3rd position
+* Add the 1st number in vector z to the 4th number in vector w
+* Create a new vector called “In” which consists of the numbers 1 and 4
+* Use indexing rules and the “In” vector to create a new vector, "my_vec", which consists of the sums of the 1st and the 4th numbers of z and w
+* Calculate the sum of all the numbers in y that are less than 7
+* Calculate the mean of all the numbers in x that are greater than or equal to 3
+
+## 7. Matrix indexing
+
+These exercises use the objects previously set up in exercise 5. 
+
+* Multiply the second value in the first row of mat1 by the third value in the second row of mat2
+* Create a new vector called “V2” which consists of the numbers in the first row of mat1 added to the numbers in the second row of mat2
+* Create a new vector called “V3” which consists of the numbers in the second column of mat2 multiplied by the mean of the numbers in the second row of mat1
+* Create a new matrix called “mat3” which consists of the first row of mat1 as the first column and then the first row of mat2 as the second column
+
+## 8. Writing functions
+
+* Write a function that will take a number, multiply it by two and then return the square of the sum
+* Test it on a vector of 15 random numbers drawn from a standard normal distribution with mean zero and standard deviation 1
+* Now add an argument called “power” to the function that enables the user to specify the power that the sum should be raised to - i.e. instead of squaring the sum of the number and 5, add something that will allow the user to raise it to the power 2 or 5 or 0.8. Test it on your vector of random numbers again with the values 5 and 0.5.
+* Now add an argument called “multiply” that will let the user choose the amount to be added to the number, so instead of multiplying by 2 the user can decide to multiply by 0.1 or 2 or 28. set the default value as 2 again and test it on your random numbers again with the values 0.1 and 28, and with the default value for power.
+* Set up a vector called “X” with a sequence of 400 numbers from -12 to 12 and use this and your function to plot a graph showing the function y=
+(x/10) z from x=-10 to x=10 and for the following values of z: 0.5,1,2,3

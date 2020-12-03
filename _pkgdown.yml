@@ -59,6 +59,11 @@ navbar:
           href: "articles/R_intro2.html"
         - text: "Introduction to R - part 3"
           href: "articles/R_intro3.html"
+        - text: ---------------
+        - text: "R exercises"
+          href: "articles/R_exercises.html"
+        - text: "Exercise solutions"
+          href: "articles/R_solutions.html"
     - text: "GP tutorials"
       menu:
         - text: "Installing RgeoProfile"
