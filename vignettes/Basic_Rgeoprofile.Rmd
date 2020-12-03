@@ -12,17 +12,17 @@ vignette: >
 
 ## Introduction
 
-In this tutorial, we will walk through the step-by-step process of running an analysis using the R package, RgeoProfile. The general structure to using this package is as follows:
+In this tutorial, we will walk through the step-by-step process of running an analysis using the R package, RgeoProfile. The general order of activities when using this package is:
 
 * Loading and checking our data - we must ensure it's in the correct format for analysis. 
 * Setting up the parameters for the model and the MCMC algorithm.
 * Running the MCMC algorithm. 
 * Visualising the output of the model, for example the geoprofile.   
 
-First things first, we must load the package. Assuming the RgeoProfile package was [installed correctly](https://michael-stevens-27.github.io/Rgeoprofile/articles/installation.html), we can load in the package using `library(RgeoProfile)`. In addition to this we will be using the leaflet and raster packages for creating maps.  
+First things first, we must load the package. Assuming the RgeoProfile package was [installed correctly](https://michael-stevens-27.github.io/Rgeoprofile/articles/installation.html), we can load in the package using `library(RgeoProfile)`. In addition to this we will be using the leaflet and raster packages for creating maps. Load the `RgeoProfile`, `raster` and `leaflet` packages as below:  
 
 ```{r, eval = TRUE, message = FALSE}
-# load prequired packages
+# load required packages
 library(RgeoProfile)  # to run the analysis
 library(leaflet)      # to create interactive maps
 library(raster)       # for general spatial analysis
@@ -30,10 +30,12 @@ library(raster)       # for general spatial analysis
 
 ## Load and check data
 
-Next, we need to load in some data for the model to analyse. The package comes with some pre-made data that can be accessed via the `LondonExample_crimes` and `LondonExample_sources` objects. These consist of a set of longitudinal/latitudinal points and the source locations (also in long/lat format) that are responsible for said crimes. Normally we would read in our data using the `read.table` or `read.csv` functions but since the example data is provided to us, we will use this instead. We will also process the data using the `geoData()` and `geoDataSource()` functions to ensure that the data are in the correct format for running the model.    
+Next, we need to load in some data for the model to analyse. The package comes with some pre-made data that can be accessed via the `LondonExample_crimes` and `LondonExample_sources` objects. These consist of a set of longitudinal/latitudinal points where crimes have been committed and the source locations (also in long/lat format) that are responsible for said crimes. Note that in reality we won't know the source locations; we will only have access to the set of crimes. Luckily, we do not need to know the source locations in order to run the model. In this data set however, the source locations have been provided so we can use them to measure how well our model is performing later on.  
+
+Bedore we start using the model we will make sure our data are in the correct format using the `geoData()` and `geoDataSource()` functions.
  
 ```{r, eval = TRUE, message = FALSE}
-# load the data 
+# load the data within the Rgeoprofile package using the data() function
 data(LondonExample_crimes)
 data(LondonExample_sources)
 
@@ -41,7 +43,6 @@ data(LondonExample_sources)
 d <- LondonExample_crimes
 s <- LondonExample_sources
 
-# convert d and s to correct format for geoParams()
 # (note that in this case the example data are already in the correct
 # format; these steps are only relevant if for example d and s are 
 # imported as two-column matrices. They are included here for
@@ -54,11 +55,13 @@ print(d)
 print(s)
 ```
 
-Here we can see that we've got a set of 50 long/lat points and 4 source locations. 
+Here we can see that we've got a set of 50 long/lat points and 4 source locations. The `geoData()` and `geoDataSource()` functions are taking as input the longitude/latitude points and converting them into a format that can be read and understood by another function that we will use now. If your long/lat points are in the incorrect format, the `geoData()` and `geoDataSource()` functions will return an error.     
 
-## Build a parameters objects
+## Build a parameters object
 
-Next we need to set the parameters that will govern the model that we are running. We do this using the `geoParams()` function. Firstly we feed this function our data object `d` using the `data` argument. Next we define our prior on the dispersal parameter sigma. This can be deinfed in a few different ways but we will stick with expressing out prior knowledge on sigma by stating our mean (`sigma_mean`) and variance (`sigma_var`) on it. Next we specify the MCMC parameters for the model. We set the length of the burn in (`burnin`) period and the number of sampling iterations (`samples`) as well as the number of MCMC chains to run in parallel (`chains`). Finally we set some parameters for controlling spatial extent and the resolution of the geoprofile. This is done via the `longitude_cells`, `latitude_cells` and `guardRail` arguments. To customise the priors and MCMC algorithm further, see the `geoParams()` documentation for the full list of arguments and defaults.  
+Next we need to set the parameters that will govern the model that we are running. We do this using the `geoParams()` function. Firstly we feed this function our data object `d` using the `data` argument. Next we define our prior on the dispersal parameter sigma. This can be defined in a few different ways but we will stick with expressing our prior knowledge on sigma by stating our mean (`sigma_mean`) and variance (`sigma_var`) on it. This should generally reflect the distance that an individual will travel to commit their crimes. For example, an individual travelling on foot will be expected to have a much smaller dispersal distance than an individual travelling by car. 
+
+Next we specify the MCMC parameters for the model. We set the length of the burn in (`burnin`) period and the number of sampling iterations (`samples`) as well as the number of MCMC chains to run in parallel (`chains`). Finally we set some parameters for controlling spatial extent and the resolution of the geoprofile. This is done via the `longitude_cells`, `latitude_cells` and `guardRail` arguments. To customise the priors and MCMC algorithm further, see the `geoParams()` documentation for the full list of arguments and defaults.  
 
 ```{r, eval = TRUE}
 # set model and MCMC parameters
@@ -91,7 +94,7 @@ Here we can see the model stating how far through the burn in and sampling phase
     
 ## Visualise output
 
-The top parameter of interest that we are trying to estimate are the source locations responsible for generating the data. So first we want to have a look at our geographic profile. We generate the geographic profile using the `geoPlotLeaflet()` function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the `params` and `surface` arguments. 
+The top parameter of interest that we are trying to estimate are the source locations responsible for generating the data. This could be the home or workplace of an individual committing crimes or the breeding pool for a species of mosquito or even the nest of a foraging animal. First we visualise our geographic profile. We can plot the geoprofile using the `geoPlotLeaflet()` function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the `params` and `surface` arguments. 
 
 ```{r, eval = TRUE}
 # plot profile on map
@@ -124,7 +127,7 @@ geoPlotLeaflet(surface = m$geoProfile,
                source = s, 
                surfaceCols = rev(viridis::plasma(10)),
                opacity = 0.7,
-               threshold = 0.5, # how top 50% of the geoprofile
+               threshold = 0.5, # show top 50% of the geoprofile
                crimeCex = 2,
                sourceCex = 3,
                sourceCol = "black",

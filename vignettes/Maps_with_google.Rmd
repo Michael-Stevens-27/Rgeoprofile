@@ -11,13 +11,13 @@ vignette: >
 
 ## Introduction
 
-The Rgeoprofile package offers a neat way of visualising a geoprofile using interactvie maps via the leaflet package. A disadvantage to using this method is that leaflet's maps are hard to extract as high quality images. The Rgeoprofile package conatins another method of plotting geoprofiles via google maps and the `ggmap` package. Through this package and the `ggplotmap()` function from Rgeoprofile we can create higher quality maps such as the one below.  
+The Rgeoprofile package offers a neat way of visualising a geoprofile using interactvie maps via the leaflet package. A disadvantage to using this method is that leaflet's maps are hard to extract as high quality images. The Rgeoprofile package contains another method of plotting geoprofiles via google maps and the `ggmap` package. Through this package and the `ggplotmap()` function from Rgeoprofile we can create higher quality maps such as the one below.  
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/LondonExample_figure1.png)
 \  
 
-In order to create a map such as this, you are required to make a google account and enter credit card details to obtain an API key. This API key is then used to pull the maps from google's servers. Although a user would need to create hundreds of thousands of maps to be charged any substantial amount of money for using google's services, we do not want to force users to create such an account in order to complete this workshop, hence we have stuck to producing interactive maps through `leaflet` in the tutorials. Should you want to create one of these maps, a step by stpe guide can be found below. 
+In order to create a map such as this, you are required to make a google account and enter credit card details to obtain an API key. This API key is then used to pull the maps from google's servers. Although a user would need to create hundreds of thousands of maps to be charged any substantial amount of money for using google's services, we do not want to force users to create such an account in order to complete this workshop, hence we have stuck to producing interactive maps through `leaflet` in the tutorials. Should you want to create one of these maps, a step by step guide can be found below. 
 
 ## Obtaining an API key     
 

@@ -22,7 +22,7 @@ In this tutorial, we will walk through another example of running an analysis us
 Once again, let's load the package [RgeoProfile](https://michael-stevens-27.github.io/Rgeoprofile/articles/installation.html) using `library(RgeoProfile)`. 
 
 ```{r, eval = TRUE, message = FALSE}
-# load prequired packages
+# load required packages
 library(RgeoProfile)  # to run the analysis
 library(leaflet)      # to create interactive maps
 library(raster)       # for general spatial analysis
@@ -37,15 +37,16 @@ The data for this tutorial can be accessed using `data(card_crime)` and `data(ca
 data(card_crime)
 data(card_source)
 
-# example data
+# assign short names to the data for easy access
 d <- card_crime
 s <- card_source
 
 # convert d and s to correct format for geoParams()
-# (note that in this case the example data are already in the correct
+# note that in this case the example data are already in the correct
 # format; these steps are only relevant if for example d and s are 
 # imported as two-column matrices. They are included here for
-# completeness)
+# completeness. In the case that d and s are two-column matrices
+# the following functions switch them to a `list` format. 
 
 d <- geoData(d$longitude, d$latitude)
 s <- geoDataSource(s$longitude, s$latitude)
@@ -54,16 +55,15 @@ print(d)
 print(s)
 ```
 
-We can see above that the data are in the correct format. This time, let's visualise our data. It's always worth doing this to get an idea of what we're working with. Mapping our data will give us an indication of if anything went wrong when collecting or processing the data. 
+We can see above that the data are in the correct format. This time, let's visualise our data. It's always worth doing this to get an idea of what we're working with. Mapping our data will give us an indication if anything went wrong when collecting or processing the data. 
 
 ```{r, eval = TRUE, message = FALSE}
 # plot the map
-geoPlotLeaflet(param = NULL, 
-               data = d, 
+geoPlotLeaflet(data = d, 
                crimeCex = 6)
 ```
 
-At a glance we have a total of 12 locations, seven of which lie in East London, around Mile End, and the other 5 are near Tower Bridge. We might also start thinking about where the source locations are and how many there might be. What do you think? Have a guess. I have purposefully neglected to put the source locations on the map, since in practice we won't know where they are. We might think there are two source locations since the crimes are split between Mile End and Tower Hill. We might alter this guess to three source locations, where the additional source is responsible for the single crime at Shadwell Basin. 
+At a glance we have a total of 12 locations, seven of which lie in East London, around Mile End, and the other 5 are near Tower Bridge. We might also start thinking about where the source locations are and how many there might be. What do you think? Have a guess. I have purposefully neglected to put the source locations on the map, since in practice we won't know where they are. We might think there are two source locations since the crimes are split between Mile End and Tower Hill. We might alter this guess to three source locations, where the additional source is responsible for the single crime at Shadwell Basin. Similarly to the last tutorial, we do actually possess the source locations linked to the set of crimes shown in the map above. I won't be revealing the right answer (the location of the sources) until the very end of the tutorial. However, it must be stressed that knowing the source locations is not a necessity to run the model.  
 
 ## Build a parameters object
 
@@ -75,13 +75,18 @@ geoPlotLeaflet(param = NULL, data = d, crimeCex = 6) %>%
                lat = mean(d$latitude), radius = 6, fillColor = "blue") %>% addScaleBar(position = "bottomright")
 ```
 
-As we can see, the spatial mean (in blue) is quite near a few of the crimes, but then again also quite far from others, So this indicates we should set a large `tau`. Another paramater we are interested in but yet to speak about is the dispersal parameter "sigma". Measured in kilometres, this parameter governs how far away crimes are from source locations. We control this parameter using the `sigma_mean` and `sigma_var` arguments. `Sigma_mean` is the explicit value we think sigma could be and `sigma_var` controls our uncertainty in this value. For a human roaming around committing crimes on foot this value will be much smaller than those that have access to a car. Equivalently if a criminal is time restricted (committing crimes on a lunch break for example) this value may be much lower. In ecology, we might expect quite small values of sigma for mosquitoes but much larger values for tigers. It really depends if you are analysing data associated with a human or an animal etc. Since we are conisdering a human moving around on foot, we shall set our prior accordingly.    
+As we can see, the spatial mean (in blue) is quite near a few of the crimes, but then again also quite far from others, So this indicates we should set a large `tau` (in Km). Whether or not `tau` is a large or small value really depends on the species you are trying to catch. For a human on foot, a large value of `tau` would be 10 Km, but for elephants a large `tau` could be 30 Km. Another paramater we are interested in but yet to speak about is the dispersal parameter "sigma". Measured in kilometres, this parameter governs how far away crimes are from source locations. We control this parameter using the `sigma_mean` and `sigma_var` arguments. `Sigma_mean` is the explicit value we think sigma could be and `sigma_var` controls our uncertainty in this value. For a human roaming around committing crimes on foot this value will be much smaller than those that have access to a car. Equivalently if a criminal is time restricted (committing crimes on a lunch break for example) this value may be much lower. In ecology, we might expect quite small values of sigma for mosquitoes but much larger values for tigers. It really depends if you are analysing data associated with a human or an animal etc. Since we are conisdering a human moving around on foot, we shall set our prior accordingly.    
 
 ```{r, eval = TRUE, message = FALSE}
-# set model and MCMC parameters
-p <- geoParams(data = d, 
-               tau = 10,          # set tau large for source locations in any location
-               sigma_mean = 0.25, # we believe the majority of crimes ar within 1km of the source location 
+# assign an object that sets the model and MCMC parameters
+# name the object p (short for parameters)
+# we believe the majority of crimes are within 1km of the source location
+# hence we set the mean of sigma to 0.25 km, and the variance to 1, to ensure our
+# prior distirbution on sigma is up to 1km. 
+ 
+p <- geoParams(data = d,      
+               tau = 10,          # set tau large (10 kilometres) for source locations in any location
+               sigma_mean = 0.25, # mean value of sigma
                sigma_var = 1,     # our uncertainty in the value of sigma
                chains = 5, 
                burnin = 1e4, 
@@ -93,14 +98,14 @@ p <- geoParams(data = d,
                samples_printConsole = 1e4)
 ```
 
-Now that we have built our parameters object, we can visualise our prior on sigma using the `geoPlotSigma()` function. 
+Now that we have built our parameters object, we can visualise our prior on sigma using the `geoPlotSigma()` function. When we refer to a **prior** we are talking about a probability distribution that captures our beliefs regarding which values our parameter could take. So here, we are describing our prior on sigma, the distribution that describes which values of sigma are more likely than others. 
 
 ```{r, eval = TRUE, message = FALSE}
 # plot sigma prior
 geoPlotSigma(params = p, plotMax  = 3)
 ```
 
-Here we can see our prior distribution on sigma. The majority of the distribution lies between 0.2 and 1.9km. This is typical of a human committing crimes around a home or workplace. 
+Here we can see our prior distribution on sigma. The Y axis shows the probability of observing different values of sigma. We stated that our `sigma_mean = 0.25` hence the mean of the distribution is around 0.25 km. We also set `sigma_var = 1`, i.e. how much we are willing for sigma to deviate from our mean. We can also see that the probability of observing a tiny sigma (less than 0.05 km) is zero, and a large sigma (greater than 1.5 km) is also zero. 
 
 ## Run the model
 
@@ -113,26 +118,26 @@ m <- geoMCMC(data = d, params = p)
 
 ```
 
-Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (@Gelman2014). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (@Barnard2010). 
+Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using our chosen metric for MCMC convergence (the Gelamn-Rubin diagnostic (@Gelman2014)). The sampling phase then ends with a "maximum likelihood lambda". You can ignore this value as it is automatically chosen to create an accurate geoprofile (but more details can be found in @Barnard2010). 
     
 ## Visualise output
 
 Let's have a look at our geographic profile. Again, we generate the geographic profile using the `geoPlotLeaflet()` function. The main things we must provide to this function are the params and the raw geoprofile produced by the model. Hence we provide these using the `params` and `surface` arguments. 
 
-```{r, eval = TRUE}
-# plot profile on map
 ```{r, eval = TRUE}  
-geoPlotLeaflet(surface = m$geoProfile,
-               params = p,
-               data = d, 
-               surfaceCols = rev(viridis::plasma(10)),
-               opacity = 0.7,
-               threshold = 0.25,
-               crimeCex = 5,
-               gpLegend = TRUE)                       
+# plot geoprofile on the map using geoPlotLeaflet
+# We access the geoprofile from within the m object using the $ sign
+geoPlotLeaflet(surface = m$geoProfile,                # access the geoprofile                  
+               params = p,                            # add in params object    
+               data = d,                              # add in data
+               surfaceCols = rev(viridis::plasma(10)),# set the colours of the profile
+               opacity = 0.7,                         # set the opacity of the surface
+               threshold = 0.25,                      # plot the top 25% of the profile
+               crimeCex = 5,                          # set the size of the crimes
+               gpLegend = TRUE)                       # add a legend for the hit score  
 ```
 
-We have our geoprofile! Intuitively we can see the model telling us to search in those areas near Tower Bridge and Mile end. In addition to these two clusters there seems to be some search priority aimed at the spatial mean of the crime sites too. Finally, we can see the model also places a small amount of priority near the lone crime in Shadwell Basin. Before we add the source locations to the map and measure their hit scores, let's have a look at our estimate for sigma. This can be plotted by adding the `mcmc` argument into the `geoPlotSigma()` function.      
+We have our geoprofile! As mentioned in the previous tutorials, areas in yellow are the places we should prioritize our search strategy with areas in purple indicating areas unlikely to contain source locations. Intuitively we can see the model telling us to search in those areas near Tower Bridge and Mile end. In addition to these two clusters there seems to be some search priority aimed at the spatial mean of the crime sites too. Finally, we can see the model also places a small amount of priority near the lone crime in Shadwell Basin. Before we add the source locations to the map and measure their hit scores, let's have a look at our estimate for sigma. This can be plotted by adding the `mcmc` argument into the `geoPlotSigma()` function.      
 
 ```{r, eval = TRUE, message = FALSE}
 # plot sigma prior
@@ -141,15 +146,17 @@ geoPlotSigma(params = p,
              mcmc = m)
 ```
 
-Now we can see our prior and posterior distributions for the dispersal parameter sigma. We have already discussed our prior distribution but our posterior distribution tells a very different story. The main peak of the posterior distribution on sigma is around 0.45 km. Curiously though, the distribution is bi-modal, it has two peaks. This indicates the criminal might have two modes of transport, on foot or perhaps by bike. 
+Now we can see our prior and posterior distributions for the dispersal parameter sigma. We have already discussed our prior distribution but our posterior distribution tells a very different story. The posterior distribution combines the information we provide in the prior distribution with the information gained from the data we provide. The main peak of the posterior distribution on sigma is around 0.45 km. Curiously though, the distribution is bi-modal, it has two peaks. This indicates the criminal might have two modes of transport, on foot and perhaps by bike. 
 
 Let's reveal the location of the source locations on the map 
 
-```{r, eval = TRUE, echo = FALSE}  
+```{r, eval = TRUE, echo = TRUE}  
+# plot the same map again, this time providing source locations 
+# using the source argument
 geoPlotLeaflet(surface = m$geoProfile,
                params = p,
                data = d, 
-               source = s, 
+               source = s,             # include sources this time 
                sourceCex = 5,
                sourceCol = "black",
                surfaceCols = rev(viridis::plasma(10)),
@@ -159,7 +166,7 @@ geoPlotLeaflet(surface = m$geoProfile,
                gpLegend = TRUE)                       
 ```
 
-Once again our model seems to be doing well, all source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but let's go back to the *hit score* and *Gini co-efficent* metrics using the the `geoReportHitscores()` and `geoPlotLorenz()` functions.
+Once again, remember that we won't normally have these source locations, they are provided here to display the accuracy of geographic profiling. Our model seems to working well, all source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but let's go back to the *hit score* and *Gini co-efficent* metrics using the the `geoReportHitscores()` and `geoPlotLorenz()` functions.
 
 ```{r, eval = TRUE}
 # get hitscores
@@ -173,6 +180,6 @@ Gini <- geoPlotLorenz(hit_scores = hs)
 print(Gini)
 ```
 
-We can see that the model found every source by searching less than 1\% of the total search area, excellent! Equivalently, the Gini co-efficient for these sources is 0.995. 
+We can see that the `geoReportHitscores()` function provides us with our source locations and a corresponding hit score. This is excellent! Our hit scores for each source are less than 1%! So in order to find the source locations, we only need to search less than 1% of the total search area to find them. Equivalently, the Gini co-efficient for these sources is 0.995, remeber that the most efficent search strategy would yield a Gini co-efficient of 1.  
 
 ## References
