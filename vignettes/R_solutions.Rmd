@@ -8,3 +8,356 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+## 1. Calculations
+
+Use R to carry out the following calculations:
+
+* 3 times 5
+
+```{r}
+3*5
+```
+ 
+* 5 to the power of 2
+
+```{r}
+5^2
+```
+
+* Add together 8 and 22 and then multiply the answer by 3
+
+```{r}
+(8 + 22)/3
+```
+
+* Subtract 2.8 from 12 and then raise the answer to the power of 1.5 plus 1.3924
+
+```{r}
+(12 - 2.8)^(1.5 + 1.3924)
+```
+
+* Divide 8 by 2.5 and then divide the answer by 3
+
+```{r}
+(8/2.5)/3
+```
+
+* Subtract 2.5 from 8 and then divide the answer by 3
+
+```{r}
+(8 - 2.5)/3
+```
+
+* Divide 2.5 by 3 and subtract the answer from 8
+
+```{r}
+8 - (2.5/3)
+```
+
+## 2. Objects
+
+* Create an object called "x" and assign it the numerical value 73
+
+```{r}
+x <- 73
+```
+
+* Create another object called “y” which is the answer to the sum of 101 and 36
+
+```{r}
+y <- 101 + 36
+```
+
+* Multiply x and y together and assign this value to the object called z
+
+```{r}
+z <- x*y
+```
+
+* Subtract 1 from z and then calculate the 4th root (note you can raise to the ith root by raising to the power of 1/i)
+
+```{r}
+(z - 1)^(0.25)
+```
+
+## 3. Functions
+
+Using the same objects x, y and z that were set up in the previous exercises:
+
+* Calculate the log to the base 10 of x using the function `log10()`
+
+```{r}
+log10(10)
+```
+
+* Calculate the square root of y using the function `sqrt()`
+
+```{r}
+sqrt(y)
+```
+
+* Calculate the square root of y by raising it to the power 0.5: your answer should be the same as when you used the `sqrt()` function
+
+```{r}
+y^0.5
+```
+
+* use the function `sum()` to add x and y: you'll need to put both object names inside the brackets and separate them with a comma
+
+```{r}
+sum(x,y)
+```
+
+* use the `mean()` function to calculate the arithmetic mean (i.e. the average) of x and y. NB mean() will only work on a vector so you will need to use the `c()` function to collect x and y together.
+
+```{r}
+# collect x and y as a vector
+xy_vec <- c(x,y)
+
+mean(xy_vec)
+```
+
+* Create an object called “w” which is assigned the value 67.8953
+
+```{r}
+w <- 67.8953
+```
+
+* The function `round()` will round a number to a given number of decimal places. The default is zero so start by using this function to round w off to zero decimal places
+
+```{r}
+round(w)
+```
+
+* Now use the round function to give you the value specified by w rounded off to three decimal places
+
+```{r}
+round(w, 3)
+```
+
+* `floor()` and `ceiling()` can also be used to trim a number down to an integer: apply both of these functions to `w` and compare the output.
+
+```{r}
+# floor the value w
+floor(w)
+
+# ceiling the value w
+ceiling(w)
+```
+
+## 4. Vectors
+
+* Delete the objects x, y, z and w that you set up for the previous set of exercises using the `rm()` function
+
+```{r}
+rm(x, y, z, w)
+```
+
+* Create a vector called “x” consisting of the numbers 1,3,5 and 7
+
+```{r}
+x <- c(1, 3, 5, 7)
+```
+
+* Create a vector called “y” consisting of the numbers 2,4,6 and 8
+
+```{r}
+y <- c(2, 4, 6, 8)
+```
+
+* Subtract x from y
+
+```{r}
+y - x
+```
+
+* Create a new vector called “z” by multiplying vector x by vector y
+
+```{r}
+z <- x*y
+```
+
+* Create a new vector called “w” by taking the square root of each member of z
+
+```{r}
+w <- sqrt(z)
+```
+
+* Use the `mean()` function to calculate the arithmetic mean of the numbers in vector w
+
+```{r}
+mean(w)
+```
+
+* Use the  `median()` function to calculate the median value of the numbers in vector z
+
+```{r}
+median(z)
+```
+
+## 5. Matrices
+
+* Create a new vector called “V1” consisting of the following numbers 1,3,5,7,9,11
+
+```{r}
+V1 <- c(1, 3, 5, 7, 9, 11)
+```
+
+* Create a matrix called “mat1” using the following function: `mat1 <- matrix(V1, nrow = 2)`
+
+```{r}
+mat1 <- matrix(V1, nrow = 2)
+```
+
+* Create a matrix called “mat2” using the same function but add an extra argument `byrow = TRUE`
+
+```{r}
+mat2 <- matrix(V1, nrow = 2, byrow = TRUE)
+```
+
+* Compare the two matrices and note how the data stored in the vector V1 are used to fill up the cells of the two matrices
+
+```{r}
+# compare mat1 and mat2
+print(mat1)
+print(mat2)
+```
+
+## 6. Vector indexing and logical operators
+
+The vectors x, y, z and w refer to the vectors set up in exercise 4. 
+
+* Find the value of the 3rd number in vector x
+
+```{r}
+x[3]
+```
+
+* Find the value of the numbers in vector y that **ARE NOT** in the 3rd position
+
+```{r}
+# use the minus symbol to show a vector without a specific entry
+# give all but the third value of the vector y
+y[-3]
+```
+
+* Add the 1st number in vector z to the 4th number in vector w
+
+```{r}
+z[1] + w[4]
+```
+
+* Create a new vector called “In” which consists of the numbers 1 and 4
+
+```{r}
+In <- c(1, 4)
+```
+
+* Use indexing rules and the “In” vector to create a new vector, "my_vec", which consists of the sums of the 1st and the 4th numbers of z and w
+
+```{r}
+my_vec <- c(sum(z[In]), sum(w[In]))
+```
+
+* Calculate the sum of all the numbers in y that are less than 7
+
+```{r}
+sum(y[y < 7])
+```
+
+* Calculate the mean of all the numbers in x that are greater than or equal to 3
+
+```{r}
+mean(x[x >= 3])
+```
+
+## 7. Matrix indexing
+
+These exercises use the objects previously set up in exercise 5. 
+
+* Multiply the second value in the first row of mat1 by the third value in the second row of mat2
+
+```{r}
+mat1[1, 2]*mat2[2, 3]
+```
+
+* Create a new vector called “V2” which consists of the numbers in the first row of mat1 added to the numbers in the second row of mat2
+
+```{r}
+V2 <- mat1[1, ] + mat2[2, ]
+```
+
+* Create a new vector called “V3” which consists of the numbers in the second column of mat2 multiplied by the mean of the numbers in the second row of mat1
+
+```{r}
+V3 <- mat2[, 2]*mean(mat1[2, ])
+```
+
+* Create a new matrix called “mat3” which consists of the first row of mat1 as the first column and then the first row of mat2 as the second column
+
+```{r}
+mat3 <- matrix(c(mat1[1, ], mat2[1, ]), 
+               ncol = 2, 
+               byrow = FALSE)
+```
+
+## 8. Writing functions
+
+* Write a function that will take a number square it
+
+```{r}
+square_power <- function(x){
+  value <- x^2
+  return(value)
+}
+```
+
+* Test it on the value 5. The test it on a vector of 15 random numbers drawn from a standard normal distribution with mean zero and standard deviation 1 (Note this can be done with the `rnorm()` function)
+
+```{r}
+# use the function on the value 5
+square_power(5)
+
+# make some random number with rnorm
+random_numbers <- rnorm(n = 15, mean = 0, sd = 1)
+
+# use these random numbers on the square function
+square_power(random_numbers)
+```
+
+* Now add an argument called `power` to the function that enables the user to specify which power that the value should be raised to - i.e. instead of squaring the value, it could be raise to the power of 5 instead. Test it on your vector of random numbers again with the power set to 5 and 20.
+
+```{r}
+# rename function appropriately 
+power_function <- function(x, power){
+  value <- x^power
+  return(value)
+}
+
+# use the function on the random numbers with the power set to 5 and 20
+power_function(random_numbers, power = 5)
+power_function(random_numbers, power = 20)
+```
+
+* Now add an argument called “multiply” that will let the user choose a number to multiply the value by as well. Set the default value as 2 and test it on your random numbers again this time witht he power set to 6 and the multiply set to 12 
+
+```{r}
+# rename function appropriately 
+my_function <- function(x, power, multiply = 2){
+  value <- multiply*x^power
+  return(value)
+}
+
+my_function(random_numbers, power = 6, multiply = 12)
+```
+
+
+* Set up a vector called “new_vec” with a sequence of 400 numbers from 0 to 12 (using the `seq()` function) and use this and your function to plot a graph with the sequence on the x axis and the output of the function on the y axis
+
+```{r}
+new_vec <- seq(0, 12, l = 400)
+y_points <- my_function(new_vec, power = 6, multiply = 12)
+
+plot(new_vec, y_points)
+```

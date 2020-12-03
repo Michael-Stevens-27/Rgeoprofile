@@ -91,9 +91,8 @@ These exercises use the objects previously set up in exercise 5.
 
 ## 8. Writing functions
 
-* Write a function that will take a number, multiply it by two and then return the square of the sum
-* Test it on a vector of 15 random numbers drawn from a standard normal distribution with mean zero and standard deviation 1
-* Now add an argument called “power” to the function that enables the user to specify the power that the sum should be raised to - i.e. instead of squaring the sum of the number and 5, add something that will allow the user to raise it to the power 2 or 5 or 0.8. Test it on your vector of random numbers again with the values 5 and 0.5.
-* Now add an argument called “multiply” that will let the user choose the amount to be added to the number, so instead of multiplying by 2 the user can decide to multiply by 0.1 or 2 or 28. set the default value as 2 again and test it on your random numbers again with the values 0.1 and 28, and with the default value for power.
-* Set up a vector called “X” with a sequence of 400 numbers from -12 to 12 and use this and your function to plot a graph showing the function y=
-(x/10) z from x=-10 to x=10 and for the following values of z: 0.5,1,2,3
+* Write a function that will take a number square it. 
+* Test it on a vector of 15 random numbers drawn from a standard normal distribution with mean zero and standard deviation 1 (Note this can be done with the `rnorm()` function)
+* Now add an argument called `power` to the function that enables the user to specify which power that the value should be raised to - i.e. instead of squaring the value, it could be raise to the power of 5 instead. Test it on your vector of random numbers again with the power set to 5 and 0.5.
+* Now add an argument called “multiply” that will let the user choose a number to multiply the value by as well. Set the default value as 2 and test it on your random numbers again. 
+* Set up a vector called “new_vec” with a sequence of 400 numbers from -12 to 12 (using the `seq()` function) and use this and your function to plot a graph with the sequence on the x axis and the output of the function on the y axis

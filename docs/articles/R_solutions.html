@@ -148,12 +148,382 @@
 
     
     
+<div id="calculations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculations" class="anchor"></a>1. Calculations</h2>
+<p>Use R to carry out the following calculations:</p>
+<ul>
+<li>3 times 5</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">3</span><span class="op">*</span><span class="fl">5</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<ul>
+<li>5 to the power of 2</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">5</span><span class="op">^</span><span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<ul>
+<li>Add together 8 and 22 and then multiply the answer by 3</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="fl">8</span> <span class="op">+</span> <span class="fl">22</span><span class="op">)</span><span class="op">/</span><span class="fl">3</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<ul>
+<li>Subtract 2.8 from 12 and then raise the answer to the power of 1.5 plus 1.3924</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="fl">12</span> <span class="op">-</span> <span class="fl">2.8</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="fl">1.5</span> <span class="op">+</span> <span class="fl">1.3924</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 613.2816</code></pre>
+<ul>
+<li>Divide 8 by 2.5 and then divide the answer by 3</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="fl">8</span><span class="op">/</span><span class="fl">2.5</span><span class="op">)</span><span class="op">/</span><span class="fl">3</span></code></pre></div>
+<pre><code>## [1] 1.066667</code></pre>
+<ul>
+<li>Subtract 2.5 from 8 and then divide the answer by 3</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="fl">8</span> <span class="op">-</span> <span class="fl">2.5</span><span class="op">)</span><span class="op">/</span><span class="fl">3</span></code></pre></div>
+<pre><code>## [1] 1.833333</code></pre>
+<ul>
+<li>Divide 2.5 by 3 and subtract the answer from 8</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">8</span> <span class="op">-</span> <span class="op">(</span><span class="fl">2.5</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 7.166667</code></pre>
+</div>
+<div id="objects" class="section level2">
+<h2 class="hasAnchor">
+<a href="#objects" class="anchor"></a>2. Objects</h2>
+<ul>
+<li>Create an object called "x" and assign it the numerical value 73</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">73</span></code></pre></div>
+<ul>
+<li>Create another object called “y” which is the answer to the sum of 101 and 36</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">101</span> <span class="op">+</span> <span class="fl">36</span></code></pre></div>
+<ul>
+<li>Multiply x and y together and assign this value to the object called z</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">*</span><span class="va">y</span></code></pre></div>
+<ul>
+<li>Subtract 1 from z and then calculate the 4th root (note you can raise to the ith root by raising to the power of 1/i)</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">z</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="fl">0.25</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+</div>
+<div id="functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#functions" class="anchor"></a>3. Functions</h2>
+<p>Using the same objects x, y and z that were set up in the previous exercises:</p>
+<ul>
+<li>Calculate the log to the base 10 of x using the function <code><a href="https://rdrr.io/r/base/Log.html">log10()</a></code>
+</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<ul>
+<li>Calculate the square root of y using the function <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code>
+</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 11.7047</code></pre>
+<ul>
+<li>Calculate the square root of y by raising it to the power 0.5: your answer should be the same as when you used the <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> function</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span><span class="op">^</span><span class="fl">0.5</span></code></pre></div>
+<pre><code>## [1] 11.7047</code></pre>
+<ul>
+<li>use the function <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> to add x and y: you'll need to put both object names inside the brackets and separate them with a comma</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 210</code></pre>
+<ul>
+<li>use the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function to calculate the arithmetic mean (i.e. the average) of x and y. NB mean() will only work on a vector so you will need to use the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function to collect x and y together.</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># collect x and y as a vector</span>
+<span class="va">xy_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span>
 
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">xy_vec</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 105</code></pre>
+<ul>
+<li>Create an object called “w” which is assigned the value 67.8953</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">w</span> <span class="op">&lt;-</span> <span class="fl">67.8953</span></code></pre></div>
+<ul>
+<li>The function <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> will round a number to a given number of decimal places. The default is zero so start by using this function to round w off to zero decimal places</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 68</code></pre>
+<ul>
+<li>Now use the round function to give you the value specified by w rounded off to three decimal places</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">w</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 67.895</code></pre>
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/base/Round.html">floor()</a></code> and <code><a href="https://rdrr.io/r/base/Round.html">ceiling()</a></code> can also be used to trim a number down to an integer: apply both of these functions to <code>w</code> and compare the output.</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># floor the value w</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 67</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># ceiling the value w</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 68</code></pre>
+</div>
+<div id="vectors" class="section level2">
+<h2 class="hasAnchor">
+<a href="#vectors" class="anchor"></a>4. Vectors</h2>
+<ul>
+<li>Delete the objects x, y, z and w that you set up for the previous set of exercises using the <code><a href="https://rdrr.io/r/base/rm.html">rm()</a></code> function</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span>, <span class="va">w</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Create a vector called “x” consisting of the numbers 1,3,5 and 7</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Create a vector called “y” consisting of the numbers 2,4,6 and 8</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">8</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Subtract x from y</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">-</span> <span class="va">x</span></code></pre></div>
+<pre><code>## [1] 1 1 1 1</code></pre>
+<ul>
+<li>Create a new vector called “z” by multiplying vector x by vector y</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">*</span><span class="va">y</span></code></pre></div>
+<ul>
+<li>Create a new vector called “w” by taking the square root of each member of z</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Use the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function to calculate the arithmetic mean of the numbers in vector w</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 4.459714</code></pre>
+<ul>
+<li>Use the <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> function to calculate the median value of the numbers in vector z</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 21</code></pre>
+</div>
+<div id="matrices" class="section level2">
+<h2 class="hasAnchor">
+<a href="#matrices" class="anchor"></a>5. Matrices</h2>
+<ul>
+<li>Create a new vector called “V1” consisting of the following numbers 1,3,5,7,9,11</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">V1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span>, <span class="fl">11</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Create a matrix called “mat1” using the following function: <code>mat1 &lt;- matrix(V1, nrow = 2)</code>
+</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mat1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">V1</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Create a matrix called “mat2” using the same function but add an extra argument <code>byrow = TRUE</code>
+</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mat2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">V1</span>, nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Compare the two matrices and note how the data stored in the vector V1 are used to fill up the cells of the two matrices</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># compare mat1 and mat2</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mat1</span><span class="op">)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    3    7   11</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mat2</span><span class="op">)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    7    9   11</code></pre>
+</div>
+<div id="vector-indexing-and-logical-operators" class="section level2">
+<h2 class="hasAnchor">
+<a href="#vector-indexing-and-logical-operators" class="anchor"></a>6. Vector indexing and logical operators</h2>
+<p>The vectors x, y, z and w refer to the vectors set up in exercise 4.</p>
+<ul>
+<li>Find the value of the 3rd number in vector x</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<ul>
+<li>Find the value of the numbers in vector y that <strong>ARE NOT</strong> in the 3rd position</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># use the minus symbol to show a vector without a specific entry</span>
+<span class="co"># give all but the third value of the vector y</span>
+<span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="fl">3</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 2 4 8</code></pre>
+<ul>
+<li>Add the 1st number in vector z to the 4th number in vector w</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">w</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 9.483315</code></pre>
+<ul>
+<li>Create a new vector called “In” which consists of the numbers 1 and 4</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">In</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Use indexing rules and the “In” vector to create a new vector, "my_vec", which consists of the sums of the 1st and the 4th numbers of z and w</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">z</span><span class="op">[</span><span class="va">In</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">w</span><span class="op">[</span><span class="va">In</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Calculate the sum of all the numbers in y that are less than 7</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">7</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<ul>
+<li>Calculate the mean of all the numbers in x that are greater than or equal to 3</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">3</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="matrix-indexing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#matrix-indexing" class="anchor"></a>7. Matrix indexing</h2>
+<p>These exercises use the objects previously set up in exercise 5.</p>
+<ul>
+<li>Multiply the second value in the first row of mat1 by the third value in the second row of mat2</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mat1</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span><span class="op">*</span><span class="va">mat2</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<ul>
+<li>Create a new vector called “V2” which consists of the numbers in the first row of mat1 added to the numbers in the second row of mat2</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">V2</span> <span class="op">&lt;-</span> <span class="va">mat1</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">+</span> <span class="va">mat2</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></code></pre></div>
+<ul>
+<li>Create a new vector called “V3” which consists of the numbers in the second column of mat2 multiplied by the mean of the numbers in the second row of mat1</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">V3</span> <span class="op">&lt;-</span> <span class="va">mat2</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mat1</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Create a new matrix called “mat3” which consists of the first row of mat1 as the first column and then the first row of mat2 as the second column</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mat3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mat1</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>, <span class="va">mat2</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span>, 
+               ncol <span class="op">=</span> <span class="fl">2</span>, 
+               byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="writing-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#writing-functions" class="anchor"></a>8. Writing functions</h2>
+<ul>
+<li>Write a function that will take a number square it</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">square_power</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">value</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<ul>
+<li>Test it on the value 5. The test it on a vector of 15 random numbers drawn from a standard normal distribution with mean zero and standard deviation 1 (Note this can be done with the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function)</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># use the function on the value 5</span>
+<span class="fu">square_power</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># make some random number with rnorm</span>
+<span class="va">random_numbers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="co"># use these random numbers on the square function</span>
+<span class="fu">square_power</span><span class="op">(</span><span class="va">random_numbers</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 7.499174e-02 4.977313e-01 1.697401e-01 5.329403e-01 2.814173e-01
+##  [6] 1.524116e-01 4.705535e-01 1.843591e-01 1.415746e+00 2.450892e-01
+## [11] 9.575228e-01 3.742913e-01 2.809965e-01 2.686872e-06 5.818254e-01</code></pre>
+<ul>
+<li>Now add an argument called <code>power</code> to the function that enables the user to specify which power that the value should be raised to - i.e. instead of squaring the value, it could be raise to the power of 5 instead. Test it on your vector of random numbers again with the power set to 5 and 20.</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># rename function appropriately </span>
+<span class="va">power_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">power</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">value</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">^</span><span class="va">power</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="co"># use the function on the random numbers with the power set to 5 and 20</span>
+<span class="fu">power_function</span><span class="op">(</span><span class="va">random_numbers</span>, power <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] -1.540046e-03  1.747783e-01 -1.187028e-02 -2.073463e-01 -4.201236e-02
+##  [6]  9.068696e-03 -1.518877e-01 -1.459356e-02 -2.384861e+00 -2.973792e-02
+## [11]  8.971660e-01 -8.570857e-02 -4.185546e-02 -1.183362e-14 -2.582151e-01</code></pre>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">power_function</span><span class="op">(</span><span class="va">random_numbers</span>, power <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 5.625154e-12 9.331463e-04 1.985381e-08 1.848356e-03 3.115360e-06
+##  [6] 6.763623e-09 5.322184e-04 4.535708e-08 3.234838e+01 7.820644e-07
+## [11] 6.478750e-01 5.396311e-05 3.069082e-06 1.960965e-56 4.445560e-03</code></pre>
+<ul>
+<li>Now add an argument called “multiply” that will let the user choose a number to multiply the value by as well. Set the default value as 2 and test it on your random numbers again this time witht he power set to 6 and the multiply set to 12</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># rename function appropriately </span>
+<span class="va">my_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">power</span>, <span class="va">multiply</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">value</span> <span class="op">&lt;-</span> <span class="va">multiply</span><span class="op">*</span><span class="va">x</span><span class="op">^</span><span class="va">power</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="fu">my_function</span><span class="op">(</span><span class="va">random_numbers</span>, power <span class="op">=</span> <span class="fl">6</span>, multiply <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 5.060828e-03 1.479674e+00 5.868598e-02 1.816423e+00 2.674445e-01
+##  [6] 4.248495e-02 1.250283e+00 7.519254e-02 3.405156e+01 1.766664e-01
+## [11] 1.053486e+01 6.292313e-01 2.662464e-01 2.327674e-16 2.363519e+00</code></pre>
+<ul>
+<li>Set up a vector called “new_vec” with a sequence of 400 numbers from 0 to 12 (using the <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> function) and use this and your function to plot a graph with the sequence on the x axis and the output of the function on the y axis</li>
+</ul>
+<div class="sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">12</span>, l <span class="op">=</span> <span class="fl">400</span><span class="op">)</span>
+<span class="va">y_points</span> <span class="op">&lt;-</span> <span class="fu">my_function</span><span class="op">(</span><span class="va">new_vec</span>, power <span class="op">=</span> <span class="fl">6</span>, multiply <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">new_vec</span>, <span class="va">y_points</span><span class="op">)</span></code></pre></div>
+<p><img src="R_solutions_files/figure-html/unnamed-chunk-48-1.png" width="700"></p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
