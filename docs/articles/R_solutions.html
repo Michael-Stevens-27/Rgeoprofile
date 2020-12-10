@@ -139,7 +139,7 @@
       <h1 data-toc-skip>Exercise solutions</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-12-03</h4>
+            <h4 class="date">2020-12-10</h4>
       
       
       <div class="hidden name"><code>R_solutions.Rmd</code></div>
@@ -518,9 +518,9 @@
 
 <span class="co"># use these random numbers on the square function</span>
 <span class="fu">square_power</span><span class="op">(</span><span class="va">random_numbers</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0.426096640 1.263629350 0.510155285 2.599373704 3.709759818 0.013735097
-##  [7] 0.506068459 0.036525853 2.760454442 0.943606082 0.346864060 0.139967536
-## [13] 0.034773370 0.002546151 1.696723593</code></pre>
+<pre><code>##  [1] 1.023271922 4.062810677 0.058414405 0.001282466 0.157144164 0.014203937
+##  [7] 1.681137681 0.075253405 0.047978983 0.753071416 0.061131492 0.405951685
+## [13] 0.136541931 0.395643211 1.010141100</code></pre>
 <ul>
 <li>Now add an argument called <code>power</code> to the function that enables the user to specify which power that the value should be raised to - i.e. instead of squaring the value, it could be raise to the power of 5 instead. Test it on your vector of random numbers again with the power set to 5 and 20.</li>
 </ul>
@@ -533,14 +533,14 @@
 
 <span class="co"># use the function on the random numbers with the power set to 5 and 20</span>
 <span class="fu">power_function</span><span class="op">(</span><span class="va">random_numbers</span>, power <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1]  1.185142e-01 -1.794937e+00  1.858900e-01  1.089361e+01 -2.650724e+01
-##  [6]  2.210952e-05 -1.821894e-01  2.549770e-04 -1.266052e+01  8.649218e-01
-## [11] -7.085953e-02 -7.329398e-03  2.254846e-04  3.271226e-07  3.749970e+00</code></pre>
+<pre><code>##  [1] -1.059199e+00 -3.327105e+01 -8.247074e-04  5.889987e-08  9.789165e-03
+##  [6] -2.404484e-05  3.664445e+00 -1.553515e-03  5.042287e-04  4.921420e-01
+## [11] -9.239798e-04  1.049992e-01  6.889141e-03  9.845988e-02  1.025546e+00</code></pre>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">power_function</span><span class="op">(</span><span class="va">random_numbers</span>, power <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 1.972791e-04 1.037999e+01 1.194054e-03 1.408274e+04 4.936941e+05
-##  [6] 2.389557e-19 1.101774e-03 4.226722e-15 2.569247e+04 5.596382e-01
-## [11] 2.521117e-05 2.885846e-09 2.585043e-15 1.145096e-26 1.977475e+02</code></pre>
+<pre><code>##  [1] 1.258666e+00 1.225366e+06 4.625935e-13 1.203531e-29 9.182957e-09
+##  [6] 3.342622e-19 1.803154e+02 5.824539e-12 6.464135e-14 5.866264e-02
+## [11] 7.288698e-13 1.215468e-04 2.252477e-09 9.398038e-05 1.106166e+00</code></pre>
 <ul>
 <li>Now add an argument called “multiply” that will let the user choose a number to multiply the value by as well. Set the default value as 2 and test it on your random numbers again this time witht he power set to 6 and the multiply set to 12</li>
 </ul>
@@ -553,9 +553,9 @@
 
 <span class="co"># apply tge function to the random numbers with a power of six and muliply by 12</span>
 <span class="fu">my_function</span><span class="op">(</span><span class="va">random_numbers</span>, power <span class="op">=</span> <span class="fl">6</span>, multiply <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 9.283368e-01 2.421254e+01 1.593266e+00 2.107596e+02 6.126587e+02
-##  [6] 3.109399e-05 1.555282e+00 5.847663e-04 2.524196e+02 1.008216e+01
-## [11] 5.007940e-01 3.290510e-02 5.045702e-04 1.980769e-07 5.861578e+01</code></pre>
+<pre><code>##  [1] 1.285744e+01 8.047500e+02 2.391889e-03 2.531153e-08 4.656676e-02
+##  [6] 3.438804e-05 5.701526e+01 5.113988e-03 1.325362e-03 5.124951e+00
+## [11] 2.741424e-03 8.027943e-01 3.054776e-02 7.431772e-01 1.236879e+01</code></pre>
 <ul>
 <li>Set up a vector called “new_vec” with a sequence of 400 numbers from 0 to 12 (using the <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> function) and use this and your function to plot a graph with the sequence on the x axis and the output of the function on the y axis</li>
 </ul>

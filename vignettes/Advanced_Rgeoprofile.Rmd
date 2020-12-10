@@ -14,6 +14,7 @@ vignette: >
 
 In this last Rgeoprofile tutorial we will walk through some of the more advanced features of the package. This includes:
 
+* A quick reminder of the first tutorial
 * How many source locations are there?
 * Allocating crimes to sources
 * Extracting peaks from a geoprofile 
@@ -31,15 +32,13 @@ library(raster)
 library(sp)
 ```
 
+## Recalling the first tutorial
+
+In this tutorial we will revisit the analysis from the [first tutorial](https://michael-stevens-27.github.io/Rgeoprofile/articles/Basic_Rgeoprofile.html). I will quickly run through the process that generated our map in the first tutorial. We will then move on to some more advanced functions from RgeoProfile. 
+
+In short, the process we ran through in the first tutorial (and the process we generally run through when using RgeoProfile) was:
+ 
 ```{r, echo = FALSE, message = FALSE}
-
-# read params and mcmc objects
-param_dir <- system.file("extdata/params_object.rds", package = "RgeoProfile", mustWork = TRUE)
-p <- readRDS(param_dir)
-
-mcmc_dir <- system.file("extdata/mcmc_object.rds", package = "RgeoProfile", mustWork = TRUE)
-m <- readRDS(mcmc_dir)
-
 # load the data 
 data(LondonExample_crimes)
 data(LondonExample_sources)
@@ -48,6 +47,72 @@ data(LondonExample_sources)
 d <- LondonExample_crimes
 s <- LondonExample_sources
 
+# read params and mcmc objects
+param_dir <- system.file("extdata/params_object.rds", package = "RgeoProfile", mustWork = TRUE)
+p <- readRDS(param_dir)
+
+mcmc_dir <- system.file("extdata/mcmc_object.rds", package = "RgeoProfile", mustWork = TRUE)
+m <- readRDS(mcmc_dir)
+```
+
+```{r, echo = TRUE, eval = FALSE}
+# ----------------------------------
+### LOAD AND PROCESS THE DATA
+# ----------------------------------
+
+# load the data within the Rgeoprofile package using the data() function
+data(LondonExample_crimes)
+data(LondonExample_sources)
+
+# example data - re-assign object name 
+d <- LondonExample_crimes
+s <- LondonExample_sources
+
+# process the data
+d <- geoData(d$longitude, d$latitude)
+s <- geoDataSource(s$longitude, s$latitude)
+
+# ----------------------------------
+### BUILD A PARAMETERS OBJECT
+# ----------------------------------
+
+# set model and MCMC parameters
+p <- geoParams(data = d, 
+               sigma_mean = 1, 
+               sigma_var = 5, 
+               chains = 5, 
+               burnin = 1e3, 
+               samples = 1e4,
+               longitude_cells = 200, 
+               latitude_cells = 200, 
+               guardRail = 0.1)
+
+# ----------------------------------
+### RUN THE MODEL
+# ----------------------------------
+
+# run MCMC
+m <- geoMCMC(data = d, params = p)
+
+# ----------------------------------
+### BUILD A MAP
+# ----------------------------------
+
+my_map <- geoPlotLeaflet(surface = m$geoProfile,
+                         params = p,
+                         data = d, 
+                         source = s, 
+                         surfaceCols = rev(viridis::plasma(10)),
+                         opacity = 0.7,
+                         threshold = 0.1,
+                         crimeCex = 2,
+                         sourceCex = 3,
+                         sourceCol = "black",
+                         gpLegend = TRUE)
+my_map
+```
+
+```{r, echo = FALSE, eval = TRUE}
 # remake map
 my_map <- geoPlotLeaflet(surface = m$geoProfile,
                          params = p,
@@ -60,14 +125,8 @@ my_map <- geoPlotLeaflet(surface = m$geoProfile,
                          sourceCex = 5,
                          sourceCol = "black",
                          gpLegend = TRUE)   
-```
-
-In this tutorial we will revisit the analysis from the [first tutorial](https://michael-stevens-27.github.io/Rgeoprofile/articles/Basic_Rgeoprofile.html). Recall the geoprofile created in the first tutorial displayed on the map below.
-
-```{r, eval = TRUE, echo = FALSE}
-# plot profile on map
 my_map
-```   
+```
 
 ## How many source locations are there?
 
@@ -84,7 +143,7 @@ A quick glance indicates that most of the time the model thinks there are four s
 ```{r}
 # summarise the unique groupings object
 group_table <- table(groups)
-group_table
+print(group_table) # print out the table
 ```
 
 It's then possible to visualise this table using the `barplot()` function. 
@@ -97,7 +156,7 @@ barplot(group_table,
         main = "Number of source locations")
 ```
 
-As we can see the model thinks there could be anywhere between two and eleven source locations, but with an emphasis on four and five. Luckily we can verify this since we know the model has four source locations. 
+As we can see the model thinks there could be anywhere between two and eleven source locations, but with an emphasis on four and five. Luckily we can verify this since we had data on the crimes and the source locations - we know the model has four sources. 
 
 ## Allocation probabilities
 
@@ -120,7 +179,6 @@ In this allocation plot each vertical strip corresponds to an individual crime w
 ## Extracting peaks from a geoprofile 
 
 The geographic profile created by the model allows us to visualise how we might prioritise a search strategy to find the source locations associated with a criminal. The `geoModelSources()` function allows us to extract the explicit peaks of the profile by returning a set of longitudinal/latitudinal points.
-
 
 ```{r}
 # 
