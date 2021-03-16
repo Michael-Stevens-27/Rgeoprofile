@@ -19,7 +19,7 @@ In this tutorial, we will walk through the step-by-step process of running an an
 * Running the MCMC algorithm. 
 * Visualising the output of the model, for example the geoprofile.   
 
-First things first, we must load the package. Assuming the RgeoProfile package was [installed correctly](https://michael-stevens-27.github.io/Rgeoprofile/articles/installation.html), we can load in the package using `library(RgeoProfile)`. In addition to this we will be using the leaflet and raster packages for creating maps. Load the `RgeoProfile`, `raster` and `leaflet` packages as below:  
+First things first, we must load the package. Assuming the RgeoProfile package was [installed correctly](https://michael-stevens-27.github.io/Rgeoprofile/articles/Installing_RGP.html), we can load in the package using `library(RgeoProfile)`. In addition to this we will be using the leaflet and raster packages for creating maps. Load the `RgeoProfile`, `raster` and `leaflet` packages as below:  
 
 ```{r, eval = TRUE, message = FALSE}
 # load required packages

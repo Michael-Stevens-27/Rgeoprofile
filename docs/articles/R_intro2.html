@@ -74,7 +74,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/installation.html">Installing RgeoProfile</a>
+      <a href="../articles/Installing_RGP.html">Installing RgeoProfile</a>
     </li>
     <li>
       <a href="../articles/GP_background.html">Background</a>
@@ -139,7 +139,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 2</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-12-10</h4>
+            <h4 class="date">2021-03-16</h4>
       
       
       <div class="hidden name"><code>R_intro2.Rmd</code></div>
@@ -179,6 +179,12 @@
 <pre><code>## [1] 3</code></pre>
 <p>Notice that the R environment now has a function in its memory.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/function_env.png">  </p>
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/function_env.png",
+          destfile = "image1.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image1.png")
+``` -->
 </div>
 <div id="classes" class="section level2">
 <h2 class="hasAnchor">
@@ -223,6 +229,12 @@
 <pre><code>## [1]  7  2  5  1  6 19</code></pre>
 <p>Notice that <code>my_vector</code> has appeared in the top right in R studio.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/my_vec.png">  </p>
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/my_vec.png",
+          destfile = "image2.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image2.png")
+``` -->
 <p>We can see that now gives us more information than simply the values in this vector. In addition to this, R stores the class of the vector "num" short for "numerical" and the <strong>index</strong> of the vector runs from one to six, denoted by "[1:6]". Indexing in R starts at 1 and ends at the length of the vector. If we want to access a particular value or set of values from our vector, then we need to provide R with the index of the values we want. We do this using square brakets <code>[]</code>.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># access the 3rd value in our vector</span>
@@ -299,6 +311,12 @@
 <span class="op">?</span><span class="va">matrix</span></code></pre></div>
 <p>With this you should notice that the "help" tab of the bottom right panel should open up with the documentation related to the matrix function.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/matrix_help.png">  </p>
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/matrix_help.png",
+          destfile = "image3.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image3.png")
+``` -->
 <p>It may be cumbersome to write out all of the arguments in a function, so it is possible simply to write the value of the argument in the function leading to the same result:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create a matrix using my_vector</span>
@@ -334,6 +352,12 @@
 ## [3,]    5   19</code></pre>
 <p>This code is neater and it becomes much easier to scan through which of the function's arguments we are using. Notice in the console that at the beginning of each line we now see a <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> symbol, instead of a <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> symbol. This <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> symbol indicates that we have started executing some of our code, but we're not finished. This <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> symbol is R's way of telling us that we've begun running some code, and R wants us to finish it off. In this case we started running the matrix function on one line and we finished running it three lines later.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/plus.png">  </p>
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/plus.png",
+          destfile = "image4.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image4.png")
+``` -->
 <p>There are a huge number of other functions that R has ready to use. Many of which were built to speed up operations on vectors and matrices. Imagine you have a numerical vector of length 15, and you wanted to find the sum of these numbers. It would be a lot of effort to type the summation out by hand. Instead we can use the <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> function.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create a vector with 15 numerical values</span>

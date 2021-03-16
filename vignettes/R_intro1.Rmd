@@ -27,6 +27,13 @@ As mentioned in the previous tutorial when you start up Rstudio, you should be w
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_welcome_numbered.png)
 \  
 
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_welcome_numbered.png",
+          destfile = "image1.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image1.png")
+``` -->
+
 The intereface should consist of four main panels: 
 
 **1** - The **top left** panel is the script window; this is where you will write all of your code. This window may not be currently visible, if not, click on File -> New File -> Rscript. Or, simply type `Ctrl Shift N` on the keyboard.
@@ -61,18 +68,36 @@ Let's start with a simple example - can we get R to add 1 and 2 together? There 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/console.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/console.png",
+          destfile = "image2.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image2.png")
+``` -->
 
 We should see the number `3` get spat out by the console as shown above. The other, and preferable, way to run this code is to type it up in the script window (number 1 above), click on the line of code we want to run and hit `Ctrl ENTER` or click on the "Run" button to send the code down to the console. 
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/control_enter.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/control_enter.png",
+          destfile = "image3.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image3.png")
+``` -->
 
 As we can see, this results in the same output. Writing in an Rscript is preferable over typing code straight into the console because the console requires us to type out the same code over and over again. Writing in an Rscript means we write the code out once and only requires `Ctrl ENTER` or the "Run" button to rerun. It's pretty obvious that running `1 + 2` will calculate the sum of one and two. However, it won't always be obvious what our code is doing and for this reason it is incredibly important to **comment our code**. Commenting consists of writing notes in the Rscript that describe what our code is doing. We can comment out a line of code using the "number" or "hashtag" symbol `#`. Revisiting our example of adding one and two: 
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/comment.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/comment.png",
+          destfile = "image4.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image4.png")
+``` -->
 
 Any line of code starting with the `#` symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran `1 + 2` normally. Commenting code is fundemental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others. 
 
@@ -87,7 +112,12 @@ This format will show a piece of R code and the output from the console (if ther
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/copy.png)
 \  
-
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/copy.png",
+          destfile = "image5.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image5.png")
+``` -->
 
 ## Saving your script
 
@@ -96,6 +126,12 @@ We can save the R script we've been working on in this tutorial by going to File
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/save.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/save.png",
+          destfile = "image6.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image6.png")
+``` -->
 
 Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. Each coding language has its own extenstion, for example, if we were writing a piece of code using the python language our extension would be ".py".
 
@@ -106,12 +142,24 @@ The previous example of adding `1 + 2` gave us an immediate answer in the R cons
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png",
+          destfile = "image7.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image7.png")
+``` -->
 
 Here we assigned the value `5` to `x`, via the code `x <- 5`, so `x` is the object with value `5` assigned to it. This assigning symbol `<-` should always point to the object name. In this case the arrow points to `x`. You may have noticed that when you ran `x <- 5` something appeared up in the *Environment* window in the top right screen (panel number 3).
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign_environment.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign_environment.png",
+          destfile = "image8.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image8.png")
+``` -->
 
 R has told us that there is an object named "x" with the value "5" assigned to it in the "global environemnt". This is essentially what is stored in R's memory. So when we assigned the value `5` to `x`, R placed `x` in its memory. To access `x`, we can run the folowing code.
 

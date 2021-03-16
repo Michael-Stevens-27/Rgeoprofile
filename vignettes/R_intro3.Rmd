@@ -27,6 +27,13 @@ In the previous tutorial we touched on a few of R's built in functions. We even 
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/packages.png)
 \  
 
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/packages.png",
+          destfile = "image1.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image1.png")
+``` -->
+
 Here we can see all of the packages that have already been downloaded. In order to install a package that is not in our system, we use the `install.packages()` function in the following way:
 
 ```{r, eval = FALSE}
@@ -47,6 +54,12 @@ The raster package also loads another package for spatial analysis; the "sp" pac
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/load_packages.png)
 \  
 
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/load_packages.png",
+          destfile = "image1.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image1.png")
+``` -->
 
 ## Directories and reading data
 
@@ -60,6 +73,13 @@ data()
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data.png)
 \  
+
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data.png",
+          destfile = "image2.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image2.png")
+``` -->
 
 Here we can see a few examples, including the "mtcars" data set, this describes the ouput of road tests carried out on a series of popular motor vehicles. To load the "mtcars" data set, we simply return to the `data()` function:
 
@@ -76,30 +96,60 @@ In addition to built-in data sets, a user will need to import their own data int
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png",
+          destfile = "image3.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image3.png")
+``` -->
 
 Rstudio will then open up a screen for you to navigate to the file. I've got an example file "my_data.txt" setup on my desktop here.
 
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png)
 \ 
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png",
+          destfile = "image4.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image4.png")
+``` -->
 
 It is common practice in R to make sure you are working within the directory that contains all the files associated with your work or project. We will know we are working in the correct directory when we can see our script and data file in the "files" tab of the bottom right window in Rstudio. We can choose our working directory by going to Session -> Set Working Directory -> Choose Directory.  
 
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png",
+          destfile = "image5.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image5.png")
+``` -->
 
 R will then prompt you to pick which location you wish to use as your working directory. Here I have chosen the location where I stored my data and script.    
 
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/desk_directory.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/desk_directory.png",
+          destfile = "image5.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image5.png")
+``` -->
 
 Notice in the console window R ran the `setwd()` function for you automatically to change the directory. The "set working directory" function `setwd()` can be used manually, but it is much easier to navigate to your working directory using the process above. 
 
 \      
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png)
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png",
+          destfile = "image6.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image6.png")
+``` -->
 
 It is possible to check anytime which working directory is being currently used by using the `getwd()` function as follows:
 

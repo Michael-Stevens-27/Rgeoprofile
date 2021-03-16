@@ -74,7 +74,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/installation.html">Installing RgeoProfile</a>
+      <a href="../articles/Installing_RGP.html">Installing RgeoProfile</a>
     </li>
     <li>
       <a href="../articles/GP_background.html">Background</a>
@@ -139,7 +139,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 3</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2020-12-10</h4>
+            <h4 class="date">2021-03-16</h4>
       
       
       <div class="hidden name"><code>R_intro3.Rmd</code></div>
@@ -165,6 +165,12 @@
 <a href="#packages" class="anchor"></a>Packages</h2>
 <p>In the previous tutorial we touched on a few of R's built in functions. We even saw an example of writing our own <code>add</code> function. You may find yourself in a position where you need a function that R's built-in library cannot provide you with and that may be too complex to write yourself. There are a number of <strong>R packages</strong> that can be downloaded that provide you with extra functions for many different uses. We will see in the next tutorial how to download <code>RgeoProfile</code>, a package for spatial analysis. Navigate to the "Packages" tab of the bottom right pane in Rstudio.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/packages.png">  </p>
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/packages.png",
+          destfile = "image1.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image1.png")
+``` -->
 <p>Here we can see all of the packages that have already been downloaded. In order to install a package that is not in our system, we use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function in the following way:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install raster package</span>
@@ -176,6 +182,12 @@
 <pre><code>## Loading required package: sp</code></pre>
 <p>The raster package also loads another package for spatial analysis; the "sp" package. Notice the empty boxes down the left hand side of the "Packages" tab. Clicking on these boxes is another method for loading packages.</p>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/load_packages.png">  </p>
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/load_packages.png",
+          destfile = "image1.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image1.png")
+``` -->
 </div>
 <div id="directories-and-reading-data" class="section level2">
 <h2 class="hasAnchor">
@@ -185,6 +197,12 @@
 <code class="sourceCode R"><span class="co"># show list of built-in data sets</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data.png">  </p>
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data.png",
+          destfile = "image2.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image2.png")
+``` -->
 <p>Here we can see a few examples, including the "mtcars" data set, this describes the ouput of road tests carried out on a series of popular motor vehicles. To load the "mtcars" data set, we simply return to the <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> function:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load mtcars data set</span>
@@ -200,15 +218,40 @@
 ## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <p>In addition to built-in data sets, a user will need to import their own data into R too. Rstudio makes this a little easier by allowing the user to choose the type of file when importing their data and where R can find said file. We can import a data file by going to File -&gt; Import Dataset -&gt; From ... and choosing from the options depending on your file type.</p>
-<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png">  </p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png">   <!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/import_data.png",
+          destfile = "image3.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image3.png")
+``` --></p>
 <p>Rstudio will then open up a screen for you to navigate to the file. I've got an example file "my_data.txt" setup on my desktop here.</p>
-<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png">  </p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png">   <!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/data_navigate.png",
+          destfile = "image4.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image4.png")
+``` --></p>
 <p>It is common practice in R to make sure you are working within the directory that contains all the files associated with your work or project. We will know we are working in the correct directory when we can see our script and data file in the "files" tab of the bottom right window in Rstudio. We can choose our working directory by going to Session -&gt; Set Working Directory -&gt; Choose Directory.</p>
-<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png">  </p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png">   <!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/directories.png",
+          destfile = "image5.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image5.png")
+``` --></p>
 <p>R will then prompt you to pick which location you wish to use as your working directory. Here I have chosen the location where I stored my data and script.</p>
-<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/desk_directory.png">  </p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/desk_directory.png">   <!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/desk_directory.png",
+          destfile = "image5.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image5.png")
+``` --></p>
 <p>Notice in the console window R ran the <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> function for you automatically to change the directory. The "set working directory" function <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> can be used manually, but it is much easier to navigate to your working directory using the process above.</p>
-<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png">  </p>
+<p> <br><img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png">   <!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/shift_directories.png",
+          destfile = "image6.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image6.png")
+``` --></p>
 <p>It is possible to check anytime which working directory is being currently used by using the <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> function as follows:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># get the working directory</span>

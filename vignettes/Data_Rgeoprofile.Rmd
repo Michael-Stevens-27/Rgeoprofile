@@ -19,7 +19,7 @@ In this tutorial, we will walk through another example of running an analysis us
 * Running the MCMC algorithm. 
 * Visualising the output of the model
 
-Once again, let's load the package [RgeoProfile](https://michael-stevens-27.github.io/Rgeoprofile/articles/installation.html) using `library(RgeoProfile)`. 
+Once again, let's load the package [RgeoProfile](https://michael-stevens-27.github.io/Rgeoprofile/articles/Installing_RGP.html) using `library(RgeoProfile)`. 
 
 ```{r, eval = TRUE, message = FALSE}
 # load required packages

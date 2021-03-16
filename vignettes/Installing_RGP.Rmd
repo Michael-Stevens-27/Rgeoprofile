@@ -1,10 +1,10 @@
 ---
-title: "Installating the RgeoProfile package"
+title: "Installing the RgeoProfile package"
 author: "Michael Stevens"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Installating the RgeoProfile package}
+  %\VignetteIndexEntry{Installing the RgeoProfile package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -50,7 +50,6 @@ Once installed, documentation for each function can be found [here](https://mich
 ```{r, eval = FALSE}
 ?geoData 
 ```
-
 
 ```{r, eval = FALSE, echo = FALSE}
 # Next you need an API key for Google Maps. Earlier this year GoogleMaps changed the way they price API calls – see here (https://cloud.google.com/maps-platform/pricing/#details). Under the new system there is a lower limit on API calls below which you won’t be charged, but annoyingly you still need to sign up for an API key otherwise it produces a 403 error.

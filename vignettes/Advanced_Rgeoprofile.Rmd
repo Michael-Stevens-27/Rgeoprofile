@@ -181,7 +181,6 @@ In this allocation plot each vertical strip corresponds to an individual crime w
 The geographic profile created by the model allows us to visualise how we might prioritise a search strategy to find the source locations associated with a criminal. The `geoModelSources()` function allows us to extract the explicit peaks of the profile by returning a set of longitudinal/latitudinal points.
 
 ```{r}
-# 
 ms <- geoModelSources(mcmc = m, data = d)
 ms
 
@@ -252,6 +251,13 @@ In @Faulkner2017, author's inferred locations associated with poachers responsib
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/poaching.png)
 \  
+
+<!-- ```{r, echo = F}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/poaching.png",
+          destfile = "image.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image.png")
+``` -->
 
 Here, the points in black represent locations associated with illegal hunting incidents and the blue squares are associated with the poacher's source locations. We can also see the outline of Sav{\'{e}} Valley Conservancy where the majority of source locations are outside the Conservancy but all crimes are within it.    
 
@@ -400,5 +406,10 @@ Throughout these tutorials we have learnt how to use the Rgeoprofile package. Th
 * Shapefiles and manipulating a geoprofile based on other spatial information
 
 Like the R tutorials, these vignettes have covered a lot of information in a short amount of time. For extra help in using and understanding RgeoProfile, see the [extra resources](https://michael-stevens-27.github.io/Rgeoprofile/articles/GP_resources.html) page.   
+
+```{r, echo = FALSE, eval = FALSE}
+# command for building doc as pdf
+rmarkdown::render("vignettes/XXX.Rmd", "pdf_document", output_dir="/home/mstevens/Desktop/MAIN WORK/Bangor Workshop/PDF_docs/")
+```
 
 ## References

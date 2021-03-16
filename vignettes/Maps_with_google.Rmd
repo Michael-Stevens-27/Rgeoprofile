@@ -17,6 +17,13 @@ The Rgeoprofile package offers a neat way of visualising a geoprofile using inte
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/LondonExample_figure1.png)
 \  
 
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/LondonExample_figure1.png",
+          destfile = "image.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image.png")
+``` -->
+
 In order to create a map such as this, you are required to make a google account and enter credit card details to obtain an API key. This API key is then used to pull the maps from google's servers. Although a user would need to create hundreds of thousands of maps to be charged any substantial amount of money for using google's services, we do not want to force users to create such an account in order to complete this workshop, hence we have stuck to producing interactive maps through `leaflet` in the tutorials. Should you want to create one of these maps, a step by step guide can be found below. 
 
 ## Obtaining an API key     

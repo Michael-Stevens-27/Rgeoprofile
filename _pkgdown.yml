@@ -67,7 +67,7 @@ navbar:
     - text: "GP tutorials"
       menu:
         - text: "Installing RgeoProfile"
-          href: articles/installation.html  
+          href: articles/Installing_RGP.html  
         - text: "Background"
           href: articles/GP_background.html
         - text: ---------------

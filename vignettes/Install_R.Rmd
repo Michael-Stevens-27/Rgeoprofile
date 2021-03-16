@@ -21,6 +21,13 @@ We are going to install R from the [R project website](https://www.r-project.org
 
 \  
 
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_landing.png",
+          destfile = "image1.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image1.png")
+``` -->
+
 Next we need to choose the location we will be installing from. For this workshop, the best location will be "South Africa". There are many options here, but choosing the closest location ensures the installation is as quick as possible.  
 
 \  
@@ -28,15 +35,26 @@ Next we need to choose the location we will be installing from. For this worksho
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_mirrors.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_mirrors.png",
+          destfile = "image2.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image2.png")
+``` -->
 
 Go ahead and click on the "South Africa" option, leading us to:
-
 
 \  
 
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_choose_windows.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_choose_windows.png",
+          destfile = "image3.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image3.png")
+``` -->
 
 Click on the "Download R for windows" option. 
 
@@ -45,6 +63,12 @@ Click on the "Download R for windows" option.
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_base.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_base.png",
+          destfile = "image4.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image4.png")
+``` -->
 
 Since this will be the first time installing R, click on the "base" option. 
 
@@ -53,6 +77,12 @@ Since this will be the first time installing R, click on the "base" option.
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_for_windows.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_for_windows.png",
+          destfile = "image5.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image5.png")
+``` -->
 
 Finally, click on the "Download R 4.0.3 for Windows" option. Once this has finished downloading run the .exe file and follow the installation process as prompted on your computer screen. 
 
@@ -61,6 +91,12 @@ Finally, click on the "Download R 4.0.3 for Windows" option. Once this has finis
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_install.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_install.png",
+          destfile = "image6.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image6.png")
+``` -->
 
 Move through each of the steps, leaving all of the pre-selected settings as they are, and click "next" until you reach the install window. 
 
@@ -69,6 +105,12 @@ Move through each of the steps, leaving all of the pre-selected settings as they
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_installing.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_installing.png",
+          destfile = "image7.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image7.png")
+``` -->
 
 Once this is done, click "finish". 
 
@@ -77,6 +119,13 @@ Once this is done, click "finish".
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_installing.png)
 
 \  
+
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/R_installing.png",
+          destfile = "image8.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image8.png")
+``` -->
 
 # Installing Rstudio
 
@@ -87,6 +136,12 @@ Now that we have installed R, we need to install the user interface for R, R stu
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_landing.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_landing.png",
+          destfile = "image9.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image9.png")
+``` -->
 
 Next, we want the free version of Rstudio:  
 
@@ -95,6 +150,12 @@ Next, we want the free version of Rstudio:
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_version.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_version.png",
+          destfile = "image10.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image10.png")
+``` -->
 
 And we want to download the .exe file for windows. We will then follow the same process as for the previous installation. Click on the .exe file once it's finished downloading and then follow the setup process prompted on screen. 
 
@@ -103,21 +164,47 @@ And we want to download the .exe file for windows. We will then follow the same 
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_download.png)
 
 \  
-
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_download.png",
+          destfile = "image11.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image11.png")
+``` -->
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_install.png)
 
 \  
-
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_install.png",
+          destfile = "image12.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image12.png")
+``` -->
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_setup.png)
 
 \  
-
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_setup.png",
+          destfile = "image13.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image13.png")
+``` -->
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_installing.png)
 
 \  
-
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_installing.png",
+          destfile = "image14.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image14.png")
+``` -->
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_finish.png)
 
 \  
+<!-- ```{r, echo = F, out.width="400px"}
+download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Rstudio_finish.png",
+          destfile = "image15.png",
+          mode = 'wb')
+knitr::include_graphics(path = "image15.png")
+``` -->
 
 That's it! We have downloaded R and Rstudio. To open a new instance of Rstudio, click on the windows button at the bottom left of the screen, search for Rstudio and click on the Rstudio app in the results. That's all the installing we need to do for R and Rstudio. In the next tutorial we will have a look at the Rstudio interface in detail and start writing some R code.
