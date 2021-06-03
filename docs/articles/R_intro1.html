@@ -139,7 +139,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 1</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2021-04-30</h4>
+            <h4 class="date">2021-06-03</h4>
       
       
       <div class="hidden name"><code>R_intro1.Rmd</code></div>
@@ -171,7 +171,7 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
           mode = 'wb')
 knitr::include_graphics(path = "image1.png")
 ``` -->
-<p>The intereface should consist of four main panels:</p>
+<p>The interface should consist of four main panels:</p>
 <p><strong>1</strong> - The <strong>top left</strong> panel is the script window; this is where you will write all of your code. This window may not be currently visible, if not, click on File -&gt; New File -&gt; Rscript. Or, simply type <code>Ctrl Shift N</code> on the keyboard.</p>
 <p><strong>2</strong> - Once you have written your code, you will need to run it. The <strong>bottom left</strong> panel consists of the following tabs:</p>
 <ul>
@@ -233,7 +233,7 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
           mode = 'wb')
 knitr::include_graphics(path = "image4.png")
 ``` --></p>
-<p>Any line of code starting with the <code>#</code> symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran <code>1 + 2</code> normally. Commenting code is fundemental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others.</p>
+<p>Any line of code starting with the <code>#</code> symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran <code>1 + 2</code> normally. Commenting code is fundamental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others.</p>
 <p>Throughout this tutorial and others, code will be presented to a user via an image of the Rstudio interface. A user might want to copy over code in these screenshots and include/play around with them in their own Rscripts. To save some time, code will also be visible to a user in the format below:</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="fl">2</span></code></pre></div>
@@ -256,12 +256,12 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
           mode = 'wb')
 knitr::include_graphics(path = "image6.png")
 ``` --></p>
-<p>Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. Each coding language has its own extenstion, for example, if we were writing a piece of code using the python language our extension would be ".py".</p>
+<p>Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. Each coding language has its own extension, for example, if we were writing a piece of code using the python language our extension would be ".py".</p>
 </div>
 <div id="assigning-and-naming-objects" class="section level2">
 <h2 class="hasAnchor">
 <a href="#assigning-and-naming-objects" class="anchor"></a>Assigning and naming objects</h2>
-<p>The previous example of adding <code>1 + 2</code> gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by <strong>assigning</strong> an object a specific value. Assigning objects can be done using the <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> symbol. This symbol conisists of the less than symbol <code><a href="https://rdrr.io/r/base/Comparison.html">&lt;</a></code> immediately followed by the minus symbol <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>. Let's see an example</p>
+<p>The previous example of adding <code>1 + 2</code> gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by <strong>assigning</strong> an object a specific value. Assigning objects can be done using the <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> symbol. This symbol consists of the less than symbol <code><a href="https://rdrr.io/r/base/Comparison.html">&lt;</a></code> immediately followed by the minus symbol <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>. Let's see an example</p>
 <p>  <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png">   <!-- ```{r, echo = F, out.width="400px"}
 download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png",
           destfile = "image7.png",
@@ -275,7 +275,7 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
           mode = 'wb')
 knitr::include_graphics(path = "image8.png")
 ``` --></p>
-<p>R has told us that there is an object named "x" with the value "5" assigned to it in the "global environemnt". This is essentially what is stored in R's memory. So when we assigned the value <code>5</code> to <code>x</code>, R placed <code>x</code> in its memory. To access <code>x</code>, we can run the folowing code.</p>
+<p>R has told us that there is an object named "x" with the value "5" assigned to it in the "global environment". This is essentially what is stored in R's memory. So when we assigned the value <code>5</code> to <code>x</code>, R placed <code>x</code> in its memory. To access <code>x</code>, we can run the following code.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># assign the value 5 to x</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span>

@@ -314,7 +314,7 @@ getZoom <- function(x,y) {
 #' @param lonLimits optional vector setting min and max longitude for zoom view.
 #' @param mapSource which online source to use when downloading the map. Options include Google Maps ("google"), OpenStreetMap ("osm"), Stamen Maps ("stamen") and CloudMade maps ("cloudmade").
 #' @param mapType the specific type of map to plot. Options available are "terrain", "satellite", "roadmap" and "hybrid" (google maps), "terrain-background", "terrain", "watercolor" and "toner" (stamen maps) or a positive integer for cloudmade maps (see ?get_cloudmademap from the package ggmap for details).
-#' @param opacity value between 0 and 1 givin the opacity of surface colours.
+#' @param opacity value between 0 and 1 giving the opacity of surface colours.
 #' @param plotContours whether or not to add contours to the surface plot.
 #' @param breakPercent vector of values between 0 and 100 describing where in the surface contours appear.
 #' @param contourCol single colour to plot contour lines showing boundaries on surface.
@@ -494,7 +494,7 @@ geoPlotMap <- function(params, data=NULL, source=NULL, surface=NULL, surfaceCols
 #' @param surface a surface to overlay onto the map, typically a geoprofile obtained from the output of geoMCMC().
 #' @param surfaceCols vector of two or more colours to plot surface. Defaults to viridis palette.
 #' @param map_type the specific type of map to plot. See leaflet::providers for options. 
-#' @param opacity value between 0 and 1 givin the opacity of surface colours.
+#' @param opacity value between 0 and 1 giving the opacity of surface colours.
 #' @param colOpacity opacity of crime and source colours
 #' @param crimeCex relative size of symbols showing crimes.
 #' @param crimeCol colour of crime symbols.
@@ -745,7 +745,7 @@ geoPersp <- function(surface, aggregate_size=3, surface_type="gp", perspCol=c("r
 #------------------------------------------------
 #' Produce Lorenz Plot
 #'
-#' Produces a Lorenz plot showing the proportion of suspect sites or cimes identified as a function of area and calculates
+#' Produces a Lorenz plot showing the proportion of suspect sites or crimes identified as a function of area and calculates
 #' the corresponding Gini coefficient using trapezoid rule.
 #' Also allows an optional vector called crimeNumbers with numbers of crimes per suspect site; the length of this vector
 #' should equal the number of suspect sites. If this is present, the function calculates and returns the Gini coefficient 

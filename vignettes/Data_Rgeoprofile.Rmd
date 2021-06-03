@@ -75,7 +75,7 @@ geoPlotLeaflet(param = NULL, data = d, crimeCex = 6) %>%
                lat = mean(d$latitude), radius = 6, fillColor = "blue") %>% addScaleBar(position = "bottomright")
 ```
 
-As we can see, the spatial mean (in blue) is quite near a few of the crimes, but then again also quite far from others, So this indicates we should set a large `tau` (in Km). Whether or not `tau` is a large or small value really depends on the species you are trying to catch. For a human on foot, a large value of `tau` would be 10 Km, but for elephants a large `tau` could be 30 Km. Another paramater we are interested in but yet to speak about is the dispersal parameter "sigma". Measured in kilometres, this parameter governs how far away crimes are from source locations. We control this parameter using the `sigma_mean` and `sigma_var` arguments. `Sigma_mean` is the explicit value we think sigma could be and `sigma_var` controls our uncertainty in this value. For a human roaming around committing crimes on foot this value will be much smaller than those that have access to a car. Equivalently if a criminal is time restricted (committing crimes on a lunch break for example) this value may be much lower. In ecology, we might expect quite small values of sigma for mosquitoes but much larger values for tigers. It really depends if you are analysing data associated with a human or an animal etc. Since we are conisdering a human moving around on foot, we shall set our prior accordingly.    
+As we can see, the spatial mean (in blue) is quite near a few of the crimes, but then again also quite far from others, So this indicates we should set a large `tau` (in Km). Whether or not `tau` is a large or small value really depends on the species you are trying to catch. For a human on foot, a large value of `tau` would be 10 Km, but for elephants a large `tau` could be 30 Km. Another parameter we are interested in but yet to speak about is the dispersal parameter "sigma". Measured in kilometres, this parameter governs how far away crimes are from source locations. We control this parameter using the `sigma_mean` and `sigma_var` arguments. `Sigma_mean` is the explicit value we think sigma could be and `sigma_var` controls our uncertainty in this value. For a human roaming around committing crimes on foot this value will be much smaller than those that have access to a car. Equivalently if a criminal is time restricted (committing crimes on a lunch break for example) this value may be much lower. In ecology, we might expect quite small values of sigma for mosquitoes but much larger values for tigers. It really depends if you are analysing data associated with a human or an animal etc. Since we are considering a human moving around on foot, we shall set our prior accordingly.    
 
 ```{r, eval = TRUE, message = FALSE}
 # assign an object that sets the model and MCMC parameters
@@ -118,7 +118,7 @@ m <- geoMCMC(data = d, params = p)
 
 ```
 
-Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using our chosen metric for MCMC convergence (the Gelamn-Rubin diagnostic (@Gelman2014)). The sampling phase then ends with a "maximum likelihood lambda". You can ignore this value as it is automatically chosen to create an accurate geoprofile (but more details can be found in @Barnard2010). 
+Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using our chosen metric for MCMC convergence (the Gelman-Rubin diagnostic (@Gelman2014)). The sampling phase then ends with a "maximum likelihood lambda". You can ignore this value as it is automatically chosen to create an accurate geoprofile (but more details can be found in @Barnard2010). 
     
 ## Visualise output
 
@@ -166,7 +166,7 @@ geoPlotLeaflet(surface = m$geoProfile,
                gpLegend = TRUE)                       
 ```
 
-Once again, remember that we won't normally have these source locations, they are provided here to display the accuracy of geographic profiling. Our model seems to working well, all source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but let's go back to the *hit score* and *Gini co-efficent* metrics using the the `geoReportHitscores()` and `geoPlotLorenz()` functions.
+Once again, remember that we won't normally have these source locations, they are provided here to display the accuracy of geographic profiling. Our model seems to working well, all source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but let's go back to the *hit score* and *Gini co-efficient* metrics using the the `geoReportHitscores()` and `geoPlotLorenz()` functions.
 
 ```{r, eval = TRUE}
 # get hitscores
@@ -180,6 +180,6 @@ Gini <- geoPlotLorenz(hit_scores = hs)
 print(Gini)
 ```
 
-We can see that the `geoReportHitscores()` function provides us with our source locations and a corresponding hit score. This is excellent! Our hit scores for each source are less than 1%! So in order to find the source locations, we only need to search less than 1% of the total search area to find them. Equivalently, the Gini co-efficient for these sources is 0.995, remeber that the most efficent search strategy would yield a Gini co-efficient of 1.  
+We can see that the `geoReportHitscores()` function provides us with our source locations and a corresponding hit score. This is excellent! Our hit scores for each source are less than 1%! So in order to find the source locations, we only need to search less than 1% of the total search area to find them. Equivalently, the Gini co-efficient for these sources is 0.995, remember that the most efficient search strategy would yield a Gini co-efficient of 1.  
 
 ## References

@@ -4,7 +4,9 @@
 \name{LondonExample_sources}
 \alias{LondonExample_sources}
 \title{Example London sources}
-\format{an object of class \code{list}.}
+\format{
+an object of class \code{list}.
+}
 \usage{
 data(LondonExample_sources)
 }

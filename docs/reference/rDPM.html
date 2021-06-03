@@ -185,8 +185,14 @@
     <p>Provides random draws from a 2D spatial Dirichlet process mixture model. Both sigma and tau are defined in units of kilometres, representing the average distance that an observations lies from a source, and the average distance that a source lies from the centre point respectively. In contrast, the location of the centre point and the locations of the final output crime sites are defined in units of degrees lat/long to facilitate spatial analysis.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rDPM</span><span class='op'>(</span><span class='va'>n</span>, sigma <span class='op'>=</span> <span class='fl'>1</span>, tau <span class='op'>=</span> <span class='fl'>10</span>, priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.1277</span>,
-  priorMean_latitude <span class='op'>=</span> <span class='fl'>51.5074</span>, alpha <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>rDPM</span><span class='op'>(</span>
+  <span class='va'>n</span>,
+  sigma <span class='op'>=</span> <span class='fl'>1</span>,
+  tau <span class='op'>=</span> <span class='fl'>10</span>,
+  priorMean_longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.1277</span>,
+  priorMean_latitude <span class='op'>=</span> <span class='fl'>51.5074</span>,
+  alpha <span class='op'>=</span> <span class='fl'>1</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

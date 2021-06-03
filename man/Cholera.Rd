@@ -4,7 +4,9 @@
 \name{Cholera}
 \alias{Cholera}
 \title{Cholera data}
-\format{an object of class \code{list}.}
+\format{
+an object of class \code{list}.
+}
 \usage{
 data(Cholera)
 }

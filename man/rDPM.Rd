@@ -4,8 +4,14 @@
 \alias{rDPM}
 \title{Draw from Dirichlet process mixture model}
 \usage{
-rDPM(n, sigma = 1, tau = 10, priorMean_longitude = -0.1277,
-  priorMean_latitude = 51.5074, alpha = 1)
+rDPM(
+  n,
+  sigma = 1,
+  tau = 10,
+  priorMean_longitude = -0.1277,
+  priorMean_latitude = 51.5074,
+  alpha = 1
+)
 }
 \arguments{
 \item{n}{number of draws.}

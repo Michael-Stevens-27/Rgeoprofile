@@ -4,8 +4,14 @@
 \alias{geoMask}
 \title{Incorporate shapefile or raster information into a geoprofile}
 \usage{
-geoMask(probSurface, params, mask, scaleValue = 1,
-  operation = "inside", maths = "multiply")
+geoMask(
+  probSurface,
+  params,
+  mask,
+  scaleValue = 1,
+  operation = "inside",
+  maths = "multiply"
+)
 }
 \arguments{
 \item{probSurface}{the original geoprofile, usually the object $posteriorSurface produced by geoMCMC().}
@@ -16,7 +22,7 @@ geoMask(probSurface, params, mask, scaleValue = 1,
 
 \item{scaleValue}{different functions depending on value of "operation". For "inside' or "outside", the value by which probabilities should be multiplied inside or outside the shapefile. For "near" and "far", scaleValue is the importance of proximity to, or distance from, the object described in the SpatialPolygonsDataFrame, SpatialLinesDataFrame or RasterLayer. Thus, the default value of scaleValue = 1 can be increased to exaggerate the importance of proximity or distance. Not used for "continuous".}
 
-\item{operation}{how to combine the surface and the new spatial information. Must be one of "inside", "outside", "near", "far" or "continuous". The first two multiply areas inside or outside the area described in the shapefile (or raster) by scaleValue. "near" or "far" weight the geoprofile by its closeness to (or distance from) the area described in the shapefile (or raster). Finally, "continuous" uses a set of numerical values (eg altitude) to weight the geoprofile. NOTE: 'near' and 'far' can take a few minutes to run.}
+\item{operation}{how to combine the surface and the new spatial information. Must be one of "inside", "outside", "near", "far" or "continuous". The first two multiply areas inside or outside the area described in the shapefile (or raster) by scaleValue. "near" or "far" weight the geoprofile by its closeness to (or distance from) the area described in the shapefile (or raster). Finally, "continuous" uses a set of numerical values (e.g. altitude) to weight the geoprofile. NOTE: 'near' and 'far' can take a few minutes to run.}
 
 \item{maths}{one of "add", "subtract", multiply" or "divide. The mathematical operation used to combine the new spatial data with the geoprofile when operation = "continuous".}
 }

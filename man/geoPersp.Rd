@@ -4,9 +4,14 @@
 \alias{geoPersp}
 \title{Perspective plot of geoprofile or raw probabilities}
 \usage{
-geoPersp(surface, aggregate_size = 3, surface_type = "gp",
-  perspCol = c("red", "orange", "yellow", "white"), phiGP = 30,
-  thetaGP = -30)
+geoPersp(
+  surface,
+  aggregate_size = 3,
+  surface_type = "gp",
+  perspCol = c("red", "orange", "yellow", "white"),
+  phiGP = 30,
+  thetaGP = -30
+)
 }
 \arguments{
 \item{surface}{surface to plot; either the geoprofile or posteriorSurface output by geoMCMC().}

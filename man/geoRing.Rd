@@ -16,7 +16,7 @@ geoRing(params, data, source, mcmc)
 \item{mcmc}{mcmc object of the form produced by geoMCMC().}
 }
 \description{
-Produces a surface based on an alternative ring-search strategy (ie searching in an expanding radius out from the 'crimes'). The output from this function can be used with geoProfile() and geoReportHitscores to produce a map and hitscores based on this strategy.
+Produces a surface based on an alternative ring-search strategy (i.e. searching in an expanding radius out from the 'crimes'). The output from this function can be used with geoProfile() and geoReportHitscores to produce a map and hitscores based on this strategy.
 }
 \examples{
 \dontrun{

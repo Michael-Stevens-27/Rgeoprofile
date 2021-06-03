@@ -139,7 +139,7 @@
       <h1 data-toc-skip>Introduction to using R - Part 2</h1>
                         <h4 class="author">Michael Stevens</h4>
             
-            <h4 class="date">2021-04-30</h4>
+            <h4 class="date">2021-06-03</h4>
       
       
       <div class="hidden name"><code>R_intro2.Rmd</code></div>
@@ -198,7 +198,7 @@ knitr::include_graphics(path = "image1.png")
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">4</span>
 <span class="va">y</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>In these examples the <strong>class</strong> of <code>x</code> is reffered to as <strong>numeric</strong> and the class of <code>y</code> is reffered to as <strong>logical</strong>. This is of course, since <code>x</code> represents the numerical value <code>5</code> and <code>y</code>, the logical value <code>TRUE</code>. There is another important class we are yet to use, that is, the <strong>character</strong> class. The class of an object is character if it has been assigned using double or single quotation marks (<code>" "</code> or <code>' '</code>).</p>
+<p>In these examples the <strong>class</strong> of <code>x</code> is referred to as <strong>numeric</strong> and the class of <code>y</code> is referred to as <strong>logical</strong>. This is of course, since <code>x</code> represents the numerical value <code>5</code> and <code>y</code>, the logical value <code>TRUE</code>. There is another important class we are yet to use, that is, the <strong>character</strong> class. The class of an object is character if it has been assigned using double or single quotation marks (<code>" "</code> or <code>' '</code>).</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create a character object</span>
 <span class="va">my_name</span> <span class="op">&lt;-</span> <span class="st">"john smith"</span>
@@ -221,7 +221,7 @@ knitr::include_graphics(path = "image1.png")
 <div id="vectors-and-matrices" class="section level2">
 <h2 class="hasAnchor">
 <a href="#vectors-and-matrices" class="anchor"></a>Vectors and Matrices</h2>
-<p>So far, we have assigned each object a single value that's either numeric, logical or character. Vectors and matrices are a couple of the main data types in R that are used to collect and manipulate multiple R objects at the same time. To create a <strong>vector</strong> we use an important R function denoted by <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. Here, <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> can be thought of as short for "concatonate", "collect" or "combine". Using <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> we can collect objects of the same type together to create a vector.</p>
+<p>So far, we have assigned each object a single value that's either numeric, logical or character. Vectors and matrices are a couple of the main data types in R that are used to collect and manipulate multiple R objects at the same time. To create a <strong>vector</strong> we use an important R function denoted by <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. Here, <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> can be thought of as short for "concatenate", "collect" or "combine". Using <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> we can collect objects of the same type together to create a vector.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create a vector</span>
 <span class="va">my_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">6</span>, <span class="fl">19</span><span class="op">)</span>
@@ -235,7 +235,7 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
           mode = 'wb')
 knitr::include_graphics(path = "image2.png")
 ``` -->
-<p>We can see that now gives us more information than simply the values in this vector. In addition to this, R stores the class of the vector "num" short for "numerical" and the <strong>index</strong> of the vector runs from one to six, denoted by "[1:6]". Indexing in R starts at 1 and ends at the length of the vector. If we want to access a particular value or set of values from our vector, then we need to provide R with the index of the values we want. We do this using square brakets <code>[]</code>.</p>
+<p>We can see that now gives us more information than simply the values in this vector. In addition to this, R stores the class of the vector "num" short for "numerical" and the <strong>index</strong> of the vector runs from one to six, denoted by "[1:6]". Indexing in R starts at 1 and ends at the length of the vector. If we want to access a particular value or set of values from our vector, then we need to provide R with the index of the values we want. We do this using square brackets <code>[]</code>.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># access the 3rd value in our vector</span>
 <span class="va">my_vector</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></code></pre></div>
@@ -244,14 +244,14 @@ knitr::include_graphics(path = "image2.png")
 <code class="sourceCode R"><span class="co"># access the 2nd and 5th value in our vector</span>
 <span class="va">my_vector</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>## [1] 2 6</code></pre>
-<p>Note that our vector is a collection of values that share the same class. It's not possible to have a vector that contains a numeric, lofical and character value. Let's see what ahppens if we try.</p>
+<p>Note that our vector is a collection of values that share the same class. It's not possible to have a vector that contains a numeric, logical and character value. Let's see what happens if we try.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># try to create a vector with a numeric, logical and character value</span>
 <span class="va">my_other_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="st">"hello"</span>, <span class="cn">TRUE</span><span class="op">)</span> 
 <span class="va">my_other_vector</span></code></pre></div>
 <pre><code>## [1] "1"     "3"     "hello" "TRUE"</code></pre>
 <p>As we can see R has forced all other values besides "hello" into character form.</p>
-<p>A <strong>matrix</strong> is a collection of values that spans many rows and columns. We can constuct a matrix using the <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function. In order to build a matrix, the function requires a vector of values, the number of rows and the number of columns. Let's use <code>my_vector</code> to populate a matrix with 3 rows and 2 columns.</p>
+<p>A <strong>matrix</strong> is a collection of values that spans many rows and columns. We can construct a matrix using the <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function. In order to build a matrix, the function requires a vector of values, the number of rows and the number of columns. Let's use <code>my_vector</code> to populate a matrix with 3 rows and 2 columns.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create a matrix using my_vector</span>
 <span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">my_vector</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
@@ -261,7 +261,7 @@ knitr::include_graphics(path = "image2.png")
 ## [1,]    7    1
 ## [2,]    2    6
 ## [3,]    5   19</code></pre>
-<p>As we can see we provide the matrix function with <code>data</code>, the number of rows and columns (<code>nrow</code> and <code>ncol</code>) and if we should fill the matrix by row if <code>byrow = TRUE</code> or by column, if <code>byrow = FALSE</code>. To access a particular value in a matrix, we once again use the square brackets with a refference to the corresponding row and column of that value.</p>
+<p>As we can see we provide the matrix function with <code>data</code>, the number of rows and columns (<code>nrow</code> and <code>ncol</code>) and if we should fill the matrix by row if <code>byrow = TRUE</code> or by column, if <code>byrow = FALSE</code>. To access a particular value in a matrix, we once again use the square brackets with a reference to the corresponding row and column of that value.</p>
 <div class="sourceCode"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># get the 2nd value from the first column of the matrix</span>
 <span class="va">my_matrix</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">]</span></code></pre></div>

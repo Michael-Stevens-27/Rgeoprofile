@@ -2,15 +2,32 @@
 % Please edit documentation in R/plotting.R
 \name{geoPlotMap}
 \alias{geoPlotMap}
-\title{Plot a map and overlay data and/or geoprofile using google maps - REQUIRES API}
+\title{Plot a map and overlay data and/or geoprofile using google maps}
 \usage{
-geoPlotMap(params, data = NULL, source = NULL, surface = NULL,
-  surfaceCols = NULL, zoom = NULL, latLimits = NULL,
-  lonLimits = NULL, mapSource = "google", mapType = "hybrid",
-  opacity = 0.6, plotContours = TRUE, breakPercent = seq(0, 100, l =
-  11), contourCol = "grey50", smoothScale = TRUE, crimeCex = 1.5,
-  crimeCol = "red", crimeBorderCol = "white", crimeBorderWidth = 0.5,
-  sourceCex = 1.5, sourceCol = "blue", gpLegend = TRUE)
+geoPlotMap(
+  params,
+  data = NULL,
+  source = NULL,
+  surface = NULL,
+  surfaceCols = NULL,
+  zoom = NULL,
+  latLimits = NULL,
+  lonLimits = NULL,
+  mapSource = "google",
+  mapType = "hybrid",
+  opacity = 0.6,
+  plotContours = TRUE,
+  breakPercent = seq(0, 100, l = 11),
+  contourCol = "grey50",
+  smoothScale = TRUE,
+  crimeCex = 1.5,
+  crimeCol = "red",
+  crimeBorderCol = "white",
+  crimeBorderWidth = 0.5,
+  sourceCex = 1.5,
+  sourceCol = "blue",
+  gpLegend = TRUE
+)
 }
 \arguments{
 \item{params}{parameters list in the format defined by geoParams().}
@@ -33,7 +50,7 @@ geoPlotMap(params, data = NULL, source = NULL, surface = NULL,
 
 \item{mapType}{the specific type of map to plot. Options available are "terrain", "satellite", "roadmap" and "hybrid" (google maps), "terrain-background", "terrain", "watercolor" and "toner" (stamen maps) or a positive integer for cloudmade maps (see ?get_cloudmademap from the package ggmap for details).}
 
-\item{opacity}{value between 0 and 1 givin the opacity of surface colours.}
+\item{opacity}{value between 0 and 1 giving the opacity of surface colours.}
 
 \item{plotContours}{whether or not to add contours to the surface plot.}
 

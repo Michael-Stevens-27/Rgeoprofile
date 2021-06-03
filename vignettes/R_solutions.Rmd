@@ -388,7 +388,7 @@ power_function(random_numbers, power = 5)
 power_function(random_numbers, power = 20)
 ```
 
-* Now add an argument called “multiply” that will let the user choose a number to multiply the value by as well. Set the default value as 2 and test it on your random numbers again this time witht he power set to 6 and the multiply set to 12 
+* Now add an argument called “multiply” that will let the user choose a number to multiply the value by as well. Set the default value as 2 and test it on your random numbers again this time with the power set to 6 and the multiply set to 12 
 
 ```{r}
 # rename function appropriately 

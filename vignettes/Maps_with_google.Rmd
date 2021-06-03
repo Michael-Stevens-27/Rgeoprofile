@@ -11,7 +11,7 @@ vignette: >
 
 ## Introduction
 
-The Rgeoprofile package offers a neat way of visualising a geoprofile using interactvie maps via the leaflet package. A disadvantage to using this method is that leaflet's maps are hard to extract as high quality images. The Rgeoprofile package contains another method of plotting geoprofiles via google maps and the `ggmap` package. Through this package and the `ggplotmap()` function from Rgeoprofile we can create higher quality maps such as the one below.  
+The Rgeoprofile package offers a neat way of visualising a geoprofile using interactive maps via the leaflet package. A disadvantage to using this method is that leaflet's maps are hard to extract as high quality images. The Rgeoprofile package contains another method of plotting geoprofiles via google maps and the `ggmap` package. Through this package and the `ggplotmap()` function from Rgeoprofile we can create higher quality maps such as the one below.  
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/LondonExample_figure1.png)

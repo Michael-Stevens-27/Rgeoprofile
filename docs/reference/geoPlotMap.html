@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot a map and overlay data and/or geoprofile using google maps - REQUIRES API — geoPlotMap • Rgeoprofile*</title>
+<title>Plot a map and overlay data and/or geoprofile using google maps — geoPlotMap • Rgeoprofile*</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Plot a map and overlay data and/or geoprofile using google maps - REQUIRES API — geoPlotMap" />
+<meta property="og:title" content="Plot a map and overlay data and/or geoprofile using google maps — geoPlotMap" />
 <meta property="og:description" content="Plots geoprofile on map, with various customisable options." />
 
 
@@ -176,7 +176,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot a map and overlay data and/or geoprofile using google maps - REQUIRES API</h1>
+    <h1>Plot a map and overlay data and/or geoprofile using google maps</h1>
     
     <div class="hidden name"><code>geoPlotMap.Rd</code></div>
     </div>
@@ -185,13 +185,30 @@
     <p>Plots geoprofile on map, with various customisable options.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoPlotMap</span><span class='op'>(</span><span class='va'>params</span>, data <span class='op'>=</span> <span class='cn'>NULL</span>, source <span class='op'>=</span> <span class='cn'>NULL</span>, surface <span class='op'>=</span> <span class='cn'>NULL</span>,
-  surfaceCols <span class='op'>=</span> <span class='cn'>NULL</span>, zoom <span class='op'>=</span> <span class='cn'>NULL</span>, latLimits <span class='op'>=</span> <span class='cn'>NULL</span>,
-  lonLimits <span class='op'>=</span> <span class='cn'>NULL</span>, mapSource <span class='op'>=</span> <span class='st'>"google"</span>, mapType <span class='op'>=</span> <span class='st'>"hybrid"</span>,
-  opacity <span class='op'>=</span> <span class='fl'>0.6</span>, plotContours <span class='op'>=</span> <span class='cn'>TRUE</span>, breakPercent <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span>, l <span class='op'>=</span>
-  <span class='fl'>11</span><span class='op'>)</span>, contourCol <span class='op'>=</span> <span class='st'>"grey50"</span>, smoothScale <span class='op'>=</span> <span class='cn'>TRUE</span>, crimeCex <span class='op'>=</span> <span class='fl'>1.5</span>,
-  crimeCol <span class='op'>=</span> <span class='st'>"red"</span>, crimeBorderCol <span class='op'>=</span> <span class='st'>"white"</span>, crimeBorderWidth <span class='op'>=</span> <span class='fl'>0.5</span>,
-  sourceCex <span class='op'>=</span> <span class='fl'>1.5</span>, sourceCol <span class='op'>=</span> <span class='st'>"blue"</span>, gpLegend <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>geoPlotMap</span><span class='op'>(</span>
+  <span class='va'>params</span>,
+  data <span class='op'>=</span> <span class='cn'>NULL</span>,
+  source <span class='op'>=</span> <span class='cn'>NULL</span>,
+  surface <span class='op'>=</span> <span class='cn'>NULL</span>,
+  surfaceCols <span class='op'>=</span> <span class='cn'>NULL</span>,
+  zoom <span class='op'>=</span> <span class='cn'>NULL</span>,
+  latLimits <span class='op'>=</span> <span class='cn'>NULL</span>,
+  lonLimits <span class='op'>=</span> <span class='cn'>NULL</span>,
+  mapSource <span class='op'>=</span> <span class='st'>"google"</span>,
+  mapType <span class='op'>=</span> <span class='st'>"hybrid"</span>,
+  opacity <span class='op'>=</span> <span class='fl'>0.6</span>,
+  plotContours <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  breakPercent <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span>, l <span class='op'>=</span> <span class='fl'>11</span><span class='op'>)</span>,
+  contourCol <span class='op'>=</span> <span class='st'>"grey50"</span>,
+  smoothScale <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  crimeCex <span class='op'>=</span> <span class='fl'>1.5</span>,
+  crimeCol <span class='op'>=</span> <span class='st'>"red"</span>,
+  crimeBorderCol <span class='op'>=</span> <span class='st'>"white"</span>,
+  crimeBorderWidth <span class='op'>=</span> <span class='fl'>0.5</span>,
+  sourceCex <span class='op'>=</span> <span class='fl'>1.5</span>,
+  sourceCol <span class='op'>=</span> <span class='st'>"blue"</span>,
+  gpLegend <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -238,7 +255,7 @@
     </tr>
     <tr>
       <th>opacity</th>
-      <td><p>value between 0 and 1 givin the opacity of surface colours.</p></td>
+      <td><p>value between 0 and 1 giving the opacity of surface colours.</p></td>
     </tr>
     <tr>
       <th>plotContours</th>

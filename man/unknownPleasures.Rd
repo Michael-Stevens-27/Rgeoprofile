@@ -4,8 +4,14 @@
 \alias{unknownPleasures}
 \title{Unknown pleasures}
 \usage{
-unknownPleasures(input_matrix, paper_ref = NULL, nlines = 80,
-  bgcol = "black", fgcol = "white", wt = 2)
+unknownPleasures(
+  input_matrix,
+  paper_ref = NULL,
+  nlines = 80,
+  bgcol = "black",
+  fgcol = "white",
+  wt = 2
+)
 }
 \arguments{
 \item{input_matrix}{The surface to plot, usually the object $geoProfile produced by geoMCMC().}

@@ -4,7 +4,9 @@
 \name{LondonExample_crimes}
 \alias{LondonExample_crimes}
 \title{Example London crimes}
-\format{an object of class \code{list}.}
+\format{
+an object of class \code{list}.
+}
 \usage{
 data(LondonExample_crimes)
 }

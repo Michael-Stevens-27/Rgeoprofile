@@ -32,7 +32,7 @@ library(raster)       # for general spatial analysis
 
 Next, we need to load in some data for the model to analyse. The package comes with some pre-made data that can be accessed via the `LondonExample_crimes` and `LondonExample_sources` objects. These consist of a set of longitudinal/latitudinal points where crimes have been committed and the source locations (also in long/lat format) that are responsible for said crimes. Note that in reality we won't know the source locations; we will only have access to the set of crimes. Luckily, we do not need to know the source locations in order to run the model. In this data set however, the source locations have been provided so we can use them to measure how well our model is performing later on.  
 
-Bedore we start using the model we will make sure our data are in the correct format using the `geoData()` and `geoDataSource()` functions.
+Before we start using the model we will make sure our data are in the correct format using the `geoData()` and `geoDataSource()` functions.
  
 ```{r, eval = TRUE, message = FALSE}
 # load the data within the Rgeoprofile package using the data() function
@@ -90,7 +90,7 @@ Running the MCMC algorithm itself is straightforward. We run the model using the
 m <- geoMCMC(data = d, params = p)
 ```
 
-Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelamn-Rubin diagnostic (@Gelman2014). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (@Barnard2010). 
+Here we can see the model stating how far through the burn in and sampling phases it is. Notice the burn in phase states that the five MCMC chains have all converged to the same answer within 100 iterations using the Gelman-Rubin diagnostic (@Gelman2014). The sampling phase then ends with a "maximum likelihood lambda". This essentially states the bandwidth of the kernel density estimator to create the geoprofile (@Barnard2010). 
     
 ## Visualise output
 
@@ -102,7 +102,7 @@ geoPlotLeaflet(params = p,
                surface = m$geoProfile)
 ```
 
-Here the colour scheme moves from yellow to purple, where yellow indicates areas we believe might conatin a source location. The purple on the other hand illustrates areas we believe are less likely to contain a source location. This does not tell us too much. The `geoPlotLeaflet()` function can be customised to display more information on the map. Let's add sources and crimes onto the map, as well as a legend that describes the colours we are seeing. 
+Here the colour scheme moves from yellow to purple, where yellow indicates areas we believe might contain a source location. The purple on the other hand illustrates areas we believe are less likely to contain a source location. This does not tell us too much. The `geoPlotLeaflet()` function can be customised to display more information on the map. Let's add sources and crimes onto the map, as well as a legend that describes the colours we are seeing. 
 
 ```{r, eval = TRUE}  
 geoPlotLeaflet(surface = m$geoProfile,
@@ -134,9 +134,9 @@ geoPlotLeaflet(surface = m$geoProfile,
                gpLegend = TRUE)                       
 ```
  
-Our model seems to be doing well, since the source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but how do we explicitly quantify model success? This is done via the source's *hit score* percentages and overall *Gini co-efficent*. Recall that the hit score percentage is the percentage of the area searched before finding the source locations divided by the total area searched. So the lower the hit score, the better the model is performing. Each source comes with its own hit score, but we can summarise these values using the Gini co-efficent. If we possessed the perfect model that found our source locations by searching almost none of the search area then we would expect a Gini co-efficent of one and if the model fails to find source locations after searching the entire search area, then we would expect a Gini value of zero. If we were to search for our source randomly then we would expect a Gini co-efficient of 0.5.
+Our model seems to be doing well, since the source locations (in black) are all landing in yellow areas. Looking at the map gives us a quick indication of how well our model is doing but how do we explicitly quantify model success? This is done via the source's *hit score* percentages and overall *Gini co-efficient*. Recall that the hit score percentage is the percentage of the area searched before finding the source locations divided by the total area searched. So the lower the hit score, the better the model is performing. Each source comes with its own hit score, but we can summarise these values using the Gini co-efficient. If we possessed the perfect model that found our source locations by searching almost none of the search area then we would expect a Gini co-efficient of one and if the model fails to find source locations after searching the entire search area, then we would expect a Gini value of zero. If we were to search for our source randomly then we would expect a Gini co-efficient of 0.5.
 
-Hit scores are produced via the `geoReportHitscores()` function where we provide the parameters, the sources and the geoprofile. We can then obtain a Gini co-efficent using these hit scores (see the `geoPlotLorenz()` function).
+Hit scores are produced via the `geoReportHitscores()` function where we provide the parameters, the sources and the geoprofile. We can then obtain a Gini co-efficient using these hit scores (see the `geoPlotLorenz()` function).
 
 ```{r, eval = TRUE}
 
@@ -151,7 +151,7 @@ Gini <- geoPlotLorenz(hit_scores = hs)
 Gini
 ```
 
-We can see that the model found every source by searching less than 4\% of the total search area, excellent! Equivalently, the Gini co-efficient for these sources is 0.976. This tutorial was a quick walkthrough of the process one follows when running a geographic profiling analysis. The next tutorial will walkthrough analysing some real-world data in the form of inferring the home and work place of an individual via where their credit card has been used.  
+We can see that the model found every source by searching less than 4\% of the total search area, excellent! Equivalently, the Gini co-efficient for these sources is 0.976. This tutorial was a quick walk through of the process one follows when running a geographic profiling analysis. The next tutorial will walk through analysing some real-world data in the form of inferring the home and work place of an individual via where their credit card has been used.  
 
 ```{r, echo = FALSE, eval = FALSE}
 # save objects for later loading

@@ -185,8 +185,14 @@
     <p>This function allows information from a shapefile or raster to be incorporated within the geoprofile. For example, we might wish to exclude areas not on land, or weight the probabilities within a specific postcode differently. The spatial object used should be a SpatialPolygonsDataFrame as produced by the package sp or a raster.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geoMask</span><span class='op'>(</span><span class='va'>probSurface</span>, <span class='va'>params</span>, <span class='va'>mask</span>, scaleValue <span class='op'>=</span> <span class='fl'>1</span>,
-  operation <span class='op'>=</span> <span class='st'>"inside"</span>, maths <span class='op'>=</span> <span class='st'>"multiply"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>geoMask</span><span class='op'>(</span>
+  <span class='va'>probSurface</span>,
+  <span class='va'>params</span>,
+  <span class='va'>mask</span>,
+  scaleValue <span class='op'>=</span> <span class='fl'>1</span>,
+  operation <span class='op'>=</span> <span class='st'>"inside"</span>,
+  maths <span class='op'>=</span> <span class='st'>"multiply"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -209,7 +215,7 @@
     </tr>
     <tr>
       <th>operation</th>
-      <td><p>how to combine the surface and the new spatial information. Must be one of "inside", "outside", "near", "far" or "continuous". The first two multiply areas inside or outside the area described in the shapefile (or raster) by scaleValue. "near" or "far" weight the geoprofile by its closeness to (or distance from) the area described in the shapefile (or raster). Finally, "continuous" uses a set of numerical values (eg altitude) to weight the geoprofile. NOTE: 'near' and 'far' can take a few minutes to run.</p></td>
+      <td><p>how to combine the surface and the new spatial information. Must be one of "inside", "outside", "near", "far" or "continuous". The first two multiply areas inside or outside the area described in the shapefile (or raster) by scaleValue. "near" or "far" weight the geoprofile by its closeness to (or distance from) the area described in the shapefile (or raster). Finally, "continuous" uses a set of numerical values (e.g. altitude) to weight the geoprofile. NOTE: 'near' and 'far' can take a few minutes to run.</p></td>
     </tr>
     <tr>
       <th>maths</th>

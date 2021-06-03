@@ -4,12 +4,24 @@
 \alias{geoPlotAllocation}
 \title{Plot posterior allocation}
 \usage{
-geoPlotAllocation(mcmc, colours = NULL, barBorderCol = NA,
-  barBorderWidth = 0.25, mainBorderCol = "black",
-  mainBorderWidth = 2, yTicks_on = TRUE, yTicks = seq(0, 1, 0.2),
-  xTicks_on = FALSE, xTicks_size = 1, xlab = "",
-  ylab = "posterior allocation", mainTitle = "", names = NA,
-  names_size = 1, orderBy = "group")
+geoPlotAllocation(
+  mcmc,
+  colours = NULL,
+  barBorderCol = NA,
+  barBorderWidth = 0.25,
+  mainBorderCol = "black",
+  mainBorderWidth = 2,
+  yTicks_on = TRUE,
+  yTicks = seq(0, 1, 0.2),
+  xTicks_on = FALSE,
+  xTicks_size = 1,
+  xlab = "",
+  ylab = "posterior allocation",
+  mainTitle = "",
+  names = NA,
+  names_size = 1,
+  orderBy = "group"
+)
 }
 \arguments{
 \item{mcmc}{stored output obtained by running geoMCMC().}

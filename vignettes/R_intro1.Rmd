@@ -34,7 +34,7 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
 knitr::include_graphics(path = "image1.png")
 ``` -->
 
-The intereface should consist of four main panels: 
+The interface should consist of four main panels: 
 
 **1** - The **top left** panel is the script window; this is where you will write all of your code. This window may not be currently visible, if not, click on File -> New File -> Rscript. Or, simply type `Ctrl Shift N` on the keyboard.
   
@@ -99,7 +99,7 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
 knitr::include_graphics(path = "image4.png")
 ``` -->
 
-Any line of code starting with the `#` symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran `1 + 2` normally. Commenting code is fundemental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others. 
+Any line of code starting with the `#` symbol will be ignored by R when running the code. As we can see, R ignored the line with the comment and then ran `1 + 2` normally. Commenting code is fundamental to good coding practice. This way, when you revisit any code, you know exactly what it is doing. It is becoming common practice to provide code to publishers as supplementary material when submitting a publication, hence we want to make sure our code is as transparent as possible when sharing it with others. 
 
 Throughout this tutorial and others, code will be presented to a user via an image of the Rstudio interface. A user might want to copy over code in these screenshots and include/play around with them in their own Rscripts. To save some time, code will also be visible to a user in the format below:
 
@@ -133,11 +133,11 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
 knitr::include_graphics(path = "image6.png")
 ``` -->
 
-Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. Each coding language has its own extenstion, for example, if we were writing a piece of code using the python language our extension would be ".py".
+Notice the ".R" extension. This indicates that this file contains R code and as a consequence, Rstudio (or any other user interface for writing code) will colour the code syntax accordingly. For example, notice that comments are a different colour in our R script. Each coding language has its own extension, for example, if we were writing a piece of code using the python language our extension would be ".py".
 
 ## Assigning and naming objects 
 
-The previous example of adding `1 + 2` gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by **assigning** an object a specific value. Assigning objects can be done using the `<-` symbol. This symbol conisists of the less than symbol `<` immediately followed by the minus symbol `-`. Let's see an example
+The previous example of adding `1 + 2` gave us an immediate answer in the R console window, however, when writing R code, we may want to store a value so that we can use it later on in another piece of code. We can do this by **assigning** an object a specific value. Assigning objects can be done using the `<-` symbol. This symbol consists of the less than symbol `<` immediately followed by the minus symbol `-`. Let's see an example
 
 \  
 ![](https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/assign.png)
@@ -161,7 +161,7 @@ download.file(url = "https://github.com/Michael-Stevens-27/Rgeoprofile/raw/works
 knitr::include_graphics(path = "image8.png")
 ``` -->
 
-R has told us that there is an object named "x" with the value "5" assigned to it in the "global environemnt". This is essentially what is stored in R's memory. So when we assigned the value `5` to `x`, R placed `x` in its memory. To access `x`, we can run the folowing code.
+R has told us that there is an object named "x" with the value "5" assigned to it in the "global environment". This is essentially what is stored in R's memory. So when we assigned the value `5` to `x`, R placed `x` in its memory. To access `x`, we can run the following code.
 
 ```{r}
 # assign the value 5 to x

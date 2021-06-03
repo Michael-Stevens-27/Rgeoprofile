@@ -4,7 +4,9 @@
 \name{WaterPumps}
 \alias{WaterPumps}
 \title{Cholera sources}
-\format{an object of class \code{list}.}
+\format{
+an object of class \code{list}.
+}
 \usage{
 data(WaterPumps)
 }

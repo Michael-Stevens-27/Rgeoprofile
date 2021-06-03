@@ -22,7 +22,7 @@ In this last Rgeoprofile tutorial we will walk through some of the more advanced
 * Using rasters to manipulate a geoprofile
 * A summary of using Rgeoprofile 
 
-Once again, we shall load the packages we need for processing the ouput of the model.  
+Once again, we shall load the packages we need for processing the output of the model.  
 
 ```{r, message = FALSE}
 # load packages
@@ -201,7 +201,7 @@ Here we can see the set of points plotted on our map in dark green (with crimes 
 
 ## A ring search strategy against a random one
 
-So far, we have covered a few different metrics for model success; in the form of a hit score or gini co-effient. Our hitscores tell us what proportion of the area we must search before finding a source location. Hence, the smaller the hit score, the better the model performs. We also noted that a hitscore of 50% is what you would expect with a random search strategy. However, it would be foolish to invest resources into searching an area completely randomly for a criminal, hence we require some default search strategy. @Smith2015 introduces us to the ring search stratgey, in which we search for source locations by starting at each crime and searching radially outwards. We can create a geographic profile based on a ring search strategy via the `geoRing()` function. We then create a geoprofile via the `geoProfile()` function. 
+So far, we have covered a few different metrics for model success; in the form of a hit score or gini co-efficient. Our hitscores tell us what proportion of the area we must search before finding a source location. Hence, the smaller the hit score, the better the model performs. We also noted that a hitscore of 50% is what you would expect with a random search strategy. However, it would be foolish to invest resources into searching an area completely randomly for a criminal, hence we require some default search strategy. @Smith2015 introduces us to the ring search strategy, in which we search for source locations by starting at each crime and searching radially outwards. We can create a geographic profile based on a ring search strategy via the `geoRing()` function. We then create a geoprofile via the `geoProfile()` function. 
 
 ```{r, eval = TRUE}
 #------------------------------------------------------------------
@@ -240,7 +240,7 @@ names(hs_ring) <- c("lat", "lon", "Ring_search")
 cbind(og_hitscores, hs_ring$Ring_search)
 ```
 
-Clearly the DPM model is performing most efficently, however the ring search gives us a better deafult search strategy than searching our area randomly. 
+Clearly the DPM model is performing most efficiently, however the ring search gives us a better default search strategy than searching our area randomly. 
 
 ## Using rasters to manipulate a geoprofile
 

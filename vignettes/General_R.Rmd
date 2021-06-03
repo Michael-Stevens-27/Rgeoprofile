@@ -15,7 +15,7 @@ Rob Knell, a reader in evolutionary biology at QMUL has kindly provided his book
 
 ## Immediate help in R 
 
-We have already touched briefly on getting help whilst using Rstudio. For example, using the question mark symbol, `?`, infront of a function will bring up the documentation on said function. A double `??` should be used for package documentation. Below are a few more functions you can use in R.
+We have already touched briefly on getting help whilst using Rstudio. For example, using the question mark symbol, `?`, in front of a function will bring up the documentation on said function. A double `??` should be used for package documentation. Below are a few more functions you can use in R.
 
 ```{r, eval = FALSE}
 help.start()     # general help
@@ -30,7 +30,7 @@ RSiteSearch("plot")
 vignette()      # show available vingettes
 ```
 
-It is inevitable that at some point in your coding career, a bug in your code will lead to an error from R. This is very common when coding and is something even the most advanced users of R will have to deal with. You may have even seen a few bugs or errors when playing around with some of the exmples in these tutorials. Debugging code will require some patience and detective work. However, there are many guides out there to debugging code that can offer a hand:
+It is inevitable that at some point in your coding career, a bug in your code will lead to an error from R. This is very common when coding and is something even the most advanced users of R will have to deal with. You may have even seen a few bugs or errors when playing around with some of the examples in these tutorials. Debugging code will require some patience and detective work. However, there are many guides out there to debugging code that can offer a hand:
 
 * [Debugging code, from Rstats](https://rstats.wtf/debugging-r-code.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/r)
@@ -46,7 +46,7 @@ The past tutorials follow a similar structure to the [Quick-R tutorials from Dat
 * [R tutorial's "R introduction"](http://www.r-tutor.com/r-introduction)
 * [Bill Petti's Github tutorial](https://billpetti.github.io/Crash_course_in_R/)
 
-I also think [QMUL's statistical self help resources](https://qmplus.qmul.ac.uk/course/view.php?id=13492) will be useful to anyone wanting to learn R. These are the resources we aim at undergaduate and postrgraduate students looking to learn with an emphasis to apply it in environmental science. 
+I also think [QMUL's statistical self help resources](https://qmplus.qmul.ac.uk/course/view.php?id=13492) will be useful to anyone wanting to learn R. These are the resources we aim at undergraduate and postgraduate students looking to learn with an emphasis to apply it in environmental science. 
 
 ## Free courses requiring an account
 

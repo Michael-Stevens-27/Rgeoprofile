@@ -4,13 +4,24 @@
 \alias{geoPlotLeaflet}
 \title{Plot a map and overlay data and/or geoprofile via leaflet}
 \usage{
-geoPlotLeaflet(params = NULL, data = NULL, surface = NULL,
-  source = NULL, surfaceCols = c("#F0F921FF", "#FDC926FF", "#FA9E3BFF",
-  "#ED7953FF", "#D8576BFF", "#BD3786FF", "#9C179EFF", "#7301A8FF",
-  "#47039FFF", "#0D0887FF"), crimeCex = 1.5, crimeCol = "red",
-  sourceCex = 1.5, sourceCol = "blue", map_type = 110,
-  threshold = 0.1, opacity = 0.8, colOpacity = 1, smoothing = 1,
-  gpLegend = FALSE)
+geoPlotLeaflet(
+  params = NULL,
+  data = NULL,
+  surface = NULL,
+  source = NULL,
+  surfaceCols = c("#F0F921FF", "#FDC926FF", "#FA9E3BFF", "#ED7953FF", "#D8576BFF",
+    "#BD3786FF", "#9C179EFF", "#7301A8FF", "#47039FFF", "#0D0887FF"),
+  crimeCex = 1.5,
+  crimeCol = "red",
+  sourceCex = 1.5,
+  sourceCol = "blue",
+  map_type = 110,
+  threshold = 0.1,
+  opacity = 0.8,
+  colOpacity = 1,
+  smoothing = 1,
+  gpLegend = FALSE
+)
 }
 \arguments{
 \item{params}{parameters list in the format defined by geoParams().}
@@ -35,7 +46,7 @@ geoPlotLeaflet(params = NULL, data = NULL, surface = NULL,
 
 \item{threshold}{what level of the geoprofile to display}
 
-\item{opacity}{value between 0 and 1 givin the opacity of surface colours.}
+\item{opacity}{value between 0 and 1 giving the opacity of surface colours.}
 
 \item{colOpacity}{opacity of crime and source colours}
 

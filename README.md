@@ -12,7 +12,7 @@ Access full documentation [here](https://michael-stevens-27.github.io/Rgeoprofil
 * Presentation: An introduction to geographic profiling 
 * Discussion: Enforcement in conservation 
 * Presentation: An introduction to procedural justice 
-* Novel applications of geographic profiling: Finding illusive species and sources of malarial mosquitos
+* Novel applications of geographic profiling: Finding illusive species and sources of malarial mosquitoes
 * Data: What is needed
 
 **Day 2**
@@ -48,7 +48,3 @@ Access full documentation [here](https://michael-stevens-27.github.io/Rgeoprofil
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/qmul.png" height="150px" width="350px" />
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/Tawiri.png" height="150px" width="200px" />
 <img src="https://github.com/Michael-Stevens-27/Rgeoprofile/raw/workshop/docs/articles/images/ERC.png" height="150px" width="150px" />
-
-### Special Thanks
-
-Extra people to thank ....
